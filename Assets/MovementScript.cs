@@ -23,6 +23,8 @@ public class MovementScript : MonoBehaviour
 
     [SerializeField] float enemyFOV;
     [SerializeField] float viewDistance;
+    private bool HasLineOfSight;
+    private LayerMask obstacles;
     static Vector3 GetRandomDestination(Vector3 pos1, Vector3 pos2)
     {
         return new Vector3(
@@ -54,6 +56,14 @@ public class MovementScript : MonoBehaviour
         return (position1 - position2).sqrMagnitude < distance * distance;
     }
     
+    static bool CheckIfLineOfSight(Transform from, Transform target, LayerMask layerMask)
+    {
+        Vector3 direction = target.position - from.position;
+        float distance = direction.magnitude;
+
+        return !Physics.Raycast(from.position, direction.normalized, distance, layerMask);
+    } 
+
     public void SetDestinationFromOutside(Vector3 location, float ifWhitinThisRange) //set destination to location if location is in whitin range
     {
         if (CheckIfPositionsInRange(transform.position, location, ifWhitinThisRange)) 
@@ -91,11 +101,14 @@ public class MovementScript : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindWithTag("Player");
+        obstacles = LayerMask.GetMask("obstacle");
+        agent.speed = patrolSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (destinationReached)
         {
             SetPatrolDestination(GetRandomDestination(pos1, pos2));
@@ -111,11 +124,11 @@ public class MovementScript : MonoBehaviour
         targetInSight = CheckIfTargetInSight(transform, target.transform, viewDistance, enemyFOV * 0.5f);
         
  
-        if (targetInSight && CheckIfPositionsInRange(transform.position, target.transform.position, ShootDistance)) //If target is in sight AND target is whitin fire range
+        if (targetInSight && CheckIfPositionsInRange(transform.position, target.transform.position, ShootDistance) && (CheckIfLineOfSight(transform, target.transform, obstacles))) //If target is in sight AND target is whitin fire range
         {
             destination = target.transform.position;
 
-
+            
             SetDestination(destination);
 
             //Code to turn towards target
@@ -126,7 +139,7 @@ public class MovementScript : MonoBehaviour
             agent.isStopped = true;
 
         }
-        else if (targetInSight) //If target is in sight
+        else if (targetInSight && (CheckIfLineOfSight(transform, target.transform, obstacles))) //If target is in sight
         {
             destination = target.transform.position;
 
@@ -157,7 +170,7 @@ public class MovementScript : MonoBehaviour
         {
             GetComponent<Renderer>().material.color = Color.blue;
         }
-        else if (destinationType == DestinationType.TargetLocation && CheckIfPositionsInRange(transform.position, target.transform.position, ShootDistance)) //Whitin Shooting range && target in sight
+        else if (destinationType == DestinationType.TargetLocation && CheckIfPositionsInRange(transform.position, target.transform.position, ShootDistance) && (CheckIfLineOfSight(transform, target.transform, obstacles))) //Whitin Shooting range && target in sight
         {
             GetComponent<Renderer>().material.color = Color.red;
         }
