@@ -66,6 +66,8 @@ public class EnemyController : MonoBehaviour
             }
         }
 
+
+
         if (allNodesForward.Count > 0)
             return allNodesForward[Random.Range(0, allNodesForward.Count)];
         else 

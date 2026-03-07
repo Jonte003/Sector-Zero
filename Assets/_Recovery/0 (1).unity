@@ -119,6 +119,59 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &46644036
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 46644038}
+  - component: {fileID: 46644037}
+  m_Layer: 0
+  m_Name: FlyingNavNode (29)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &46644037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46644036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 448026066}
+  - {fileID: 1844550454}
+  - {fileID: 1833589726}
+  - {fileID: 1781343111}
+  - {fileID: 1727890673}
+  - {fileID: 222616950}
+  - {fileID: 1591689277}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &46644038
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 46644036}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -25.2, y: 10.4, z: -22.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &55922489
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,7 +227,7 @@ Transform:
   - {fileID: 838425704}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &70639324
+--- !u!1 &56729455
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,100 +235,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 70639325}
-  - component: {fileID: 70639326}
-  m_Layer: 0
-  m_Name: FlyingNavNode (28)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &70639325
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 70639324}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.8, y: 6.79, z: 8.7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1027946684}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &70639326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 70639324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
---- !u!1 &147777771
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 147777772}
-  - component: {fileID: 147777773}
-  m_Layer: 0
-  m_Name: FlyingNavNode (13)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &147777772
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 147777771}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 42, y: 6.79, z: 30.9}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1027946684}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &147777773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 147777771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
---- !u!1 &162392548
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 162392549}
-  - component: {fileID: 162392550}
+  - component: {fileID: 56729457}
+  - component: {fileID: 56729456}
   m_Layer: 0
   m_Name: FlyingNavNode (15)
   m_TagString: Untagged
@@ -283,35 +244,91 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &162392549
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 162392548}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.3, y: 6.79, z: 45.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1027946684}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &162392550
+--- !u!114 &56729456
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 162392548}
+  m_GameObject: {fileID: 56729455}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 1757713488}
+  - {fileID: 1839809309}
+  - {fileID: 1539029436}
+  - {fileID: 2114476403}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &56729457
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 56729455}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.7, y: 7.09, z: 21.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &87128802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 87128804}
+  - component: {fileID: 87128803}
+  m_Layer: 0
+  m_Name: FlyingNavNode (40)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &87128803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87128802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 221088110}
+  - {fileID: 0}
+  - {fileID: 1308187189}
+  - {fileID: 1727890673}
+  - {fileID: 1591689277}
+  - {fileID: 733902731}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &87128804
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87128802}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.1, y: 10.4, z: -44.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &185709179
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,6 +441,109 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 185709179}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &221088110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 221088112}
+  - component: {fileID: 221088111}
+  m_Layer: 0
+  m_Name: FlyingNavNode (21)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &221088111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221088110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 1826987562}
+  - {fileID: 702017118}
+  - {fileID: 0}
+  - {fileID: 733902731}
+  - {fileID: 1089849972}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &221088112
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221088110}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 27.3, y: 10.4, z: -38}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &222616950
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 222616952}
+  - component: {fileID: 222616951}
+  m_Layer: 0
+  m_Name: FlyingNavNode (30)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &222616951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222616950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 1757713488}
+  - {fileID: 448026066}
+  - {fileID: 1727890673}
+  - {fileID: 46644036}
+  - {fileID: 1591689277}
+  - {fileID: 733902731}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &222616952
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 222616950}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -12.4, y: 10.4, z: -16.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &226327569
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,7 +588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d755056fea947684286548ed5b16069c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!1 &251233175
+--- !u!1 &260246670
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -476,157 +596,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 251233179}
-  - component: {fileID: 251233178}
-  - component: {fileID: 251233177}
-  - component: {fileID: 251233176}
-  - component: {fileID: 251233180}
-  - component: {fileID: 251233181}
+  - component: {fileID: 260246672}
+  - component: {fileID: 260246671}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: FlyingNavNode (35)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!135 &251233176
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 251233175}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &251233177
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 251233175}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: bf7b51a1dd5be1b4292b744ad2d613a8, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &251233178
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 251233175}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &251233179
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 251233175}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.87, y: 10.64, z: -8.08}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1927941016}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &251233180
+--- !u!114 &260246671
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 251233175}
+  m_GameObject: {fileID: 260246670}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8005906bf8bdbf14490862edf68daab0, type: 3}
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  flyingNavNodes: {fileID: 1027946682}
-  destinationNode: {fileID: 1814063986}
-  currentActivity: 0
-  searchDirectionAngle: 45
-  speed: 3
---- !u!54 &251233181
-Rigidbody:
+  connectedNodes:
+  - {fileID: 2094244454}
+  - {fileID: 477112939}
+  - {fileID: 1365325587}
+  - {fileID: 2029781233}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &260246672
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 251233175}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 1
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_GameObject: {fileID: 260246670}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -66.9, y: 10.4, z: -15.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &266791054
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,52 +907,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d755056fea947684286548ed5b16069c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!1 &292736446
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 292736448}
-  - component: {fileID: 292736447}
-  m_Layer: 0
-  m_Name: FlyingNavNode (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &292736447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 292736446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
---- !u!4 &292736448
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 292736446}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.84, y: 6.79, z: 9.01}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1027946684}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &301249528
 GameObject:
   m_ObjectHideFlags: 0
@@ -986,144 +951,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d755056fea947684286548ed5b16069c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!1 &303001442
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 303001443}
-  - component: {fileID: 303001444}
-  m_Layer: 0
-  m_Name: FlyingNavNode (21)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &303001443
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 303001442}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -38.1, y: 6.79, z: -31.3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1027946684}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &303001444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 303001442}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
---- !u!1 &331142658
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 331142659}
-  - component: {fileID: 331142660}
-  m_Layer: 0
-  m_Name: FlyingNavNode (11)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &331142659
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 331142658}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 42, y: 6.79, z: -9.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1027946684}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &331142660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 331142658}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
---- !u!1 &348140169
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 348140170}
-  - component: {fileID: 348140171}
-  m_Layer: 0
-  m_Name: FlyingNavNode (20)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &348140170
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 348140169}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -52.3, y: 6.79, z: -21}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1027946684}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &348140171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 348140169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
 --- !u!1 &397786666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1407,7 +1234,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 442203226}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &531485019
+--- !u!1 &448026066
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1415,44 +1242,100 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 531485020}
-  - component: {fileID: 531485021}
+  - component: {fileID: 448026068}
+  - component: {fileID: 448026067}
   m_Layer: 0
-  m_Name: FlyingNavNode (10)
+  m_Name: FlyingNavNode (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &531485020
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 531485019}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 42, y: 6.79, z: -29.9}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1027946684}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &531485021
+--- !u!114 &448026067
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 531485019}
+  m_GameObject: {fileID: 448026066}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 1757713488}
+  - {fileID: 609405760}
+  - {fileID: 1364614170}
+  - {fileID: 1833589726}
+  - {fileID: 46644036}
+  - {fileID: 222616950}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &448026068
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448026066}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -27.7, y: 7.9, z: 1.86}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &477112939
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 477112941}
+  - component: {fileID: 477112940}
+  m_Layer: 0
+  m_Name: FlyingNavNode (9)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &477112940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477112939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 2094244454}
+  - {fileID: 2141527817}
+  - {fileID: 260246670}
+  - {fileID: 2029781233}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &477112941
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 477112939}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -81.15, y: 7.9, z: -14.53}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &569565290
 GameObject:
   m_ObjectHideFlags: 0
@@ -1497,7 +1380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d755056fea947684286548ed5b16069c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!1 &583052133
+--- !u!1 &609405760
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1505,90 +1388,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 583052134}
-  - component: {fileID: 583052135}
+  - component: {fileID: 609405762}
+  - component: {fileID: 609405761}
   m_Layer: 0
-  m_Name: FlyingNavNode (23)
+  m_Name: FlyingNavNode (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &583052134
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 583052133}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -38.1, y: 6.73, z: 8.81}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1027946684}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &583052135
+--- !u!114 &609405761
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 583052133}
+  m_GameObject: {fileID: 609405760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
---- !u!1 &604535532
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 604535533}
-  - component: {fileID: 604535534}
-  m_Layer: 0
-  m_Name: FlyingNavNode (27)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &604535533
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 448026066}
+  - {fileID: 2094244454}
+  - {fileID: 1470523861}
+  - {fileID: 1833589726}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &609405762
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 604535532}
+  m_GameObject: {fileID: 609405760}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.5, y: 6.79, z: 19.8}
+  m_LocalPosition: {x: -48.16, y: 9.5, z: 1.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1027946684}
+  m_Father: {fileID: 676610666}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &604535534
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 604535532}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
 --- !u!1 &626422104
 GameObject:
   m_ObjectHideFlags: 0
@@ -1635,7 +1476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   navNodes: {fileID: 55922489}
---- !u!1 &655946022
+--- !u!1 &676610664
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1643,45 +1484,119 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 655946023}
-  - component: {fileID: 655946024}
+  - component: {fileID: 676610666}
+  - component: {fileID: 676610665}
   m_Layer: 0
-  m_Name: FlyingNavNode (18)
+  m_Name: FlyingNavNodes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &655946023
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 655946022}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -52.3, y: 6.79, z: 24.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1027946684}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &655946024
+--- !u!114 &676610665
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 655946022}
+  m_GameObject: {fileID: 676610664}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
+  m_Script: {fileID: 11500000, guid: e7a5121935d635d4390f79d8d4678e72, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
---- !u!1 &657760472
+  m_EditorClassIdentifier: Assembly-CSharp::NavNodeController
+  allNodes:
+  - {fileID: 1757713488}
+  - {fileID: 448026066}
+  - {fileID: 609405760}
+  - {fileID: 2094244454}
+  - {fileID: 477112939}
+  - {fileID: 2141527817}
+  - {fileID: 1488133801}
+  - {fileID: 1470523861}
+  - {fileID: 1364614170}
+  - {fileID: 1057771835}
+  - {fileID: 1839809309}
+  - {fileID: 56729455}
+  - {fileID: 1539029436}
+  - {fileID: 1826987562}
+  - {fileID: 221088110}
+  - {fileID: 702017118}
+  - {fileID: 1308187189}
+  - {fileID: 1878004304}
+  - {fileID: 1858317332}
+  - {fileID: 1844550454}
+  - {fileID: 1917734583}
+  - {fileID: 1858732618}
+  - {fileID: 1365325587}
+  - {fileID: 260246670}
+  - {fileID: 1833589726}
+  - {fileID: 1781343111}
+  - {fileID: 1727890673}
+  - {fileID: 46644036}
+  - {fileID: 222616950}
+  - {fileID: 1591689277}
+  - {fileID: 955916049}
+  - {fileID: 2029781233}
+  - {fileID: 2114476403}
+  - {fileID: 733902731}
+  - {fileID: 1089849972}
+  - {fileID: 1268629879}
+  - {fileID: 87128802}
+  maxDistanceBetweenNodes: 25
+--- !u!4 &676610666
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 676610664}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 28.26925, y: 1, z: 27.47009}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1757713489}
+  - {fileID: 448026068}
+  - {fileID: 609405762}
+  - {fileID: 2094244456}
+  - {fileID: 477112941}
+  - {fileID: 2141527819}
+  - {fileID: 1488133803}
+  - {fileID: 1470523863}
+  - {fileID: 1364614172}
+  - {fileID: 1057771837}
+  - {fileID: 1839809311}
+  - {fileID: 56729457}
+  - {fileID: 1539029438}
+  - {fileID: 1826987564}
+  - {fileID: 221088112}
+  - {fileID: 702017120}
+  - {fileID: 1308187191}
+  - {fileID: 1878004306}
+  - {fileID: 1858317334}
+  - {fileID: 1844550456}
+  - {fileID: 1917734585}
+  - {fileID: 1858732620}
+  - {fileID: 1365325589}
+  - {fileID: 260246672}
+  - {fileID: 1833589728}
+  - {fileID: 1781343113}
+  - {fileID: 1727890675}
+  - {fileID: 46644038}
+  - {fileID: 222616952}
+  - {fileID: 1591689279}
+  - {fileID: 955916051}
+  - {fileID: 2029781235}
+  - {fileID: 2114476405}
+  - {fileID: 733902733}
+  - {fileID: 1089849974}
+  - {fileID: 1268629880}
+  - {fileID: 87128804}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &702017118
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1689,44 +1604,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 657760473}
-  - component: {fileID: 657760474}
+  - component: {fileID: 702017120}
+  - component: {fileID: 702017119}
   m_Layer: 0
-  m_Name: FlyingNavNode (7)
+  m_Name: FlyingNavNode (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &657760473
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 657760472}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.4, y: 6.79, z: -17.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1027946684}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &657760474
+--- !u!114 &702017119
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 657760472}
+  m_GameObject: {fileID: 702017118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 221088110}
+  - {fileID: 0}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &702017120
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 702017118}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 21.9, y: 10.4, z: -60.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &710923031
 GameObject:
   m_ObjectHideFlags: 0
@@ -1771,6 +1688,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d755056fea947684286548ed5b16069c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!1 &733902731
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 733902733}
+  - component: {fileID: 733902732}
+  m_Layer: 0
+  m_Name: FlyingNavNode (19)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &733902732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733902731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 1826987562}
+  - {fileID: 221088110}
+  - {fileID: 1727890673}
+  - {fileID: 222616950}
+  - {fileID: 2114476403}
+  - {fileID: 1089849972}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &733902733
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733902731}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.4, y: 10.4, z: -21.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &736902324
 GameObject:
   m_ObjectHideFlags: 0
@@ -2241,52 +2210,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 860734617}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &872163575
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 872163576}
-  - component: {fileID: 872163577}
-  m_Layer: 0
-  m_Name: FlyingNavNode (19)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &872163576
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 872163575}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -52.3, y: 6.79, z: 3.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1027946684}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &872163577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 872163575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
 --- !u!1 &885474926
 GameObject:
   m_ObjectHideFlags: 0
@@ -2399,6 +2322,55 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885474926}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &955916049
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 955916051}
+  - component: {fileID: 955916050}
+  m_Layer: 0
+  m_Name: FlyingNavNode (25)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &955916050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955916049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 1878004304}
+  - {fileID: 1858732618}
+  - {fileID: 2029781233}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &955916051
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955916049}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -62.1, y: 10.4, z: -60.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &980960533
 GameObject:
   m_ObjectHideFlags: 0
@@ -2487,112 +2459,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d755056fea947684286548ed5b16069c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!1 &1027946682
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1027946684}
-  - component: {fileID: 1027946683}
-  m_Layer: 0
-  m_Name: FlyingNavNodes
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1027946683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1027946682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7a5121935d635d4390f79d8d4678e72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NavNodeController
-  allNodes:
-  - {fileID: 1814063986}
-  - {fileID: 1345277216}
-  - {fileID: 1775879958}
-  - {fileID: 1449302636}
-  - {fileID: 657760472}
-  - {fileID: 1389191237}
-  - {fileID: 1616636917}
-  - {fileID: 531485019}
-  - {fileID: 331142658}
-  - {fileID: 1975051160}
-  - {fileID: 147777771}
-  - {fileID: 1767680054}
-  - {fileID: 162392548}
-  - {fileID: 1531238891}
-  - {fileID: 1309011672}
-  - {fileID: 655946022}
-  - {fileID: 872163575}
-  - {fileID: 348140169}
-  - {fileID: 303001442}
-  - {fileID: 1900853137}
-  - {fileID: 583052133}
-  - {fileID: 1165522492}
-  - {fileID: 1871812140}
-  - {fileID: 1461751803}
-  - {fileID: 604535532}
-  - {fileID: 70639324}
-  - {fileID: 1520190137}
-  - {fileID: 1420089380}
-  - {fileID: 292736446}
-  - {fileID: 2020745866}
-  maxDistanceBetweenNodes: 25
---- !u!4 &1027946684
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1027946682}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.63275, y: 4.64266, z: 5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1814063988}
-  - {fileID: 1345277217}
-  - {fileID: 1775879959}
-  - {fileID: 1449302637}
-  - {fileID: 657760473}
-  - {fileID: 1389191238}
-  - {fileID: 1616636918}
-  - {fileID: 531485020}
-  - {fileID: 331142659}
-  - {fileID: 1975051161}
-  - {fileID: 147777772}
-  - {fileID: 1767680055}
-  - {fileID: 162392549}
-  - {fileID: 1531238892}
-  - {fileID: 1309011673}
-  - {fileID: 655946023}
-  - {fileID: 872163576}
-  - {fileID: 348140170}
-  - {fileID: 303001443}
-  - {fileID: 1900853138}
-  - {fileID: 583052134}
-  - {fileID: 1165522493}
-  - {fileID: 1871812141}
-  - {fileID: 1461751804}
-  - {fileID: 604535533}
-  - {fileID: 70639325}
-  - {fileID: 1520190138}
-  - {fileID: 1420089382}
-  - {fileID: 292736448}
-  - {fileID: 2020745868}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1043831547
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2666,6 +2532,107 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2018592813}
   m_SourcePrefab: {fileID: 100100000, guid: 6da0a43f8073a9940b1f914b06dd9d25, type: 3}
+--- !u!1 &1057771835
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1057771837}
+  - component: {fileID: 1057771836}
+  m_Layer: 0
+  m_Name: FlyingNavNode (41)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1057771836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057771835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 448026066}
+  - {fileID: 1470523861}
+  - {fileID: 1839809309}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &1057771837
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057771835}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -27.3, y: 7.09, z: 34.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1089849972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1089849974}
+  - component: {fileID: 1089849973}
+  m_Layer: 0
+  m_Name: FlyingNavNode (20)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1089849973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089849972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 221088110}
+  - {fileID: 0}
+  - {fileID: 1308187189}
+  - {fileID: 1727890673}
+  - {fileID: 1591689277}
+  - {fileID: 733902731}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &1089849974
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089849972}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.3, y: 10.4, z: -43.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1095537891
 GameObject:
   m_ObjectHideFlags: 0
@@ -2879,52 +2846,6 @@ MonoBehaviour:
   m_Bidirectional: 1
   m_AutoUpdatePosition: 0
   m_Area: 0
---- !u!1 &1165522492
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1165522493}
-  - component: {fileID: 1165522494}
-  m_Layer: 0
-  m_Name: FlyingNavNode (24)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1165522493
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1165522492}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.42, y: 6.79, z: 28.3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1027946684}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1165522494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1165522492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
 --- !u!1 &1191646017 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7204009923711499455, guid: 6da0a43f8073a9940b1f914b06dd9d25, type: 3}
@@ -3018,6 +2939,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d755056fea947684286548ed5b16069c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!1 &1268629879
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1268629880}
+  - component: {fileID: 1268629881}
+  m_Layer: 0
+  m_Name: FlyingNavNode (39)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1268629880
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268629879}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.3, y: 10.4, z: -54.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1268629881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268629879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 221088110}
+  - {fileID: 0}
+  - {fileID: 1308187189}
+  - {fileID: 1727890673}
+  - {fileID: 1591689277}
+  - {fileID: 733902731}
+  ObjectWithAllNodes: {fileID: 676610664}
 --- !u!1 &1303489224
 GameObject:
   m_ObjectHideFlags: 0
@@ -3062,7 +3035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d755056fea947684286548ed5b16069c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!1 &1309011672
+--- !u!1 &1308187189
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3070,44 +3043,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1309011673}
-  - component: {fileID: 1309011674}
+  - component: {fileID: 1308187191}
+  - component: {fileID: 1308187190}
   m_Layer: 0
-  m_Name: FlyingNavNode (17)
+  m_Name: FlyingNavNode (23)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1309011673
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1309011672}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -40.8, y: 6.79, z: 45.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1027946684}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1309011674
+--- !u!114 &1308187190
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1309011672}
+  m_GameObject: {fileID: 1308187189}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 0}
+  - {fileID: 1858317332}
+  - {fileID: 1844550454}
+  - {fileID: 1089849972}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &1308187191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308187189}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.7, y: 10.4, z: -58}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1327944140
 GameObject:
   m_ObjectHideFlags: 0
@@ -3152,52 +3129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d755056fea947684286548ed5b16069c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!1 &1345277216
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1345277217}
-  - component: {fileID: 1345277218}
-  m_Layer: 0
-  m_Name: FlyingNavNode (4)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1345277217
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1345277216}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16, y: 6.79, z: -15.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1027946684}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1345277218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1345277216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
 --- !u!1 &1350991077
 GameObject:
   m_ObjectHideFlags: 0
@@ -3242,7 +3173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d755056fea947684286548ed5b16069c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!1 &1389191237
+--- !u!1 &1364614170
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3250,44 +3181,99 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1389191238}
-  - component: {fileID: 1389191239}
+  - component: {fileID: 1364614172}
+  - component: {fileID: 1364614171}
   m_Layer: 0
-  m_Name: FlyingNavNode (8)
+  m_Name: FlyingNavNode (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1389191238
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1389191237}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27.6, y: 6.79, z: -17.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1027946684}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1389191239
+--- !u!114 &1364614171
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1389191237}
+  m_GameObject: {fileID: 1364614170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 448026066}
+  - {fileID: 1470523861}
+  - {fileID: 1839809309}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &1364614172
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364614170}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -27.3, y: 7.09, z: 26.03}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1365325587
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1365325589}
+  - component: {fileID: 1365325588}
+  m_Layer: 0
+  m_Name: FlyingNavNode (34)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1365325588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365325587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 1917734583}
+  - {fileID: 1858732618}
+  - {fileID: 260246670}
+  - {fileID: 1833589726}
+  - {fileID: 1781343111}
+  - {fileID: 2029781233}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &1365325589
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365325587}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -53.6, y: 10.4, z: -27.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1398915111
 GameObject:
   m_ObjectHideFlags: 0
@@ -3425,52 +3411,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1420089380
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1420089382}
-  - component: {fileID: 1420089381}
-  m_Layer: 0
-  m_Name: FlyingNavNode (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1420089381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1420089380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
---- !u!4 &1420089382
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1420089380}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27, y: 6.79, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1027946684}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1438259903
 GameObject:
   m_ObjectHideFlags: 0
@@ -3515,7 +3455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d755056fea947684286548ed5b16069c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!1 &1449302636
+--- !u!1 &1470523861
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3523,90 +3463,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1449302637}
-  - component: {fileID: 1449302638}
+  - component: {fileID: 1470523863}
+  - component: {fileID: 1470523862}
   m_Layer: 0
-  m_Name: FlyingNavNode (6)
+  m_Name: FlyingNavNode (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1449302637
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1449302636}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.6, y: 6.79, z: -31.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1027946684}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1449302638
+--- !u!114 &1470523862
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1449302636}
+  m_GameObject: {fileID: 1470523861}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
---- !u!1 &1461751803
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1461751804}
-  - component: {fileID: 1461751805}
-  m_Layer: 0
-  m_Name: FlyingNavNode (26)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1461751804
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 609405760}
+  - {fileID: 1488133801}
+  - {fileID: 1364614170}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &1470523863
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461751803}
+  m_GameObject: {fileID: 1470523861}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.1, y: 6.79, z: 28.3}
+  m_LocalPosition: {x: -50.8, y: 9.9, z: 26.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1027946684}
+  m_Father: {fileID: 676610666}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1461751805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1461751803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
 --- !u!1 &1472912526
 GameObject:
   m_ObjectHideFlags: 0
@@ -3664,7 +3561,7 @@ MonoBehaviour:
   m_Bidirectional: 1
   m_AutoUpdatePosition: 0
   m_Area: 0
---- !u!1 &1520190137
+--- !u!1 &1488133801
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3672,45 +3569,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1520190138}
-  - component: {fileID: 1520190139}
+  - component: {fileID: 1488133803}
+  - component: {fileID: 1488133802}
   m_Layer: 0
-  m_Name: FlyingNavNode (29)
+  m_Name: FlyingNavNode (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1520190138
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1520190137}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.74, y: 6.79, z: 4.7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1027946684}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1520190139
+--- !u!114 &1488133802
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1520190137}
+  m_GameObject: {fileID: 1488133801}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
---- !u!1 &1531238891
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 2094244454}
+  - {fileID: 2141527817}
+  - {fileID: 1470523861}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &1488133803
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488133801}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -73.9, y: 9.9, z: 26.03}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1539029436
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3718,8 +3618,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1531238892}
-  - component: {fileID: 1531238893}
+  - component: {fileID: 1539029438}
+  - component: {fileID: 1539029437}
   m_Layer: 0
   m_Name: FlyingNavNode (16)
   m_TagString: Untagged
@@ -3727,36 +3627,39 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1531238892
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1531238891}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.9, y: 6.79, z: 45.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1027946684}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1531238893
+--- !u!114 &1539029437
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1531238891}
+  m_GameObject: {fileID: 1539029436}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
---- !u!1 &1616636917
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 56729455}
+  - {fileID: 1826987562}
+  - {fileID: 2114476403}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &1539029438
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1539029436}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 27.3, y: 7.09, z: 3.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1591689277
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3764,44 +3667,152 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1616636918}
-  - component: {fileID: 1616636919}
+  - component: {fileID: 1591689279}
+  - component: {fileID: 1591689278}
   m_Layer: 0
-  m_Name: FlyingNavNode (9)
+  m_Name: FlyingNavNode (31)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1616636918
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1616636917}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.5, y: 6.79, z: -29.9}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1027946684}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1616636919
+--- !u!114 &1591689278
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1616636917}
+  m_GameObject: {fileID: 1591689277}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 1844550454}
+  - {fileID: 1781343111}
+  - {fileID: 1727890673}
+  - {fileID: 46644036}
+  - {fileID: 222616950}
+  - {fileID: 1089849972}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &1591689279
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591689277}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -12.4, y: 10.4, z: -34.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1727890673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1727890675}
+  - component: {fileID: 1727890674}
+  m_Layer: 0
+  m_Name: FlyingNavNode (38)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1727890674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727890673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 46644036}
+  - {fileID: 222616950}
+  - {fileID: 1591689277}
+  - {fileID: 733902731}
+  - {fileID: 1089849972}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &1727890675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727890673}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.3, y: 10.4, z: -28.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1757713488
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1757713489}
+  - component: {fileID: 1757713490}
+  m_Layer: 0
+  m_Name: FlyingNavNode (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1757713489
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757713488}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.73, y: 4.9, z: 1.86}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1757713490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757713488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 448026066}
+  - {fileID: 1839809309}
+  - {fileID: 56729455}
+  - {fileID: 222616950}
+  - {fileID: 2114476403}
+  ObjectWithAllNodes: {fileID: 676610664}
 --- !u!1 &1761591480
 GameObject:
   m_ObjectHideFlags: 0
@@ -3890,7 +3901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d755056fea947684286548ed5b16069c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!1 &1767680054
+--- !u!1 &1781343111
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3898,90 +3909,51 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1767680055}
-  - component: {fileID: 1767680056}
+  - component: {fileID: 1781343113}
+  - component: {fileID: 1781343112}
   m_Layer: 0
-  m_Name: FlyingNavNode (14)
+  m_Name: FlyingNavNode (37)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1767680055
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1767680054}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.8, y: 6.79, z: 45.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1027946684}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1767680056
+--- !u!114 &1781343112
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1767680054}
+  m_GameObject: {fileID: 1781343111}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
---- !u!1 &1775879958
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1775879959}
-  - component: {fileID: 1775879960}
-  m_Layer: 0
-  m_Name: FlyingNavNode (5)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1775879959
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 1844550454}
+  - {fileID: 1917734583}
+  - {fileID: 1858732618}
+  - {fileID: 1365325587}
+  - {fileID: 1833589726}
+  - {fileID: 46644036}
+  - {fileID: 1591689277}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &1781343113
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1775879958}
+  m_GameObject: {fileID: 1781343111}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.2, y: 6.79, z: -31.5}
+  m_LocalPosition: {x: -33, y: 10.4, z: -32.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1027946684}
+  m_Father: {fileID: 676610666}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1775879960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1775879958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
 --- !u!1 &1794689918
 GameObject:
   m_ObjectHideFlags: 0
@@ -4072,7 +4044,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1814063986
+--- !u!1 &1826987562
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4080,44 +4052,302 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1814063988}
-  - component: {fileID: 1814063989}
+  - component: {fileID: 1826987564}
+  - component: {fileID: 1826987563}
   m_Layer: 0
-  m_Name: FlyingNavNode
+  m_Name: FlyingNavNode (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1814063988
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1814063986}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.9, y: 6.79, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1027946684}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1814063989
+--- !u!114 &1826987563
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1814063986}
+  m_GameObject: {fileID: 1826987562}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 1539029436}
+  - {fileID: 221088110}
+  - {fileID: 2114476403}
+  - {fileID: 733902731}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &1826987564
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826987562}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 27.3, y: 10.4, z: -15.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1833589726
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1833589728}
+  - component: {fileID: 1833589727}
+  m_Layer: 0
+  m_Name: FlyingNavNode (36)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1833589727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833589726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 448026066}
+  - {fileID: 609405760}
+  - {fileID: 1365325587}
+  - {fileID: 1781343111}
+  - {fileID: 46644036}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &1833589728
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833589726}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -40.6, y: 10.4, z: -15.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1839809309
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1839809311}
+  - component: {fileID: 1839809310}
+  m_Layer: 0
+  m_Name: FlyingNavNode (14)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1839809310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839809309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 1757713488}
+  - {fileID: 1364614170}
+  - {fileID: 56729455}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &1839809311
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839809309}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.67, y: 7.09, z: 26.03}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1844550454
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1844550456}
+  - component: {fileID: 1844550455}
+  m_Layer: 0
+  m_Name: FlyingNavNode (28)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1844550455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844550454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 1308187189}
+  - {fileID: 1878004304}
+  - {fileID: 1858317332}
+  - {fileID: 1917734583}
+  - {fileID: 1781343111}
+  - {fileID: 46644036}
+  - {fileID: 1591689277}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &1844550456
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844550454}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -25.2, y: 10.4, z: -43.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1858317332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1858317334}
+  - component: {fileID: 1858317333}
+  m_Layer: 0
+  m_Name: FlyingNavNode (27)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1858317333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858317332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 1308187189}
+  - {fileID: 1878004304}
+  - {fileID: 1844550454}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &1858317334
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858317332}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -25.2, y: 10.4, z: -66.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1858732618
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1858732620}
+  - component: {fileID: 1858732619}
+  m_Layer: 0
+  m_Name: FlyingNavNode (33)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1858732619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858732618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 1878004304}
+  - {fileID: 1917734583}
+  - {fileID: 1365325587}
+  - {fileID: 1781343111}
+  - {fileID: 955916049}
+  - {fileID: 2029781233}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &1858732620
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858732618}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -53.6, y: 10.4, z: -43.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1862223887
 GameObject:
   m_ObjectHideFlags: 0
@@ -4162,7 +4392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d755056fea947684286548ed5b16069c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!1 &1871812140
+--- !u!1 &1878004304
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4170,90 +4400,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1871812141}
-  - component: {fileID: 1871812142}
+  - component: {fileID: 1878004306}
+  - component: {fileID: 1878004305}
   m_Layer: 0
-  m_Name: FlyingNavNode (25)
+  m_Name: FlyingNavNode (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1871812141
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1871812140}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.3, y: 6.79, z: 28.3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1027946684}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1871812142
+--- !u!114 &1878004305
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1871812140}
+  m_GameObject: {fileID: 1878004304}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
---- !u!1 &1900853137
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1900853138}
-  - component: {fileID: 1900853139}
-  m_Layer: 0
-  m_Name: FlyingNavNode (22)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1900853138
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 1858317332}
+  - {fileID: 1844550454}
+  - {fileID: 1917734583}
+  - {fileID: 1858732618}
+  - {fileID: 955916049}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &1878004306
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1900853137}
+  m_GameObject: {fileID: 1878004304}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -38.1, y: 6.79, z: -15.3}
+  m_LocalPosition: {x: -42.8, y: 10.4, z: -60.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1027946684}
+  m_Father: {fileID: 676610666}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1900853139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1900853137}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
 --- !u!1 &1906028386
 GameObject:
   m_ObjectHideFlags: 0
@@ -4328,7 +4517,7 @@ Transform:
   - {fileID: 1472912527}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1927941015
+--- !u!1 &1917734583
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4336,112 +4525,49 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1927941016}
-  - component: {fileID: 1927941019}
-  - component: {fileID: 1927941018}
-  - component: {fileID: 1927941017}
+  - component: {fileID: 1917734585}
+  - component: {fileID: 1917734584}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: FlyingNavNode (32)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1927941016
+--- !u!114 &1917734584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917734583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 1878004304}
+  - {fileID: 1844550454}
+  - {fileID: 1858732618}
+  - {fileID: 1365325587}
+  - {fileID: 1781343111}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &1917734585
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1927941015}
+  m_GameObject: {fileID: 1917734583}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0.214}
-  m_LocalScale: {x: 0.2, y: 0.5, z: 0.2}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -38.4, y: 10.4, z: -43.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 251233179}
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!136 &1927941017
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1927941015}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!23 &1927941018
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1927941015}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 1e40edebb30cd08429675d9ba44fff36, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1927941019
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1927941015}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1969308346
 GameObject:
   m_ObjectHideFlags: 0
@@ -4486,52 +4612,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d755056fea947684286548ed5b16069c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
---- !u!1 &1975051160
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1975051161}
-  - component: {fileID: 1975051162}
-  m_Layer: 0
-  m_Name: FlyingNavNode (12)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1975051161
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1975051160}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 42, y: 6.79, z: 10.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1027946684}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1975051162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1975051160}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
 --- !u!4 &2018592812 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 31542420019583759, guid: 6da0a43f8073a9940b1f914b06dd9d25, type: 3}
@@ -4556,7 +4636,7 @@ MonoBehaviour:
   speed: 5
   enemyFOV: 90
   viewDistance: 50
---- !u!1 &2020745866
+--- !u!1 &2029781233
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4564,43 +4644,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2020745868}
-  - component: {fileID: 2020745867}
+  - component: {fileID: 2029781235}
+  - component: {fileID: 2029781234}
   m_Layer: 0
-  m_Name: FlyingNavNode (3)
+  m_Name: FlyingNavNode (26)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2020745867
+--- !u!114 &2029781234
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2020745866}
+  m_GameObject: {fileID: 2029781233}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 705205672d91c8e409fa5a4d9518c2e4, type: 3}
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NodeConnections
-  connectedNodes: []
-  ObjectWithAllNodes: {fileID: 1027946682}
---- !u!4 &2020745868
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 477112939}
+  - {fileID: 1858732618}
+  - {fileID: 1365325587}
+  - {fileID: 260246670}
+  - {fileID: 955916049}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &2029781235
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2020745866}
+  m_GameObject: {fileID: 2029781233}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3, y: 6.79, z: 16.7}
+  m_LocalPosition: {x: -72, y: 10.4, z: -37.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1027946684}
+  m_Father: {fileID: 676610666}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2092940950
 GameObject:
@@ -4646,6 +4731,157 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d755056fea947684286548ed5b16069c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+--- !u!1 &2094244454
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2094244456}
+  - component: {fileID: 2094244455}
+  m_Layer: 0
+  m_Name: FlyingNavNode (8)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2094244455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094244454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 609405760}
+  - {fileID: 477112939}
+  - {fileID: 2141527817}
+  - {fileID: 1488133801}
+  - {fileID: 260246670}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &2094244456
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094244454}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -72.2, y: 7.9, z: 1.86}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2114476403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2114476405}
+  - component: {fileID: 2114476404}
+  m_Layer: 0
+  m_Name: FlyingNavNode (18)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2114476404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114476403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 1757713488}
+  - {fileID: 56729455}
+  - {fileID: 1539029436}
+  - {fileID: 1826987562}
+  - {fileID: 733902731}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &2114476405
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2114476403}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 11.4, y: 10.4, z: -3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2141527817
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2141527819}
+  - component: {fileID: 2141527818}
+  m_Layer: 0
+  m_Name: FlyingNavNode (10)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2141527818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141527817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63ba602b11ffdd841be80a37ad6532c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  connectedNodes:
+  - {fileID: 2094244454}
+  - {fileID: 477112939}
+  - {fileID: 1488133801}
+  ObjectWithAllNodes: {fileID: 676610664}
+--- !u!4 &2141527819
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141527817}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -87.93, y: 7.9, z: 9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 676610666}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -4658,5 +4894,4 @@ SceneRoots:
   - {fileID: 1398915115}
   - {fileID: 626422105}
   - {fileID: 55922490}
-  - {fileID: 1027946684}
-  - {fileID: 251233179}
+  - {fileID: 676610666}

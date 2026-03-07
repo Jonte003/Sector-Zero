@@ -6,7 +6,6 @@ public class EnemyAi : MonoBehaviour
 {
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
 
     [SerializeField] float ShootDistance;
     [SerializeField] float distanceToSetNewDestination;
@@ -88,15 +87,12 @@ public class EnemyAi : MonoBehaviour
 
             if (targetInSight)
             {
-                Debug.Log("Target in sight");
                 if (CheckIfPositionsInRange(target.transform.position, transform.position, ShootDistance)) //Enemy is spotted and whitin shoot distance
                 {
-                    Debug.Log("Target whitin shoot distance");
                     ChangeActivity(currentActivity, CurrentActivity.Shooting);
                 }
                 else //Enemy is spotted but not whitin shooting distance
                 {
-                    Debug.Log("Target NOT whitin shoot distance");
                     ChangeActivity(currentActivity, CurrentActivity.TargetInSight);
                 }
             }
@@ -168,13 +164,10 @@ public class EnemyAi : MonoBehaviour
                     ChangeActivity(currentActivity, CurrentActivity.TargetInSight);
                 else //Target is not visible
                     ChangeActivity(currentActivity, CurrentActivity.MovingToLastSeenLocation);
-
-              
             }
             SetDestionationToPlayer(); //Set destination to target regardless of outcome
         }
     }
-
     private void ChangeActivity(CurrentActivity currentActivity, CurrentActivity setActivity)
     {
         if (setActivity == CurrentActivity.Shooting)

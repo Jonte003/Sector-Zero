@@ -598,7 +598,6 @@ MonoBehaviour:
   flyingNavNodes: {fileID: 1027946682}
   destinationNode: {fileID: 1814063986}
   currentActivity: 0
-  searchDirectionAngle: 45
   speed: 3
 --- !u!54 &251233181
 Rigidbody:
@@ -1012,7 +1011,7 @@ Transform:
   m_GameObject: {fileID: 303001442}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -38.1, y: 6.79, z: -31.3}
+  m_LocalPosition: {x: -38.1, y: 6.79, z: -35.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1523,7 +1522,7 @@ Transform:
   m_GameObject: {fileID: 583052133}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -38.1, y: 6.73, z: 8.81}
+  m_LocalPosition: {x: -38.1, y: 6.79, z: 8.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3962,7 +3961,7 @@ Transform:
   m_GameObject: {fileID: 1775879958}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.2, y: 6.79, z: -31.5}
+  m_LocalPosition: {x: -16, y: 6.79, z: -31.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -156,9 +156,7 @@ public class MovementScript : MonoBehaviour
         }
         else //Patroling
         {
-
             agent.isStopped = false;
-
         }
 
 
@@ -178,8 +176,6 @@ public class MovementScript : MonoBehaviour
         {
             GetComponent<Renderer>().material.color = Color.yellow;
         }
-
-
     }
 }
 
