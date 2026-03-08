@@ -6,6 +6,7 @@ public class NavNodeController : MonoBehaviour
     [SerializeField] List<GameObject> allNodes = new List<GameObject>();
     [SerializeField] float maxDistanceBetweenNodes;
 
+
     static bool CheckIfPositionsInRange(Vector3 pos1, Vector3 pos2, float distance)
     {
         return (pos1 - pos2).sqrMagnitude < distance * distance;
@@ -16,6 +17,7 @@ public class NavNodeController : MonoBehaviour
         allNodes.Clear();
         foreach (Transform child in transform)
             allNodes.Add(child.gameObject);
+
     }
 
     private void Awake()

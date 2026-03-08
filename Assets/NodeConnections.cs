@@ -6,6 +6,9 @@ public class NodeConnections : MonoBehaviour
     [SerializeField] List<GameObject> connectedNodes;
     [SerializeField] GameObject ObjectWithAllNodes;
 
+    [SerializeField] List<GameObject> manuallyConnectedNodes = new List<GameObject>();
+    [SerializeField] List<GameObject> manuallyDisconectedNodes = new List<GameObject>();
+
     private NavNodeController navNodeController;
 
     private void Awake()
@@ -13,7 +16,16 @@ public class NodeConnections : MonoBehaviour
         navNodeController = ObjectWithAllNodes.GetComponent<NavNodeController>();
         connectedNodes = navNodeController.GetConnectedNavNodes(transform);
 
+        foreach (GameObject node in manuallyConnectedNodes)
+        {
+            connectedNodes.Add(node);
+        }
+        foreach (GameObject node in manuallyDisconectedNodes)
+        {
+            connectedNodes.Remove(node);
+        }
     }
+
 
 
     private void OnDrawGizmos()
@@ -26,8 +38,21 @@ public class NodeConnections : MonoBehaviour
 
         var connectedNodes = navNodeController.GetConnectedNavNodes(transform);
 
+        foreach (GameObject node in manuallyConnectedNodes)
+        {
+            connectedNodes.Add(node);
+        }
+        foreach (GameObject node in manuallyDisconectedNodes)
+        {
+            connectedNodes.Remove(node);
+        }
+
         foreach (GameObject node in connectedNodes)
-            Gizmos.DrawLine(transform.position, node.transform.position);
+        {
+            Vector3 midpoint = (transform.position + node.transform.position) * 0.5f;
+            Gizmos.DrawLine(transform.position, midpoint);
+
+        }
     }
 
     public GameObject GetRandomConnectedNode(GameObject previousNode)

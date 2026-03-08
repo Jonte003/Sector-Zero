@@ -41,7 +41,7 @@ public class FlyingEnemyAI : MonoBehaviour
     void Update()
     {
 
-        searchDirection = Quaternion.Euler(0, 0, searchDirectionAngle) * transform.forward * 5;
+        searchDirection = transform.rotation * Quaternion.Euler(searchDirectionAngle, 0, 0) * Vector3.forward * 5;
 
 
         if (currentActivity == CurrentActivity.Patroling)
@@ -49,7 +49,7 @@ public class FlyingEnemyAI : MonoBehaviour
             direction = destinationNode.transform.position - transform.position;
 
             RotateTowardsTarget(destinationNode.transform.position, 5f);
-            if (HasReachedDestionation(destinationNode.transform.position, transform.position, 1))
+            if (HasReachedDestionation(destinationNode.transform.position, transform.position, 3))
             {
                 previousPathStartNode = currentPathStartNode;
                 currentPathStartNode = destinationNode;
