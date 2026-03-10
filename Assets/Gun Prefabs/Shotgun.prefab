@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4296228752142018860
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8383254854996496988}
+  - component: {fileID: 888954793978076355}
+  m_Layer: 0
+  m_Name: Shotgun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8383254854996496988
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4296228752142018860}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &888954793978076355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4296228752142018860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d313ba6bc0091d547986b71261a51506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GunName: Shotgun
+  Muzzle: {fileID: 0}
+  Damage: 3
+  FireRate: 1.2
+  Range: 25
+  ReloadSpeed: 2
+  MaxAmmo: 8
+  DamageFalloffPercentage:
+  - 0.8
+  - 0.6
+  - 0.4
+  - 0.1
+  DamageFalloffRange:
+  - 5
+  - 10
+  - 15
+  - 25
+  DamageFalloffLerp: 1
+  DelayBetweenBullets: 0
+  BulletCount: 8
+  MinSpread: {x: 5, y: 5}
+  MaxSpread: {x: 30, y: 30}
+  RecoilMagnitude: {x: 1, y: 5}
+  RecoilMin: 0.3
+  RecoilMax: 1
+  BufferWindow: 0.2
