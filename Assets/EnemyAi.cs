@@ -7,31 +7,29 @@ public class EnemyAi : MonoBehaviour
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    [SerializeField] float ShootDistance;
-    [SerializeField] float distanceToSetNewDestination;
-    public Vector3 destination;
+    [SerializeField] protected float ShootDistance;
+    [SerializeField] protected float distanceToSetNewDestination;
+    [SerializeField] private Vector3 destination;
     private NavMeshAgent agent;
-    private GameObject target;
+    protected GameObject target;
     private EnemyController enemyControllerScript;
 
-    public CurrentActivity currentActivity;
+    protected CurrentActivity currentActivity = CurrentActivity.Patroling;
     bool targetInSight;
 
-    [SerializeField] float speed;
+    [SerializeField] protected float speed;
+    [SerializeField] protected float enemyFOV;
+    [SerializeField] protected float viewDistance;
 
-    [SerializeField] float enemyFOV;
-    [SerializeField] float viewDistance;
     private LayerMask obstacles;
 
 
-    static bool HasReachedDestionation(Vector3 destionation, Vector3 position, float distanceToCompare)
+    protected static bool HasReachedDestionation(Vector3 destionation, Vector3 position, float distanceToCompare)
     {
         return (position-destionation).sqrMagnitude < distanceToCompare * distanceToCompare;
     }
-
-    static bool CheckIfTargetInSight(Transform transform, Transform target, float detectionDistance, float maxAngle)
+    protected static bool CheckIfTargetInSight(Transform transform, Transform target, float detectionDistance, float maxAngle, Vector3 forward)
     {
-        Vector3 forward = transform.forward;
         Vector3 targetDir = target.position - transform.position;
 
         bool targetWithinVision = Vector3.Angle(forward, targetDir) <= maxAngle;
@@ -39,19 +37,17 @@ public class EnemyAi : MonoBehaviour
 
         return targetWithinRange && targetWithinVision;
     }
-    static bool CheckIfPositionsInRange(Vector3 position1, Vector3 position2, float distance)
+    protected static bool CheckIfPositionsInRange(Vector3 position1, Vector3 position2, float distance)
     {
         return (position1 - position2).sqrMagnitude < distance * distance;
     }
-
-    static bool CheckIfLineOfSight(Transform from, Transform target, LayerMask layerMask)
+    protected static bool CheckIfLineOfSight(Transform from, Transform target, LayerMask layerMask)
     {
         Vector3 direction = target.position - from.position;
         float distance = direction.magnitude;
 
         return !Physics.Raycast(from.position, direction.normalized, distance, layerMask);
     }
-
     public void SetDestinationFromOutside(Vector3 location, float ifWhitinThisRange) //set destination to location if location is in whitin range
     {
         if (CheckIfPositionsInRange(transform.position, location, ifWhitinThisRange))
@@ -66,10 +62,7 @@ public class EnemyAi : MonoBehaviour
             }
         }
     }
-    
-
-
-    void Start()
+    public virtual void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindWithTag("Player");
@@ -77,10 +70,9 @@ public class EnemyAi : MonoBehaviour
         agent.speed = speed;
         enemyControllerScript = transform.parent.GetComponent<EnemyController>();
     }
-
-    public void Update()
+    public virtual void Update()
     {
-        targetInSight = CheckIfTargetInSight(transform, target.transform, viewDistance, enemyFOV) && CheckIfLineOfSight(transform, target.transform, obstacles);
+        targetInSight = CheckIfTargetInSight(transform, target.transform, viewDistance, enemyFOV, transform.forward) && CheckIfLineOfSight(transform, target.transform, obstacles);
 
         if (currentActivity == CurrentActivity.Patroling)
         {
@@ -168,7 +160,7 @@ public class EnemyAi : MonoBehaviour
             SetDestionationToPlayer(); //Set destination to target regardless of outcome
         }
     }
-    private void ChangeActivity(CurrentActivity currentActivity, CurrentActivity setActivity)
+    protected virtual void ChangeActivity(CurrentActivity currentActivity, CurrentActivity setActivity)
     {
         if (setActivity == CurrentActivity.Shooting)
             agent.isStopped = true;

@@ -31,8 +31,6 @@ public class NavNodeController : MonoBehaviour
         Debug.Log("children changed");
     }
 
-
-
     public List<GameObject> GetConnectedNavNodes(Transform transform)
     {
         List<GameObject> connectedNavNodes = new List<GameObject>();

@@ -602,11 +602,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8005906bf8bdbf14490862edf68daab0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  ShootDistance: 0
+  distanceToSetNewDestination: 3
+  destination: {x: 0, y: 0, z: 0}
+  speed: 3
+  enemyFOV: 0
+  viewDistance: 0
   flyingNavNodes: {fileID: 1027946682}
   destinationNode: {fileID: 872163575}
-  currentActivity: 0
   searchDirectionAngle: 45
-  speed: 3
 --- !u!54 &251233181
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4614,7 +4618,6 @@ MonoBehaviour:
   ShootDistance: 20
   distanceToSetNewDestination: 5
   destination: {x: 0, y: 0, z: 0}
-  currentActivity: 0
   speed: 5
   enemyFOV: 90
   viewDistance: 50
