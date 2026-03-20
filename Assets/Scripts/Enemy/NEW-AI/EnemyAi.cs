@@ -5,20 +5,22 @@ using UnityEngine.UIElements;
 public abstract class EnemyAI : MonoBehaviour
 {
     [SerializeField] protected float ShootDistance;
-    [SerializeField] protected float stopDistance;
-
     protected GameObject target;
     protected Vector3 targetLocation;
-    protected bool whitinShootDistance;
-    protected bool whitinStopDistance;
+    [SerializeField] protected bool whitinHitDistance;
 
-    protected bool clearLineOfSight;
+    [SerializeField] protected bool clearLineOfSight;
     [SerializeField] protected float speed;
     protected LayerMask obstacles;
+    protected PlayerStats playerStats;
+
+
 
     protected virtual void Start()
     {
+        
         target = GameObject.FindWithTag("Player");
+        playerStats = target.GetComponent<PlayerStats>();
         obstacles = LayerMask.GetMask("obstacle");
     }
 
@@ -46,8 +48,7 @@ public abstract class EnemyAI : MonoBehaviour
     protected virtual void Update()
     {
         clearLineOfSight = CheckIfLineOfSight(transform, target.transform, obstacles);
-        whitinShootDistance = CheckIfPositionsInRange(transform.position, target.transform.position, ShootDistance);
-        whitinStopDistance = CheckIfPositionsInRange(transform.position, target.transform.position, stopDistance);
+        whitinHitDistance = CheckIfPositionsInRange(transform.position, target.transform.position, ShootDistance);
         targetLocation = target.transform.position;
     }
 }

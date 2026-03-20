@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7421236692941486861}
   - component: {fileID: 2034660336013633934}
   - component: {fileID: 3199706619511694821}
-  - component: {fileID: -4094876430433121905}
+  - component: {fileID: -2450841402457347790}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -206,7 +206,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &-4094876430433121905
+--- !u!114 &-2450841402457347790
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -215,8 +215,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5693621853713834638}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e722ccc476b4ee54fb41663810375c7b, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d04ded063132224bacd4bf3afe5459f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
-  rangeToCall: 0
-  enemiesWasCalled: 0
+  m_EditorClassIdentifier: Assembly-CSharp::HealthManager
+  maxHealth: 100
+  currentHealth: 0
