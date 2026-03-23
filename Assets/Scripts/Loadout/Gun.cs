@@ -12,6 +12,7 @@ public class Gun : MonoBehaviour
     [SerializeField, Tooltip("The Range you can shoot in unity units")] private float Range;
     [SerializeField, Tooltip("The amount of seconds it takes to reload")] private float ReloadSpeed;
     [SerializeField, Tooltip("The amount of seconds it takes to reload")] private int MaxAmmo;
+    [Tooltip("If you can hold to shoot multiple bullets")] public bool FullAuto;
 
     // Damage Falloff
     [SerializeField, Tooltip("Percentage of normal damage connected to the set range"), Header("Damage Falloff")] private float[] DamageFalloffPercentage;
@@ -21,6 +22,7 @@ public class Gun : MonoBehaviour
     // Multiple Bullets
     [SerializeField, Tooltip("Delay between each bullet in seconds"), Header("Multiple Bullets")] private float DelayBetweenBullets;
     [SerializeField, Tooltip("Amount of bullets fired per shot")] private int BulletCount;
+    [SerializeField, Tooltip("Ammo consumed per shot")] private int AmmoPerShot;
     [SerializeField, Tooltip("Minimum amount of spread")] private Vector2 MinSpread;
     [SerializeField, Tooltip("Maximum amount of spread")] private Vector2 MaxSpread;
 
@@ -37,7 +39,7 @@ public class Gun : MonoBehaviour
     // QOL
     [SerializeField, Tooltip("Amount if time you can try to shoot before the game allows you and the shot will buffer"), Header("QOL")] private float BufferWindow;
 
-    private LayerMask Mask = 0;
+    private LayerMask Mask = 72;
 
     private Queue<BulletTracer> TracerPool;
 
@@ -48,6 +50,8 @@ public class Gun : MonoBehaviour
     private bool bufferedShot = false;
 
     private int currentAmmo;
+
+    public bool CanShoot => canShoot;
 
 
     private void Awake()
@@ -141,7 +145,7 @@ public class Gun : MonoBehaviour
             {
                 end = hit.point;
 
-                if (hit.transform.CompareTag("Enemy"))
+                if (hit.transform.CompareTag("EnemyController"))
                 {
                     float finalDamage = CalculateDamage(direction, out hit);
                     // Apply damage here
@@ -165,27 +169,34 @@ public class Gun : MonoBehaviour
     private void Shoot()
     {
         timeSinceLastShot = 0f;
-        currentAmmo--;
+        currentAmmo -= AmmoPerShot;
         StartCoroutine(ShootRoutine());
     }
     private void SpawnTracer(Vector3 start, Vector3 end)
     {
         BulletTracer tracer = TracerPool.Dequeue();
-        TracerPool.Enqueue(tracer);
 
         tracer.gameObject.SetActive(true);
-        tracer.Init(start, end);
+        tracer.Init(start, end, ReturnTracerToPool);
+    }
+
+    private void ReturnTracerToPool(BulletTracer tracer)
+    {
+        TracerPool.Enqueue(tracer);
     }
 
     #region Shooting Calulations
 
     private Vector3 GetBulletDirection()
     {
+        Transform cam = Camera.main.transform;
+
         float spreadX = Random.Range(MinSpread.x, MaxSpread.x);
         float spreadY = Random.Range(MinSpread.y, MaxSpread.y);
 
         Quaternion spreadRot = Quaternion.Euler(spreadY, spreadX, 0f);
-        return (spreadRot * transform.forward).normalized;
+
+        return (spreadRot * cam.forward).normalized;
     }
 
     private float CalculateDamage(Vector3 direction, out RaycastHit hit)
@@ -242,5 +253,14 @@ public class Gun : MonoBehaviour
         // Class not yet created
     }
     #endregion
+    #endregion
+
+    #region Debug
+
+    public string CurrentAmmo()
+    {
+        return currentAmmo + "/" + MaxAmmo;
+    }
+
     #endregion
 }

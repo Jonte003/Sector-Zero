@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GunName: Shotgun
-  Muzzle: {fileID: 0}
   Damage: 3
   FireRate: 1.2
   Range: 25
@@ -64,9 +63,13 @@ MonoBehaviour:
   DamageFalloffLerp: 1
   DelayBetweenBullets: 0
   BulletCount: 8
+  AmmoPerShot: 1
   MinSpread: {x: 5, y: 5}
   MaxSpread: {x: 30, y: 30}
   RecoilMagnitude: {x: 1, y: 5}
   RecoilMin: 0.3
   RecoilMax: 1
+  TracerPoolSize: 30
+  Muzzle: {fileID: 8383254854996496988}
+  TracerPrefab: {fileID: 454934594798073804, guid: e4c190d7d4c8d5042aa514fdd1350cef, type: 3}
   BufferWindow: 0.2
