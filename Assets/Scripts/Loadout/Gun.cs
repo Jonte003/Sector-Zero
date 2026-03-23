@@ -1,11 +1,10 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
     [SerializeField] private string GunName;
-
-    [SerializeField] private Transform Muzzle;
 
     // Normal
     [SerializeField, Tooltip("Damage per bullet"), Header("Normal Stats")] private float Damage;
@@ -30,10 +29,17 @@ public class Gun : MonoBehaviour
     [SerializeField, Tooltip("Minimum amount of recoil shooting will cause, has to be lower than Recoil Max"), Range(0, 1)] private float RecoilMin;
     [SerializeField, Tooltip("Maximum amount of recoil shooting will cause, has to be higher than Recoil Min"), Range(0, 1)] private float RecoilMax;
 
+    // Bullet Tracers
+    [SerializeField, Tooltip("How many tracers can be active at a time"), Header("Bullet Tracers")] private int TracerPoolSize = 20;
+    [SerializeField, Tooltip("Where the tracers spawn")] private Transform Muzzle;
+    [SerializeField, Tooltip("The prefab for the tracer")] private BulletTracer TracerPrefab;
+
     // QOL
     [SerializeField, Tooltip("Amount if time you can try to shoot before the game allows you and the shot will buffer"), Header("QOL")] private float BufferWindow;
 
     private LayerMask Mask = 0;
+
+    private Queue<BulletTracer> TracerPool;
 
     private float timeSinceLastShot = 0f;
     private float reloadProgress = 0f;
@@ -48,6 +54,7 @@ public class Gun : MonoBehaviour
     {
         currentAmmo = MaxAmmo;
     }
+
     private void Update()
     {
         if (timeSinceLastShot < (1 / FireRate))
@@ -59,6 +66,17 @@ public class Gun : MonoBehaviour
         {
             bufferedShot = false;
             Shoot();
+        }
+    }
+    private void Start()
+    {
+        TracerPool = new Queue<BulletTracer>();
+
+        for (int i = 0; i < TracerPoolSize; i++)
+        {
+            var t = Instantiate(TracerPrefab);
+            t.gameObject.SetActive(false);
+            TracerPool.Enqueue(t);
         }
     }
 
@@ -109,20 +127,35 @@ public class Gun : MonoBehaviour
         bool applyPerBullet = DelayBetweenBullets > 0f;
 
         if (!applyPerBullet)
-            ApplyRecoil(); 
+            ApplyRecoil();
 
         for (int i = 0; i < BulletCount; i++)
         {
             Vector3 direction = GetBulletDirection();
-            float finalDamage = CalculateDamage(direction, out RaycastHit hit);
 
-            if (hit.transform != null && hit.transform.CompareTag("Enemy"))
+            RaycastHit hit;
+            Vector3 start = Muzzle.position;
+            Vector3 end;
+
+            if (Physics.Raycast(start, direction, out hit, Range, Mask))
             {
-                // Apply damage
+                end = hit.point;
+
+                if (hit.transform.CompareTag("Enemy"))
+                {
+                    float finalDamage = CalculateDamage(direction, out hit);
+                    // Apply damage here
+                }
+            }
+            else
+            {
+                end = start + direction * Range;
             }
 
+            SpawnTracer(start, end);
+
             if (applyPerBullet)
-                ApplyRecoil(); 
+                ApplyRecoil();
 
             if (DelayBetweenBullets > 0f)
                 yield return new WaitForSeconds(DelayBetweenBullets);
@@ -135,6 +168,15 @@ public class Gun : MonoBehaviour
         currentAmmo--;
         StartCoroutine(ShootRoutine());
     }
+    private void SpawnTracer(Vector3 start, Vector3 end)
+    {
+        BulletTracer tracer = TracerPool.Dequeue();
+        TracerPool.Enqueue(tracer);
+
+        tracer.gameObject.SetActive(true);
+        tracer.Init(start, end);
+    }
+
     #region Shooting Calulations
 
     private Vector3 GetBulletDirection()

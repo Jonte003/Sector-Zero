@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GunName: Assault Rifle
-  Muzzle: {fileID: 0}
   Damage: 5
   FireRate: 7
   Range: 50
@@ -63,4 +62,7 @@ MonoBehaviour:
   RecoilMagnitude: {x: 0.5, y: 1}
   RecoilMin: 0.1
   RecoilMax: 0.5
+  TracerPoolSize: 20
+  Muzzle: {fileID: 298292559852570974}
+  TracerPrefab: {fileID: 454934594798073804, guid: e4c190d7d4c8d5042aa514fdd1350cef, type: 3}
   BufferWindow: 0.2
