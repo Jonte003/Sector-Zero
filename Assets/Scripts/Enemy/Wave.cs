@@ -23,9 +23,14 @@ public class Wave : MonoBehaviour
         }
         return wave;
     }
+
+    public float TimeToNextWave
+    {
+        get { return timeToNextWave; }
+    }
 }
 
-[System.Serializable] //edit class in inspector while in list
+[System.Serializable]
 public class EnemyWithAmount
 {
     [SerializeField] GameObject prefab;

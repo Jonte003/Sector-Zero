@@ -6,13 +6,17 @@ public class SpawnPoint : MonoBehaviour
     [SerializeField] int activateOnWave = 1;
     bool active = false;
 
-    bool readyToSpawn;
+    bool readyToSpawn = false;
     GameObject enemyBeingSpawned;
+    float timeSinceLastSpawn;
     float timerForSpawn;
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.blue;
+        if (active)
+            Gizmos.color = Color.green;
+        else
+            Gizmos.color = Color.red;
         Gizmos.DrawSphere(transform.position, 1);
     }
 
@@ -25,13 +29,26 @@ public class SpawnPoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        timeSinceLastSpawn += Time.deltaTime;
+
+        if (readyToSpawn == false)
+        {
+            if (timeSinceLastSpawn > timerForSpawn)
+            {
+                Debug.Log("Enemy spawned");
+                readyToSpawn = true;
+                timeSinceLastSpawn = 0;
+                Instantiate(enemyBeingSpawned, transform.position, transform.rotation);
+            }
+        }
     }
 
 
     public void SpawnEnemy(GameObject enemy)
     {
+        readyToSpawn = false;
         timerForSpawn = enemy.GetComponent<EnemyStats>().TimeToSpawn;
+        enemyBeingSpawned = enemy;
     }
 
     public void ActivateSpawnPoint()
