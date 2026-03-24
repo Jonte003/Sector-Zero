@@ -61,6 +61,8 @@ public class Gun : MonoBehaviour
             timeSinceLastShot += Time.deltaTime;
 
         canShoot = !isReloading && timeSinceLastShot >= (1 / FireRate) && currentAmmo > 0;
+
+        transform.rotation = Quaternion.Euler(transform.parent.GetComponent<PlayerLook>().xRotation, transform.parent.GetComponent<PlayerLook>().yRotation, 0);
     }
     private void Start()
     {
@@ -162,7 +164,13 @@ public class Gun : MonoBehaviour
     {
         BulletTracer tracer = TracerPool.Dequeue();
 
+        tracer.GetComponent<TrailRenderer>().enabled = false;
+
         tracer.gameObject.SetActive(true);
+
+        Vector3 dir = (end - start).normalized;
+        tracer.transform.rotation = Quaternion.LookRotation(dir);
+
         tracer.Init(start, end, ReturnTracerToPool);
     }
 

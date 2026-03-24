@@ -1,20 +1,22 @@
 using UnityEngine;
+using System;
 
 public class BulletTracer : MonoBehaviour
 {
-    private System.Action<BulletTracer> onFinished;
+    private Action<BulletTracer> onFinished;
 
     [SerializeField, Tooltip("Units per second")] private float speed = 300;
 
     private Vector3 end;
     private bool active;
 
-    public void Init(Vector3 start, Vector3 end, System.Action<BulletTracer> onFinished)
+    public void Init(Vector3 start, Vector3 end, Action<BulletTracer> onFinished)
     {
         this.end = end;
         this.onFinished = onFinished;
         transform.position = start;
         active = true;
+        GetComponent<TrailRenderer>().enabled = true;
     }
 
     private void Update()

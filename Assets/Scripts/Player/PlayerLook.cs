@@ -9,8 +9,8 @@ public class PlayerLook : MonoBehaviour
 {
     public int mouseSensitivity = 30;
     public Transform cameraObject;
-    float xRotation;
-    float yRotation;
+    public float xRotation;
+    public float yRotation;
     public float mouseX;
     public float mouseY;
 
@@ -33,11 +33,7 @@ public class PlayerLook : MonoBehaviour
         xRotation = Mathf.Clamp(xRotation, -35f, 90f);
 
         transform.rotation = Quaternion.Euler(0, yRotation, 0);
-        cameraObject.rotation = Quaternion.Euler(xRotation, yRotation, 0);
-        cameraObject.position = transform.position;
-
-
-
+        cameraObject.SetPositionAndRotation(transform.position, Quaternion.Euler(xRotation, yRotation, 0));
     }
 
     void OnLook(InputValue input)
