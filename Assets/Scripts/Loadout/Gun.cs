@@ -32,12 +32,9 @@ public class Gun : MonoBehaviour
     [SerializeField, Tooltip("Maximum amount of recoil shooting will cause, has to be higher than Recoil Min"), Range(0, 1)] private float RecoilMax;
 
     // Bullet Tracers
-    [SerializeField, Tooltip("How many tracers can be active at a time"), Header("Bullet Tracers")] private int TracerPoolSize = 20;
+    [SerializeField, Tooltip("How many tracers can be active at a time"), Header("Bullet Tracers")] private int TracerPoolSize = 30;
     [SerializeField, Tooltip("Where the tracers spawn")] private Transform Muzzle;
     [SerializeField, Tooltip("The prefab for the tracer")] private BulletTracer TracerPrefab;
-
-    // QOL
-    [SerializeField, Tooltip("Amount if time you can try to shoot before the game allows you and the shot will buffer"), Header("QOL")] private float BufferWindow;
 
     private LayerMask Mask = 72;
 
@@ -47,7 +44,6 @@ public class Gun : MonoBehaviour
     private float reloadProgress = 0f;
 
     private bool canShoot = false;
-    private bool bufferedShot = false;
 
     private int currentAmmo;
 
@@ -65,12 +61,6 @@ public class Gun : MonoBehaviour
             timeSinceLastShot += Time.deltaTime;
 
         canShoot = !isReloading && timeSinceLastShot >= (1 / FireRate) && currentAmmo > 0;
-
-        if (bufferedShot && canShoot)
-        {
-            bufferedShot = false;
-            Shoot();
-        }
     }
     private void Start()
     {
@@ -119,10 +109,6 @@ public class Gun : MonoBehaviour
         if (canShoot)
         {
             Shoot();
-        }
-        else if ((1f / FireRate) - timeSinceLastShot <= BufferWindow || (isReloading && ReloadSpeed - reloadProgress <= BufferWindow))
-        {
-            bufferedShot = true;
         }
     }
 
@@ -194,7 +180,7 @@ public class Gun : MonoBehaviour
         float spreadX = Random.Range(MinSpread.x, MaxSpread.x);
         float spreadY = Random.Range(MinSpread.y, MaxSpread.y);
 
-        Quaternion spreadRot = Quaternion.Euler(spreadY, spreadX, 0f);
+        Quaternion spreadRot = Quaternion.AngleAxis(spreadX, cam.up) * Quaternion.AngleAxis(spreadY, cam.right);
 
         return (spreadRot * cam.forward).normalized;
     }
