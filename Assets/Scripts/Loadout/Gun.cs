@@ -125,18 +125,16 @@ public class Gun : MonoBehaviour
         {
             Vector3 direction = GetBulletDirection();
 
-            RaycastHit hit;
             Vector3 start = Muzzle.position;
             Vector3 end;
 
-            if (Physics.Raycast(start, direction, out hit, Range, Mask))
+            if (Physics.Raycast(start, direction, out RaycastHit hit, Range, Mask))
             {
                 end = hit.point;
 
                 if (hit.transform.CompareTag("Enemy"))
                 {
                     float finalDamage = CalculateDamage(direction, out hit);
-                    // Apply damage here
                     hit.transform.GetComponent<EnemyStats>().DoDamageToEnemy(finalDamage);
                 }
             }
@@ -241,11 +239,10 @@ public class Gun : MonoBehaviour
     {
         float magnitude = Random.Range(RecoilMin, RecoilMax);
 
-        float recoilX = magnitude * RecoilMagnitude.x;
+        float recoilX = magnitude * Random.value < 0.5f ? -RecoilMagnitude.x : RecoilMagnitude.x;
         float recoilY = magnitude * RecoilMagnitude.y;
 
-        // transform.Find("Camera").GetComponent<CameraControl>.AddRecoil(recoilX, recoilY);
-        // Class not yet created
+        transform.parent.GetComponent<PlayerLook>().AddRecoil(recoilX, recoilY);
     }
     #endregion
     #endregion
