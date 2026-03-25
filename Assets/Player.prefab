@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 3199706619511694821}
   - component: {fileID: -2450841402457347790}
   - component: {fileID: 6691595124052028352}
+  - component: {fileID: 7713125364724647309}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -191,8 +192,8 @@ MonoBehaviour:
   cameraObject: {fileID: 0}
   xRotation: 0
   yRotation: 0
-  mouseX: 0
-  mouseY: 0
+  recoilSnapSpeed: 25
+  recoilReturnSpeed: 10
 --- !u!54 &3199706619511694821
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -247,7 +248,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecab435b09df31e4093a2fb5af29471c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShoot
-  Gun: {fileID: 6833071165987469699}
+  Gun: {fileID: 8832397125732740039}
+--- !u!114 &7713125364724647309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5693621853713834638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09c656028bef5294aa54d241e2a78deb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerLevels
 --- !u!1001 &2742204456984607917
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -296,6 +309,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 995368789210335481, guid: 8dc78fbc23c757240bacb42f2e49a692, type: 3}
+      propertyPath: RecoilMax
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 995368789210335481, guid: 8dc78fbc23c757240bacb42f2e49a692, type: 3}
+      propertyPath: RecoilMin
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 995368789210335481, guid: 8dc78fbc23c757240bacb42f2e49a692, type: 3}
+      propertyPath: RecoilMagnitude.x
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 995368789210335481, guid: 8dc78fbc23c757240bacb42f2e49a692, type: 3}
+      propertyPath: RecoilMagnitude.y
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8510055944772573007, guid: 8dc78fbc23c757240bacb42f2e49a692, type: 3}
       propertyPath: m_Name
       value: Burst Rifle
@@ -319,6 +348,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4630159625239251942}
     m_Modifications:
+    - target: {fileID: 888954793978076355, guid: 615478eb4a72e464e8ffd2909beaedf4, type: 3}
+      propertyPath: RecoilMin
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 888954793978076355, guid: 615478eb4a72e464e8ffd2909beaedf4, type: 3}
+      propertyPath: RecoilMagnitude.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 888954793978076355, guid: 615478eb4a72e464e8ffd2909beaedf4, type: 3}
+      propertyPath: RecoilMagnitude.y
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1684427273703915925, guid: 615478eb4a72e464e8ffd2909beaedf4, type: 3}
       propertyPath: m_RenderingLayerMask
       value: 4294967295
@@ -329,7 +370,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4296228752142018860, guid: 615478eb4a72e464e8ffd2909beaedf4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8383254854996496988, guid: 615478eb4a72e464e8ffd2909beaedf4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -382,17 +423,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8383254854996496988, guid: 615478eb4a72e464e8ffd2909beaedf4, type: 3}
   m_PrefabInstance: {fileID: 5946371816381752640}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6833071165987469699 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 888954793978076355, guid: 615478eb4a72e464e8ffd2909beaedf4, type: 3}
-  m_PrefabInstance: {fileID: 5946371816381752640}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d313ba6bc0091d547986b71261a51506, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8560507960843622462
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -440,6 +470,18 @@ PrefabInstance:
     - target: {fileID: 989018469493097460, guid: ea45cb076a1800d47bf12d5a849bcc2d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046422443001762898, guid: ea45cb076a1800d47bf12d5a849bcc2d, type: 3}
+      propertyPath: RecoilMin
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046422443001762898, guid: ea45cb076a1800d47bf12d5a849bcc2d, type: 3}
+      propertyPath: RecoilMagnitude.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046422443001762898, guid: ea45cb076a1800d47bf12d5a849bcc2d, type: 3}
+      propertyPath: RecoilMagnitude.y
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6354597058873376936, guid: ea45cb076a1800d47bf12d5a849bcc2d, type: 3}
       propertyPath: m_Name
@@ -504,13 +546,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 995368789210335481, guid: 53d1a78309b3f4b49b42c0b2a69d68c2, type: 3}
+      propertyPath: RecoilMax
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 995368789210335481, guid: 53d1a78309b3f4b49b42c0b2a69d68c2, type: 3}
+      propertyPath: RecoilMin
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 995368789210335481, guid: 53d1a78309b3f4b49b42c0b2a69d68c2, type: 3}
+      propertyPath: RecoilMagnitude.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 995368789210335481, guid: 53d1a78309b3f4b49b42c0b2a69d68c2, type: 3}
+      propertyPath: RecoilMagnitude.y
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8510055944772573007, guid: 53d1a78309b3f4b49b42c0b2a69d68c2, type: 3}
       propertyPath: m_Name
       value: Assault Rifle
       objectReference: {fileID: 0}
     - target: {fileID: 8510055944772573007, guid: 53d1a78309b3f4b49b42c0b2a69d68c2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1763557844896232729, guid: 53d1a78309b3f4b49b42c0b2a69d68c2, type: 3}
@@ -523,3 +581,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 298292559852570974, guid: 53d1a78309b3f4b49b42c0b2a69d68c2, type: 3}
   m_PrefabInstance: {fileID: 8593634174137508670}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8832397125732740039 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 995368789210335481, guid: 53d1a78309b3f4b49b42c0b2a69d68c2, type: 3}
+  m_PrefabInstance: {fileID: 8593634174137508670}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d313ba6bc0091d547986b71261a51506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
