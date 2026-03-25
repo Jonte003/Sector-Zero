@@ -133,10 +133,11 @@ public class Gun : MonoBehaviour
             {
                 end = hit.point;
 
-                if (hit.transform.CompareTag("EnemyController"))
+                if (hit.transform.CompareTag("Enemy"))
                 {
                     float finalDamage = CalculateDamage(direction, out hit);
                     // Apply damage here
+                    hit.transform.GetComponent<EnemyStats>().DoDamageToEnemy(finalDamage);
                 }
             }
             else

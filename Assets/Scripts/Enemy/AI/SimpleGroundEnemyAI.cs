@@ -10,6 +10,7 @@ public class SimpleEnemyAI : EnemyAI
     [SerializeField] private State currentState;
     private EnemyStats enemyStats;
 
+    [SerializeField] float agentRadius;
 
 
     protected override void Start()
@@ -18,6 +19,8 @@ public class SimpleEnemyAI : EnemyAI
         agent = GetComponent<NavMeshAgent>();
         agent.speed = speed;
         currentState = State.walking;
+        agent.radius = agentRadius;
+
 
         enemyStats = gameObject.GetComponent<EnemyStats>();
 
@@ -49,7 +52,7 @@ public class SimpleEnemyAI : EnemyAI
             }
             else
             {
-                enemyStats.DoDamage();
+                enemyStats.DoDamageToTarget();
 
                 //Code to turn towards target
                 Vector3 lookDirection = target.transform.position - transform.position;
@@ -72,17 +75,18 @@ public class SimpleEnemyAI : EnemyAI
 
     private void ChangeCurrentState(State newState)
     {
+        currentState = newState;
+
         if (currentState == State.walking)
-        {
-            agent.isStopped = true;
-        }
-        else
         {
             agent.isStopped = false;
         }
-
-        currentState = newState;
+        else
+        {
+            agent.isStopped = true;
+        }
     }
+
 
     protected enum State
     {

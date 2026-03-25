@@ -16,7 +16,11 @@ public class WaveManager : MonoBehaviour
     [SerializeField] int currentWave;
     [SerializeField] bool startNextWave;
 
-    public bool waveIsSpawning;
+    [SerializeField, Tooltip("Applies a multipler to the spawntimer each new wave, 0.9 increases spawn rate by 10% each wave")] float spawnTimeMultiplier;
+    [SerializeField] float currentTimerMultiplier;
+
+
+    [SerializeField] bool waveIsSpawning;
 
     private float timeToNextWave = 0;
 
@@ -41,6 +45,7 @@ public class WaveManager : MonoBehaviour
 
     public void LoadNextWave()
     {
+        currentTimerMultiplier *= spawnTimeMultiplier;
         currentWave++;
         waveIsSpawning = true;
         for (int i = spawnPointsDeactiveted.Count - 1; i >= 0; i--)
@@ -48,7 +53,6 @@ public class WaveManager : MonoBehaviour
             SpawnPoint sp = spawnPointsDeactiveted[i];
             if (sp.ActivateOnWave == currentWave)
             {
-                Debug.Log("Acticated spawnpoint");
                 sp.ActivateSpawnPoint();
                 spawnPointsDeactiveted.RemoveAt(i);
                 spawnPointsActive.Add(sp);
@@ -90,19 +94,27 @@ public class WaveManager : MonoBehaviour
             foreach (SpawnPoint sp in spawnPointsActive)
             {
                 if (gameObjectInQueue.Count > 0)
+                { 
                     if (sp.ReadyToSpawn == true)
                     {
 
-                        sp.SpawnEnemy(gameObjectInQueue[0]);
+                        sp.SpawnEnemy(gameObjectInQueue[0], currentTimerMultiplier);
                         gameObjectInQueue.RemoveAt(0);
                     }
-                else
-                    {
-                        waveIsSpawning = false;
-                    }
+                }
+
             }
         }
+        else
+        {
+            waveIsSpawning = false;
+        }
 
+    }
+
+    public int CurrentWave
+    {
+        get { return currentWave; }
     }
 
     

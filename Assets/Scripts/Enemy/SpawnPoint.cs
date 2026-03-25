@@ -35,19 +35,18 @@ public class SpawnPoint : MonoBehaviour
         {
             if (timeSinceLastSpawn > timerForSpawn)
             {
-                Debug.Log("Enemy spawned");
                 readyToSpawn = true;
                 timeSinceLastSpawn = 0;
-                Instantiate(enemyBeingSpawned, transform.position, transform.rotation);
+                Instantiate(enemyBeingSpawned, transform.position, transform.rotation, GameObject.FindGameObjectWithTag("EnemyController").transform);
             }
         }
     }
 
 
-    public void SpawnEnemy(GameObject enemy)
+    public void SpawnEnemy(GameObject enemy, float timerMultiplier)
     {
         readyToSpawn = false;
-        timerForSpawn = enemy.GetComponent<EnemyStats>().TimeToSpawn;
+        timerForSpawn = enemy.GetComponent<EnemyStats>().TimeToSpawn * timerMultiplier;
         enemyBeingSpawned = enemy;
     }
 

@@ -5,6 +5,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] float maxHealth = 100f;
     [SerializeField] float currentHealth;
     [SerializeField] float RegenPerSecond;
+    [SerializeField] float experience;
     void Start()
     {
         currentHealth = maxHealth;
@@ -41,5 +42,10 @@ public class PlayerStats : MonoBehaviour
     public void IncreaseMaxHealthByProcentage(float procentInDecimal)
     {
         maxHealth *= procentInDecimal;
+    }
+
+    public void AddExperience(float amount)
+    {
+        experience += amount;
     }
 }

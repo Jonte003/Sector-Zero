@@ -3,10 +3,17 @@ using static UnityEngine.GraphicsBuffer;
 
 public class EnemyStats : MonoBehaviour
 {
-
-    [SerializeField] float health = 100;
-    [SerializeField] float timeToSpawn = 1;
-    [SerializeField] float DPS = 5;
+    [SerializeField, Tooltip("Time for enemy to be spawned")] float timeToSpawn;
+    [SerializeField, Tooltip("Experience Drop On Death")] float expDrop;
+    [Space]
+    [SerializeField, Tooltip("Multiplier for increasing/decrease health per wave, if 1.1 health will increase by 10% evry wave. If spawned on wave 5, the health will be:  Base Health * 1.1^5")] float healthMultiplier;
+    [SerializeField, Tooltip("Multiplier for DPS")] float DPSMultiplier;
+    [Space]
+    [SerializeField] float baseHealth;
+    [SerializeField] float baseDPS;
+    [Space]
+    [SerializeField] private float health;
+    [SerializeField] private float DPS;
 
     GameObject target;
     PlayerStats playerStats;
@@ -14,20 +21,25 @@ public class EnemyStats : MonoBehaviour
 
     void Start()
     {
+        float waveNumber = GameObject.FindWithTag("WaveManager").GetComponent<WaveManager>().CurrentWave;
+        health = baseHealth * Mathf.Pow(healthMultiplier, waveNumber); //Calculates health depending on wave number
+        DPS = baseDPS * Mathf.Pow(DPSMultiplier, waveNumber); //Calculates DPS depending on wave number
         target = GameObject.FindWithTag("Player");
         playerStats = target.GetComponent<PlayerStats>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void DoDamageToEnemy(float amount)
     {
+        health -= amount;
+
         if (health <= 0)
         {
-            Destroy(this);
+            gameObject.GetComponentInParent<Controller>().AddExperiece(expDrop);
+            Destroy(gameObject);
         }
     }
 
-    public void DoDamage()
+    public void DoDamageToTarget()
     {
         playerStats.DoDamage(DPS);
     }

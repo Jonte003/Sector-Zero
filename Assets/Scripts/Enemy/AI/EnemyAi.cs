@@ -9,7 +9,6 @@ public abstract class EnemyAI : MonoBehaviour
     protected Vector3 targetLocation;
     [SerializeField] protected bool whitinHitDistance;
 
-    [SerializeField] protected bool clearLineOfSight;
     [SerializeField] protected float speed;
     protected LayerMask obstacles;
     protected PlayerStats playerStats;
@@ -24,7 +23,7 @@ public abstract class EnemyAI : MonoBehaviour
         obstacles = LayerMask.GetMask("obstacle");
     }
 
-    protected static bool CheckIfTargetInSight(Transform transform, Transform target, float detectionDistance, float maxAngle, Vector3 forward)
+    public static bool CheckIfTargetInSight(Transform transform, Transform target, float detectionDistance, float maxAngle, Vector3 forward)
     {
         Vector3 targetDir = target.position - transform.position;
 
@@ -33,11 +32,11 @@ public abstract class EnemyAI : MonoBehaviour
 
         return targetWithinRange && targetWithinVision;
     }
-    protected static bool CheckIfPositionsInRange(Vector3 position1, Vector3 position2, float distance)
+    public static bool CheckIfPositionsInRange(Vector3 position1, Vector3 position2, float distance)
     {
         return (position1 - position2).sqrMagnitude < distance * distance;
     }
-    protected static bool CheckIfLineOfSight(Transform from, Transform target, LayerMask layerMask)
+    public static bool CheckIfLineOfSight(Transform from, Transform target, LayerMask layerMask)
     {
         Vector3 direction = target.position - from.position;
         float distance = direction.magnitude;
@@ -47,7 +46,6 @@ public abstract class EnemyAI : MonoBehaviour
 
     protected virtual void Update()
     {
-        clearLineOfSight = CheckIfLineOfSight(transform, target.transform, obstacles);
         whitinHitDistance = CheckIfPositionsInRange(transform.position, target.transform.position, ShootDistance);
         targetLocation = target.transform.position;
     }

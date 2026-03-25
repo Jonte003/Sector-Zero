@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 6375692817025035104}
   - component: {fileID: 5574022993534721642}
   - component: {fileID: 4274957905411420429}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BasicAI
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,9 +154,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SimpleEnemyAI
   ShootDistance: 2.5
   whitinHitDistance: 0
-  clearLineOfSight: 0
   speed: 5
   currentState: 2
+  agentRadius: 0.8
 --- !u!114 &4274957905411420429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,8 +169,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90b3f509f57490f41ae8a6e3702b4c73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  health: 100
   timeToSpawn: 1
+  expDrop: 3
+  healthMultiplier: 1.1
+  DPSMultiplier: 1.1
+  baseHealth: 3
+  baseDPS: 2
+  health: 3
   DPS: 5
 --- !u!1 &8555338203733185577
 GameObject:
@@ -184,7 +189,7 @@ GameObject:
   - component: {fileID: 6345780749775784702}
   - component: {fileID: 1571114680487668885}
   - component: {fileID: 197050074016812637}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
