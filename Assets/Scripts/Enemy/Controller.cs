@@ -1,15 +1,14 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
-    PlayerStats playerStats;
+    PlayerLevels playerLevels;
     List<Transform> allEnemies;
     void Start()
     {
         allEnemies = new List<Transform>();
-        playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
+        playerLevels = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLevels>();
     }
 
     // Update is called once per frame
@@ -34,6 +33,6 @@ public class Controller : MonoBehaviour
 
     public void AddExperiece(float amount)
     {
-        playerStats.AddExperience(amount);
+        playerLevels.AddExperience(amount);
     }
 }

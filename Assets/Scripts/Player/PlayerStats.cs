@@ -43,9 +43,4 @@ public class PlayerStats : MonoBehaviour
     {
         maxHealth *= procentInDecimal;
     }
-
-    public void AddExperience(float amount)
-    {
-        experience += amount;
-    }
 }
