@@ -6,7 +6,7 @@ public class SpawnPoint : MonoBehaviour
     [SerializeField] int activateOnWave = 1;
     bool active = false;
 
-    bool readyToSpawn = false;
+    bool readyToSpawn = true;
     GameObject enemyBeingSpawned;
     float timeSinceLastSpawn;
     float timerForSpawn;

@@ -15,6 +15,8 @@ public class EnemyStats : MonoBehaviour
     [SerializeField] private float health;
     [SerializeField] private float DPS;
 
+    private float maxHealth;
+
     GameObject target;
     PlayerStats playerStats;
 
@@ -23,6 +25,7 @@ public class EnemyStats : MonoBehaviour
     {
         float waveNumber = GameObject.FindWithTag("WaveManager").GetComponent<WaveManager>().CurrentWave;
         health = baseHealth * Mathf.Pow(healthMultiplier, waveNumber); //Calculates health depending on wave number
+        maxHealth = health;
         DPS = baseDPS * Mathf.Pow(DPSMultiplier, waveNumber); //Calculates DPS depending on wave number
         target = GameObject.FindWithTag("Player");
         playerStats = target.GetComponent<PlayerStats>();
@@ -48,4 +51,7 @@ public class EnemyStats : MonoBehaviour
     {
         get { return timeToSpawn; }
     }
+
+    public float Health { get { return health; } }
+    public float MaxHealth { get { return maxHealth; } }
 }
