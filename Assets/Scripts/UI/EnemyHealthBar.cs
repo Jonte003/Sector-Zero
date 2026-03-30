@@ -1,8 +1,10 @@
+using TMPro;
 using UnityEngine;
 
 public class EnemyHealthBar : MonoBehaviour
 {
     [SerializeField] Transform foregroundBar;
+    [SerializeField] TextMeshProUGUI healthText;
 
     private EnemyStats enemyStats;
     private Camera cam;
@@ -20,6 +22,7 @@ public class EnemyHealthBar : MonoBehaviour
         {
             float fill = enemyStats.Health / enemyStats.MaxHealth;
             foregroundBar.localScale = new Vector3(fill, 1, 1);
+            healthText.text = Mathf.Ceil(enemyStats.Health).ToString();
         }
     }
 }
