@@ -196,7 +196,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7caa95706c7bc04baae5a9014b3afaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealthBar
-  foregroundBar: {fileID: 2851901398163322915}
+  bgBar: {fileID: 7122371094423151481}
+  fgBar: {fileID: 2851901398163322915}
   healthText: {fileID: 5976392244046535019}
 --- !u!1 &1411919682447703747
 GameObject:
@@ -230,11 +231,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7705290758767656815}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -25, y: 0}
+  m_SizeDelta: {x: 50, y: 15}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &1439882870590558733
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -305,10 +306,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7705290758767656815}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 25, y: 0}
+  m_SizeDelta: {x: 50, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4462711819356403835
 CanvasRenderer:
@@ -404,7 +405,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -25.130558, y: -7.410097, z: -24.628258, w: -7.319355}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -667,10 +668,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7705290758767656815}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 50, y: 15}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &5536605915068374007
 CanvasRenderer:
@@ -701,10 +702,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 0}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -884,10 +885,10 @@ MonoBehaviour:
   expDrop: 3
   healthMultiplier: 1.1
   DPSMultiplier: 1.1
-  baseHealth: 3
+  baseHealth: 100
   baseDPS: 2
-  health: 3
-  DPS: 5
+  health: 0
+  DPS: 0
 --- !u!1 &8555338203733185577
 GameObject:
   m_ObjectHideFlags: 0
