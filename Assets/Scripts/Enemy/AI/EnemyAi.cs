@@ -7,7 +7,6 @@ public abstract class EnemyAI : MonoBehaviour
     [SerializeField] protected float ShootDistance;
     protected GameObject target;
     protected Vector3 targetLocation;
-    [SerializeField] protected bool whitinHitDistance;
 
     [SerializeField] protected float speed;
     protected LayerMask obstacles;
@@ -36,17 +35,16 @@ public abstract class EnemyAI : MonoBehaviour
     {
         return (position1 - position2).sqrMagnitude < distance * distance;
     }
-    public static bool CheckIfLineOfSight(Transform from, Transform target, LayerMask layerMask)
+    public static bool CheckIfLineOfSight(Vector3 from, Vector3 target, LayerMask layerMask)
     {
-        Vector3 direction = target.position - from.position;
+        Vector3 direction = target - from;
         float distance = direction.magnitude;
 
-        return !Physics.Raycast(from.position, direction.normalized, distance, layerMask);
+        return !Physics.Raycast(from, direction.normalized, distance, layerMask);
     }
 
     protected virtual void Update()
     {
-        whitinHitDistance = CheckIfPositionsInRange(transform.position, target.transform.position, ShootDistance);
         targetLocation = target.transform.position;
     }
 }

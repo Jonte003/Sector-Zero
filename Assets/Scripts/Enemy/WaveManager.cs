@@ -76,15 +76,25 @@ public class WaveManager : MonoBehaviour
     timeToNextWave -= Time.deltaTime;
     if (timeToNextWave <= 0)
         {
-            LoadNextWave();
+            startNextWave = true;
         }
 
 
 
     if (startNextWave)
         {
-            startNextWave = false;
-            LoadNextWave();
+            if (currentWave < allWaves.Count)
+            {
+                startNextWave = false;
+                LoadNextWave();
+            }
+            else
+            {
+                //Last wave reached
+                startNextWave = false;
+
+            }
+
         }
 
 

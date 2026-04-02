@@ -8,6 +8,8 @@ TagManager:
   - Environment
   - Enemy
   - WaveManager
+  - NavNodes
+  - DronePlane
   layers:
   - Default
   - TransparentFX
@@ -15,7 +17,8 @@ TagManager:
   - obstacle
   - Water
   - UI
-  - enemy
+  - Ememy
+  - Player
   - 
   - 
   - 
@@ -27,8 +30,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - DronePlane
   - 
   - 
   - 

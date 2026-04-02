@@ -27,8 +27,12 @@ public class Controller : MonoBehaviour
         allEnemies.Clear();
         foreach (Transform child in transform)
         {
-            allEnemies.Add(child);
+            if (child.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            {
+                allEnemies.Add(child);
+            }
         }
+
     }
 
     public void AddExperiece(float amount)

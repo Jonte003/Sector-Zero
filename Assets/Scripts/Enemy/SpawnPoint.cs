@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
@@ -10,6 +11,7 @@ public class SpawnPoint : MonoBehaviour
     GameObject enemyBeingSpawned;
     float timeSinceLastSpawn;
     float timerForSpawn;
+    float droneSpawnHeight;
 
     private void OnDrawGizmos()
     {
@@ -23,7 +25,7 @@ public class SpawnPoint : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        droneSpawnHeight = GameObject.FindWithTag("DronePlane").transform.position.y;
     }
 
     // Update is called once per frame
@@ -37,7 +39,17 @@ public class SpawnPoint : MonoBehaviour
             {
                 readyToSpawn = true;
                 timeSinceLastSpawn = 0;
-                Instantiate(enemyBeingSpawned, transform.position, transform.rotation, GameObject.FindGameObjectWithTag("EnemyController").transform);
+                if (enemyBeingSpawned.GetComponent<DroneHorizontalMovement>() != null) 
+                {
+                    //enemy being spawned is a drone
+                    Instantiate(enemyBeingSpawned, new Vector3(transform.position.x, droneSpawnHeight, transform.position.z), transform.rotation, GameObject.FindGameObjectWithTag("EnemyController").transform);
+
+                }
+                else 
+                {
+                    Instantiate(enemyBeingSpawned, transform.position, transform.rotation, GameObject.FindGameObjectWithTag("EnemyController").transform);
+
+                }
             }
         }
     }
@@ -46,7 +58,9 @@ public class SpawnPoint : MonoBehaviour
     public void SpawnEnemy(GameObject enemy, float timerMultiplier)
     {
         readyToSpawn = false;
-        timerForSpawn = enemy.GetComponent<EnemyStats>().TimeToSpawn * timerMultiplier;
+        EnemyStats stats = enemy.GetComponent<EnemyStats>() ?? enemy.GetComponentInChildren<EnemyStats>();
+
+        timerForSpawn = stats.TimeToSpawn * timerMultiplier;
         enemyBeingSpawned = enemy;
     }
 
