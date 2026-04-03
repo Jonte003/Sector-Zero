@@ -33,14 +33,12 @@ public class EnemyStats : MonoBehaviour
 
     public void DoDamageToEnemy(float amount)
     {
-
         health -= amount;
 
         if (health <= 0)
         {
-            GameObject.FindGameObjectWithTag("EnemyController").GetComponent<Controller>().AddExperiece(expDrop);
+            gameObject.GetComponentInParent<Controller>().AddExperiece(expDrop);
             Destroy(gameObject);
-
         }
     }
 

@@ -11,12 +11,10 @@ public class SimpleEnemyAI : EnemyAI
     private EnemyStats enemyStats;
 
     [SerializeField] float agentRadius;
-    [SerializeField] protected bool whitinHitDistance;
 
 
     protected override void Start()
     {
-        
         base.Start();
         agent = GetComponent<NavMeshAgent>();
         agent.speed = speed;
@@ -32,7 +30,6 @@ public class SimpleEnemyAI : EnemyAI
     protected override void Update()
     {
         base.Update();
-        whitinHitDistance = CheckIfPositionsInRange(transform.position, target.transform.position, ShootDistance);
 
 
         if (currentState == State.walking)
