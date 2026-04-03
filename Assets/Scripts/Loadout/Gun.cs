@@ -253,14 +253,6 @@ public class Gun : MonoBehaviour
     {
         return currentAmmo + "/" + MaxAmmo;
     }
-    public int CurrentAmmoInt()
-    {
-        return currentAmmo;
-    }
 
-    public int MaxAmmoInt()
-    {
-        return MaxAmmo;
-    }
     #endregion
 }

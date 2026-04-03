@@ -3,7 +3,6 @@ using UnityEngine;
 public class PlayerShoot : MonoBehaviour
 {
     [SerializeField] private Gun Gun;
-    public Gun CurrentGun => Gun;
 
     private PlayerInput playerInput;
 
