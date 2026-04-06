@@ -885,7 +885,7 @@ MonoBehaviour:
   expDrop: 3
   healthMultiplier: 1.1
   DPSMultiplier: 1.1
-  baseHealth: 100
+  baseHealth: 20
   baseDPS: 2
   health: 0
   DPS: 0

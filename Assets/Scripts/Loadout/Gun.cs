@@ -10,7 +10,7 @@ public class Gun : MonoBehaviour
     [SerializeField, Tooltip("Damage per bullet"), Header("Normal Stats")] private float Damage;
     [SerializeField, Tooltip("Amount of bullets fired per second")] private float FireRate;
     [SerializeField, Tooltip("The Range you can shoot in unity units")] private float Range;
-    [SerializeField, Tooltip("The amount of seconds it takes to reload")] private float ReloadSpeed;
+    [SerializeField, Tooltip("The amount of seconds it takes to reload")] private float reloadSpeed;
     [SerializeField, Tooltip("The amount of seconds it takes to reload")] private int MaxAmmo;
     [Tooltip("If you can hold to shoot multiple bullets")] public bool FullAuto;
 
@@ -42,6 +42,9 @@ public class Gun : MonoBehaviour
 
     private float timeSinceLastShot = 0f;
     private float reloadProgress = 0f;
+
+    public float ReloadProgress => reloadProgress;
+    public float ReloadSpeed => reloadSpeed;
 
     private bool canShoot = false;
 
@@ -77,8 +80,8 @@ public class Gun : MonoBehaviour
     }
 
     #region Reloading
-
     private bool isReloading = false;
+    public bool IsReloading => isReloading;
 
     public void TryReload()
     {
@@ -102,7 +105,6 @@ public class Gun : MonoBehaviour
         currentAmmo = MaxAmmo;
         isReloading = false;
     }
-
     #endregion
 
     #region Shooting
@@ -253,6 +255,14 @@ public class Gun : MonoBehaviour
     {
         return currentAmmo + "/" + MaxAmmo;
     }
+    public int CurrentAmmoInt()
+    {
+        return currentAmmo;
+    }
 
+    public int MaxAmmoInt()
+    {
+        return MaxAmmo;
+    }
     #endregion
 }
