@@ -275,12 +275,132 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 693860258643178190, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: settings
+      value: 
+      objectReference: {fileID: 4558993724477721344}
+    - target: {fileID: 693860258643178190, guid: a818e48a4ff807644b256986852010bb, type: 3}
       propertyPath: RecoilMagnitude.y
       value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 915947627729896082, guid: a818e48a4ff807644b256986852010bb, type: 3}
       propertyPath: m_Name
       value: Smg
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: Range
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: Damage
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: Muzzle
+      value: 
+      objectReference: {fileID: 1424200129306039185}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: GunName
+      value: Smg
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: MaxAmmo
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: FireRate
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: RecoilMax
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: RecoilMin
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: AmmoPerShot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: BulletCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: MaxSpread.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: MaxSpread.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: MinSpread.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: MinSpread.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: reloadSpeed
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: TracerPrefab
+      value: 
+      objectReference: {fileID: 454934594798073804, guid: e4c190d7d4c8d5042aa514fdd1350cef, type: 3}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: DamageFalloffLerp
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: RecoilMagnitude.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: RecoilMagnitude.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: DamageFalloffRange.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: 'DamageFalloffRange.Array.data[0]'
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: 'DamageFalloffRange.Array.data[1]'
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: 'DamageFalloffRange.Array.data[2]'
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: 'DamageFalloffRange.Array.data[3]'
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: DamageFalloffPercentage.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: 'DamageFalloffPercentage.Array.data[0]'
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: 'DamageFalloffPercentage.Array.data[1]'
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: 'DamageFalloffPercentage.Array.data[2]'
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: 'DamageFalloffPercentage.Array.data[3]'
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 8874806087734754052, guid: a818e48a4ff807644b256986852010bb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -338,6 +458,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d313ba6bc0091d547986b71261a51506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1424200129306039185 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1820801390040387515, guid: a818e48a4ff807644b256986852010bb, type: 3}
+  m_PrefabInstance: {fileID: 758591895684193322}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4558993724477721344 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+  m_PrefabInstance: {fileID: 758591895684193322}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 234ea17254eb1f54a81101cae7e2cb4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GunSettings
 --- !u!4 &8191672045194995502 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8874806087734754052, guid: a818e48a4ff807644b256986852010bb, type: 3}
@@ -411,6 +547,10 @@ PrefabInstance:
       propertyPath: RecoilMagnitude.y
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1924956942312673250, guid: 8dc78fbc23c757240bacb42f2e49a692, type: 3}
+      propertyPath: GunName
+      value: Burst Rifle
+      objectReference: {fileID: 0}
     - target: {fileID: 8510055944772573007, guid: 8dc78fbc23c757240bacb42f2e49a692, type: 3}
       propertyPath: m_Name
       value: Burst Rifle
@@ -453,6 +593,10 @@ PrefabInstance:
     - target: {fileID: 1684427273703915925, guid: 615478eb4a72e464e8ffd2909beaedf4, type: 3}
       propertyPath: m_RenderingLayerMask
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4142287468452589209, guid: 615478eb4a72e464e8ffd2909beaedf4, type: 3}
+      propertyPath: GunName
+      value: Shotgun
       objectReference: {fileID: 0}
     - target: {fileID: 4296228752142018860, guid: 615478eb4a72e464e8ffd2909beaedf4, type: 3}
       propertyPath: m_Name
@@ -585,6 +729,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7761300305988968625, guid: ea45cb076a1800d47bf12d5a849bcc2d, type: 3}
+      propertyPath: GunName
+      value: Pistol
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1271672514529196206, guid: ea45cb076a1800d47bf12d5a849bcc2d, type: 3}
     m_RemovedGameObjects: []
@@ -663,6 +811,10 @@ PrefabInstance:
     - target: {fileID: 995368789210335481, guid: 53d1a78309b3f4b49b42c0b2a69d68c2, type: 3}
       propertyPath: RecoilMagnitude.y
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1924956942312673250, guid: 53d1a78309b3f4b49b42c0b2a69d68c2, type: 3}
+      propertyPath: GunName
+      value: Assault Rifle
       objectReference: {fileID: 0}
     - target: {fileID: 8510055944772573007, guid: 53d1a78309b3f4b49b42c0b2a69d68c2, type: 3}
       propertyPath: m_Name
