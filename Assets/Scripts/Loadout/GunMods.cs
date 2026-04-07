@@ -1,7 +1,5 @@
-public enum GunMods // Only examples so far
+public abstract class GunMod
 {
-    Silencer,
-    Scope,
-    ExtendedMag,
-    LaserSight
+    public abstract string Name { get; }
+    public abstract string Description { get; }
 }

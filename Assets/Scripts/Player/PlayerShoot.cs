@@ -19,7 +19,7 @@ public class PlayerShoot : MonoBehaviour
 
         playerInput.PlayerActions.Shoot.performed += ctx =>
         {
-            if (Gun.FullAuto)
+            if (Gun.settings.FullAuto)
                 isShooting = true;
             else
                 Shoot();

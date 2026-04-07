@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &352446088202111834
+--- !u!1 &915947627729896082
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,30 +8,71 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3441687702966714213}
+  - component: {fileID: 8874806087734754052}
+  - component: {fileID: 693860258643178190}
   m_Layer: 0
-  m_Name: Muzzle
+  m_Name: Smg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3441687702966714213
+--- !u!4 &8874806087734754052
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 352446088202111834}
+  m_GameObject: {fileID: 915947627729896082}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.5}
-  m_LocalScale: {x: 5, y: 5, z: 2}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7097048877696286354}
+  m_Children:
+  - {fileID: 1817213368631435653}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2922324470941487029
+--- !u!114 &693860258643178190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915947627729896082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d313ba6bc0091d547986b71261a51506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GunName: Smg
+  Damage: 10
+  FireRate: 20
+  Range: 30
+  reloadSpeed: 0.75
+  MaxAmmo: 30
+  FullAuto: 1
+  DamageFalloffPercentage:
+  - 0.85
+  - 0.65
+  - 0.5
+  DamageFalloffRange:
+  - 20
+  - 25
+  - 30
+  DamageFalloffLerp: 1
+  DelayBetweenBullets: 0
+  BulletCount: 1
+  AmmoPerShot: 1
+  MinSpread: {x: -1, y: -1}
+  MaxSpread: {x: 1, y: 1}
+  RecoilMagnitude: {x: 1, y: 3}
+  RecoilMin: 0.4
+  RecoilMax: 1
+  TracerPoolSize: 30
+  Muzzle: {fileID: 1820801390040387515}
+  TracerPrefab: {fileID: 454934594798073804, guid: e4c190d7d4c8d5042aa514fdd1350cef, type: 3}
+--- !u!1 &1592210051385908231
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -39,9 +80,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7097048877696286354}
-  - component: {fileID: 7280303332339213821}
-  - component: {fileID: 5843659225194361541}
+  - component: {fileID: 1817213368631435653}
+  - component: {fileID: 1531531355439937772}
+  - component: {fileID: 1905231621218756306}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -49,37 +90,37 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7097048877696286354
+--- !u!4 &1817213368631435653
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2922324470941487029}
+  m_GameObject: {fileID: 1592210051385908231}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.414, y: -0.25400007, z: 0.489}
   m_LocalScale: {x: 0.19999999, y: 0.19999999, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3441687702966714213}
-  m_Father: {fileID: 989018469493097460}
+  - {fileID: 1820801390040387515}
+  m_Father: {fileID: 8874806087734754052}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7280303332339213821
+--- !u!33 &1531531355439937772
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2922324470941487029}
+  m_GameObject: {fileID: 1592210051385908231}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &5843659225194361541
+--- !u!23 &1905231621218756306
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2922324470941487029}
+  m_GameObject: {fileID: 1592210051385908231}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -122,7 +163,7 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &6354597058873376936
+--- !u!1 &3491451792030136274
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,67 +171,26 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 989018469493097460}
-  - component: {fileID: 1046422443001762898}
+  - component: {fileID: 1820801390040387515}
   m_Layer: 0
-  m_Name: Pistol
+  m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &989018469493097460
+--- !u!4 &1820801390040387515
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6354597058873376936}
+  m_GameObject: {fileID: 3491451792030136274}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.5}
+  m_LocalScale: {x: 5, y: 5, z: 2}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7097048877696286354}
-  m_Father: {fileID: 0}
+  m_Children: []
+  m_Father: {fileID: 1817213368631435653}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1046422443001762898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6354597058873376936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d313ba6bc0091d547986b71261a51506, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GunName: Smg
-  Damage: 10
-  FireRate: 20
-  Range: 30
-  reloadSpeed: 0.75
-  MaxAmmo: 30
-  FullAuto: 1
-  DamageFalloffPercentage:
-  - 0.85
-  - 0.65
-  - 0.5
-  DamageFalloffRange:
-  - 20
-  - 25
-  - 30
-  DamageFalloffLerp: 1
-  DelayBetweenBullets: 0
-  BulletCount: 1
-  AmmoPerShot: 1
-  MinSpread: {x: -1, y: -1}
-  MaxSpread: {x: 1, y: 1}
-  RecoilMagnitude: {x: 1, y: 3}
-  RecoilMin: 0.4
-  RecoilMax: 1
-  TracerPoolSize: 30
-  Muzzle: {fileID: 3441687702966714213}
-  TracerPrefab: {fileID: 454934594798073804, guid: e4c190d7d4c8d5042aa514fdd1350cef, type: 3}

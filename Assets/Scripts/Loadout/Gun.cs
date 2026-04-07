@@ -2,39 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(GunSettings))]
 public class Gun : MonoBehaviour
 {
-    [SerializeField] private string GunName;
-
-    // Normal
-    [SerializeField, Tooltip("Damage per bullet"), Header("Normal Stats")] private float Damage;
-    [SerializeField, Tooltip("Amount of bullets fired per second")] private float FireRate;
-    [SerializeField, Tooltip("The Range you can shoot in unity units")] private float Range;
-    [SerializeField, Tooltip("The amount of seconds it takes to reload")] private float reloadSpeed;
-    [SerializeField, Tooltip("The amount of seconds it takes to reload")] private int MaxAmmo;
-    [Tooltip("If you can hold to shoot multiple bullets")] public bool FullAuto;
-
-    // Damage Falloff
-    [SerializeField, Tooltip("Percentage of normal damage connected to the set range"), Header("Damage Falloff")] private float[] DamageFalloffPercentage;
-    [SerializeField, Tooltip("Range where damage falloff will change connected to the percentage")] private float[] DamageFalloffRange;
-    [SerializeField, Tooltip("If damage falloff will lerp or not")] private bool DamageFalloffLerp;
-
-    // Multiple Bullets
-    [SerializeField, Tooltip("Delay between each bullet in seconds"), Header("Multiple Bullets")] private float DelayBetweenBullets;
-    [SerializeField, Tooltip("Amount of bullets fired per shot")] private int BulletCount;
-    [SerializeField, Tooltip("Ammo consumed per shot")] private int AmmoPerShot;
-    [SerializeField, Tooltip("Minimum amount of spread")] private Vector2 MinSpread;
-    [SerializeField, Tooltip("Maximum amount of spread")] private Vector2 MaxSpread;
-
-    // Recoil
-    [SerializeField, Tooltip("How much recoil shooting will cause"), Header("Recoil")] private Vector2 RecoilMagnitude;
-    [SerializeField, Tooltip("Minimum amount of recoil shooting will cause, has to be lower than Recoil Max"), Range(0, 1)] private float RecoilMin;
-    [SerializeField, Tooltip("Maximum amount of recoil shooting will cause, has to be higher than Recoil Min"), Range(0, 1)] private float RecoilMax;
-
-    // Bullet Tracers
-    [SerializeField, Tooltip("How many tracers can be active at a time"), Header("Bullet Tracers")] private int TracerPoolSize = 30;
-    [SerializeField, Tooltip("Where the tracers spawn")] private Transform Muzzle;
-    [SerializeField, Tooltip("The prefab for the tracer")] private BulletTracer TracerPrefab;
+    [HideInInspector] public GunSettings settings;
 
     private LayerMask Mask = 72;
 
@@ -44,7 +15,7 @@ public class Gun : MonoBehaviour
     private float reloadProgress = 0f;
 
     public float ReloadProgress => reloadProgress;
-    public float ReloadSpeed => reloadSpeed;
+    public float ReloadSpeed => settings.reloadSpeed;
 
     private bool canShoot = false;
 
@@ -55,15 +26,16 @@ public class Gun : MonoBehaviour
 
     private void Awake()
     {
-        currentAmmo = MaxAmmo;
+        settings = GetComponent<GunSettings>();
+        currentAmmo = settings.MaxAmmo;
     }
 
     private void Update()
     {
-        if (timeSinceLastShot < (1 / FireRate))
+        if (timeSinceLastShot < (1 / settings.FireRate))
             timeSinceLastShot += Time.deltaTime;
 
-        canShoot = !isReloading && timeSinceLastShot >= (1 / FireRate) && currentAmmo > 0;
+        canShoot = !isReloading && timeSinceLastShot >= (1 / settings.FireRate) && currentAmmo > 0;
 
         transform.rotation = Quaternion.Euler(transform.parent.GetComponent<PlayerLook>().xRotation, transform.parent.GetComponent<PlayerLook>().yRotation, 0);
     }
@@ -71,9 +43,9 @@ public class Gun : MonoBehaviour
     {
         TracerPool = new Queue<BulletTracer>();
 
-        for (int i = 0; i < TracerPoolSize; i++)
+        for (int i = 0; i < settings.TracerPoolSize; i++)
         {
-            var t = Instantiate(TracerPrefab);
+            var t = Instantiate(settings.TracerPrefab);
             t.gameObject.SetActive(false);
             TracerPool.Enqueue(t);
         }
@@ -85,7 +57,7 @@ public class Gun : MonoBehaviour
 
     public void TryReload()
     {
-        if (!isReloading && currentAmmo < MaxAmmo)
+        if (!isReloading && currentAmmo < settings.MaxAmmo)
         {
             StartCoroutine(ReloadRoutine());
         }
@@ -102,7 +74,7 @@ public class Gun : MonoBehaviour
             yield return null;
         }
 
-        currentAmmo = MaxAmmo;
+        currentAmmo = settings.MaxAmmo;
         isReloading = false;
     }
     #endregion
@@ -114,51 +86,40 @@ public class Gun : MonoBehaviour
         {
             Shoot();
         }
+        else
+        {
+            TryReload();
+        }
     }
 
     private IEnumerator ShootRoutine()
     {
-        bool applyPerBullet = DelayBetweenBullets > 0f;
+        bool applyPerBullet = settings.DelayBetweenBullets > 0f;
 
         if (!applyPerBullet)
             ApplyRecoil();
 
-        for (int i = 0; i < BulletCount; i++)
+
+        for (int i = 0; i < settings.BulletCount; i++)
         {
-            Vector3 direction = GetBulletDirection();
+            Vector3 end = SimulateShot();
 
-            Vector3 start = Muzzle.position;
-            Vector3 end;
-
-            if (Physics.Raycast(start, direction, out RaycastHit hit, Range, Mask))
-            {
-                end = hit.point;
-
-                if (hit.transform.CompareTag("Enemy"))
-                {
-                    float finalDamage = CalculateDamage(direction, out hit);
-                    hit.transform.GetComponent<EnemyStats>().DoDamageToEnemy(finalDamage);
-                }
-            }
-            else
-            {
-                end = start + direction * Range;
-            }
+            Vector3 start = settings.Muzzle.position;
 
             SpawnTracer(start, end);
 
             if (applyPerBullet)
                 ApplyRecoil();
 
-            if (DelayBetweenBullets > 0f)
-                yield return new WaitForSeconds(DelayBetweenBullets);
+            if (settings.DelayBetweenBullets > 0f)
+                yield return new WaitForSeconds(settings.DelayBetweenBullets);
         }
     }
 
     private void Shoot()
     {
         timeSinceLastShot = 0f;
-        currentAmmo -= AmmoPerShot;
+        currentAmmo -= settings.AmmoPerShot;
         StartCoroutine(ShootRoutine());
     }
     private void SpawnTracer(Vector3 start, Vector3 end)
@@ -182,67 +143,78 @@ public class Gun : MonoBehaviour
 
     #region Shooting Calulations
 
-    private Vector3 GetBulletDirection()
+    private Vector3 SimulateShot()
     {
         Transform cam = Camera.main.transform;
 
-        float spreadX = Random.Range(MinSpread.x, MaxSpread.x);
-        float spreadY = Random.Range(MinSpread.y, MaxSpread.y);
+        float spreadX = Random.Range(settings.MinSpread.x, settings.MaxSpread.x);
+        float spreadY = Random.Range(settings.MinSpread.y, settings.MaxSpread.y);
 
         Quaternion spreadRot = Quaternion.AngleAxis(spreadX, cam.up) * Quaternion.AngleAxis(spreadY, cam.right);
 
-        return (spreadRot * cam.forward).normalized;
+        Vector3 camDir = (spreadRot * cam.forward).normalized;
+
+        Vector3 targetPoint;
+
+        if (Physics.Raycast(cam.position, camDir, out RaycastHit hit, settings.Range, Mask))
+        {
+            targetPoint = hit.point;
+
+            if (hit.transform.CompareTag("Enemy"))
+            {
+                float finalDamage = CalculateDamage(hit.distance);
+                hit.transform.GetComponent<EnemyStats>().DoDamageToEnemy(finalDamage);
+            }
+        }
+        else
+        {
+            targetPoint = cam.position + camDir * settings.Range;
+        }
+
+        return targetPoint;
     }
 
-    private float CalculateDamage(Vector3 direction, out RaycastHit hit)
+    private float CalculateDamage(float distance)
     {
-        float maxDistance = Range;
-        float baseDamage = Damage;
+        float baseDamage = settings.Damage;
 
-        Physics.Raycast(Muzzle.position, direction, out hit, maxDistance, Mask);
-
-        if (hit.collider == null)
-            return 0f;
-
-        float distance = hit.distance;
-
-        if (DamageFalloffPercentage.Length == 0 || DamageFalloffRange.Length == 0)
+        if (settings.DamageFalloffPercentage.Length == 0 || settings.DamageFalloffRange.Length == 0)
             return baseDamage;
 
-        if (DamageFalloffPercentage.Length != DamageFalloffRange.Length)
+        if (settings.DamageFalloffPercentage.Length != settings.DamageFalloffRange.Length)
         {
-            Debug.LogError($"{GunName}: Damage falloff arrays must be the same length.");
+            Debug.LogError($"{settings.GunName}: Damage falloff arrays must be the same length.");
             return baseDamage;
         }
 
-        for (int i = 0; i < DamageFalloffRange.Length; i++)
+        for (int i = 0; i < settings.DamageFalloffRange.Length; i++)
         {
-            if (distance <= DamageFalloffRange[i])
+            if (distance <= settings.DamageFalloffRange[i])
             {
-                float pct = DamageFalloffPercentage[i];
+                float pct = settings.DamageFalloffPercentage[i];
 
-                if (!DamageFalloffLerp || i == 0)
+                if (!settings.DamageFalloffLerp || i == 0)
                     return baseDamage * pct;
 
-                float prevRange = DamageFalloffRange[i - 1];
-                float prevPct = DamageFalloffPercentage[i - 1];
+                float prevRange = settings.DamageFalloffRange[i - 1];
+                float prevPct = settings.DamageFalloffPercentage[i - 1];
 
-                float t = Mathf.InverseLerp(prevRange, DamageFalloffRange[i], distance);
+                float t = Mathf.InverseLerp(prevRange, settings.DamageFalloffRange[i], distance);
                 float lerpedPct = Mathf.Lerp(prevPct, pct, t);
 
                 return baseDamage * lerpedPct;
             }
         }
 
-        return baseDamage * DamageFalloffPercentage[^1];
+        return baseDamage * settings.DamageFalloffPercentage[^1];
     }
 
     private void ApplyRecoil()
     {
-        float magnitude = Random.Range(RecoilMin, RecoilMax);
+        float magnitude = Random.Range(settings.RecoilMin, settings.RecoilMax);
 
-        float recoilX = magnitude * Random.value < 0.5f ? -RecoilMagnitude.x : RecoilMagnitude.x;
-        float recoilY = magnitude * RecoilMagnitude.y;
+        float recoilX = magnitude * (Random.value < 0.5f ? -settings.RecoilMagnitude.x : settings.RecoilMagnitude.x);
+        float recoilY = magnitude * settings.RecoilMagnitude.y;
 
         transform.parent.GetComponent<PlayerLook>().AddRecoil(recoilX, recoilY);
     }
@@ -253,7 +225,7 @@ public class Gun : MonoBehaviour
 
     public string CurrentAmmo()
     {
-        return currentAmmo + "/" + MaxAmmo;
+        return currentAmmo + "/" + settings.MaxAmmo;
     }
     public int CurrentAmmoInt()
     {
@@ -262,7 +234,7 @@ public class Gun : MonoBehaviour
 
     public int MaxAmmoInt()
     {
-        return MaxAmmo;
+        return settings.MaxAmmo;
     }
     #endregion
 }
