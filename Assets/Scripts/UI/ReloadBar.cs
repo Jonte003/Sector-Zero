@@ -30,6 +30,6 @@ public class ReloadBar : MonoBehaviour
             reloadBar.fillAmount = 0;
             return;
         }
-        reloadBar.fillAmount = 1 - reloadProgress / reloadSpeed;
+        reloadBar.fillAmount = reloadProgress / reloadSpeed;
     }
 }
