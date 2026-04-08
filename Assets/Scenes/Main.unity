@@ -3206,6 +3206,7 @@ MonoBehaviour:
   buttonNewSkill: {fileID: 1677437099}
   buttonLevelUpSkill: {fileID: 359179196}
   buttonLevelUpStats: {fileID: 586639594}
+  sfxLevelUp: {fileID: 8300000, guid: 350d76059b605234d9663a812d5e4a60, type: 3}
 --- !u!1 &475329136
 GameObject:
   m_ObjectHideFlags: 0
