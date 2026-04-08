@@ -4,25 +4,47 @@ public class PlayerStats : MonoBehaviour
 {
     [SerializeField] float maxHealth = 100f;
     [SerializeField] float currentHealth;
-    [SerializeField] float RegenPerSecond;
+    [SerializeField] float regenPerSecond;
 
-    public float MaxHealth => maxHealth;
+    private float HealthAfterBuffs => maxHealth + hpFromLevels;
+
+    private float RegenAfterBuffs => regenPerSecond + regenFromLevels;
+
+    public float MaxHealth => HealthAfterBuffs;
     public float CurrentHealth => currentHealth;
+
+    public float hpFromLevels = 0;
+    public float regenFromLevels = 0;
+    public float damageFromLevels = 0;
+    public float abilityHasteFromLevels = 0;
+    public float defenseFromLevels = 0;
+    public float jumpHeightFromLevels = 0;
+    public float movementSpeedFromLevels = 0;
+
+    public enum PossibleLevelUpStats
+    {
+        Hp,
+        Regen,
+        Damage,
+        AbilityHaste,
+        Defense,
+        JumpHeight,
+        MovementSpeed
+    }
+    
     void Start()
     {
-        currentHealth = maxHealth;
+        currentHealth = HealthAfterBuffs;
     }
 
 
     void Update()
     {
-
-
-        if (currentHealth < maxHealth) //Regenerate health
+        if (currentHealth < HealthAfterBuffs) //Regenerate health
         {
-            currentHealth += RegenPerSecond * Time.deltaTime;
-            if (currentHealth > maxHealth)
-                currentHealth = maxHealth;
+            currentHealth += RegenAfterBuffs * Time.deltaTime;
+            if (currentHealth > HealthAfterBuffs)
+                currentHealth = HealthAfterBuffs;
         }
     }
 
@@ -34,15 +56,5 @@ public class PlayerStats : MonoBehaviour
         {
 
         }
-    }
-
-    public void IncreaseMaxHealthByFixedAmount(float amount)
-    {
-        maxHealth += amount;
-    }
-
-    public void IncreaseMaxHealthByProcentage(float procentInDecimal)
-    {
-        maxHealth *= procentInDecimal;
     }
 }

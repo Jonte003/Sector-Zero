@@ -311,6 +311,10 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
+      propertyPath: FullAuto
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: a818e48a4ff807644b256986852010bb, type: 3}
       propertyPath: RecoilMax
       value: 1
       objectReference: {fileID: 0}

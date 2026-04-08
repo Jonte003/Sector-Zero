@@ -38,6 +38,11 @@ public class Gun : MonoBehaviour
         canShoot = !isReloading && timeSinceLastShot >= (1 / settings.FireRate) && currentAmmo > 0;
 
         transform.rotation = Quaternion.Euler(transform.parent.GetComponent<PlayerLook>().xRotation, transform.parent.GetComponent<PlayerLook>().yRotation, 0);
+
+        if (currentAmmo == 0)
+        {
+            TryReload();
+        }
     }
     private void Start()
     {
@@ -85,10 +90,6 @@ public class Gun : MonoBehaviour
         if (canShoot)
         {
             Shoot();
-        }
-        else
-        {
-            TryReload();
         }
     }
 
