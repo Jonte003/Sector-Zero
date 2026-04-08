@@ -6,20 +6,20 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] float currentHealth;
     [SerializeField] float regenPerSecond;
 
-    private float HealthAfterBuffs => maxHealth + hpFromLevels;
+    private float HealthAfterBuffs => maxHealth + hpBuffs;
 
-    private float RegenAfterBuffs => regenPerSecond + regenFromLevels;
+    private float RegenAfterBuffs => regenPerSecond + regenBuffs;
 
     public float MaxHealth => HealthAfterBuffs;
     public float CurrentHealth => currentHealth;
 
-    public float hpFromLevels = 0;
-    public float regenFromLevels = 0;
-    public float damageFromLevels = 0;
-    public float abilityHasteFromLevels = 0;
-    public float defenseFromLevels = 0;
-    public float jumpHeightFromLevels = 0;
-    public float movementSpeedFromLevels = 0;
+    public float hpBuffs = 0;
+    public float regenBuffs = 0;
+    public float damageBuffs = 0;
+    public float abilityHasteBuffs = 0;
+    public float defenseBuffs = 0;
+    public float jumpHeightBuffs = 0;
+    public float movementSpeedBuffs = 0;
 
     public enum PossibleLevelUpStats
     {
@@ -31,7 +31,9 @@ public class PlayerStats : MonoBehaviour
         JumpHeight,
         MovementSpeed
     }
-    
+
+    [HideInInspector] public bool invincible = false;
+
     void Start()
     {
         currentHealth = HealthAfterBuffs;
@@ -42,7 +44,7 @@ public class PlayerStats : MonoBehaviour
     {
         if (currentHealth < HealthAfterBuffs) //Regenerate health
         {
-            currentHealth += RegenAfterBuffs * Time.deltaTime;
+            currentHealth += HealthAfterBuffs * (RegenAfterBuffs / 100) * Time.deltaTime;
             if (currentHealth > HealthAfterBuffs)
                 currentHealth = HealthAfterBuffs;
         }
@@ -51,7 +53,13 @@ public class PlayerStats : MonoBehaviour
 
     public void DoDamage(float DPS)
     {
-        currentHealth -= DPS * Time.deltaTime;
+        if (invincible)
+            return;
+
+        float modifier = 1 - (defenseBuffs / defenseBuffs + 100);
+
+        currentHealth -= DPS * modifier * Time.deltaTime;
+
         if (currentHealth <= 0) //PLAYER DEAD
         {
 
