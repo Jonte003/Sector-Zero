@@ -4,7 +4,7 @@ using UnityEngine.UIElements;
 
 public abstract class EnemyAI : MonoBehaviour
 {
-    [SerializeField] protected float ShootDistance;
+    [SerializeField] protected float reach;
     protected GameObject target;
     protected Vector3 targetLocation;
 

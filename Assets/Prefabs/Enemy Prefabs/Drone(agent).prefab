@@ -224,6 +224,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 529768c8ddd4cac459a540ab5f16888c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7406873458739298429}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 529768c8ddd4cac459a540ab5f16888c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5531775487733732473}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 529768c8ddd4cac459a540ab5f16888c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2789843652307874019}
   m_SourcePrefab: {fileID: 100100000, guid: 529768c8ddd4cac459a540ab5f16888c, type: 3}
 --- !u!1 &1634685555140192640 stripped
 GameObject:
@@ -262,7 +268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShoot
   ShootDistance: 100
-  speed: 3
+  speed: 4
   tracerSize: 10
   spreadFrom: {x: -5, y: -5}
   spreadTo: {x: 5, y: 5}
@@ -286,6 +292,46 @@ MonoBehaviour:
   baseHealth: 5
   damagePerShoot: 5
   reloadRate: 0.3
+--- !u!114 &5531775487733732473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634685555140192640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6733dd5ec82d774a86714031fb0bc77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DroneStats
+  timeToSpawn: 3
+  expDrop: 3
+  healthMultiplier: 1
+  baseHealth: 5
+  damagePerShoot: 5
+  reloadRate: 1
+--- !u!95 &2789843652307874019
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634685555140192640}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cb3ecfa2e9823c34aa09215e7cc94f07, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &2153918494220464954 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 529768c8ddd4cac459a540ab5f16888c, type: 3}
