@@ -6,10 +6,12 @@ public class Loadout : MonoBehaviour
     //public GunMods[] GunMods { get; private set; }
     public Ability Ability1 { get; private set; }
     public Ability Ability2 { get; private set; }
+    public Ability Ability3 { get; private set; }
 
     public void UpdateCooldowns()
     {
         Ability1.CurrentCD = Mathf.Max(0, Ability1.CurrentCD - Time.deltaTime);
-        Ability2.CurrentCD = Mathf.Max(0, Ability1.CurrentCD - Time.deltaTime);
+        Ability2.CurrentCD = Mathf.Max(0, Ability2.CurrentCD - Time.deltaTime);
+        Ability3.CurrentCD = Mathf.Max(0, Ability3.CurrentCD - Time.deltaTime);
     }
 }

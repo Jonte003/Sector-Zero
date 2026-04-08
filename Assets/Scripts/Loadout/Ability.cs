@@ -18,7 +18,7 @@ public abstract class Ability : MonoBehaviour
     {
         yield return null;
     }
-    public float CurrentCD { get; protected set; }
+    public float CurrentCD { get; set; }
     protected abstract float CD { get; }
     public int Level { get; set; }
 }
