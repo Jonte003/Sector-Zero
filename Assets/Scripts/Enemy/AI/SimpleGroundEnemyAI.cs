@@ -8,7 +8,7 @@ public class SimpleEnemyAI : EnemyAI
 
     private NavMeshAgent agent;
     [SerializeField] private State currentState;
-    private EnemyStats enemyStats;
+    private GroundEnemyStats enemyStats;
 
     [SerializeField] float agentRadius;
     [SerializeField] protected bool whitinHitDistance;
@@ -24,7 +24,7 @@ public class SimpleEnemyAI : EnemyAI
         agent.radius = agentRadius;
 
 
-        enemyStats = gameObject.GetComponent<EnemyStats>();
+        enemyStats = gameObject.GetComponent<GroundEnemyStats>();
 
     }
 

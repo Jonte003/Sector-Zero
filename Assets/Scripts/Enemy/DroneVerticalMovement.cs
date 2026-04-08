@@ -58,11 +58,10 @@ public class DroneVerticalMovement : EnemyAI
 
 
         transform.localPosition = new Vector3(0, distanceRelativeToNavMesh + sinOfTime, 0);
-        transform.LookAt(targetLocation);
 
-        Vector3 rot = transform.eulerAngles;
-        rot.z = 0f; rot.x = 0f;
-        transform.eulerAngles = rot;
+        //Vector3 rot = transform.eulerAngles;
+        //rot.z = 0f; rot.x = 0f;
+        //transform.eulerAngles = rot;
 
 
     }
