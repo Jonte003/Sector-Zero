@@ -33,13 +33,33 @@ public class EnemyStats : MonoBehaviour
 
         if (health <= 0)
         {
-            GameObject.FindGameObjectWithTag("EnemyController").GetComponent<Controller>().AddExperiece(expDrop);
-            Destroy(gameObject);
+
+            Animator animator = GetComponent<Animator>();
+
+            if (animator != null )
+            {
+                animator.SetTrigger("OnDeath");
+
+            }
+            else
+            {
+                SelfDestroyGameObject();
+            }
+
 
         }
     }
 
+    public void SelfDestroyGameObject()
+    {
+        GameObject.FindGameObjectWithTag("EnemyController").GetComponent<Controller>().AddExperiece(expDrop);
+        Destroy(gameObject);
+    }
 
+    public void DestroyCollider()
+    {
+        Destroy(GetComponent<CapsuleCollider>());
+    }
 
     public float TimeToSpawn
     {

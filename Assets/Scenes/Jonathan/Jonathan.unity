@@ -173,7 +173,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8099443303943510179, guid: 409e6b3ee010c034c9b5ca02700c4224, type: 3}
       propertyPath: enemiesWithAmount.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8099443303943510179, guid: 409e6b3ee010c034c9b5ca02700c4224, type: 3}
       propertyPath: enemiesWithAmount.Array.data[0].amount
@@ -185,12 +185,12 @@ PrefabInstance:
       objectReference: {fileID: 4723213828231102213, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
     - target: {fileID: 8099443303943510179, guid: 409e6b3ee010c034c9b5ca02700c4224, type: 3}
       propertyPath: enemiesWithAmount.Array.data[1].amount
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8099443303943510179, guid: 409e6b3ee010c034c9b5ca02700c4224, type: 3}
       propertyPath: enemiesWithAmount.Array.data[1].prefab
       value: 
-      objectReference: {fileID: 4723213828231102213, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
+      objectReference: {fileID: 5092939406025795021, guid: aa94b2e717b660e44b32bcba6b66b259, type: 3}
     - target: {fileID: 8794640455939053580, guid: 409e6b3ee010c034c9b5ca02700c4224, type: 3}
       propertyPath: m_Name
       value: WaveManager
@@ -205,29 +205,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 409e6b3ee010c034c9b5ca02700c4224, type: 3}
---- !u!1 &19340573 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1634685555140192640, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
-  m_PrefabInstance: {fileID: 1132541356}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &19340578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 19340573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6733dd5ec82d774a86714031fb0bc77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DroneStats
-  timeToSpawn: 3
-  expDrop: 3
-  healthMultiplier: 1
-  baseHealth: 5
-  damagePerShoot: 5
-  reloadRate: 1
 --- !u!1 &20710210
 GameObject:
   m_ObjectHideFlags: 0
@@ -4763,48 +4740,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 674934252287428638, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
-      propertyPath: range
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 674934252287428638, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
       propertyPath: speed
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 674934252287428638, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
-      propertyPath: spread.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 674934252287428638, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
-      propertyPath: spread.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 674934252287428638, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
-      propertyPath: spreadTo.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 674934252287428638, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
-      propertyPath: spreadTo.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 674934252287428638, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
-      propertyPath: tracerSize
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 674934252287428638, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
-      propertyPath: spreadFrom.x
-      value: -5
-      objectReference: {fileID: 0}
-    - target: {fileID: 674934252287428638, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
-      propertyPath: spreadFrom.y
-      value: -5
-      objectReference: {fileID: 0}
-    - target: {fileID: 674934252287428638, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
-      propertyPath: tracerPrefab
-      value: 
-      objectReference: {fileID: 5047346975242728359, guid: e4c190d7d4c8d5042aa514fdd1350cef, type: 3}
-    - target: {fileID: 674934252287428638, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
-      propertyPath: ShootDistance
-      value: 100
+    - target: {fileID: 2531020080571788139, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
+      propertyPath: m_Speed
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4723213828231102213, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
       propertyPath: m_Name
@@ -4816,7 +4757,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7055966122989592439, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.0000012
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7055966122989592439, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4850,15 +4791,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 0}
-    - {fileID: 3522374716562408013, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1634685555140192640, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 19340578}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
 --- !u!1 &1135568147
 GameObject:
@@ -8662,7 +8598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9152341605a6448a3f77858e0e3116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleEnemyAI
-  ShootDistance: 0
+  reach: 0
   speed: 5
   currentState: 0
   agentRadius: 0

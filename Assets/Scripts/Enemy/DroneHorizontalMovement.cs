@@ -76,7 +76,7 @@ public class DroneHorizontalMovement : EnemyAI
 
         Vector3 dir = toDrone.normalized;
 
-        Vector3 targetPos = targetLocation + dir * ShootDistance;
+        Vector3 targetPos = targetLocation + dir * reach;
         targetPos.y = transform.position.y; // keep height to navmesh
 
         agent.SetDestination(targetPos);

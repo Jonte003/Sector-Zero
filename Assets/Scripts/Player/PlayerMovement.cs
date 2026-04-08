@@ -19,11 +19,13 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 movementVector;
     [SerializeField] float movementSpeed = 5f;
 
-    private float FinalSpeed => movementSpeed * (running && grounded ? runningMod : 1);
+    private float FinalSpeed => movementSpeed * (running && grounded ? runningMod : 1) * (1 + playerStats.movementSpeedBuffs);
 
 
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private float groundCheckRadius = 0.2f;
+
+    private PlayerStats playerStats;
 
     private bool CheckGrounded()
     {
@@ -36,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        playerStats = GetComponent<PlayerStats>();
         characterRB = GetComponent<Rigidbody>();
         input = new();
         input.Enable();
@@ -71,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (grounded)
         {
-            characterRB.AddForce(new Vector3(0, jumpForce, 0));
+            characterRB.AddForce(new Vector3(0, jumpForce * (1 + playerStats.jumpHeightBuffs), 0));
         }
     }
 

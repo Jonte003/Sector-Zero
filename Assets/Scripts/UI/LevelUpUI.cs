@@ -34,6 +34,8 @@ public class LevelUpUI : MonoBehaviour
     [SerializeField] private AudioClip sfxLevelUp;
     private AudioSource audioSource;
 
+    private Stat[] statChoices;
+
     private void setPanelVisible(bool visible)
     {
         levelUpUIPanel.SetActive(visible);
@@ -98,6 +100,13 @@ public class LevelUpUI : MonoBehaviour
     private void OnLevelUpStatsClicked()
     {
         if (!buttonsInteractable || firstChoiceMade) return;
+
+        statChoices = Stats.GetRandomStats(3);
+
+        statsPanel.transform.Find("Choices").Find("Button Stats 1").GetComponent<TooltipTrigger>().tooltipText = $"{statChoices[0].StatType} +{statChoices[0].Value}";
+        statsPanel.transform.Find("Choices").Find("Button Stats 2").GetComponent<TooltipTrigger>().tooltipText = $"{statChoices[1].StatType} +{statChoices[1].Value}";
+        statsPanel.transform.Find("Choices").Find("Button Stats 3").GetComponent<TooltipTrigger>().tooltipText = $"{statChoices[2].StatType} +{statChoices[2].Value}";
+
         statsPanel.SetActive(true);
         firstChoiceMade = true;
     }
@@ -146,21 +155,24 @@ public class LevelUpUI : MonoBehaviour
 
     private void OnLevelUpStats1Clicked()
     {
-        // Implement logic for leveling up the first stat
+        GameObject.FindWithTag("Player").GetComponent<PlayerStats>().ApplyStatBuff(statChoices[0]);
+
         statsPanel.SetActive(false);
         playerLevels.ConfirmLevelUp();
     }
 
     private void OnLevelUpStats2Clicked()
     {
-        // Implement logic for leveling up the second stat
+        GameObject.FindWithTag("Player").GetComponent<PlayerStats>().ApplyStatBuff(statChoices[1]);
+
         statsPanel.SetActive(false);
         playerLevels.ConfirmLevelUp();
     }
 
     private void OnLevelUpStats3Clicked()
     {
-        // Implement logic for leveling up the third stat
+        GameObject.FindWithTag("Player").GetComponent<PlayerStats>().ApplyStatBuff(statChoices[2]);
+
         statsPanel.SetActive(false);
         playerLevels.ConfirmLevelUp();
     }

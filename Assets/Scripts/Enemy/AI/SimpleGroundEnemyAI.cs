@@ -9,6 +9,7 @@ public class SimpleEnemyAI : EnemyAI
     private NavMeshAgent agent;
     [SerializeField] private State currentState;
     private GroundEnemyStats enemyStats;
+    Animator animator;
 
     [SerializeField] float agentRadius;
     [SerializeField] protected bool whitinHitDistance;
@@ -18,6 +19,9 @@ public class SimpleEnemyAI : EnemyAI
     {
         
         base.Start();
+
+        animator = GetComponent<Animator>();
+
         agent = GetComponent<NavMeshAgent>();
         agent.speed = speed;
         currentState = State.walking;
@@ -32,7 +36,7 @@ public class SimpleEnemyAI : EnemyAI
     protected override void Update()
     {
         base.Update();
-        whitinHitDistance = CheckIfPositionsInRange(transform.position, target.transform.position, ShootDistance);
+        whitinHitDistance = CheckIfPositionsInRange(transform.position, target.transform.position, reach);
 
 
         if (currentState == State.walking)
@@ -40,9 +44,14 @@ public class SimpleEnemyAI : EnemyAI
             agent.SetDestination(targetLocation);
 
 
+
+
             if (whitinHitDistance)
             {
                 ChangeCurrentState(State.deelingDamage);
+                animator.SetBool("Attacking", true);
+                agent.isStopped = true;
+                agent.SetDestination(transform.position);
             }
         }
 
@@ -52,6 +61,11 @@ public class SimpleEnemyAI : EnemyAI
             if (!whitinHitDistance) 
             {
                 ChangeCurrentState(State.walking);
+                animator.SetBool("Attacking", false);
+
+                agent.isStopped = false;
+                agent.SetDestination(targetLocation);
+
             }
             else
             {
@@ -89,6 +103,7 @@ public class SimpleEnemyAI : EnemyAI
             agent.isStopped = true;
         }
     }
+
 
 
     protected enum State

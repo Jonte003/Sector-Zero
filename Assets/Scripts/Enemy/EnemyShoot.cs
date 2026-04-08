@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,6 +11,9 @@ public class EnemyShoot : EnemyAI
     [SerializeField] Vector2 spreadTo;
     [SerializeField] float range;
 
+    float shootDelay = 0.4f;
+    
+    Animator droneAnimator;
     DroneStats stats;
     private Queue<BulletTracer> TracerPool;
 
@@ -22,7 +26,7 @@ public class EnemyShoot : EnemyAI
     {
         base.Start();
 
-        
+        droneAnimator = GetComponent<Animator>();
         stats = GetComponent<DroneStats>();
 
         TracerPool = new Queue<BulletTracer>();
@@ -52,7 +56,9 @@ public class EnemyShoot : EnemyAI
             if (timer <= 0)
             {
                 timer = stats.ReloadRate;
-                Shoot();
+                //Shoot();
+
+                droneAnimator.SetTrigger("Shoot");
 
             }
             else
@@ -67,7 +73,18 @@ public class EnemyShoot : EnemyAI
 
 
     }
-    private void Shoot()
+    public void ShootWithDelay()
+    {
+        StartCoroutine(DelayedShoot(shootDelay));
+    }
+
+    private IEnumerator DelayedShoot(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Shoot();
+    }
+
+    public void Shoot()
     {
         Vector3 end = SimulateShot();
 

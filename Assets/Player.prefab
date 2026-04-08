@@ -238,13 +238,14 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 0
   regenPerSecond: 0
-  hpFromLevels: 0
-  regenFromLevels: 0
-  damageFromLevels: 0
-  abilityHasteFromLevels: 0
-  defenseFromLevels: 0
-  jumpHeightFromLevels: 0
-  movementSpeedFromLevels: 0
+  hpBuffs: 0
+  regenBuffs: 0
+  damageBuffs: 0
+  abilityHasteBuffs: 0
+  defenseBuffs: 0
+  jumpHeightBuffs: 0
+  movementSpeedBuffs: 0
+  invincible: 0
 --- !u!114 &6691595124052028352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,7 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecab435b09df31e4093a2fb5af29471c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShoot
-  Gun: {fileID: 6651617288641102842}
+  Gun: {fileID: 8667365535717067884}
 --- !u!114 &7713125364724647309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -728,17 +729,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8874806087734754052, guid: 3e6bca420a7af054ba259e77fed054ec, type: 3}
   m_PrefabInstance: {fileID: 6191988328529867060}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6651617288641102842 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 693860258643178190, guid: 3e6bca420a7af054ba259e77fed054ec, type: 3}
-  m_PrefabInstance: {fileID: 6191988328529867060}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d313ba6bc0091d547986b71261a51506, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8560507960843622462
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -819,6 +809,10 @@ PrefabInstance:
       propertyPath: Damage
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7761300305988968625, guid: ea45cb076a1800d47bf12d5a849bcc2d, type: 3}
+      propertyPath: Muzzle
+      value: 
+      objectReference: {fileID: 6417167784275732315}
     - target: {fileID: 7761300305988968625, guid: ea45cb076a1800d47bf12d5a849bcc2d, type: 3}
       propertyPath: GunName
       value: Pistol
@@ -929,6 +923,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea45cb076a1800d47bf12d5a849bcc2d, type: 3}
+--- !u!4 &6417167784275732315 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3441687702966714213, guid: ea45cb076a1800d47bf12d5a849bcc2d, type: 3}
+  m_PrefabInstance: {fileID: 8560507960843622462}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8667365535717067884 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1046422443001762898, guid: ea45cb076a1800d47bf12d5a849bcc2d, type: 3}
+  m_PrefabInstance: {fileID: 8560507960843622462}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d313ba6bc0091d547986b71261a51506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8895941512724159434 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 989018469493097460, guid: ea45cb076a1800d47bf12d5a849bcc2d, type: 3}

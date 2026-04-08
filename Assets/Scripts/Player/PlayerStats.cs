@@ -21,17 +21,6 @@ public class PlayerStats : MonoBehaviour
     public float jumpHeightBuffs = 0;
     public float movementSpeedBuffs = 0;
 
-    public enum PossibleLevelUpStats
-    {
-        Hp,
-        Regen,
-        Damage,
-        AbilityHaste,
-        Defense,
-        JumpHeight,
-        MovementSpeed
-    }
-
     [HideInInspector] public bool invincible = false;
 
     void Start()
@@ -56,13 +45,46 @@ public class PlayerStats : MonoBehaviour
         if (invincible)
             return;
 
-        float modifier = 1 - (defenseBuffs / defenseBuffs + 100);
+        float modifier = 1 - (defenseBuffs / (defenseBuffs + 100));
 
         currentHealth -= DPS * modifier * Time.deltaTime;
 
         if (currentHealth <= 0) //PLAYER DEAD
         {
 
+        }
+    }
+
+    public void ApplyStatBuff(Stat stat)
+    {
+        Debug.Log(stat.Value);
+        if (stat.StatType == PossibleLevelUpStats.Hp)
+        {
+            hpBuffs += stat.Value;
+        }
+        else if (stat.StatType == PossibleLevelUpStats.Regen)
+        {
+            regenBuffs += stat.Value;
+        }
+        else if (stat.StatType == PossibleLevelUpStats.Damage)
+        {
+            damageBuffs += stat.Value;
+        }
+        else if (stat.StatType == PossibleLevelUpStats.AbilityHaste)
+        {
+            abilityHasteBuffs += stat.Value;
+        }
+        else if (stat.StatType == PossibleLevelUpStats.Defense)
+        {
+            defenseBuffs += stat.Value;
+        }
+        else if (stat.StatType == PossibleLevelUpStats.JumpHeight)
+        {
+            jumpHeightBuffs += stat.Value;
+        }
+        else if (stat.StatType == PossibleLevelUpStats.MovementSpeed)
+        {
+            movementSpeedBuffs += stat.Value;
         }
     }
 }
