@@ -25,7 +25,18 @@ public class SpawnPoint : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        droneSpawnHeight = GameObject.FindWithTag("DronePlane").transform.position.y;
+
+        GameObject plane = GameObject.FindWithTag("DronePlane");
+
+        if (plane != null)
+        {
+            droneSpawnHeight = plane.transform.position.y;
+        }
+        else
+        {
+            droneSpawnHeight = 0f;
+        }
+
     }
 
     // Update is called once per frame
