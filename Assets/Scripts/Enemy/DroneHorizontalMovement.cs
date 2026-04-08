@@ -21,6 +21,7 @@ public class DroneHorizontalMovement : EnemyAI
         lineOfSightCheckOffset = new Vector3(0, lineOfSightCheckYOffset, 0);
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
+        
         SnapToNavMesh();
         droneBody = transform.GetChild(0);
         if (transform.childCount != 1)

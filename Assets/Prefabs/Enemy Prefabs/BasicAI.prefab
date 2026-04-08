@@ -725,7 +725,7 @@ GameObject:
   - component: {fileID: 3624524018428921313}
   - component: {fileID: 6375692817025035104}
   - component: {fileID: 5574022993534721642}
-  - component: {fileID: 4274957905411420429}
+  - component: {fileID: 6825367888111971594}
   m_Layer: 6
   m_Name: BasicAI
   m_TagString: Enemy
@@ -865,11 +865,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleEnemyAI
   ShootDistance: 2.5
-  whitinHitDistance: 0
   speed: 5
   currentState: 2
   agentRadius: 0.8
---- !u!114 &4274957905411420429
+  whitinHitDistance: 0
+--- !u!114 &6825367888111971594
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -878,17 +878,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7969235936133170843}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90b3f509f57490f41ae8a6e3702b4c73, type: 3}
+  m_Script: {fileID: 11500000, guid: f1dea7f5c6c64734391fabdb0570ef43, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::GroundEnemyStats
   timeToSpawn: 1
   expDrop: 3
   healthMultiplier: 1.1
-  DPSMultiplier: 1.1
   baseHealth: 20
   baseDPS: 2
-  health: 0
-  DPS: 0
+  DPSMultiplier: 1.1
 --- !u!1 &8555338203733185577
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,26 +7,21 @@ public class EnemyStats : MonoBehaviour
     [SerializeField, Tooltip("Experience Drop On Death")] float expDrop;
     [Space]
     [SerializeField, Tooltip("Multiplier for increasing/decrease health per wave, if 1.1 health will increase by 10% evry wave. If spawned on wave 5, the health will be:  Base Health * 1.1^5")] float healthMultiplier;
-    [SerializeField, Tooltip("Multiplier for DPS")] float DPSMultiplier;
-    [Space]
     [SerializeField] float baseHealth;
-    [SerializeField] float baseDPS;
-    [Space]
-    [SerializeField] private float health;
-    [SerializeField] private float DPS;
+
 
     private float maxHealth;
+    private float health;
 
-    GameObject target;
-    PlayerStats playerStats;
+    protected GameObject target;
+    protected PlayerStats playerStats;
 
 
-    void Start()
+    protected virtual void Start()
     {
         float waveNumber = GameObject.FindWithTag("WaveManager").GetComponent<WaveManager>().CurrentWave;
         health = baseHealth * Mathf.Pow(healthMultiplier, waveNumber); //Calculates health depending on wave number
         maxHealth = health;
-        DPS = baseDPS * Mathf.Pow(DPSMultiplier, waveNumber); //Calculates DPS depending on wave number
         target = GameObject.FindWithTag("Player");
         playerStats = target.GetComponent<PlayerStats>();
     }
@@ -44,10 +39,7 @@ public class EnemyStats : MonoBehaviour
         }
     }
 
-    public void DoDamageToTarget()
-    {
-        playerStats.DoDamage(DPS);
-    }
+
 
     public float TimeToSpawn
     {
