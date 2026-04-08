@@ -1,3 +1,4 @@
+using System.Net;
 using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
@@ -40,7 +41,7 @@ public class PlayerStats : MonoBehaviour
     }
 
 
-    public void DoDamage(float DPS)
+    public void DoDamageDPS(float DPS)
     {
         if (invincible)
             return;
@@ -48,6 +49,22 @@ public class PlayerStats : MonoBehaviour
         float modifier = 1 - (defenseBuffs / (defenseBuffs + 100));
 
         currentHealth -= DPS * modifier * Time.deltaTime;
+
+        if (currentHealth <= 0) //PLAYER DEAD
+        {
+
+        }
+    }
+
+    public void DoDamageFixed(float amount)
+    {
+        if (invincible)
+            return;
+
+        float modifier = 1 - (defenseBuffs / (defenseBuffs + 100));
+
+        currentHealth -= amount * modifier;
+
 
         if (currentHealth <= 0) //PLAYER DEAD
         {

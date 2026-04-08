@@ -24,7 +24,7 @@ public class GroundEnemyStats : EnemyStats
 
     public void DoDamageToTarget()
     {
-        playerStats.DoDamage(DPS);
+        playerStats.DoDamageDPS(DPS);
     }
 
 }

@@ -23,7 +23,7 @@ public class DroneStats : EnemyStats
 
     public void DoDamageToTarget()
     {
-        playerStats.DoDamage(damagePerShoot);
+        playerStats.DoDamageFixed(damagePerShoot);
     }
 
     public float ReloadRate

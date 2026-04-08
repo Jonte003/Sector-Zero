@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 using static UnityEngine.GraphicsBuffer;
 
 public class EnemyStats : MonoBehaviour
@@ -33,6 +34,7 @@ public class EnemyStats : MonoBehaviour
 
         if (health <= 0)
         {
+            health = 0;
 
             Animator animator = GetComponent<Animator>();
 
@@ -52,13 +54,19 @@ public class EnemyStats : MonoBehaviour
 
     public void SelfDestroyGameObject()
     {
+
         GameObject.FindGameObjectWithTag("EnemyController").GetComponent<Controller>().AddExperiece(expDrop);
+        
+        if (transform.parent.GetComponent<NavMeshAgent>() != null) //If gameobject is a drone destoy its parent otherwise only destoy current gameobject
+        {
+            Destroy(transform.parent.gameObject);
+        }
         Destroy(gameObject);
     }
 
     public void DestroyCollider()
     {
-        Destroy(GetComponent<CapsuleCollider>());
+        Destroy(GetComponent<Collider>());
     }
 
     public float TimeToSpawn

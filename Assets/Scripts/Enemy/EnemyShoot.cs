@@ -50,7 +50,7 @@ public class EnemyShoot : EnemyAI
         toPlayer = targetLocation - transform.position;
 
 
-        if (CheckIfLineOfSight(targetLocation, transform.position, obstacles) && CheckIfPositionsInRange(transform.position, targetLocation, range));
+        if (CheckIfLineOfSight(targetLocation, transform.position, obstacles) && CheckIfPositionsInRange(transform.position, targetLocation, range))
         {
 
             if (timer <= 0)
