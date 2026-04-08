@@ -38,6 +38,8 @@ public class LevelUpUI : MonoBehaviour
     {
         if (playerLevels.PendingLevelUp && !visible)
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             crosshair.Hide();
             visible = true;
             setPanelVisible(visible);
@@ -45,6 +47,8 @@ public class LevelUpUI : MonoBehaviour
         }
         else if (!playerLevels.PendingLevelUp && visible)
         {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
             crosshair.Show();
             visible = false;
             setPanelVisible(visible);

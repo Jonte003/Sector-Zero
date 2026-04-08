@@ -26,7 +26,7 @@ public class SpawnPoint : MonoBehaviour
     void Start()
     {
 
-        GameObject plane = GameObject.FindWithTag("DronePlane");
+        /*GameObject plane = GameObject.FindWithTag("DronePlane");
 
         if (plane != null)
         {
@@ -36,7 +36,7 @@ public class SpawnPoint : MonoBehaviour
         {
             droneSpawnHeight = 0f;
         }
-
+        */
     }
 
     // Update is called once per frame
