@@ -34,7 +34,12 @@ public class LevelUpUI : MonoBehaviour
     [SerializeField] private AudioClip sfxLevelUp;
     private AudioSource audioSource;
 
+    GameObject player;
+
     private Stat[] statChoices;
+    private Ability[] abilityChoices;
+
+    private int abilitySlot;
 
     private void setPanelVisible(bool visible)
     {
@@ -52,7 +57,8 @@ public class LevelUpUI : MonoBehaviour
     }
     void Start()
     {
-        playerLevels = GameObject.FindWithTag("Player").GetComponent<PlayerLevels>();
+        player = GameObject.FindWithTag("Player");
+        playerLevels = player.GetComponent<PlayerLevels>();
         levelUpUIPanel = GameObject.Find("Level Up Popup");
         newSkillPanel = GameObject.Find("New Skill Popup");
         levelUpSkillPanel = GameObject.Find("Level Up Skill Popup");
@@ -88,12 +94,48 @@ public class LevelUpUI : MonoBehaviour
     private void OnNewSkillClicked()
     {
         if (!buttonsInteractable || firstChoiceMade) return;
+
+        if (player.GetComponent<Loadout>().Ability1 == null)
+        {
+            abilitySlot = 1;
+        }
+        else if (player.GetComponent<Loadout>().Ability2 == null)
+        {
+            abilitySlot = 2;
+        }
+        else if (player.GetComponent<Loadout>().Ability3 == null)
+        {
+            abilitySlot = 3;
+        }
+        else
+        {
+            return;
+        }
+
+        abilityChoices = player.GetComponent<Loadout>().GetRandomAbilities(3);
+
+        statsPanel.transform.Find("Choices").Find("Button New Skill 1").GetComponent<TooltipTrigger>().tooltipText = $"{abilityChoices[0].name}";
+        statsPanel.transform.Find("Choices").Find("Button New Skill 2").GetComponent<TooltipTrigger>().tooltipText = $"{abilityChoices[1].name}";
+        statsPanel.transform.Find("Choices").Find("Button New Skill 3").GetComponent<TooltipTrigger>().tooltipText = $"{abilityChoices[2].name}";
+
         newSkillPanel.SetActive(true);
         firstChoiceMade = true;
     }
     private void OnLevelUpSkillClicked()
     {
         if (!buttonsInteractable || firstChoiceMade) return;
+
+        Loadout playerLoadout = player.GetComponent<Loadout>();
+
+        if (playerLoadout.Ability1 == null && playerLoadout.Ability2 == null && playerLoadout.Ability3 == null)
+        {
+            return;
+        }
+
+        statsPanel.transform.Find("Choices").Find("Button Level Up Skill 1").GetComponent<TooltipTrigger>().tooltipText = playerLoadout.Ability1 != null ? $"{playerLoadout.Ability1.name} (Level {playerLoadout.Ability1.Level}/5)" : "Empty Slot";
+        statsPanel.transform.Find("Choices").Find("Button Level Up Skill 2").GetComponent<TooltipTrigger>().tooltipText = playerLoadout.Ability2 != null ? $"{playerLoadout.Ability2.name} (Level {playerLoadout.Ability2.Level}/5)" : "Empty Slot";
+        statsPanel.transform.Find("Choices").Find("Button Level Up Skill 3").GetComponent<TooltipTrigger>().tooltipText = playerLoadout.Ability3 != null ? $"{playerLoadout.Ability3.name} (Level {playerLoadout.Ability3.Level}/5)" : "Empty Slot";
+
         levelUpSkillPanel.SetActive(true);
         firstChoiceMade = true;
     }
@@ -113,42 +155,102 @@ public class LevelUpUI : MonoBehaviour
 
     private void OnNewSkill1Clicked()
     {
-        // Implement logic for choosing the first new skill
+        if (abilitySlot == 1)
+        {
+            player.GetComponent<Loadout>().Ability1 = abilityChoices[0];
+        }
+        else if (abilitySlot == 2)
+        {
+            player.GetComponent<Loadout>().Ability2 = abilityChoices[0];
+        }
+        else if (abilitySlot == 3)
+        {
+            player.GetComponent<Loadout>().Ability3 = abilityChoices[0];
+        }
+
         newSkillPanel.SetActive(false);
         playerLevels.ConfirmLevelUp();
     }
 
     private void OnNewSkill2Clicked()
     {
-        // Implement logic for choosing the second new skill
+        if (abilitySlot == 1)
+        {
+            player.GetComponent<Loadout>().Ability1 = abilityChoices[1];
+        }
+        else if (abilitySlot == 2)
+        {
+            player.GetComponent<Loadout>().Ability2 = abilityChoices[1];
+        }
+        else if (abilitySlot == 3)
+        {
+            player.GetComponent<Loadout>().Ability3 = abilityChoices[1];
+        }
+
         newSkillPanel.SetActive(false);
         playerLevels.ConfirmLevelUp();
     }
 
     private void OnNewSkill3Clicked()
     {
-        // Implement logic for choosing the third new skill
+        if (abilitySlot == 1)
+        {
+            player.GetComponent<Loadout>().Ability1 = abilityChoices[2];
+        }
+        else if (abilitySlot == 2)
+        {
+            player.GetComponent<Loadout>().Ability2 = abilityChoices[2];
+        }
+        else if (abilitySlot == 3)
+        {
+            player.GetComponent<Loadout>().Ability3 = abilityChoices[2];
+        }
+
         newSkillPanel.SetActive(false);
         playerLevels.ConfirmLevelUp();
     }
 
     private void OnLevelUpSkill1Clicked()
     {
-        // Implement logic for leveling up the first skill
+        Loadout playerLoadout = player.GetComponent<Loadout>();
+
+        if (playerLoadout.Ability1 == null || playerLoadout.Ability1.Level >= 5)
+        {
+            return;
+        }
+        
+        playerLoadout.Ability1.Level++;
+
         levelUpSkillPanel.SetActive(false);
         playerLevels.ConfirmLevelUp();
     }
 
     private void OnLevelUpSkill2Clicked()
     {
-        // Implement logic for leveling up the second skill
+        Loadout playerLoadout = player.GetComponent<Loadout>();
+
+        if (playerLoadout.Ability2 == null || playerLoadout.Ability2.Level >= 5)
+        {
+            return;
+        }
+
+        playerLoadout.Ability2.Level++;
+
         levelUpSkillPanel.SetActive(false);
         playerLevels.ConfirmLevelUp();
     }
 
     private void OnLevelUpSkill3Clicked()
     {
-        // Implement logic for leveling up the third skill
+        Loadout playerLoadout = player.GetComponent<Loadout>();
+
+        if (playerLoadout.Ability3 == null || playerLoadout.Ability3.Level >= 5)
+        {
+            return;
+        }
+
+        playerLoadout.Ability3.Level++;
+
         levelUpSkillPanel.SetActive(false);
         playerLevels.ConfirmLevelUp();
     }
