@@ -368,7 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f16326fbf3761498f73e91e1b24ea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  reach: 0
+  reach: 10
   speed: 4
   lineOfSightCheckYOffset: 0
 --- !u!1 &6059660032314944926
