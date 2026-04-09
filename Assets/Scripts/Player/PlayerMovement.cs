@@ -18,6 +18,9 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 movementInput;
     public Vector3 movementVector;
     [SerializeField] float movementSpeed = 5f;
+    [SerializeField] float deceleration = 10f;
+    [SerializeField] float gravity = 1;
+    private float RealGravity => 9.81f * gravity;
 
     private float FinalSpeed => movementSpeed * (running && grounded ? runningMod : 1) * (1 + playerStats.movementSpeedBuffs / 100);
 
@@ -89,10 +92,20 @@ public class PlayerMovement : MonoBehaviour
         {
             movementVector = movementInput.x * transform.right + movementInput.z * transform.forward;
             movementVector.y = 0;
-
-
         }
 
-        characterRB.AddForce(FinalSpeed * Time.fixedDeltaTime * movementVector);
+        Vector3 vel = characterRB.linearVelocity;
+        Vector3 horizontalVel = new Vector3(vel.x, 0, vel.z);
+        Vector3 targetVel = movementVector * FinalSpeed;
+        Vector3 newHorizontalVel;
+
+        if (movementVector.sqrMagnitude > 0.01f)
+            newHorizontalVel = targetVel;
+        else
+            newHorizontalVel = Vector3.MoveTowards(horizontalVel, Vector3.zero, deceleration * Time.fixedDeltaTime);
+
+        float newY = vel.y - RealGravity * Time.fixedDeltaTime;
+
+        characterRB.linearVelocity = new Vector3(newHorizontalVel.x, newY, newHorizontalVel.z);
     }
 }

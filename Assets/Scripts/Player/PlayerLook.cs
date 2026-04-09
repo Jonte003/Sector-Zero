@@ -33,7 +33,7 @@ public class PlayerLook : MonoBehaviour
         xRotation -= my;
         yRotation += mx;
 
-        xRotation = Mathf.Clamp(xRotation, -35f, 90f);
+        xRotation = Mathf.Clamp(xRotation, -85f, 90f);
 
         recoilCurrent = Vector2.Lerp(recoilCurrent, recoilTarget, recoilSnapSpeed * Time.deltaTime);
 
