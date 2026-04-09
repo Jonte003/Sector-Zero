@@ -78,6 +78,7 @@ public class PlayerStats : MonoBehaviour
         if (stat.StatType == PossibleLevelUpStats.Hp)
         {
             hpBuffs += stat.Value;
+            currentHealth += stat.Value;
         }
         else if (stat.StatType == PossibleLevelUpStats.Regen)
         {

@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 movementVector;
     [SerializeField] float movementSpeed = 5f;
 
-    private float FinalSpeed => movementSpeed * (running && grounded ? runningMod : 1) * (1 + playerStats.movementSpeedBuffs);
+    private float FinalSpeed => movementSpeed * (running && grounded ? runningMod : 1) * (1 + playerStats.movementSpeedBuffs / 100);
 
 
     [SerializeField] private LayerMask groundMask;
@@ -74,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (grounded)
         {
-            characterRB.AddForce(new Vector3(0, jumpForce * (1 + playerStats.jumpHeightBuffs), 0));
+            characterRB.AddForce(new Vector3(0, jumpForce * (1 + playerStats.jumpHeightBuffs / 100), 0));
         }
     }
 
@@ -93,6 +93,6 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        characterRB.AddForce(movementVector * Time.fixedDeltaTime * FinalSpeed);
+        characterRB.AddForce(FinalSpeed * Time.fixedDeltaTime * movementVector);
     }
 }
