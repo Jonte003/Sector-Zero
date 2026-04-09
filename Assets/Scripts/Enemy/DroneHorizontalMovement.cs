@@ -12,13 +12,11 @@ public class DroneHorizontalMovement : EnemyAI
     [SerializeField] float lineOfSightCheckYOffset;
     Vector3 destination;
 
-    Vector3 lineOfSightCheckOffset;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     protected override void Start()
     {
         base.Start();
 
-        lineOfSightCheckOffset = new Vector3(0, lineOfSightCheckYOffset, 0);
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
         
@@ -32,6 +30,7 @@ public class DroneHorizontalMovement : EnemyAI
 
 
         navPointManager = GameObject.FindWithTag("NavNodes").GetComponent<NavPointManager>();
+        destination = targetLocation;
     }
 
     public void SnapToNavMesh()
@@ -49,14 +48,14 @@ public class DroneHorizontalMovement : EnemyAI
         base.Update();
 
 
-        if (CheckIfLineOfSight(droneBody.position + lineOfSightCheckOffset, targetLocation, obstacles))
+        if (CheckIfLineOfSight(droneBody.position, targetLocation, obstacles))
         {
             
             MoveTowardsTarget();
         }
         else
         {
-            MoveToNode();
+            MoveToClosestNode();
         }
 
         //if (ReachedDestination() || !agent.hasPath)
@@ -69,6 +68,16 @@ public class DroneHorizontalMovement : EnemyAI
         //FaceTarget();
     } 
 
+    private void SetDestination(Vector3 destination)
+    {
+        this.destination = destination;
+    }
+
+    public void ConfirmDestination()
+    {
+        agent.SetDestination(destination);
+    }
+
     private void MoveTowardsTarget()
     {
         Vector3 toDrone = transform.position - targetLocation;
@@ -79,15 +88,15 @@ public class DroneHorizontalMovement : EnemyAI
         Vector3 targetPos = targetLocation + dir * reach;
         targetPos.y = transform.position.y; // keep height to navmesh
 
-        agent.SetDestination(targetPos);
+        SetDestination(targetPos);
 
     }
 
-    private void MoveToNode()
+    private void MoveToClosestNode()
     {
         Vector3 destination = navPointManager.GetClosestNode(transform.position);
         destination.y = transform.position.y; // keep height to navmesh
-        agent.SetDestination(destination);
+        SetDestination(destination);
     }
 
     private void MoveToRandomNode()
@@ -109,7 +118,6 @@ public class DroneHorizontalMovement : EnemyAI
     {
         
         Vector3 toDest = destination - transform.position;
-        Debug.Log(toDest.sqrMagnitude);
         return toDest.sqrMagnitude < 50f;
     }
 
