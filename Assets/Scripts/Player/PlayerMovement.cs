@@ -93,6 +93,6 @@ public class PlayerMovement : MonoBehaviour
 
         }
 
-        characterRB.AddForce(movementVector * Time.fixedDeltaTime * FinalSpeed);
+        characterRB.AddForce(FinalSpeed * Time.fixedDeltaTime * movementVector);
     }
 }
