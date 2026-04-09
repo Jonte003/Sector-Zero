@@ -8,6 +8,8 @@ TagManager:
   - Environment
   - Enemy
   - WaveManager
+  - NavNodes
+  - DronePlane
   layers:
   - Default
   - TransparentFX
@@ -16,7 +18,7 @@ TagManager:
   - Water
   - UI
   - enemy
-  - 
+  - IgnoreNavmeshGeneration
   - 
   - 
   - 
