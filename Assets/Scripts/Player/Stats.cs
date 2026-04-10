@@ -26,6 +26,13 @@ public static class Stats
                     i--;
                 }
             }
+            else if (i > 1)
+            {
+                if (stats[i].StatType == stats[i - 1].StatType || stats[i].StatType == stats[i - 2].StatType)
+                {
+                    i--;
+                }
+            }
         }
         return stats;
     }
