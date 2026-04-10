@@ -27,10 +27,28 @@ public class Controller : MonoBehaviour
         allEnemies.Clear();
         foreach (Transform child in transform)
         {
-            if (child.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+            if (child.gameObject.layer == LayerMask.NameToLayer("enemy") || child.GetChild(0).gameObject.layer == LayerMask.NameToLayer("enemy")
+)
             {
                 allEnemies.Add(child);
             }
+        }
+
+    }
+
+    public void SetDestinations()
+    {
+        foreach (Transform enemy in allEnemies)
+        {
+            if (enemy.TryGetComponent<SimpleEnemyAI>(out var ai))
+            {
+                ai.ConfirmDestination(); //Confirm destination for ground enemy
+            }
+            else
+            {
+                enemy.GetComponent<DroneHorizontalMovement>().ConfirmDestination(); //Confirm destination for drone
+            }
+
         }
 
     }

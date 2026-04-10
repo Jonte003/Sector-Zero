@@ -20,6 +20,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float movementSpeed = 5f;
     [SerializeField] float deceleration = 10f;
     [SerializeField] float gravity = 1;
+
+    [SerializeField, Tooltip("The distance the player has to move to recalculate the paths of all enemies")] float distanceToRecalculateEnemies;
+    Controller enemyController;
+    Vector3 lastCalculatedPosition;
     private float RealGravity => 9.81f * gravity;
 
     private float FinalSpeed => movementSpeed * (running && grounded ? runningMod : 1) * (1 + playerStats.movementSpeedBuffs / 100);
@@ -41,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        enemyController = GameObject.FindWithTag("EnemyController").GetComponent<Controller>();
         playerStats = GetComponent<PlayerStats>();
         characterRB = GetComponent<Rigidbody>();
         input = new();
@@ -57,11 +62,14 @@ public class PlayerMovement : MonoBehaviour
         };
 
         input.PlayerMovement.Jump.performed += ctx => Jump();
+        lastCalculatedPosition = Vector3.zero;
     }
 
     private void OnDisable()
     {
         input.Disable();
+
+
     }
 
     private void OnMovement(InputValue value)
@@ -84,8 +92,22 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         grounded = CheckGrounded();
+        CheckIfEnemiesToBeRecalculated();
     }
 
+    void CheckIfEnemiesToBeRecalculated()
+    {
+        if(!CheckIfPositionsInRange(transform.position, lastCalculatedPosition, distanceToRecalculateEnemies))
+        {
+            enemyController.SetDestinations();
+            lastCalculatedPosition = transform.position;
+        }
+    }
+
+    private static bool CheckIfPositionsInRange(Vector3 position1, Vector3 position2, float distance)
+    {
+        return (position1 - position2).sqrMagnitude < distance * distance;
+    }
     void FixedUpdate()
     {
         if (movementInput != Vector3.zero)

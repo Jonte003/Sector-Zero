@@ -14,7 +14,7 @@ public class SimpleEnemyAI : EnemyAI
     [SerializeField] float agentRadius;
     [SerializeField] protected bool whitinHitDistance;
 
-
+    Vector3 destination;
     protected override void Start()
     {
         
@@ -29,6 +29,7 @@ public class SimpleEnemyAI : EnemyAI
 
 
         enemyStats = gameObject.GetComponent<GroundEnemyStats>();
+        destination = targetLocation;
 
     }
 
@@ -41,8 +42,7 @@ public class SimpleEnemyAI : EnemyAI
 
         if (currentState == State.walking)
         {
-            agent.SetDestination(targetLocation);
-
+            SetDestination(targetLocation);
 
 
 
@@ -51,7 +51,12 @@ public class SimpleEnemyAI : EnemyAI
                 ChangeCurrentState(State.deelingDamage);
                 animator.SetBool("Attacking", true);
                 agent.isStopped = true;
-                agent.SetDestination(transform.position);
+
+
+                //if (destination != targetLocation)
+                //    agent.SetDestination(transform.position);
+
+
             }
         }
 
@@ -64,7 +69,7 @@ public class SimpleEnemyAI : EnemyAI
                 animator.SetBool("Attacking", false);
 
                 agent.isStopped = false;
-                agent.SetDestination(targetLocation);
+                SetDestination(targetLocation);
 
             }
             else
@@ -89,6 +94,18 @@ public class SimpleEnemyAI : EnemyAI
 
 
     }
+
+    void SetDestination(Vector3 destination)
+    {
+        this.destination = destination;
+    }
+
+    public void ConfirmDestination()
+    {
+        if (agent == null || target == null) return;
+        agent.SetDestination(destination);
+    }
+
 
     private void ChangeCurrentState(State newState)
     {
