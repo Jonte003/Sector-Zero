@@ -102,6 +102,7 @@ public class SimpleEnemyAI : EnemyAI
 
     public void ConfirmDestination()
     {
+        if (agent == null || target == null) return;
         agent.SetDestination(destination);
     }
 
