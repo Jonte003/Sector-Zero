@@ -19,6 +19,20 @@ public static class Stats
         for (int i = 0; i < amount; i++)
         {
             stats[i] = new Stat(PossibleStats[Random.Range(0, PossibleStats.Length)]);
+            if (i > 0)
+            {
+                if (stats[i].StatType == stats[i - 1].StatType)
+                {
+                    i--;
+                }
+            }
+            else if (i > 1)
+            {
+                if (stats[i].StatType == stats[i - 1].StatType || stats[i].StatType == stats[i - 2].StatType)
+                {
+                    i--;
+                }
+            }
         }
         return stats;
     }

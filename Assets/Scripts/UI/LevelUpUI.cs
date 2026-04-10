@@ -31,6 +31,14 @@ public class LevelUpUI : MonoBehaviour
     private bool buttonsInteractable = false;
     private bool firstChoiceMade = false;
 
+    [SerializeField] private Sprite iconStatHealth;
+    [SerializeField] private Sprite iconStatRegen;
+    [SerializeField] private Sprite iconStatDamage;
+    [SerializeField] private Sprite iconStatAbilityHaste;
+    [SerializeField] private Sprite iconStatDefense;
+    [SerializeField] private Sprite iconStatJumpHeight;
+    [SerializeField] private Sprite iconStatMovementSpeed;
+
     [SerializeField] private AudioClip sfxLevelUp;
     private AudioSource audioSource;
 
@@ -149,8 +157,35 @@ public class LevelUpUI : MonoBehaviour
         statsPanel.transform.Find("Choices").Find("Button Stats 2").GetComponent<TooltipTrigger>().tooltipText = $"{statChoices[1].StatType} +{statChoices[1].Value}";
         statsPanel.transform.Find("Choices").Find("Button Stats 3").GetComponent<TooltipTrigger>().tooltipText = $"{statChoices[2].StatType} +{statChoices[2].Value}";
 
+        Image[] buttonImages =
+        {
+            buttonLevelUpStats1.GetComponent<Image>(),
+            buttonLevelUpStats2.GetComponent<Image>(),
+            buttonLevelUpStats3.GetComponent<Image>()
+        };
+
+        for (int i = 0; i < 3; i++)
+        {
+            buttonImages[i].sprite = GetStatIcon(statChoices[i]);
+        }
+
         statsPanel.SetActive(true);
         firstChoiceMade = true;
+    }
+
+    private Sprite GetStatIcon(Stat stat)
+    {
+        return stat.StatType switch
+        {
+            PossibleLevelUpStats.Hp => iconStatHealth,
+            PossibleLevelUpStats.Regen => iconStatRegen,
+            PossibleLevelUpStats.Damage => iconStatDamage,
+            PossibleLevelUpStats.AbilityHaste => iconStatAbilityHaste,
+            PossibleLevelUpStats.Defense => iconStatDefense,
+            PossibleLevelUpStats.JumpHeight => iconStatJumpHeight,
+            PossibleLevelUpStats.MovementSpeed => iconStatMovementSpeed,
+            _ => null
+        };
     }
 
     private void OnNewSkill1Clicked()
