@@ -733,6 +733,7 @@ GameObject:
   - component: {fileID: 7055966122989592439}
   - component: {fileID: 2531020080571788139}
   - component: {fileID: 5338581664584092207}
+  - component: {fileID: 5007911747078842792}
   m_Layer: 0
   m_Name: Drone(agent)
   m_TagString: Untagged
@@ -793,6 +794,22 @@ MonoBehaviour:
   reach: 10
   speed: 4
   lineOfSightCheckYOffset: 0
+--- !u!208 &5007911747078842792
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4723213828231102213}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &4944297878546289015
 GameObject:
   m_ObjectHideFlags: 0

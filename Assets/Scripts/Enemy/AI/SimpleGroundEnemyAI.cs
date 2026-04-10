@@ -2,11 +2,11 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Rendering;
 using UnityEngine.XR;
-
+using System.Collections;
 public class SimpleEnemyAI : EnemyAI
 {
-
-    private NavMeshAgent agent;
+    NavMeshAgent agent;
+    NavMeshObstacle obstacle;
     [SerializeField] private State currentState;
     private GroundEnemyStats enemyStats;
     Animator animator;
@@ -23,6 +23,8 @@ public class SimpleEnemyAI : EnemyAI
         animator = GetComponent<Animator>();
 
         agent = GetComponent<NavMeshAgent>();
+        obstacle = GetComponent<NavMeshObstacle>();
+
         agent.speed = speed;
         currentState = State.walking;
         agent.radius = agentRadius;
@@ -34,15 +36,27 @@ public class SimpleEnemyAI : EnemyAI
     }
 
     // Update is called once per frame
-    protected override void Update()
+    public override void CalculatePath()
     {
-        base.Update();
+
+        if (isStunned)
+        {
+            return;
+        }
+
+        if (target == null)
+        {
+            return;
+        }
+
+        targetLocation = target.transform.position;
+
         whitinHitDistance = CheckIfPositionsInRange(transform.position, target.transform.position, reach);
 
 
         if (currentState == State.walking)
         {
-            SetDestination(targetLocation);
+            agent.SetDestination(targetLocation);
 
 
 
@@ -53,8 +67,6 @@ public class SimpleEnemyAI : EnemyAI
                 agent.isStopped = true;
 
 
-                //if (destination != targetLocation)
-                //    agent.SetDestination(transform.position);
 
 
             }
@@ -69,7 +81,7 @@ public class SimpleEnemyAI : EnemyAI
                 animator.SetBool("Attacking", false);
 
                 agent.isStopped = false;
-                SetDestination(targetLocation);
+                agent.SetDestination(targetLocation);
 
             }
             else
@@ -95,16 +107,7 @@ public class SimpleEnemyAI : EnemyAI
 
     }
 
-    void SetDestination(Vector3 destination)
-    {
-        this.destination = destination;
-    }
 
-    public void ConfirmDestination()
-    {
-        if (agent == null || target == null) return;
-        agent.SetDestination(destination);
-    }
 
 
     private void ChangeCurrentState(State newState)
@@ -120,6 +123,34 @@ public class SimpleEnemyAI : EnemyAI
             agent.isStopped = true;
         }
     }
+
+    public override void Stun(float seconds)
+    {
+        StartCoroutine(StunAgent(seconds));
+    }
+
+    private IEnumerator StunAgent(float duration)
+    {
+        isStunned = true;
+
+        agent.isStopped = true;
+        agent.updateRotation = false;
+        animator.speed = 0;
+
+        yield return new WaitForSeconds(duration);
+
+        agent.Warp(transform.position);
+
+        animator.speed = 1;
+        isStunned = false;
+        agent.isStopped = false;
+        agent.updateRotation = true;
+
+        CalculatePath();
+    }
+
+
+
 
 
 

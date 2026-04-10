@@ -42,9 +42,10 @@ public class EnemyShoot : EnemyAI
     }
 
     // Update is called once per frame
-    protected override void Update()
+    protected void Update()
     {
-        base.Update();
+
+        targetLocation = target.transform.position;
 
         transform.LookAt(targetLocation);
         toPlayer = targetLocation - transform.position;

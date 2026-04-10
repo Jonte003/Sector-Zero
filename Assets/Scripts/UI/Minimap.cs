@@ -18,7 +18,7 @@ public class Minimap : MonoBehaviour
 
     void LateUpdate()
     {
-        Debug.Log($"MapSize: {MinimapContent.rect.width} x {MinimapContent.rect.height} | LevelMin: {LevelMin} | LevelMax: {LevelMax} | PlayerWorld: {Player.position}");
+        //Debug.Log($"MapSize: {MinimapContent.rect.width} x {MinimapContent.rect.height} | LevelMin: {LevelMin} | LevelMax: {LevelMax} | PlayerWorld: {Player.position}");
 
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 

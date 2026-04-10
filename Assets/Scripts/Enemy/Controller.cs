@@ -1,55 +1,53 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
     PlayerLevels playerLevels;
     List<Transform> allEnemies;
+
+    Queue<EnemyAI> enemyQueue;
     void Start()
     {
+        enemyQueue = new Queue<EnemyAI>();
         allEnemies = new List<Transform>();
         playerLevels = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLevels>();
     }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        UpdatePaths();
     }
 
-    void OnTransformChildrenChanged()
+    public void AddEnemy(GameObject enemy)
     {
-        AddAllChilds();
+        allEnemies.Add(enemy.transform);
+        enemyQueue.Enqueue(enemy.transform.GetComponent<EnemyAI>());
+    } 
+
+    public void RemoveEnemy(GameObject gameObject)
+    {
+        allEnemies.Remove(gameObject.transform);
     }
 
-    void AddAllChilds()
+    private void UpdatePaths()
     {
-        allEnemies.Clear();
-        foreach (Transform child in transform)
+        if (enemyQueue.Count == 0)
         {
-            if (child.gameObject.layer == LayerMask.NameToLayer("enemy") || child.GetChild(0).gameObject.layer == LayerMask.NameToLayer("enemy")
-)
-            {
-                allEnemies.Add(child);
-            }
+            return; //No enemys spawned
         }
 
-    }
+        EnemyAI firstenemy = enemyQueue.Dequeue();
 
-    public void SetDestinations()
-    {
-        foreach (Transform enemy in allEnemies)
+        if (firstenemy == null)
         {
-            if (enemy.TryGetComponent<SimpleEnemyAI>(out var ai))
-            {
-                ai.ConfirmDestination(); //Confirm destination for ground enemy
-            }
-            else
-            {
-                enemy.GetComponent<DroneHorizontalMovement>().ConfirmDestination(); //Confirm destination for drone
-            }
-
+            return; //Enemy has died
         }
+
+        firstenemy.CalculatePath();
+
+        enemyQueue.Enqueue(firstenemy);
+
 
     }
 

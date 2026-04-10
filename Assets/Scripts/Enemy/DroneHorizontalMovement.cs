@@ -2,10 +2,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem.HID;
+using System.Collections;
 
 public class DroneHorizontalMovement : EnemyAI
 {
+    Animator animator;
     NavMeshAgent agent;
+    NavMeshObstacle obstacle;
     Transform droneBody;
     NavPointManager navPointManager;
 
@@ -16,8 +19,9 @@ public class DroneHorizontalMovement : EnemyAI
     protected override void Start()
     {
         base.Start();
-
+        
         agent = GetComponent<NavMeshAgent>();
+        obstacle = GetComponent<NavMeshObstacle>();
         agent.updateRotation = false;
         
         SnapToNavMesh();
@@ -26,10 +30,12 @@ public class DroneHorizontalMovement : EnemyAI
         {
             throw new System.Exception("Drone only accepts exactly 1 child");
         }
+        animator = droneBody.GetComponent<Animator>();
 
 
 
-        navPointManager = GameObject.FindWithTag("NavNodes").GetComponent<NavPointManager>();
+
+navPointManager = GameObject.FindWithTag("NavNodes").GetComponent<NavPointManager>();
         destination = targetLocation;
     }
 
@@ -43,11 +49,14 @@ public class DroneHorizontalMovement : EnemyAI
     }
 
     // Update is called once per frame
-    protected override void Update()
+    public override void CalculatePath()
     {
-        base.Update();
-
-
+        targetLocation = target.transform.position;
+        
+        if (isStunned)
+        {
+            return;
+        }
         if (CheckIfLineOfSight(droneBody.position, targetLocation, obstacles))
         {
             
@@ -57,27 +66,34 @@ public class DroneHorizontalMovement : EnemyAI
         {
             MoveToClosestNode();
         }
-
-        //if (ReachedDestination() || !agent.hasPath)
-        //{
-        //    MoveToRandomNode();
-        //    destination = agent.destination;
-
-        //}
-
-        //FaceTarget();
-    } 
-
-    private void SetDestination(Vector3 destination)
-    {
-        this.destination = destination;
     }
 
-    public void ConfirmDestination()
+    public override void Stun(float seconds)
     {
-        if (agent == null || target == null) return;
-        agent.SetDestination(destination);
+        StartCoroutine(StunAgent(seconds));
     }
+
+    private IEnumerator StunAgent(float duration)
+    {
+        isStunned = true;
+
+        agent.isStopped = true;
+        agent.updateRotation = false;
+        animator.speed = 0;
+
+        yield return new WaitForSeconds(duration);
+
+        agent.Warp(transform.position);
+
+        animator.speed = 1;
+        isStunned = false;
+        agent.isStopped = false;
+        agent.updateRotation = true;
+
+        CalculatePath();
+    }
+
+
 
     private void MoveTowardsTarget()
     {
@@ -89,7 +105,7 @@ public class DroneHorizontalMovement : EnemyAI
         Vector3 targetPos = targetLocation + dir * reach;
         targetPos.y = transform.position.y; // keep height to navmesh
 
-        SetDestination(targetPos);
+        agent.SetDestination(targetPos);
 
     }
 
@@ -97,7 +113,7 @@ public class DroneHorizontalMovement : EnemyAI
     {
         Vector3 destination = navPointManager.GetClosestNode(transform.position);
         destination.y = transform.position.y; // keep height to navmesh
-        SetDestination(destination);
+        agent.SetDestination(destination);
     }
 
     private void MoveToRandomNode()

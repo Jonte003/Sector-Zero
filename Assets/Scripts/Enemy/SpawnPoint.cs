@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SpawnPoint : MonoBehaviour
 {
-
+    Controller enemyController;
     [SerializeField] int activateOnWave = 1;
     bool active = false;
 
@@ -25,7 +25,7 @@ public class SpawnPoint : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        enemyController = GameObject.FindWithTag("EnemyController").GetComponent<Controller>();
         GameObject plane = GameObject.FindWithTag("DronePlane");
 
         if (plane != null)
@@ -53,13 +53,13 @@ public class SpawnPoint : MonoBehaviour
                 if (enemyBeingSpawned.GetComponent<DroneHorizontalMovement>() != null) 
                 {
                     //enemy being spawned is a drone
-                    Instantiate(enemyBeingSpawned, new Vector3(transform.position.x, droneSpawnHeight, transform.position.z), transform.rotation, GameObject.FindGameObjectWithTag("EnemyController").transform);
-
+                    GameObject newEnemy = Instantiate(enemyBeingSpawned, new Vector3(transform.position.x, droneSpawnHeight, transform.position.z), transform.rotation, GameObject.FindGameObjectWithTag("EnemyController").transform);
+                    enemyController.AddEnemy(newEnemy);
                 }
                 else 
                 {
-                    Instantiate(enemyBeingSpawned, transform.position, transform.rotation, GameObject.FindGameObjectWithTag("EnemyController").transform);
-
+                    GameObject newEnemy = Instantiate(enemyBeingSpawned, transform.position, transform.rotation, GameObject.FindGameObjectWithTag("EnemyController").transform);
+                    enemyController.AddEnemy(newEnemy);
                 }
             }
         }

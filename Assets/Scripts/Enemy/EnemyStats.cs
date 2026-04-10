@@ -36,11 +36,30 @@ public class EnemyStats : MonoBehaviour
         {
             health = 0;
 
+            if (transform.parent.tag != "EnemyController")
+            {
+                GameObject.FindWithTag("EnemyController").GetComponent<Controller>().RemoveEnemy(transform.parent.gameObject);
+            }
+            else
+            {
+                GameObject.FindWithTag("EnemyController").GetComponent<Controller>().RemoveEnemy(gameObject);
+            }
+
             Animator animator = GetComponent<Animator>();
 
             if (animator != null )
             {
                 animator.SetTrigger("OnDeath");
+
+                NavMeshAgent agent = GetComponent<NavMeshAgent>();
+
+                if (agent == null)
+                    agent = GetComponentInParent<NavMeshAgent>();
+
+                agent.velocity = Vector3.zero;
+                agent.updatePosition = false;
+                agent.updateRotation = false;
+                agent.isStopped = true;
 
             }
             else

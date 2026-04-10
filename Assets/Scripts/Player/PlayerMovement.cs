@@ -92,17 +92,9 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         grounded = CheckGrounded();
-        CheckIfEnemiesToBeRecalculated();
     }
 
-    void CheckIfEnemiesToBeRecalculated()
-    {
-        if(!CheckIfPositionsInRange(transform.position, lastCalculatedPosition, distanceToRecalculateEnemies))
-        {
-            enemyController.SetDestinations();
-            lastCalculatedPosition = transform.position;
-        }
-    }
+
 
     private static bool CheckIfPositionsInRange(Vector3 position1, Vector3 position2, float distance)
     {

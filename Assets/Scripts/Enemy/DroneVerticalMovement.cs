@@ -28,10 +28,9 @@ public class DroneVerticalMovement : EnemyAI
 
         
     }
-    protected override void Update()
+    protected void Update()
     {
-        base.Update();
-
+        targetLocation = target.transform.position;
         sinOfTime = Mathf.Sin(Time.time * frequency + offset) * amplitude;
         yValueWithoutSin = transform.position.y - sinOfTime;
 

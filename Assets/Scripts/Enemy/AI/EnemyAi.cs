@@ -12,7 +12,8 @@ public abstract class EnemyAI : MonoBehaviour
     protected LayerMask obstacles;
     protected PlayerStats playerStats;
 
-
+    protected bool isStunned;
+    float stunTimer;
 
     protected virtual void Start()
     {
@@ -43,10 +44,10 @@ public abstract class EnemyAI : MonoBehaviour
         return !Physics.Raycast(from, direction.normalized, distance, layerMask);
     }
 
+    public virtual void CalculatePath() { }
+    public virtual void Stun(float seconds) { }
 
 
-    protected virtual void Update()
-    {
-        targetLocation = target.transform.position;
-    }
+
+
 }
