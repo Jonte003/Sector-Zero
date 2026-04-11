@@ -1,3 +1,5 @@
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class Stats
@@ -16,23 +18,22 @@ public static class Stats
     public static Stat[] GetRandomStats(int amount)
     {
         Stat[] stats = new Stat[amount];
+        List<PossibleLevelUpStats> unusedStats = new List<PossibleLevelUpStats>();
+
+        foreach (PossibleLevelUpStats stat in PossibleStats)
+        {
+            unusedStats.Add(stat);
+        }
+
+        for (int i = unusedStats.Count - 1; i > 0; i--)
+        {
+            int j = Random.Range(0, i + 1);
+            (unusedStats[i], unusedStats[j]) = (unusedStats[j], unusedStats[i]);
+        }
+
         for (int i = 0; i < amount; i++)
         {
-            stats[i] = new Stat(PossibleStats[Random.Range(0, PossibleStats.Length)]);
-            if (i > 0)
-            {
-                if (stats[i].StatType == stats[i - 1].StatType)
-                {
-                    i--;
-                }
-            }
-            else if (i > 1)
-            {
-                if (stats[i].StatType == stats[i - 1].StatType || stats[i].StatType == stats[i - 2].StatType)
-                {
-                    i--;
-                }
-            }
+            stats[i] = new Stat(unusedStats[i]);
         }
         return stats;
     }
