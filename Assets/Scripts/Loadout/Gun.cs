@@ -35,9 +35,12 @@ public class Gun : MonoBehaviour
         if (timeSinceLastShot < (1 / settings.FireRate))
             timeSinceLastShot += Time.deltaTime;
 
-        canShoot = !isReloading && timeSinceLastShot >= (1 / settings.FireRate) && currentAmmo > 0;
+        canShoot = !isReloading && timeSinceLastShot >= (1 / settings.FireRate) && currentAmmo > 0 && !Pause.IsPaused;
 
-        transform.rotation = Quaternion.Euler(transform.parent.GetComponent<PlayerLook>().xRotation, transform.parent.GetComponent<PlayerLook>().yRotation, 0);
+        transform.localRotation = Quaternion.identity;
+
+        //var look = transform.parent.GetComponent<PlayerLook>();
+        //transform.rotation = Quaternion.Euler(look.xRotation, look.yRotation, 0);
 
         if (currentAmmo == 0)
         {
@@ -217,7 +220,7 @@ public class Gun : MonoBehaviour
         float recoilX = magnitude * (Random.value < 0.5f ? -settings.RecoilMagnitude.x : settings.RecoilMagnitude.x);
         float recoilY = magnitude * settings.RecoilMagnitude.y;
 
-        transform.parent.GetComponent<PlayerLook>().AddRecoil(recoilX, recoilY);
+        transform.parent.parent.GetComponent<PlayerLook>().AddRecoil(recoilX, recoilY);
     }
     #endregion
     #endregion

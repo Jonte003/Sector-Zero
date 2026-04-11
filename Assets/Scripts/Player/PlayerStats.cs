@@ -74,7 +74,6 @@ public class PlayerStats : MonoBehaviour
 
     public void ApplyStatBuff(Stat stat)
     {
-        Debug.Log(stat.Value);
         if (stat.StatType == PossibleLevelUpStats.Hp)
         {
             hpBuffs += stat.Value;
