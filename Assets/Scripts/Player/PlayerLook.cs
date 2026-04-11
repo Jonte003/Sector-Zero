@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerLook : MonoBehaviour
 {
     [Header("Mouse Look")]
-    public int mouseSensitivity = 30;
+    public float mouseSensitivity;
     public Transform cameraObject;
 
     [HideInInspector] public float xRotation;
@@ -27,8 +27,8 @@ public class PlayerLook : MonoBehaviour
 
     void Update()
     {
-        float mx = mouseX * Time.deltaTime * mouseSensitivity;
-        float my = mouseY * Time.deltaTime * mouseSensitivity;
+        float mx = mouseX * mouseSensitivity;
+        float my = mouseY * mouseSensitivity;
 
         xRotation -= my;
         yRotation += mx;
