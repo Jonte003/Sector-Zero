@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,6 +28,10 @@ public class LevelUpUI : MonoBehaviour
     [SerializeField] private Button buttonLevelUpStats1;
     [SerializeField] private Button buttonLevelUpStats2;
     [SerializeField] private Button buttonLevelUpStats3;
+
+    [SerializeField] private GameObject buttonNewSkillBorders;
+    [SerializeField] private GameObject buttonLevelUpSkillBorders;
+    [SerializeField] private GameObject buttonLevelUpStatsBorders;
 
     private bool buttonsInteractable = false;
     private bool firstChoiceMade = false;
@@ -340,8 +345,44 @@ public class LevelUpUI : MonoBehaviour
     private IEnumerator PlaySoundThenEnableButtons()
     {
         buttonsInteractable = false;
+
+        var fadeList = new List<Image>();
+        fadeList.Add(buttonNewSkill.GetComponent<Image>());
+        fadeList.Add(buttonLevelUpSkill.GetComponent<Image>());
+        fadeList.Add(buttonLevelUpStats.GetComponent<Image>());
+
+        fadeList.AddRange(buttonNewSkillBorders.GetComponentsInChildren<Image>());
+        fadeList.AddRange(buttonLevelUpSkillBorders.GetComponentsInChildren<Image>());
+        fadeList.AddRange(buttonLevelUpStatsBorders.GetComponentsInChildren<Image>());
+
+        Image[] fadeTargets = fadeList.ToArray();
+
         audioSource.PlayOneShot(sfxLevelUp);
-        yield return new WaitForSecondsRealtime(sfxLevelUp.length);
+
+        FadeImages(fadeTargets, 0f);
+
+        float elapsed = 0f;
+        float duration = sfxLevelUp.length;
+
+        while (elapsed < duration)
+        {
+            elapsed += Time.unscaledDeltaTime;
+            float alpha = Mathf.Clamp01(elapsed / duration);
+            FadeImages(fadeTargets, alpha);
+            yield return null;
+        }
+
+        FadeImages(fadeTargets, 1f);
         buttonsInteractable = true;
+    }
+
+    private void FadeImages(Image[] fadeTargets, float alpha)
+    {
+        foreach (Image img in fadeTargets)
+        {
+            Color c = img.color;
+            c.a = alpha;
+            img.color = c;
+        }
     }
 }
