@@ -59,7 +59,7 @@ public class WeaponInfo : MonoBehaviour
         Image[] tens = { Tens1, Tens2, Tens3, Tens4, Tens5, Tens6, Tens7, Tens8, Tens9, Tens10 };
 
         int onesCount = currentAmmo % 10;
-        int tensCount = (currentAmmo / 10) % 10;
+        int tensCount = Mathf.Min(currentAmmo / 10, 10);
         int maxOnes = Mathf.Min(maxAmmo, 10);
         int maxTens = maxAmmo / 10;
 
@@ -91,12 +91,5 @@ public class WeaponInfo : MonoBehaviour
                 tens[i].color = OverCapColor;
             }
         }
-        /*
-        for (int i = 0; i < 10; i++)
-        {
-            if (i < onesCount) ones[i].color = OnesColor; else ones[i].color = EmptyColor;
-            if (i < tensCount) tens[i].color = TensColor; else tens[i].color = EmptyColor;
-        }
-        */
     }
 }

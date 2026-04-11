@@ -12238,6 +12238,10 @@ PrefabInstance:
       propertyPath: cameraObject
       value: 
       objectReference: {fileID: 1398915115}
+    - target: {fileID: 2034660336013633934, guid: 9b2aa46d77c53a64ba791028bf6261b2, type: 3}
+      propertyPath: mouseSensitivity
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4630159625239251942, guid: 9b2aa46d77c53a64ba791028bf6261b2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.3930435
@@ -12281,6 +12285,10 @@ PrefabInstance:
     - target: {fileID: 5693621853713834638, guid: 9b2aa46d77c53a64ba791028bf6261b2, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930370739747350046, guid: 9b2aa46d77c53a64ba791028bf6261b2, type: 3}
+      propertyPath: FullAuto
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
