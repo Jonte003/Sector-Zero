@@ -62,11 +62,13 @@ public class LevelUpUI : MonoBehaviour
     private void PauseTime()
     {
         Time.timeScale = 0f;
+        Pause.IsPaused = true;
     }
 
     private void UnpauseTime()
     {
         Time.timeScale = 1f;
+        Pause.IsPaused = false;
     }
     void Start()
     {

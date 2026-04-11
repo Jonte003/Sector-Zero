@@ -25,32 +25,26 @@ public class PlayerLook : MonoBehaviour
         Cursor.visible = false;
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        float mx = mouseX * mouseSensitivity;
-        float my = mouseY * mouseSensitivity;
+        Vector2 delta = Pause.IsPaused ? Vector2.zero : Mouse.current.delta.ReadValue();
+
+        float mx = delta.x * mouseSensitivity;
+        float my = delta.y * mouseSensitivity;
 
         xRotation -= my;
         yRotation += mx;
 
         xRotation = Mathf.Clamp(xRotation, -85f, 90f);
 
-        recoilCurrent = Vector2.Lerp(recoilCurrent, recoilTarget, recoilSnapSpeed * Time.deltaTime);
-
-        recoilTarget = Vector2.Lerp(recoilTarget, Vector2.zero, recoilReturnSpeed * Time.deltaTime);
+        recoilCurrent = Vector2.Lerp(recoilCurrent, recoilTarget, recoilSnapSpeed * Time.fixedDeltaTime);
+        recoilTarget = Vector2.Lerp(recoilTarget, Vector2.zero, recoilReturnSpeed * Time.fixedDeltaTime);
 
         float finalPitch = xRotation - recoilCurrent.y;
         float finalYaw = yRotation + recoilCurrent.x;
 
         transform.rotation = Quaternion.Euler(0f, finalYaw, 0f);
-        cameraObject.SetPositionAndRotation(transform.position, Quaternion.Euler(finalPitch, finalYaw, 0f));
-    }
-
-    void OnLook(InputValue input)
-    {
-        Vector2 delta = input.Get<Vector2>();
-        mouseX = delta.x;
-        mouseY = delta.y;
+        cameraObject.localRotation = Quaternion.Euler(finalPitch, 0f, 0f);
     }
 
     public void AddRecoil(float recoilX, float recoilY)
