@@ -176,6 +176,8 @@ MonoBehaviour:
   movementSpeed: 10
   deceleration: 30
   gravity: 1.5
+  distanceToRecalculateEnemies: 0
+  enemyController: {fileID: 0}
   groundMask:
     serializedVersion: 2
     m_Bits: 8
@@ -192,7 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 794164def1cb1604683b7e6c603c04c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerLook
-  mouseSensitivity: 10
+  mouseSensitivity: 0.5
   cameraObject: {fileID: 0}
   xRotation: 0
   yRotation: 0
@@ -675,7 +677,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 915947627729896082, guid: 3e6bca420a7af054ba259e77fed054ec, type: 3}
       propertyPath: m_Name
-      value: idk
+      value: Laser Rifle
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: 3e6bca420a7af054ba259e77fed054ec, type: 3}
+      propertyPath: Damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3874155523368933162, guid: 3e6bca420a7af054ba259e77fed054ec, type: 3}
+      propertyPath: GunName
+      value: Laser Rifle
       objectReference: {fileID: 0}
     - target: {fileID: 3874155523368933162, guid: 3e6bca420a7af054ba259e77fed054ec, type: 3}
       propertyPath: FireRate

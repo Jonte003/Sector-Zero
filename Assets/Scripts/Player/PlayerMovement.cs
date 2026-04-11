@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float gravity = 1;
 
     [SerializeField, Tooltip("The distance the player has to move to recalculate the paths of all enemies")] float distanceToRecalculateEnemies;
-    Controller enemyController;
+    [SerializeField] Controller enemyController;
     Vector3 lastCalculatedPosition;
     private float RealGravity => 9.81f * gravity;
 
@@ -45,7 +45,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        enemyController = GameObject.FindWithTag("EnemyController").GetComponent<Controller>();
         playerStats = GetComponent<PlayerStats>();
         characterRB = GetComponent<Rigidbody>();
         input = new();
@@ -107,6 +106,9 @@ public class PlayerMovement : MonoBehaviour
             movementVector = movementInput.x * transform.right + movementInput.z * transform.forward;
             movementVector.y = 0;
         }
+
+
+        Debug.Log(characterRB == null);
 
         Vector3 vel = characterRB.linearVelocity;
         Vector3 horizontalVel = new Vector3(vel.x, 0, vel.z);
