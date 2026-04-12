@@ -7,6 +7,8 @@ public class Gun : MonoBehaviour
 {
     [HideInInspector] public GunSettings settings;
 
+    [HideInInspector] public GunMod[] gunMods;
+
     private LayerMask Mask = 72;
 
     private Queue<BulletTracer> TracerPool;
@@ -15,7 +17,7 @@ public class Gun : MonoBehaviour
     private float reloadProgress = 0f;
 
     public float ReloadProgress => reloadProgress;
-    public float ReloadSpeed => settings.reloadSpeed;
+    public float ReloadSpeed => FinalReloadSpeed;
 
     private bool canShoot = false;
 
@@ -23,6 +25,35 @@ public class Gun : MonoBehaviour
 
     public bool CanShoot => canShoot;
 
+    private float FinalDamage => settings.Damage * (1 + AddMods().WeaponDamage);
+    private float FinalFireRate => settings.FireRate * (1 + AddMods().FireRate);
+    private float FinalMoveSpeed => settings.MoveSpeed * (1 + AddMods().MoveSpeed);
+    private float FinalMagSize => settings.MaxAmmo * (1 + AddMods().MagSize);
+    private float FinalReloadSpeed => settings.ReloadSpeed * (1 + AddMods().ReloadSpeed);
+
+    private GunMod AddMods()
+    {
+        float weaponDamage = 0f;
+        float fireRate = 0f;
+        float spread = 0f;
+        float recoil = 0f;
+        float moveSpeed = 0f;
+        float magSize = 0f;
+        float reloadSpeed = 0f;
+
+        for(int i = 0; i < gunMods.Length; i++)
+        {
+            weaponDamage += gunMods[i].WeaponDamage;
+            fireRate += gunMods[i].FireRate;
+            spread += gunMods[i].Spread;
+            recoil += gunMods[i].Recoil;
+            moveSpeed += gunMods[i].MoveSpeed;
+            magSize += gunMods[i].MagSize;
+            reloadSpeed += gunMods[i].ReloadSpeed;
+        }
+
+        return new Assignable(weaponDamage, fireRate, spread, recoil, moveSpeed, magSize, reloadSpeed);
+    }
 
     private void Awake()
     {
