@@ -27,8 +27,8 @@ public class Gun : MonoBehaviour
 
     private float FinalDamage => settings.Damage * (1 + AddMods().WeaponDamage);
     private float FinalFireRate => settings.FireRate * (1 + AddMods().FireRate);
-    private float FinalMoveSpeed => settings.MoveSpeed * (1 + AddMods().MoveSpeed);
-    private float FinalMagSize => settings.MaxAmmo * (1 + AddMods().MagSize);
+    public float FinalMoveSpeed => settings.MoveSpeed * (1 + AddMods().MoveSpeed);
+    private int FinalMagSize => (int)(settings.MaxAmmo * (1 + AddMods().MagSize));
     private float FinalReloadSpeed => settings.ReloadSpeed * (1 + AddMods().ReloadSpeed);
 
     private GunMod AddMods()
@@ -58,20 +58,17 @@ public class Gun : MonoBehaviour
     private void Awake()
     {
         settings = GetComponent<GunSettings>();
-        currentAmmo = settings.MaxAmmo;
+        currentAmmo = FinalMagSize;
     }
 
     private void Update()
     {
-        if (timeSinceLastShot < (1 / settings.FireRate))
+        if (timeSinceLastShot < (1 / FinalFireRate))
             timeSinceLastShot += Time.deltaTime;
 
-        canShoot = !isReloading && timeSinceLastShot >= (1 / settings.FireRate) && currentAmmo > 0 && !Pause.IsPaused;
+        canShoot = !isReloading && timeSinceLastShot >= (1 / FinalFireRate) && currentAmmo > 0 && !Pause.IsPaused;
 
         transform.localRotation = Quaternion.identity;
-
-        //var look = transform.parent.GetComponent<PlayerLook>();
-        //transform.rotation = Quaternion.Euler(look.xRotation, look.yRotation, 0);
 
         if (currentAmmo == 0)
         {
@@ -96,7 +93,7 @@ public class Gun : MonoBehaviour
 
     public void TryReload()
     {
-        if (!isReloading && currentAmmo < settings.MaxAmmo)
+        if (!isReloading && currentAmmo < FinalMagSize)
         {
             StartCoroutine(ReloadRoutine());
         }
@@ -113,7 +110,7 @@ public class Gun : MonoBehaviour
             yield return null;
         }
 
-        currentAmmo = settings.MaxAmmo;
+        currentAmmo = FinalMagSize;
         isReloading = false;
     }
     #endregion
@@ -182,8 +179,8 @@ public class Gun : MonoBehaviour
     {
         Transform cam = Camera.main.transform;
 
-        float spreadX = Random.Range(settings.MinSpread.x, settings.MaxSpread.x);
-        float spreadY = Random.Range(settings.MinSpread.y, settings.MaxSpread.y);
+        float spreadX = Random.Range(settings.MinSpread.x, settings.MaxSpread.x) * (1 + AddMods().Spread);
+        float spreadY = Random.Range(settings.MinSpread.y, settings.MaxSpread.y) * (1 + AddMods().Spread);
 
         Quaternion spreadRot = Quaternion.AngleAxis(spreadX, cam.up) * Quaternion.AngleAxis(spreadY, cam.right);
 
@@ -211,7 +208,7 @@ public class Gun : MonoBehaviour
 
     private float CalculateDamage(float distance)
     {
-        float baseDamage = settings.Damage;
+        float baseDamage = FinalDamage;
 
         if (settings.DamageFalloffPercentage.Length == 0 || settings.DamageFalloffRange.Length == 0)
             return baseDamage;
@@ -246,7 +243,7 @@ public class Gun : MonoBehaviour
 
     private void ApplyRecoil()
     {
-        float magnitude = Random.Range(settings.RecoilMin, settings.RecoilMax);
+        float magnitude = Random.Range(settings.RecoilMin, settings.RecoilMax) * (1 + AddMods().Recoil);
 
         float recoilX = magnitude * (Random.value < 0.5f ? -settings.RecoilMagnitude.x : settings.RecoilMagnitude.x);
         float recoilY = magnitude * settings.RecoilMagnitude.y;
@@ -260,7 +257,7 @@ public class Gun : MonoBehaviour
 
     public string CurrentAmmo()
     {
-        return currentAmmo + "/" + settings.MaxAmmo;
+        return currentAmmo + "/" + FinalMagSize;
     }
     public int CurrentAmmoInt()
     {
@@ -269,7 +266,7 @@ public class Gun : MonoBehaviour
 
     public int MaxAmmoInt()
     {
-        return settings.MaxAmmo;
+        return FinalMagSize;
     }
     #endregion
 }
