@@ -8,9 +8,10 @@ public class GunSettings : MonoBehaviour
     [Tooltip("Damage per bullet"), Header("Normal Stats")] public float Damage;
     [Tooltip("Amount of bullets fired per second")] public float FireRate;
     [Tooltip("The Range you can shoot in unity units")] public float Range;
-    [Tooltip("The amount of seconds it takes to reload")] public float reloadSpeed;
+    [Tooltip("The amount of seconds it takes to reload")] public float ReloadSpeed;
     [Tooltip("The amount of seconds it takes to reload")] public int MaxAmmo;
     [Tooltip("If you can hold to shoot multiple bullets")] public bool FullAuto;
+    [Tooltip("Movement speed modifier while holding the weapon")] public float MoveSpeed;
 
     // Damage Falloff
     [Tooltip("Percentage of normal damage connected to the set range"), Header("Damage Falloff")] public float[] DamageFalloffPercentage;
