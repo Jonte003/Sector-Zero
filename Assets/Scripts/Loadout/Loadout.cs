@@ -3,7 +3,7 @@ using UnityEngine;
 public class Loadout : MonoBehaviour
 {
     public Gun Gun { get; set; }
-    //public GunMods[] GunMods { get; private set; }
+    public GunMod[] GunMods { get; private set; }
     public Ability Ability1 { get;  set; }
     public Ability Ability2 { get;  set; }
     public Ability Ability3 { get;  set; }
