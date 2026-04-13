@@ -1,6 +1,7 @@
 using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthBar : MonoBehaviour
 {
@@ -30,7 +31,10 @@ public class HealthBar : MonoBehaviour
         if (playerStats.CurrentHealth <= 0)
         {
             healthText.text = "DEAD";
-            //Loss condition trigger
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            SceneManager.LoadScene("Title Screen");
+            //TODO: Add post-game screen with stats and option to return to title screen, play again or change loadout
         }
     }
 }
