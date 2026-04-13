@@ -1988,7 +1988,6 @@ MonoBehaviour:
   reach: 4
   speed: 5
   currentState: 0
-  agentRadius: 2.5
   whitinHitDistance: 0
 --- !u!114 &-6038927486889961266
 MonoBehaviour:
@@ -2004,10 +2003,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GroundEnemyStats
   timeToSpawn: 1
   expDrop: 3
-  healthMultiplier: 1
+  healthMultiplier: 1.1
   baseHealth: 7
-  baseDPS: 1
-  DPSMultiplier: 1
+  baseDPS: 1.5
+  DPSMultiplier: 1.1
 --- !u!195 &-4237273874222029259
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2017,7 +2016,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 5092939406025795021}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 3
+  m_Radius: 1.5
   m_Speed: 4
   m_Acceleration: 20
   avoidancePriority: 50

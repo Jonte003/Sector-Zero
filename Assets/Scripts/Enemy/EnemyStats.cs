@@ -37,6 +37,7 @@ public class EnemyStats : MonoBehaviour
             health = 0;
 
             GameObject.FindGameObjectWithTag("EnemyController").GetComponent<Controller>().AddExperiece(expDrop);
+            expDrop = 0; //Required to stop exp multiple times when using shotgun
 
             if (transform.parent.tag != "EnemyController")
             {
