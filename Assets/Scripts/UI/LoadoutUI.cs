@@ -117,7 +117,7 @@ public class LoadoutUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI magazineHeaderText;
     [SerializeField] private TextMeshProUGUI muzzleHeaderText;
 
-    private Gun activeGun;
+    private GunSettings activeGun;
     private GunMod activeBarrel;
     private GunMod activeGrip;
     private GunMod activeStock;
@@ -133,7 +133,7 @@ public class LoadoutUI : MonoBehaviour
 
     void Start()
     {
-        gunTypeButtons = new Button[] { assaultRifle, burstRifle, laserRifle, pistol, shotgun, submachineGun };
+        gunTypeButtons = new Button[] { assaultRifle, burstRifle, pistol, shotgun, submachineGun };
         barrelButtons = new Button[] { basicBarrel, shortBarrel, longBarrel, portedBarrel };
         gripButtons = new Button[] { basicGrip, verticalGrip, angledGrip, ergonomicGrip };
         stockButtons = new Button[] { basicStock, heavyStock, lightStock, balancedStock };
@@ -146,7 +146,7 @@ public class LoadoutUI : MonoBehaviour
         OnClickedBasicStock();
         OnClickedBasicMagazine();
         OnClickedBasicMuzzle();
-
+        Debug.Log("Initialized gun and mods");
         InitializeAbilityList();
 
         foreach (Ability ability in abilitiesList)
@@ -205,7 +205,7 @@ public class LoadoutUI : MonoBehaviour
     #region Buttons Gun Types
     public void OnClickedAssaultRifle()
     {
-        //activeGun = new Gun(); //How do we make this a gun type? Works differently than the gun mods.
+        activeGun = GunSettings.AssaultRifle;
         foreach (Button button in gunTypeButtons)
         {
             button.GetComponent<Image>().color = inactiveColor;
@@ -214,25 +214,16 @@ public class LoadoutUI : MonoBehaviour
     }
     public void OnClickedBurstRifle()
     {
-        //activeGun = new Gun(); //How do we make this a gun type? Works differently than the gun mods.
+        activeGun = GunSettings.BurstRifle;
         foreach (Button button in gunTypeButtons)
         {
             button.GetComponent<Image>().color = inactiveColor;
         }
         burstRifle.GetComponent<Image>().color = activeColor;
     }
-    public void OnClickedLaserRifle()
-    {
-        //activeGun = new Gun(); //How do we make this a gun type? Works differently than the gun mods.
-        foreach (Button button in gunTypeButtons)
-        {
-            button.GetComponent<Image>().color = inactiveColor;
-        }
-        laserRifle.GetComponent<Image>().color = activeColor;
-    }
     public void OnClickedPistol()
     {
-        //activeGun = new Gun(); //How do we make this a gun type? Works differently than the gun mods.
+        activeGun = GunSettings.Pistol;
         foreach (Button button in gunTypeButtons)
         {
             button.GetComponent<Image>().color = inactiveColor;
@@ -241,7 +232,7 @@ public class LoadoutUI : MonoBehaviour
     }
     public void OnClickedShotgun()
     {
-        //activeGun = new Gun(); //How do we make this a gun type? Works differently than the gun mods.
+        activeGun = GunSettings.Shotgun;
         foreach (Button button in gunTypeButtons)
         {
             button.GetComponent<Image>().color = inactiveColor;
@@ -250,7 +241,7 @@ public class LoadoutUI : MonoBehaviour
     }
     public void OnClickedSubmachineGun()
     {
-        //activeGun = new Gun(); //How do we make this a gun type? Works differently than the gun mods.
+        activeGun = GunSettings.Smg;
         foreach (Button button in gunTypeButtons)
         {
             button.GetComponent<Image>().color = inactiveColor;
@@ -451,13 +442,13 @@ public class LoadoutUI : MonoBehaviour
 
     void Update()
     {
-        float baseWeaponDamage = 100; //this should be gun type base damage
-        float baseFireRate = 100; //this should be gun type base fire rate
-        float baseSpread = 100; //this should be gun type base spread
-        float baseRecoil = 100; //this should be gun type base recoil
-        float baseMovementSpeed = 100; //this should be gun type base movement speed
-        float baseMagazineSize = 100; //this should be gun type base magazine size
-        float baseReloadSpeed = 100; //this should be gun type base reload speed
+        float baseWeaponDamage = activeGun.Damage;
+        float baseFireRate = activeGun.FireRate;
+        Vector2 baseSpread = activeGun.MaxSpread;
+        Vector2 baseRecoil = activeGun.RecoilMagnitude;
+        float baseMovementSpeed = activeGun.MoveSpeed;
+        float baseMagazineSize = activeGun.MaxAmmo;
+        float baseReloadSpeed = activeGun.ReloadSpeed;
 
         float totalMultiplierWeaponDamage = activeBarrel.WeaponDamage + activeGrip.WeaponDamage + activeStock.WeaponDamage + activeMagazine.WeaponDamage + activeMuzzle.WeaponDamage;
         float totalMultiplierFireRate = activeBarrel.FireRate     + activeGrip.FireRate     + activeStock.FireRate     + activeMagazine.FireRate     + activeMuzzle.FireRate;

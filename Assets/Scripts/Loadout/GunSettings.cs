@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GunSettings : MonoBehaviour
+public class GunSettings
 {
     public string GunName;
 
@@ -67,11 +67,9 @@ public class GunSettings : MonoBehaviour
         RecoilMax = recoilMax;
 
         TracerPoolSize = tracerPoolSize;
-
-        Muzzle = transform.Find("Body").Find("Muzzle");
     }
 
-    public static GunSettings AssaultRifle => new
+    public static GunSettings AssaultRifle = new
         (
             "Assault Rifle",
             7f, 4f, 150f, 2.5f, 35, true, 1f,
