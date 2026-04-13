@@ -3,7 +3,7 @@ using UnityEngine;
 public class Loadout : MonoBehaviour
 {
     public Gun Gun { get; set; }
-    //public GunMods[] GunMods { get; private set; }
+    public GunMod[] GunMods { get; private set; }
     public Ability Ability1 { get;  set; }
     public Ability Ability2 { get;  set; }
     public Ability Ability3 { get;  set; }
@@ -24,5 +24,15 @@ public class Loadout : MonoBehaviour
             abilities[i] = AbilitiesInBag[Random.Range(0, AbilitiesInBag.Length)];
         }
         return abilities;
+    }
+
+    private void Start()
+    {
+        Gun = LoadoutManager.Gun;
+        GunMods = LoadoutManager.GunMods;
+        Ability1 = LoadoutManager.Ability1;
+        Ability2 = LoadoutManager.Ability2;
+        Ability3 = LoadoutManager.Ability3;
+        AbilitiesInBag = LoadoutManager.AbilitiesInBag;
     }
 }
