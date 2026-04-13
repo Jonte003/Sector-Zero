@@ -25,4 +25,14 @@ public class Loadout : MonoBehaviour
         }
         return abilities;
     }
+
+    private void Start()
+    {
+        Gun = LoadoutManager.Gun;
+        GunMods = LoadoutManager.GunMods;
+        Ability1 = LoadoutManager.Ability1;
+        Ability2 = LoadoutManager.Ability2;
+        Ability3 = LoadoutManager.Ability3;
+        AbilitiesInBag = LoadoutManager.AbilitiesInBag;
+    }
 }
