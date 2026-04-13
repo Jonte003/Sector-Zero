@@ -128,6 +128,9 @@ public class LoadoutUI : MonoBehaviour
     private List<Ability> abilitiesList;
     private int activeAbilityCount = 0;
 
+    private List<TextMeshProUGUI> gunModTexts;
+    private List<TextMeshProUGUI> gunModTextsReversed;
+
     [SerializeField] private Button abilityButtonPrefab;
     [SerializeField] private Transform abilityButtonGridParent;
     [SerializeField] private TextMeshProUGUI activeAbilityCountText;
@@ -146,6 +149,21 @@ public class LoadoutUI : MonoBehaviour
         stockButtons = new Button[] { basicStock, heavyStock, lightStock, balancedStock };
         magazineButtons = new Button[] { basicMagazine, extendedMagazine, drumMagazine, fastMagazine };
         muzzleButtons = new Button[] { basicMuzzle, suppressor, muzzleBreak, compensator };
+
+        gunModTexts = new List<TextMeshProUGUI>()
+        {
+            barrelMultiplierWeaponDamageText, gripMultiplierWeaponDamageText, stockMultiplierWeaponDamageText, magazineMultiplierWeaponDamageText, muzzleMultiplierWeaponDamageText,
+            barrelMultiplierFireRateText, gripMultiplierFireRateText, stockMultiplierFireRateText, magazineMultiplierFireRateText, muzzleMultiplierFireRateText,
+            barrelMultiplierMovementSpeedText, gripMultiplierMovementSpeedText, stockMultiplierMovementSpeedText, magazineMultiplierMovementSpeedText, muzzleMultiplierMovementSpeedText,
+            barrelMultiplierMagazineSizeText, gripMultiplierMagazineSizeText, stockMultiplierMagazineSizeText, magazineMultiplierMagazineSizeText, muzzleMultiplierMagazineSizeText,
+            barrelMultiplierReloadSpeedText, gripMultiplierReloadSpeedText, stockMultiplierReloadSpeedText, magazineMultiplierReloadSpeedText, muzzleMultiplierReloadSpeedText
+        };
+
+        gunModTextsReversed = new List<TextMeshProUGUI>()
+        {
+            barrelMultiplierSpreadText, gripMultiplierSpreadText, stockMultiplierSpreadText, magazineMultiplierSpreadText, muzzleMultiplierSpreadText,
+            barrelMultiplierRecoilText, gripMultiplierRecoilText, stockMultiplierRecoilText, magazineMultiplierRecoilText, muzzleMultiplierRecoilText
+        };
 
         OnClickedAssaultRifle();
         OnClickedBasicBarrel();
@@ -582,5 +600,37 @@ public class LoadoutUI : MonoBehaviour
             }
         }
         activeAbilityCountText.text = activeAbilityCount.ToString() + "/10 abilities";
+
+        foreach (TextMeshProUGUI text in gunModTexts)
+        {
+            if (text.text.StartsWith("-"))
+            {
+                text.color = Color.red;
+            }
+            else if (text.text == "0,00")
+            {
+                text.color = Color.white;
+            }
+            else
+            {
+                text.color = Color.green;
+            }
+        }
+
+        foreach (TextMeshProUGUI text in gunModTextsReversed)
+        {
+            if (text.text.StartsWith("-"))
+            {
+                text.color = Color.green;
+            }
+            else if (text.text == "0,00")
+            {
+                text.color = Color.white;
+            }
+            else
+            {
+                text.color = Color.red;
+            }
+        }
     }
 }
