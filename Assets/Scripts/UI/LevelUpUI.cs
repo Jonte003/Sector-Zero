@@ -129,9 +129,9 @@ public class LevelUpUI : MonoBehaviour
 
         abilityChoices = player.GetComponent<Loadout>().GetRandomAbilities(3);
 
-        statsPanel.transform.Find("Choices").Find("Button New Skill 1").GetComponent<TooltipTrigger>().tooltipText = $"{abilityChoices[0].name}";
-        statsPanel.transform.Find("Choices").Find("Button New Skill 2").GetComponent<TooltipTrigger>().tooltipText = $"{abilityChoices[1].name}";
-        statsPanel.transform.Find("Choices").Find("Button New Skill 3").GetComponent<TooltipTrigger>().tooltipText = $"{abilityChoices[2].name}";
+        newSkillPanel.transform.Find("Choices").Find("Button New Skill 1").GetComponent<TooltipTrigger>().tooltipText = $"{abilityChoices[0].Name}";
+        newSkillPanel.transform.Find("Choices").Find("Button New Skill 2").GetComponent<TooltipTrigger>().tooltipText = $"{abilityChoices[1].Name}";
+        newSkillPanel.transform.Find("Choices").Find("Button New Skill 3").GetComponent<TooltipTrigger>().tooltipText = $"{abilityChoices[2].Name}";
 
         newSkillPanel.SetActive(true);
         firstChoiceMade = true;
@@ -147,9 +147,9 @@ public class LevelUpUI : MonoBehaviour
             return;
         }
 
-        statsPanel.transform.Find("Choices").Find("Button Level Up Skill 1").GetComponent<TooltipTrigger>().tooltipText = playerLoadout.Ability1 != null ? $"{playerLoadout.Ability1.name} (Level {playerLoadout.Ability1.Level}/5)" : "Empty Slot";
-        statsPanel.transform.Find("Choices").Find("Button Level Up Skill 2").GetComponent<TooltipTrigger>().tooltipText = playerLoadout.Ability2 != null ? $"{playerLoadout.Ability2.name} (Level {playerLoadout.Ability2.Level}/5)" : "Empty Slot";
-        statsPanel.transform.Find("Choices").Find("Button Level Up Skill 3").GetComponent<TooltipTrigger>().tooltipText = playerLoadout.Ability3 != null ? $"{playerLoadout.Ability3.name} (Level {playerLoadout.Ability3.Level}/5)" : "Empty Slot";
+        levelUpSkillPanel.transform.Find("Choices").Find("Button Level Up Skill 1").GetComponent<TooltipTrigger>().tooltipText = playerLoadout.Ability1 != null ? $"{playerLoadout.Ability1.Name} (Level {playerLoadout.Ability1.Level}/5)" : "Empty Slot";
+        levelUpSkillPanel.transform.Find("Choices").Find("Button Level Up Skill 2").GetComponent<TooltipTrigger>().tooltipText = playerLoadout.Ability2 != null ? $"{playerLoadout.Ability2.Name} (Level {playerLoadout.Ability2.Level}/5)" : "Empty Slot";
+        levelUpSkillPanel.transform.Find("Choices").Find("Button Level Up Skill 3").GetComponent<TooltipTrigger>().tooltipText = playerLoadout.Ability3 != null ? $"{playerLoadout.Ability3.Name} (Level {playerLoadout.Ability3.Level}/5)" : "Empty Slot";
 
         levelUpSkillPanel.SetActive(true);
         firstChoiceMade = true;

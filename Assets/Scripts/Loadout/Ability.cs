@@ -2,35 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Ability : MonoBehaviour
+public abstract class Ability
 {
-    public void Run(GameObject player, List<GameObject> enemies)
+    public float CurrentCD { get; set; }
+    public int Level { get; set; } = 1;
+
+    protected abstract float CD { get; }
+    protected abstract float CooldownPerLevel { get; }
+    public abstract string Description { get; }
+    public abstract bool NotYetImplemented { get; }
+    public abstract AbilityCategory Category { get; }
+    public abstract Sprite Icon { get; }
+    public abstract string Name { get; }
+    public bool Enabled { get; set; } = false;
+
+    protected abstract IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies);
+
+    public void Run(GameObject player, List<GameObject> enemies, MonoBehaviour runner)
     {
         if (CurrentCD > 0)
             return;
 
-        StartCoroutine(AbilityRoutine(player, enemies));
+        Debug.Log(Name + " used");
 
-        CurrentCD = (CD - CooldownPerLevel * (Level - 1)) * (100 / (100 + player.GetComponent<PlayerStats>().abilityHasteBuffs));
+        runner.StartCoroutine(AbilityRoutine(player, enemies));
+
+        CurrentCD = (CD - CooldownPerLevel * (Level - 1)) *
+                    (100 / (100 + player.GetComponent<PlayerStats>().abilityHasteBuffs));
     }
-
-    protected virtual IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
-    {
-        yield return null;
-    }
-    public float CurrentCD { get; set; }
-    protected abstract float CD { get; }
-    public int Level { get; set; } = 1;
-    protected abstract float CooldownPerLevel { get; }
-    public abstract string Description { get; }
-
-    public abstract bool NotYetImplemented { get; }
-
-    public abstract AbilityCategory Category { get; }
-
-    public abstract Sprite Icon { get; }
-    public abstract string Name { get; }
-    public bool Enabled { get; set; } = false;
 }
 
 public enum AbilityCategory
@@ -42,6 +41,7 @@ public enum AbilityCategory
 
 public class Explosion : Ability
 {
+    public Explosion() { }
     public override bool NotYetImplemented => false;
     public override string Name => "Explosion";
     public override Sprite Icon => Resources.Load<Sprite>("Explosion");
@@ -81,6 +81,7 @@ public class Explosion : Ability
 
 public class Knockback : Ability
 {
+    public Knockback() { }
     public override bool NotYetImplemented => false;
     public override string Name => "Knockback";
     public override Sprite Icon => Resources.Load<Sprite>("Knockback");
@@ -119,6 +120,7 @@ public class Knockback : Ability
 
 public class Dash : Ability
 {
+    public Dash() { }
     public override bool NotYetImplemented => false;
     public override string Name => "Dash";
     public override Sprite Icon => Resources.Load<Sprite>("Dash");
@@ -140,6 +142,7 @@ public class Dash : Ability
 
 public class Leap : Ability
 {
+    public Leap() { }
     public override bool NotYetImplemented => false;
     public override string Name => "Leap";
     public override Sprite Icon => Resources.Load<Sprite>("Leap");
@@ -161,6 +164,7 @@ public class Leap : Ability
 
 public class Jump : Ability
 {
+    public Jump() { }
     public override bool NotYetImplemented => false;
     public override string Name => "Jump";
     public override Sprite Icon => Resources.Load<Sprite>("Jump");
@@ -182,6 +186,7 @@ public class Jump : Ability
 
 public class Fortify : Ability
 {
+    public Fortify() { }
     public override bool NotYetImplemented => false;
     public override string Name => "Fortify";
     public override Sprite Icon => Resources.Load<Sprite>("Fortify");
@@ -216,6 +221,7 @@ public class Fortify : Ability
 
 public class Invincible : Ability
 {
+    public Invincible() { }
     public override bool NotYetImplemented => false;
     public override string Name => "Invincible";
     public override Sprite Icon => Resources.Load<Sprite>("Invincible");
@@ -241,6 +247,7 @@ public class Invincible : Ability
 
 public class ChainLightning : Ability
 {
+    public ChainLightning() { }
     public override bool NotYetImplemented => false;
     public override string Name => "Chain Lightning";
     public override Sprite Icon => Resources.Load<Sprite>("ChainLightning");
@@ -295,6 +302,7 @@ public class ChainLightning : Ability
 
 public class Eruption : Ability
 {
+    public Eruption() { }
     public override bool NotYetImplemented => false;
     public override string Name => "Eruption";
     public override Sprite Icon => Resources.Load<Sprite>("Eruption");
@@ -327,6 +335,7 @@ public class Eruption : Ability
 
 public class Blink : Ability
 {
+    public Blink() { }
     public override bool NotYetImplemented => true;
     public override string Name => "Blink";
     public override Sprite Icon => Resources.Load<Sprite>("Blink");
@@ -350,6 +359,7 @@ public class Blink : Ability
 
 public class Charge : Ability
 {
+    public Charge() { }
     public override bool NotYetImplemented => false;
     public override string Name => "Charge";
     public override Sprite Icon => Resources.Load<Sprite>("Charge");
@@ -389,6 +399,7 @@ public class Charge : Ability
 
 public class VitalSurge : Ability
 {
+    public VitalSurge() { }
     public override bool NotYetImplemented => false;
     public override string Name => "Vital Surge";
     public override Sprite Icon => Resources.Load<Sprite>("VitalSurge");
@@ -417,6 +428,7 @@ public class VitalSurge : Ability
 
 public class Backstep : Ability
 {
+    public Backstep() { }
     public override bool NotYetImplemented => false;
     public override string Name => "Backstep";
     public override Sprite Icon => Resources.Load<Sprite>("Backstep");
@@ -438,6 +450,7 @@ public class Backstep : Ability
 
 public class MomentumShift : Ability
 {
+    public MomentumShift() { }
     public override bool NotYetImplemented => false;
     public override string Name => "Momentum Shift";
     public override Sprite Icon => Resources.Load<Sprite>("MomentumShift");
@@ -461,6 +474,7 @@ public class MomentumShift : Ability
 
 public class GroundSlam : Ability
 {
+    public GroundSlam() { }
     public override bool NotYetImplemented => false;
     public override string Name => "Ground Slam";
     public override Sprite Icon => Resources.Load<Sprite>("GroundSlam");

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -138,6 +139,7 @@ public class LoadoutUI : MonoBehaviour
     [SerializeField] private GameObject pistolObj;
     [SerializeField] private GameObject smgObj;
 
+
     void Start()
     {
         gunTypeButtons = new Button[] { assaultRifle, burstRifle, pistol, shotgun, submachineGun };
@@ -186,41 +188,38 @@ public class LoadoutUI : MonoBehaviour
     }
     void InitializeAbilityList()
     {
-        abilitiesList = new List<Ability>();
-        abilitiesList.Add(new Backstep());
-        abilitiesList.Add(new Blink());
-        abilitiesList.Add(new ChainLightning());
-        abilitiesList.Add(new Charge());
-        abilitiesList.Add(new Dash());
-        abilitiesList.Add(new Eruption());
-        abilitiesList.Add(new Explosion());
-        abilitiesList.Add(new Fortify());
-        abilitiesList.Add(new GroundSlam());
-        abilitiesList.Add(new Invincible());
-        abilitiesList.Add(new Jump());
-        abilitiesList.Add(new Knockback());
-        abilitiesList.Add(new Leap());
-        abilitiesList.Add(new VitalSurge());
+        abilitiesList = new List<Ability>
+        {
+            new Backstep(),
+            new Blink(),
+            new ChainLightning(),
+            new Charge(),
+            new Dash(),
+            new Eruption(),
+            new Explosion(),
+            new Fortify(),
+            new GroundSlam(),
+            new Invincible(),
+            new Jump(),
+            new Knockback(),
+            new Leap(),
+            new VitalSurge()
+        };
     }
 
-    Ability[] MakeActiveAbilityLoadout()
+    Type[] MakeActiveAbilityLoadout()
     {
-        Ability[] activeAbilityLoadout = new Ability[10];
-        int index = 0;
+        List<Type> selected = new List<Type>();
+
         foreach (Ability ability in abilitiesList)
         {
             if (ability.Enabled)
-            {
-                activeAbilityLoadout[index] = ability;
-                index++;
-                if (index >= 10)
-                {
-                    break;
-                }
-            }
+                selected.Add(ability.GetType());
         }
-        return activeAbilityLoadout;
+
+        return selected.ToArray();
     }
+
 
     int CountActiveAbilities()
     {
@@ -237,7 +236,7 @@ public class LoadoutUI : MonoBehaviour
         // Ensure that the player has selected 10 abilities before starting the game.
 
         LoadoutManager.GunPrefab = activeGunPrefab;
-        LoadoutManager.AbilitiesInBag = MakeActiveAbilityLoadout();
+        LoadoutManager.AbilityTypesInBag = MakeActiveAbilityLoadout();
         LoadoutManager.Settings = activeGun;
         LoadoutManager.GunMods = new GunMod[] { activeBarrel, activeGrip, activeStock, activeMagazine, activeMuzzle };
         SceneManager.LoadScene("Gameplay");

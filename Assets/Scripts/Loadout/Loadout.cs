@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Loadout : MonoBehaviour
@@ -11,20 +12,50 @@ public class Loadout : MonoBehaviour
 
     public void UpdateCooldowns()
     {
-        Ability1.CurrentCD = Mathf.Max(0, Ability1.CurrentCD - Time.deltaTime);
-        Ability2.CurrentCD = Mathf.Max(0, Ability2.CurrentCD - Time.deltaTime);
-        Ability3.CurrentCD = Mathf.Max(0, Ability3.CurrentCD - Time.deltaTime);
+        if (Ability1 != null)
+        {
+            Ability1.CurrentCD = Mathf.Max(0, Ability1.CurrentCD - Time.deltaTime);
+        }
+        if (Ability2 != null)
+        {
+            Ability2.CurrentCD = Mathf.Max(0, Ability2.CurrentCD - Time.deltaTime);
+        }
+        if (Ability3 != null)
+        {
+            Ability3.CurrentCD = Mathf.Max(0, Ability3.CurrentCD - Time.deltaTime);
+        }
     }
 
     public Ability[] GetRandomAbilities(int amount)
     {
-        Ability[] abilities = new Ability[amount];
+        AbilityManager am = transform.Find("AbilityManager").GetComponent<AbilityManager>();
+
+        List<Ability> pool = new List<Ability>(am.abilities);
+
+        Loadout loadout = GetComponent<Loadout>();
+
+        pool.Remove(loadout.Ability1);
+        pool.Remove(loadout.Ability2);
+        pool.Remove(loadout.Ability3);
+
+        Ability[] result = new Ability[amount];
+
         for (int i = 0; i < amount; i++)
         {
-            abilities[i] = AbilitiesInBag[Random.Range(0, AbilitiesInBag.Length)];
+            if (pool.Count == 0)
+            {
+                Debug.LogError("Not enough abilities in pool to pick from!");
+                break;
+            }
+
+            int index = Random.Range(0, pool.Count);
+            result[i] = pool[index];
+            pool.RemoveAt(index);
         }
-        return abilities;
+
+        return result;
     }
+
 
     private void Awake()
     {
@@ -35,14 +66,18 @@ public class Loadout : MonoBehaviour
 
         Gun = gun.GetComponent<Gun>();
         GunMods = LoadoutManager.GunMods;
-        Ability1 = LoadoutManager.Ability1;
-        Ability2 = LoadoutManager.Ability2;
-        Ability3 = LoadoutManager.Ability3;
-        AbilitiesInBag = LoadoutManager.AbilitiesInBag;
-        GunMods = LoadoutManager.GunMods;
 
         gun.GetComponent<Gun>().gunMods = GunMods;
         gun.GetComponent<Gun>().settings = LoadoutManager.Settings;
+
+        var abilityManager = transform.Find("AbilityManager").GetComponent<AbilityManager>();
+        abilityManager.InitializeAbilities(LoadoutManager.AbilityTypesInBag);
+
         GetComponent<PlayerShoot>().SetGun();
+    }
+
+    private void Update()
+    {
+        UpdateCooldowns();
     }
 }

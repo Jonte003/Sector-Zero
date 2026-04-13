@@ -114,9 +114,6 @@ public class PlayerMovement : MonoBehaviour
             movementVector.y = 0;
         }
 
-
-        Debug.Log(characterRB == null);
-
         Vector3 vel = characterRB.linearVelocity;
         Vector3 horizontalVel = new Vector3(vel.x, 0, vel.z);
         Vector3 targetVel = movementVector * FinalSpeed;

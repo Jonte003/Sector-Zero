@@ -57,7 +57,6 @@ public class PlayerShoot : MonoBehaviour
 
     private void Reload()
     {
-        Debug.Log(gun.settings.ReloadSpeed);
         gun.TryReload();
     }
 }

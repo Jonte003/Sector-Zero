@@ -1,11 +1,10 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
     PlayerLevels playerLevels;
-    List<Transform> allEnemies;
+    public List<Transform> allEnemies;
 
     Queue<EnemyAI> enemyQueue;
     void Start()

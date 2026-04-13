@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 public static class LoadoutManager
 {
@@ -7,7 +8,7 @@ public static class LoadoutManager
     public static Ability Ability1 { get; set; }
     public static Ability Ability2 { get; set; }
     public static Ability Ability3 { get; set; }
-    public static Ability[] AbilitiesInBag { get; set; }
+    public static Type[] AbilityTypesInBag { get; set; }
     public static GameObject GunPrefab { get; set; }
     public static GunSettings Settings { get; set; }
 }
