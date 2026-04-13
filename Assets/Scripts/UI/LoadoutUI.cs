@@ -224,6 +224,11 @@ public class LoadoutUI : MonoBehaviour
         LoadoutManager.GunMods = new GunMod[] { activeBarrel, activeGrip, activeStock, activeMagazine, activeMuzzle };
         SceneManager.LoadScene("Gameplay");
     }
+
+    public void OnClickedTitleScreen()
+    {
+        SceneManager.LoadScene("Title Screen");
+    }
     #region Buttons Gun Types
     public void OnClickedAssaultRifle()
     {
