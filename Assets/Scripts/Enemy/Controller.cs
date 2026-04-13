@@ -41,7 +41,6 @@ public class Controller : MonoBehaviour
 
         if (firstenemy == null)
         {
-            allEnemies.Remove(firstenemy.transform);
             return; //Enemy has died
         }
 

@@ -36,6 +36,8 @@ public class EnemyStats : MonoBehaviour
         {
             health = 0;
 
+            GameObject.FindGameObjectWithTag("EnemyController").GetComponent<Controller>().AddExperiece(expDrop);
+
             if (transform.parent.tag != "EnemyController")
             {
                 GameObject.FindWithTag("EnemyController").GetComponent<Controller>().RemoveEnemy(transform.parent.gameObject);
@@ -74,7 +76,6 @@ public class EnemyStats : MonoBehaviour
     public void SelfDestroyGameObject()
     {
 
-        GameObject.FindGameObjectWithTag("EnemyController").GetComponent<Controller>().AddExperiece(expDrop);
         
         if (transform.parent.GetComponent<NavMeshAgent>() != null) //If gameobject is a drone destoy its parent otherwise only destoy current gameobject
         {
