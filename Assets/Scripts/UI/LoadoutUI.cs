@@ -47,32 +47,74 @@ public class LoadoutUI : MonoBehaviour
     [SerializeField] private Color inactiveColor = Color.darkGray;
 
     [SerializeField] private TextMeshProUGUI baseWeaponDamageText;
-    [SerializeField] private TextMeshProUGUI multiplierWeaponDamageText;
-    [SerializeField] private TextMeshProUGUI totalWeaponDamageText;
+    [SerializeField] private TextMeshProUGUI barrelMultiplierWeaponDamageText;
+    [SerializeField] private TextMeshProUGUI gripMultiplierWeaponDamageText;
+    [SerializeField] private TextMeshProUGUI stockMultiplierWeaponDamageText;
+    [SerializeField] private TextMeshProUGUI magazineMultiplierWeaponDamageText;
+    [SerializeField] private TextMeshProUGUI muzzleMultiplierWeaponDamageText;
+    [SerializeField] private TextMeshProUGUI totalMultiplierWeaponDamageText;
+    [SerializeField] private TextMeshProUGUI resultWeaponDamageText;
 
     [SerializeField] private TextMeshProUGUI baseFireRateText;
-    [SerializeField] private TextMeshProUGUI multiplierFireRateText;
-    [SerializeField] private TextMeshProUGUI totalFireRateText;
+    [SerializeField] private TextMeshProUGUI barrelMultiplierFireRateText;
+    [SerializeField] private TextMeshProUGUI gripMultiplierFireRateText;
+    [SerializeField] private TextMeshProUGUI stockMultiplierFireRateText;
+    [SerializeField] private TextMeshProUGUI magazineMultiplierFireRateText;
+    [SerializeField] private TextMeshProUGUI muzzleMultiplierFireRateText;
+    [SerializeField] private TextMeshProUGUI totalMultiplierFireRateText;
+    [SerializeField] private TextMeshProUGUI resultFireRateText;
 
     [SerializeField] private TextMeshProUGUI baseSpreadText;
-    [SerializeField] private TextMeshProUGUI multiplierSpreadText;
-    [SerializeField] private TextMeshProUGUI totalSpreadText;
+    [SerializeField] private TextMeshProUGUI barrelMultiplierSpreadText;
+    [SerializeField] private TextMeshProUGUI gripMultiplierSpreadText;
+    [SerializeField] private TextMeshProUGUI stockMultiplierSpreadText;
+    [SerializeField] private TextMeshProUGUI magazineMultiplierSpreadText;
+    [SerializeField] private TextMeshProUGUI muzzleMultiplierSpreadText;
+    [SerializeField] private TextMeshProUGUI totalMultiplierSpreadText;
+    [SerializeField] private TextMeshProUGUI resultSpreadText;
 
     [SerializeField] private TextMeshProUGUI baseRecoilText;
-    [SerializeField] private TextMeshProUGUI multiplierRecoilText;
-    [SerializeField] private TextMeshProUGUI totalRecoilText;
+    [SerializeField] private TextMeshProUGUI barrelMultiplierRecoilText;
+    [SerializeField] private TextMeshProUGUI gripMultiplierRecoilText;
+    [SerializeField] private TextMeshProUGUI stockMultiplierRecoilText;
+    [SerializeField] private TextMeshProUGUI magazineMultiplierRecoilText;
+    [SerializeField] private TextMeshProUGUI muzzleMultiplierRecoilText;
+    [SerializeField] private TextMeshProUGUI totalMultiplierRecoilText;
+    [SerializeField] private TextMeshProUGUI resultRecoilText;
 
     [SerializeField] private TextMeshProUGUI baseMovementSpeedText;
-    [SerializeField] private TextMeshProUGUI multiplierMovementSpeedText;
-    [SerializeField] private TextMeshProUGUI totalMovementSpeedText;
+    [SerializeField] private TextMeshProUGUI barrelMultiplierMovementSpeedText;
+    [SerializeField] private TextMeshProUGUI gripMultiplierMovementSpeedText;
+    [SerializeField] private TextMeshProUGUI stockMultiplierMovementSpeedText;
+    [SerializeField] private TextMeshProUGUI magazineMultiplierMovementSpeedText;
+    [SerializeField] private TextMeshProUGUI muzzleMultiplierMovementSpeedText;
+    [SerializeField] private TextMeshProUGUI totalMultiplierMovementSpeedText;
+    [SerializeField] private TextMeshProUGUI resultMovementSpeedText;
 
     [SerializeField] private TextMeshProUGUI baseMagazineSizeText;
-    [SerializeField] private TextMeshProUGUI multiplierMagazineSizeText;
-    [SerializeField] private TextMeshProUGUI totalMagazineSizeText;
+    [SerializeField] private TextMeshProUGUI barrelMultiplierMagazineSizeText;
+    [SerializeField] private TextMeshProUGUI gripMultiplierMagazineSizeText;
+    [SerializeField] private TextMeshProUGUI stockMultiplierMagazineSizeText;
+    [SerializeField] private TextMeshProUGUI magazineMultiplierMagazineSizeText;
+    [SerializeField] private TextMeshProUGUI muzzleMultiplierMagazineSizeText;
+    [SerializeField] private TextMeshProUGUI totalMultiplierMagazineSizeText;
+    [SerializeField] private TextMeshProUGUI resultMagazineSizeText;
 
     [SerializeField] private TextMeshProUGUI baseReloadSpeedText;
-    [SerializeField] private TextMeshProUGUI multiplierReloadSpeedText;
-    [SerializeField] private TextMeshProUGUI totalReloadSpeedText;
+    [SerializeField] private TextMeshProUGUI barrelMultiplierReloadSpeedText;
+    [SerializeField] private TextMeshProUGUI gripMultiplierReloadSpeedText;
+    [SerializeField] private TextMeshProUGUI stockMultiplierReloadSpeedText;
+    [SerializeField] private TextMeshProUGUI magazineMultiplierReloadSpeedText;
+    [SerializeField] private TextMeshProUGUI muzzleMultiplierReloadSpeedText;
+    [SerializeField] private TextMeshProUGUI totalMultiplierReloadSpeedText;
+    [SerializeField] private TextMeshProUGUI resultReloadSpeedText;
+
+    [SerializeField] private TextMeshProUGUI gunTypeHeaderText;
+    [SerializeField] private TextMeshProUGUI barrelHeaderText;
+    [SerializeField] private TextMeshProUGUI gripHeaderText;
+    [SerializeField] private TextMeshProUGUI stockHeaderText;
+    [SerializeField] private TextMeshProUGUI magazineHeaderText;
+    [SerializeField] private TextMeshProUGUI muzzleHeaderText;
 
     private Gun activeGun;
     private GunMod activeBarrel;
@@ -89,6 +131,7 @@ public class LoadoutUI : MonoBehaviour
         stockButtons = new Button[] { basicStock, heavyStock, lightStock, balancedStock };
         magazineButtons = new Button[] { basicMagazine, extendedMagazine, drumMagazine, fastMagazine };
         muzzleButtons = new Button[] { basicMuzzle, suppressor, muzzleBreak, compensator };
+
         OnClickedAssaultRifle();
         OnClickedBasicBarrel();
         OnClickedBasicGrip();
@@ -354,36 +397,78 @@ public class LoadoutUI : MonoBehaviour
         float baseMagazineSize = 100; //this should be gun type base magazine size
         float baseReloadSpeed = 100; //this should be gun type base reload speed
 
-        float multiplierWeaponDamage = activeBarrel.WeaponDamage + activeGrip.WeaponDamage + activeStock.WeaponDamage + activeMagazine.WeaponDamage + activeMuzzle.WeaponDamage;
-        float multiplierFireRate = activeBarrel.FireRate     + activeGrip.FireRate     + activeStock.FireRate     + activeMagazine.FireRate     + activeMuzzle.FireRate;
-        float multiplierSpread = activeBarrel.Spread       + activeGrip.Spread       + activeStock.Spread       + activeMagazine.Spread       + activeMuzzle.Spread;
-        float multiplierRecoil = activeBarrel.Recoil       + activeGrip.Recoil       + activeStock.Recoil       + activeMagazine.Recoil       + activeMuzzle.Recoil;
-        float multiplierMovementSpeed = activeBarrel.MoveSpeed    + activeGrip.MoveSpeed    + activeStock.MoveSpeed    + activeMagazine.MoveSpeed    + activeMuzzle.MoveSpeed;
-        float multiplierMagazineSize = activeBarrel.MagSize      + activeGrip.MagSize      + activeStock.MagSize      + activeMagazine.MagSize      + activeMuzzle.MagSize;
-        float multiplierReloadSpeed = activeBarrel.ReloadSpeed  + activeGrip.ReloadSpeed  + activeStock.ReloadSpeed  + activeMagazine.ReloadSpeed  + activeMuzzle.ReloadSpeed;
+        float totalMultiplierWeaponDamage = activeBarrel.WeaponDamage + activeGrip.WeaponDamage + activeStock.WeaponDamage + activeMagazine.WeaponDamage + activeMuzzle.WeaponDamage;
+        float totalMultiplierFireRate = activeBarrel.FireRate     + activeGrip.FireRate     + activeStock.FireRate     + activeMagazine.FireRate     + activeMuzzle.FireRate;
+        float totalMultiplierSpread = activeBarrel.Spread       + activeGrip.Spread       + activeStock.Spread       + activeMagazine.Spread       + activeMuzzle.Spread;
+        float totalMultiplierRecoil = activeBarrel.Recoil       + activeGrip.Recoil       + activeStock.Recoil       + activeMagazine.Recoil       + activeMuzzle.Recoil;
+        float totalMultiplierMovementSpeed = activeBarrel.MoveSpeed    + activeGrip.MoveSpeed    + activeStock.MoveSpeed    + activeMagazine.MoveSpeed    + activeMuzzle.MoveSpeed;
+        float totalMultiplierMagazineSize = activeBarrel.MagSize      + activeGrip.MagSize      + activeStock.MagSize      + activeMagazine.MagSize      + activeMuzzle.MagSize;
+        float totalMultiplierReloadSpeed = activeBarrel.ReloadSpeed  + activeGrip.ReloadSpeed  + activeStock.ReloadSpeed  + activeMagazine.ReloadSpeed  + activeMuzzle.ReloadSpeed;
 
         baseWeaponDamageText.text = baseWeaponDamage.ToString();
+        barrelMultiplierWeaponDamageText.text = activeBarrel.WeaponDamage.ToString("F2");
+        gripMultiplierWeaponDamageText.text = activeGrip.WeaponDamage.ToString("F2");
+        stockMultiplierWeaponDamageText.text = activeStock.WeaponDamage.ToString("F2");
+        magazineMultiplierWeaponDamageText.text = activeMagazine.WeaponDamage.ToString("F2");
+        muzzleMultiplierWeaponDamageText.text = activeMuzzle.WeaponDamage.ToString("F2");
+
         baseFireRateText.text = baseFireRate.ToString();
+        barrelMultiplierFireRateText.text = activeBarrel.FireRate.ToString("F2");
+        gripMultiplierFireRateText.text = activeGrip.FireRate.ToString("F2");
+        stockMultiplierFireRateText.text = activeStock.FireRate.ToString("F2");
+        magazineMultiplierFireRateText.text = activeMagazine.FireRate.ToString("F2");
+        muzzleMultiplierFireRateText.text = activeMuzzle.FireRate.ToString("F2");
+        
         baseSpreadText.text = baseSpread.ToString();
+        barrelMultiplierSpreadText.text = activeBarrel.Spread.ToString("F2");
+        gripMultiplierSpreadText.text = activeGrip.Spread.ToString("F2");
+        stockMultiplierSpreadText.text = activeStock.Spread.ToString("F2");
+        magazineMultiplierSpreadText.text = activeMagazine.Spread.ToString("F2");
+        muzzleMultiplierSpreadText.text = activeMuzzle.Spread.ToString("F2");
+
         baseRecoilText.text = baseRecoil.ToString();
+        barrelMultiplierRecoilText.text = activeBarrel.Recoil.ToString("F2");
+        gripMultiplierRecoilText.text = activeGrip.Recoil.ToString("F2");
+        stockMultiplierRecoilText.text = activeStock.Recoil.ToString("F2");
+        magazineMultiplierRecoilText.text = activeMagazine.Recoil.ToString("F2");
+        muzzleMultiplierRecoilText.text = activeMuzzle.Recoil.ToString("F2");
+
         baseMovementSpeedText.text = baseMovementSpeed.ToString();
+        barrelMultiplierMovementSpeedText.text = activeBarrel.MoveSpeed.ToString("F2");
+        gripMultiplierMovementSpeedText.text = activeGrip.MoveSpeed.ToString("F2");
+        stockMultiplierMovementSpeedText.text = activeStock.MoveSpeed.ToString("F2");
+        magazineMultiplierMovementSpeedText.text = activeMagazine.MoveSpeed.ToString("F2");
+        muzzleMultiplierMovementSpeedText.text = activeMuzzle.MoveSpeed.ToString("F2");
+
         baseMagazineSizeText.text = baseMagazineSize.ToString();
+        barrelMultiplierMagazineSizeText.text = activeBarrel.MagSize.ToString("F2");
+        gripMultiplierMagazineSizeText.text = activeGrip.MagSize.ToString("F2");
+        stockMultiplierMagazineSizeText.text = activeStock.MagSize.ToString("F2");
+        magazineMultiplierMagazineSizeText.text = activeMagazine.MagSize.ToString("F2");
+        muzzleMultiplierMagazineSizeText.text = activeMuzzle.MagSize.ToString("F2");
+
         baseReloadSpeedText.text = baseReloadSpeed.ToString();
+        barrelMultiplierReloadSpeedText.text = activeBarrel.ReloadSpeed.ToString("F2");
+        gripMultiplierReloadSpeedText.text = activeGrip.ReloadSpeed.ToString("F2");
+        stockMultiplierReloadSpeedText.text = activeStock.ReloadSpeed.ToString("F2");
+        magazineMultiplierReloadSpeedText.text = activeMagazine.ReloadSpeed.ToString("F2");
+        muzzleMultiplierReloadSpeedText.text = activeMuzzle.ReloadSpeed.ToString("F2");
 
-        multiplierWeaponDamageText.text = (multiplierWeaponDamage * 100).ToString("F1") + "%";
-        multiplierFireRateText.text = (multiplierFireRate * 100).ToString("F1") + "%";
-        multiplierSpreadText.text = (multiplierSpread * 100).ToString("F1") + "%";
-        multiplierRecoilText.text = (multiplierRecoil * 100).ToString("F1") + "%";
-        multiplierMovementSpeedText.text = (multiplierMovementSpeed * 100).ToString("F1") + "%";
-        multiplierMagazineSizeText.text = (multiplierMagazineSize * 100).ToString("F1") + "%";
-        multiplierReloadSpeedText.text = (multiplierReloadSpeed * 100).ToString("F1") + "%";
 
-        totalWeaponDamageText.text = (baseWeaponDamage * (1 + multiplierWeaponDamage)).ToString();
-        totalFireRateText.text = (baseFireRate * (1 + multiplierFireRate)).ToString();
-        totalSpreadText.text = (baseSpread * (1 + multiplierSpread)).ToString();
-        totalRecoilText.text = (baseRecoil * (1 + multiplierRecoil)).ToString();
-        totalMovementSpeedText.text = (baseMovementSpeed * (1 + multiplierMovementSpeed)).ToString();
-        totalMagazineSizeText.text = (baseMagazineSize * (1 + multiplierMagazineSize)).ToString();
-        totalReloadSpeedText.text = (baseReloadSpeed * (1 + multiplierReloadSpeed)).ToString();
+        totalMultiplierWeaponDamageText.text = (totalMultiplierWeaponDamage * 100).ToString("F1") + "%";
+        totalMultiplierFireRateText.text = (totalMultiplierFireRate * 100).ToString("F1") + "%";
+        totalMultiplierSpreadText.text = (totalMultiplierSpread * 100).ToString("F1") + "%";
+        totalMultiplierRecoilText.text = (totalMultiplierRecoil * 100).ToString("F1") + "%";
+        totalMultiplierMovementSpeedText.text = (totalMultiplierMovementSpeed * 100).ToString("F1") + "%";
+        totalMultiplierMagazineSizeText.text = (totalMultiplierMagazineSize * 100).ToString("F1") + "%";
+        totalMultiplierReloadSpeedText.text = (totalMultiplierReloadSpeed * 100).ToString("F1") + "%";
+
+        resultWeaponDamageText.text = (baseWeaponDamage * (1 + totalMultiplierWeaponDamage)) < 0 ? (baseWeaponDamage * (1 + totalMultiplierWeaponDamage)).ToString() : ((baseWeaponDamage * (1 + totalMultiplierWeaponDamage)) == 0 ? "0.00" : "+" + (baseWeaponDamage * (1 + totalMultiplierWeaponDamage)).ToString());
+        resultFireRateText.text = (baseFireRate * (1 + totalMultiplierFireRate)).ToString();
+        resultSpreadText.text = (baseSpread * (1 + totalMultiplierSpread)).ToString();
+        resultRecoilText.text = (baseRecoil * (1 + totalMultiplierRecoil)).ToString();
+        resultMovementSpeedText.text = (baseMovementSpeed * (1 + totalMultiplierMovementSpeed)).ToString();
+        resultMagazineSizeText.text = (baseMagazineSize * (1 + totalMultiplierMagazineSize)).ToString();
+        resultReloadSpeedText.text = (baseReloadSpeed * (1 + totalMultiplierReloadSpeed)).ToString();
     }
 }
