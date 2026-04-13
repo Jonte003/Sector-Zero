@@ -26,13 +26,23 @@ public class Loadout : MonoBehaviour
         return abilities;
     }
 
-    private void Start()
+    private void Awake()
     {
-        Gun = LoadoutManager.Gun;
+        Transform parent = transform.Find("Camera");
+
+        GameObject gun = Instantiate(LoadoutManager.GunPrefab, parent);
+        gun.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+
+        Gun = gun.GetComponent<Gun>();
         GunMods = LoadoutManager.GunMods;
         Ability1 = LoadoutManager.Ability1;
         Ability2 = LoadoutManager.Ability2;
         Ability3 = LoadoutManager.Ability3;
         AbilitiesInBag = LoadoutManager.AbilitiesInBag;
+        GunMods = LoadoutManager.GunMods;
+
+        gun.GetComponent<Gun>().gunMods = GunMods;
+        gun.GetComponent<Gun>().settings = LoadoutManager.Settings;
+        GetComponent<PlayerShoot>().SetGun();
     }
 }

@@ -117,6 +117,7 @@ public class LoadoutUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI magazineHeaderText;
     [SerializeField] private TextMeshProUGUI muzzleHeaderText;
 
+    private GameObject activeGunPrefab;
     private GunSettings activeGun;
     private GunMod activeBarrel;
     private GunMod activeGrip;
@@ -130,6 +131,12 @@ public class LoadoutUI : MonoBehaviour
     [SerializeField] private Button abilityButtonPrefab;
     [SerializeField] private Transform abilityButtonGridParent;
     [SerializeField] private TextMeshProUGUI activeAbilityCountText;
+
+    [SerializeField] private GameObject assaultRifleObj;
+    [SerializeField] private GameObject burstRifleObj;
+    [SerializeField] private GameObject shotgunObj;
+    [SerializeField] private GameObject pistolObj;
+    [SerializeField] private GameObject smgObj;
 
     void Start()
     {
@@ -219,8 +226,9 @@ public class LoadoutUI : MonoBehaviour
         if (MakeActiveAbilityLoadout().Length != 10) return;
         // Ensure that the player has selected 10 abilities before starting the game.
 
+        LoadoutManager.GunPrefab = activeGunPrefab;
         LoadoutManager.AbilitiesInBag = MakeActiveAbilityLoadout();
-        LoadoutManager.Gun.settings = activeGun;
+        LoadoutManager.Settings = activeGun;
         LoadoutManager.GunMods = new GunMod[] { activeBarrel, activeGrip, activeStock, activeMagazine, activeMuzzle };
         SceneManager.LoadScene("Gameplay");
     }
@@ -232,6 +240,7 @@ public class LoadoutUI : MonoBehaviour
     #region Buttons Gun Types
     public void OnClickedAssaultRifle()
     {
+        activeGunPrefab = assaultRifleObj;
         activeGun = GunSettings.AssaultRifle;
         foreach (Button button in gunTypeButtons)
         {
@@ -241,6 +250,7 @@ public class LoadoutUI : MonoBehaviour
     }
     public void OnClickedBurstRifle()
     {
+        activeGunPrefab = burstRifleObj;
         activeGun = GunSettings.BurstRifle;
         foreach (Button button in gunTypeButtons)
         {
@@ -250,6 +260,7 @@ public class LoadoutUI : MonoBehaviour
     }
     public void OnClickedPistol()
     {
+        activeGunPrefab = pistolObj;
         activeGun = GunSettings.Pistol;
         foreach (Button button in gunTypeButtons)
         {
@@ -259,6 +270,7 @@ public class LoadoutUI : MonoBehaviour
     }
     public void OnClickedShotgun()
     {
+        activeGunPrefab = shotgunObj;
         activeGun = GunSettings.Shotgun;
         foreach (Button button in gunTypeButtons)
         {
@@ -268,6 +280,7 @@ public class LoadoutUI : MonoBehaviour
     }
     public void OnClickedSubmachineGun()
     {
+        activeGunPrefab = smgObj;
         activeGun = GunSettings.Smg;
         foreach (Button button in gunTypeButtons)
         {

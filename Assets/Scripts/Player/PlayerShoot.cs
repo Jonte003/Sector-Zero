@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerShoot : MonoBehaviour
 {
-    [SerializeField] private Gun Gun;
-    public Gun CurrentGun => Gun;
+    private Gun gun;
+    public Gun CurrentGun => gun;
 
     private PlayerInput playerInput;
 
@@ -19,7 +19,7 @@ public class PlayerShoot : MonoBehaviour
 
         playerInput.PlayerActions.Shoot.performed += ctx =>
         {
-            if (Gun.settings.FullAuto)
+            if (gun.settings.FullAuto)
                 isShooting = true;
             else
                 Shoot();
@@ -31,6 +31,11 @@ public class PlayerShoot : MonoBehaviour
         };
     }
 
+    public void SetGun()
+    {
+        gun = GetComponent<Loadout>().Gun;
+    }
+
     private void OnDisable()
     {
         playerInput.PlayerActions.Disable();
@@ -38,7 +43,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void Update()
     {
-        if (isShooting && Gun.CanShoot)
+        if (isShooting && gun.CanShoot)
         {
             Shoot();
         }
@@ -46,13 +51,13 @@ public class PlayerShoot : MonoBehaviour
 
     private void Shoot()
     {
-        Debug.Log("Shoot, Ammo: "  + Gun.CurrentAmmo());
-        Gun.TryShoot();
+        Debug.Log("Shoot, Ammo: "  + gun.CurrentAmmo());
+        gun.TryShoot();
     }
 
     private void Reload()
     {
-        Debug.Log("Reload");
-        Gun.TryReload();
+        Debug.Log(gun.settings.ReloadSpeed);
+        gun.TryReload();
     }
 }

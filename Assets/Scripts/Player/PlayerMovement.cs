@@ -26,7 +26,9 @@ public class PlayerMovement : MonoBehaviour
     Vector3 lastCalculatedPosition;
     private float RealGravity => 9.81f * gravity;
 
-    private float FinalSpeed => movementSpeed * (running && grounded ? runningMod : 1) * (1 + playerStats.movementSpeedBuffs / 100) * GetComponent<Loadout>().Gun.FinalMoveSpeed;
+    private float gunMoveSpeedMod = 1;
+
+    private float FinalSpeed => movementSpeed * (running && grounded ? runningMod : 1) * (1 + playerStats.movementSpeedBuffs / 100) * gunMoveSpeedMod;
 
 
     [SerializeField] private LayerMask groundMask;
@@ -69,6 +71,11 @@ public class PlayerMovement : MonoBehaviour
         input.Disable();
 
 
+    }
+
+    public void CalcMoveSpeed()
+    {
+        gunMoveSpeedMod = GetComponent<Loadout>().Gun.FinalMoveSpeed;
     }
 
     private void OnMovement(InputValue value)

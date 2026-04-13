@@ -2679,6 +2679,11 @@ MonoBehaviour:
   abilityButtonPrefab: {fileID: 5491059230315655850, guid: d70bf7d706122ea41871fa9601d4d713, type: 3}
   abilityButtonGridParent: {fileID: 1378504363}
   activeAbilityCountText: {fileID: 450769968}
+  assaultRifleObj: {fileID: 8510055944772573007, guid: 53d1a78309b3f4b49b42c0b2a69d68c2, type: 3}
+  burstRifleObj: {fileID: 8510055944772573007, guid: 8dc78fbc23c757240bacb42f2e49a692, type: 3}
+  shotgunObj: {fileID: 4296228752142018860, guid: 615478eb4a72e464e8ffd2909beaedf4, type: 3}
+  pistolObj: {fileID: 6354597058873376936, guid: ea45cb076a1800d47bf12d5a849bcc2d, type: 3}
+  smgObj: {fileID: 915947627729896082, guid: a818e48a4ff807644b256986852010bb, type: 3}
 --- !u!1 &354139121
 GameObject:
   m_ObjectHideFlags: 0
