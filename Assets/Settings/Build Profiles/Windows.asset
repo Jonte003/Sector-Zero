@@ -21,6 +21,8 @@ MonoBehaviour:
   m_OverrideGlobalSceneList: 1
   m_Scenes:
   - m_enabled: 1
+    m_path: Assets/Scenes/Title Screen.unity
+  - m_enabled: 1
     m_path: Assets/Scenes/Loadout Selection.unity
   - m_enabled: 1
     m_path: Assets/Scenes/Gameplay.unity
