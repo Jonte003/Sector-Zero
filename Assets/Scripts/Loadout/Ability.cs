@@ -24,6 +24,8 @@ public abstract class Ability : MonoBehaviour
     protected abstract float CooldownPerLevel { get; }
     public abstract string Description { get; }
 
+    public abstract AbilityCategory Category { get; }
+
     public abstract Sprite Icon { get; }
     public abstract string Name { get; }
     public bool Enabled { get; set; } = false;
@@ -43,6 +45,8 @@ public class Explosion : Ability
     protected override float CD => 7f;
     protected override float CooldownPerLevel => 0.5f;
     public override string Description => "Deals damage and stuns all nearby enemies in a short radius";
+
+    public override AbilityCategory Category => AbilityCategory.Attack;
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
@@ -79,6 +83,8 @@ public class Knockback : Ability
     protected override float CD => 12f;
     protected override float CooldownPerLevel => 1.25f;
     public override string Description => "Knockbacks all nearby enemies in a big radius and slows them for a duration";
+    public override AbilityCategory Category => AbilityCategory.Defense;
+
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
@@ -114,6 +120,8 @@ public class Dash : Ability
     protected override float CD => 6f;
     protected override float CooldownPerLevel => 1f;
     public override string Description => "Dash forwards";
+    public override AbilityCategory Category => AbilityCategory.Mobility;
+
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
@@ -132,6 +140,8 @@ public class Leap : Ability
     protected override float CD => 9f;
     protected override float CooldownPerLevel => 1f;
     public override string Description => "Big jump forwards";
+    public override AbilityCategory Category => AbilityCategory.Mobility;
+
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
@@ -150,6 +160,8 @@ public class Jump : Ability
     protected override float CD => 7f;
     protected override float CooldownPerLevel => 1f;
     public override string Description => "Big jump";
+    public override AbilityCategory Category => AbilityCategory.Mobility;
+
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
@@ -168,6 +180,8 @@ public class Fortify : Ability
     protected override float CD => 30f;
     protected override float CooldownPerLevel => 3f;
     public override string Description => "Gives you defense for the duration and regenerates a percentage of your max hp over the duration";
+    public override AbilityCategory Category => AbilityCategory.Defense;
+
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
@@ -199,6 +213,8 @@ public class Invincible : Ability
     protected override float CD => 20f;
     protected override float CooldownPerLevel => 2.25f;
     public override string Description => "Become untargetable for a short duration";
+    public override AbilityCategory Category => AbilityCategory.Defense;
+
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
@@ -216,6 +232,8 @@ public class Invincible : Ability
 
 public class ChainLightning : Ability
 {
+    public override string Name => "Chain Lightning";
+    public override Sprite Icon => Resources.Load<Sprite>("Default");
     protected override float CD => 9f;
     protected override float CooldownPerLevel => 1f;
     public override string Description => "Strikes an enemy with lightning that chains to others.";
@@ -267,6 +285,8 @@ public class ChainLightning : Ability
 
 public class Eruption : Ability
 {
+    public override string Name => "Eruption";
+    public override Sprite Icon => Resources.Load<Sprite>("Default");
     protected override float CD => 11f;
     protected override float CooldownPerLevel => 1f;
     public override string Description => "After a short delay, erupts the ground dealing heavy AOE damage.";
@@ -296,6 +316,8 @@ public class Eruption : Ability
 
 public class Blink : Ability
 {
+    public override string Name => "Blink";
+    public override Sprite Icon => Resources.Load<Sprite>("Default");
     protected override float CD => 8f;
     protected override float CooldownPerLevel => 1f;
     public override string Description => "Instantly teleport a short distance forward.";
@@ -316,6 +338,8 @@ public class Blink : Ability
 
 public class Charge : Ability
 {
+    public override string Name => "Charge";
+    public override Sprite Icon => Resources.Load<Sprite>("Default");
     protected override float CD => 10f;
     protected override float CooldownPerLevel => 1f;
     public override string Description => "Charge forward, pushing enemies aside.";
@@ -352,6 +376,8 @@ public class Charge : Ability
 
 public class VitalSurge : Ability
 {
+    public override string Name => "Vital Surge";
+    public override Sprite Icon => Resources.Load<Sprite>("Default");
     protected override float CD => 14f;
     protected override float CooldownPerLevel => 1f;
     public override string Description => "Rapidly regenerate health for a short duration";
@@ -377,6 +403,8 @@ public class VitalSurge : Ability
 
 public class Backstep : Ability
 {
+    public override string Name => "Backstep";
+    public override Sprite Icon => Resources.Load<Sprite>("Default");
     protected override float CD => 5f;
     protected override float CooldownPerLevel => 0.75f;
     public override string Description => "Quickly dash backwards to evade attacks";
@@ -395,6 +423,8 @@ public class Backstep : Ability
 
 public class MomentumShift : Ability
 {
+    public override string Name => "Momentum Shift";
+    public override Sprite Icon => Resources.Load<Sprite>("Default");
     protected override float CD => 7f;
     protected override float CooldownPerLevel => 0.75f;
     public override string Description => "Redirect your momentum toward your aim direction.";
@@ -415,6 +445,8 @@ public class MomentumShift : Ability
 
 public class GroundSlam : Ability
 {
+   public override string Name => "Ground Slam";
+    public override Sprite Icon => Resources.Load<Sprite>("Default");
     protected override float CD => 10f;
     protected override float CooldownPerLevel => 1f;
     public override string Description => "Slam straight downward and launch nearby enemies upward and away.";

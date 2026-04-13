@@ -174,13 +174,20 @@ public class LoadoutUI : MonoBehaviour
     void InitializeAbilityList()
     {
         abilitiesList = new List<Ability>();
+        abilitiesList.Add(new Backstep());
+        abilitiesList.Add(new Blink());
+        abilitiesList.Add(new ChainLightning());
+        abilitiesList.Add(new Charge());
         abilitiesList.Add(new Dash());
+        abilitiesList.Add(new Eruption());
         abilitiesList.Add(new Explosion());
         abilitiesList.Add(new Fortify());
+        abilitiesList.Add(new GroundSlam());
         abilitiesList.Add(new Invincible());
         abilitiesList.Add(new Jump());
         abilitiesList.Add(new Knockback());
         abilitiesList.Add(new Leap());
+        abilitiesList.Add(new VitalSurge());
     }
 
     Ability[] MakeActiveAbilityLoadout()
