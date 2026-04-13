@@ -305,38 +305,141 @@ public class Blink : Ability
     }
 }
 
-public class Firebolt : Ability
+public class Charge : Ability
 {
-    protected override float CD => 5f;
-    protected override float CooldownPerLevel => 0.5f;
-    public override string Description => "Launches a firebolt projectile forward.";
-    public override AbilityCategory Category => AbilityCategory.Attack;
-
-    private GameObject fireboltPrefab;
-    private readonly float projectileSpeed = 20f;
+    protected override float CD => 10f;
+    protected override float CooldownPerLevel => 1f;
+    public override string Description => "Charge forward, pushing enemies aside.";
+    public override AbilityCategory Category => AbilityCategory.Mobility;
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
-        if (fireboltPrefab == null)
-            yield break;
+        float baseForce = 14f;
+        float forcePerLevel = 2f;
 
-        float baseDamage = 40f;
-        float damagePerLevel = 20f;
+        float kbForce = 6f;
 
-        float damage = (baseDamage + damagePerLevel * (Level - 1)) *
-                       (player.GetComponent<PlayerStats>().damageBuffs + 1);
+        float force = baseForce + forcePerLevel * (Level - 1);
 
-        GameObject proj = Instantiate(
-            fireboltPrefab,
-            player.transform.position + player.transform.forward * 1f,
-            player.transform.rotation
-        );
+        var rb = player.GetComponent<Rigidbody>();
+        rb.AddForce(player.transform.forward * force, ForceMode.Impulse);
 
-        Rigidbody rb = proj.GetComponent<Rigidbody>();
-        rb.linearVelocity = player.transform.forward * projectileSpeed;
+        yield return new WaitForFixedUpdate();
 
-        proj.GetComponent<FireboltProjectile>().Initialize(damage);
+
+        foreach (var e in enemies)
+        {
+            float dist = Vector3.Distance(player.transform.position, e.transform.position);
+            if (dist <= 2f)
+            {
+                Vector3 dir = (e.transform.position - player.transform.position).normalized;
+                e.GetComponent<Rigidbody>().AddForce(dir * kbForce, ForceMode.Impulse);
+            }
+        }
 
         yield return null;
+    }
+}
+
+public class VitalSurge : Ability
+{
+    protected override float CD => 14f;
+    protected override float CooldownPerLevel => 1f;
+    public override string Description => "Rapidly regenerate health for a short duration";
+    public override AbilityCategory Category => AbilityCategory.Defense;
+
+    protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
+    {
+        float baseRegenPercent = 12f;
+        float regenPerLevel = 3f;
+
+        float duration = 2.5f + 0.25f * (Level - 1);
+
+        float regenPerSecond = (baseRegenPercent + regenPerLevel * (Level - 1)) / (duration * 100f);
+
+        var stats = player.GetComponent<PlayerStats>();
+        stats.regenBuffs += regenPerSecond;
+
+        yield return new WaitForSeconds(duration);
+
+        stats.regenBuffs -= regenPerSecond;
+    }
+}
+
+public class Backstep : Ability
+{
+    protected override float CD => 5f;
+    protected override float CooldownPerLevel => 0.75f;
+    public override string Description => "Quickly dash backwards to evade attacks";
+    public override AbilityCategory Category => AbilityCategory.Mobility;
+
+    protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
+    {
+        float force = 12f + 2f * (Level - 1);
+
+        var rb = player.GetComponent<Rigidbody>();
+        rb.AddForce(-player.transform.forward * force, ForceMode.Impulse);
+
+        yield return null;
+    }
+}
+
+public class MomentumShift : Ability
+{
+    protected override float CD => 7f;
+    protected override float CooldownPerLevel => 0.75f;
+    public override string Description => "Redirect your momentum toward your aim direction.";
+    public override AbilityCategory Category => AbilityCategory.Mobility;
+
+    protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
+    {
+        var rb = player.GetComponent<Rigidbody>();
+
+        float speed = rb.linearVelocity.magnitude;
+        Vector3 newDir = player.transform.forward;
+
+        rb.linearVelocity = newDir * speed;
+
+        yield return null;
+    }
+}
+
+public class GroundSlam : Ability
+{
+    protected override float CD => 10f;
+    protected override float CooldownPerLevel => 1f;
+    public override string Description => "Slam straight downward and launch nearby enemies upward and away.";
+    public override AbilityCategory Category => AbilityCategory.Mobility;
+
+    protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
+    {
+        Rigidbody rb = player.GetComponent<Rigidbody>();
+
+        rb.linearVelocity = Vector3.zero;
+
+        float baseForce = 25f;
+        float forcePerLevel = 4f;
+        float slamForce = baseForce + forcePerLevel * (Level - 1);
+
+        rb.AddForce(Vector3.down * slamForce, ForceMode.Impulse);
+
+        yield return new WaitForSeconds(0.25f);
+
+        float radius = 3f + 0.25f * (Level - 1);
+        float upwardForce = 10f + 2f * (Level - 1);
+        float outwardForce = 6f;
+
+        foreach (var e in enemies)
+        {
+            if (Vector3.Distance(player.transform.position, e.transform.position) <= radius)
+            {
+                Rigidbody er = e.GetComponent<Rigidbody>();
+
+                er.AddForce(Vector3.up * upwardForce, ForceMode.Impulse);
+
+                Vector3 dir = (e.transform.position - player.transform.position).normalized;
+                er.AddForce(dir * outwardForce, ForceMode.Impulse);
+            }
+        }
     }
 }
