@@ -22,7 +22,9 @@ public class PlayerStats : MonoBehaviour
     public float jumpHeightBuffs = 0;
     public float movementSpeedBuffs = 0;
 
+    // Ability Related
     [HideInInspector] public bool invincible = false;
+    
 
     void Start()
     {
@@ -39,7 +41,6 @@ public class PlayerStats : MonoBehaviour
                 currentHealth = HealthAfterBuffs;
         }
     }
-
 
     public void DoDamageDPS(float DPS)
     {
