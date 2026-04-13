@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(GunSettings))]
 public class Gun : MonoBehaviour
 {
     [HideInInspector] public GunSettings settings;
 
     [HideInInspector] public GunMod[] gunMods;
+
+    public Transform Muzzle;
 
     public BulletTracer TracerPrefab;
 
@@ -25,13 +26,15 @@ public class Gun : MonoBehaviour
 
     private int currentAmmo;
 
+    private GunMod finalModStats = new Assignable(0, 0, 0, 0, 0, 0, 0);
+
     public bool CanShoot => canShoot;
 
-    private float FinalDamage => settings.Damage * (1 + AddMods().WeaponDamage);
-    private float FinalFireRate => settings.FireRate * (1 + AddMods().FireRate);
-    public float FinalMoveSpeed => settings.MoveSpeed * (1 + AddMods().MoveSpeed);
-    private int FinalMagSize => (int)(settings.MaxAmmo * (1 + AddMods().MagSize));
-    private float FinalReloadSpeed => settings.ReloadSpeed * (1 + AddMods().ReloadSpeed);
+    private float FinalDamage => settings.Damage * (1 + finalModStats.WeaponDamage);
+    private float FinalFireRate => settings.FireRate * (1 + finalModStats.FireRate);
+    public float FinalMoveSpeed => settings.MoveSpeed * (1 + finalModStats.MoveSpeed);
+    private int FinalMagSize => (int)(settings.MaxAmmo * (1 + finalModStats.MagSize));
+    private float FinalReloadSpeed => settings.ReloadSpeed * (1 + finalModStats.ReloadSpeed);
 
     private GunMod AddMods()
     {
@@ -57,12 +60,6 @@ public class Gun : MonoBehaviour
         return new Assignable(weaponDamage, fireRate, spread, recoil, moveSpeed, magSize, reloadSpeed);
     }
 
-    private void Awake()
-    {
-        settings = GetComponent<GunSettings>();
-        currentAmmo = FinalMagSize;
-    }
-
     private void Update()
     {
         if (timeSinceLastShot < (1 / FinalFireRate))
@@ -79,6 +76,13 @@ public class Gun : MonoBehaviour
     }
     private void Start()
     {
+        settings.Muzzle = Muzzle;
+
+        finalModStats = AddMods();
+        transform.parent.parent.GetComponent<PlayerMovement>().CalcMoveSpeed();
+
+        currentAmmo = FinalMagSize;
+
         TracerPool = new Queue<BulletTracer>();
 
         for (int i = 0; i < settings.TracerPoolSize; i++)
