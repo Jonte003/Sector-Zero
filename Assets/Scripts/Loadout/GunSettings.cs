@@ -33,5 +33,51 @@ public class GunSettings : MonoBehaviour
     // Bullet Tracers
     [Tooltip("How many tracers can be active at a time"), Header("Bullet Tracers")] public int TracerPoolSize = 30;
     [Tooltip("Where the tracers spawn")] public Transform Muzzle;
-    [Tooltip("The prefab for the tracer")] public BulletTracer TracerPrefab;
+
+    private GunSettings(
+        string gunName,
+        float damage, float fireRate, float range, float reloadSpeed, int maxAmmo, bool fullAuto, float moveSpeed, 
+        float[] damageFalloffPercentage, float[] damageFalloffRange, bool damageFalloffLerp,
+        float delayBetweenBullets, int bulletCount, int ammoPerShot, Vector2 minSpread, Vector2 maxSpread,
+        Vector2 recoilMagnitude, float recoilMin, float recoilMax,
+        int tracerPoolSize)
+    {
+        GunName = gunName;
+
+        Damage = damage;
+        FireRate = fireRate;
+        Range = range;
+        ReloadSpeed = reloadSpeed;
+        MaxAmmo = maxAmmo;
+        FullAuto = fullAuto;
+        MoveSpeed = moveSpeed;
+
+        DamageFalloffPercentage = damageFalloffPercentage;
+        DamageFalloffRange = damageFalloffRange;
+        DamageFalloffLerp = damageFalloffLerp;
+
+        DelayBetweenBullets = delayBetweenBullets;
+        BulletCount = bulletCount;
+        AmmoPerShot = ammoPerShot;
+        MinSpread = minSpread;
+        MaxSpread = maxSpread;
+
+        RecoilMagnitude = recoilMagnitude;
+        RecoilMin = recoilMin;
+        RecoilMax = recoilMax;
+
+        TracerPoolSize = tracerPoolSize;
+
+        Muzzle = transform.Find("Body").Find("Muzzle");
+    }
+
+    public static GunSettings AssaultRifle => new
+        (
+            "Assault Rifle",
+            7f, 4f, 150f, 2.5f, 30, true, 0.9f, 
+            new float[] { 0.75f, 0.5f }, new float[] { 50f, 100f }, true,
+            0, 1, 1, new(-1.5f, -1.5f), new(1.5f, 1.5f),
+            new(1, 2), 0.5f, 1f,
+            30
+        );
 }

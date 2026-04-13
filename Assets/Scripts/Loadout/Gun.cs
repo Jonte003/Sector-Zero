@@ -9,6 +9,8 @@ public class Gun : MonoBehaviour
 
     [HideInInspector] public GunMod[] gunMods;
 
+    public BulletTracer TracerPrefab;
+
     private LayerMask Mask = 72;
 
     private Queue<BulletTracer> TracerPool;
@@ -81,7 +83,7 @@ public class Gun : MonoBehaviour
 
         for (int i = 0; i < settings.TracerPoolSize; i++)
         {
-            var t = Instantiate(settings.TracerPrefab);
+            var t = Instantiate(TracerPrefab);
             t.gameObject.SetActive(false);
             TracerPool.Enqueue(t);
         }

@@ -153,7 +153,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 298292559852570974}
-  - component: {fileID: 995368789210335481}
   m_Layer: 0
   m_Name: Assault Rifle
   m_TagString: Untagged
@@ -177,38 +176,3 @@ Transform:
   - {fileID: 1367973276505210082}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &995368789210335481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8510055944772573007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d313ba6bc0091d547986b71261a51506, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  GunName: Assault Rifle
-  Damage: 5
-  FireRate: 7
-  Range: 50
-  ReloadSpeed: 2.2
-  MaxAmmo: 35
-  FullAuto: 1
-  DamageFalloffPercentage:
-  - 0.7
-  DamageFalloffRange:
-  - 35
-  DamageFalloffLerp: 0
-  DelayBetweenBullets: 0
-  BulletCount: 1
-  AmmoPerShot: 1
-  MinSpread: {x: 0, y: 0}
-  MaxSpread: {x: 3, y: 3}
-  RecoilMagnitude: {x: 0.5, y: 1}
-  RecoilMin: 0.1
-  RecoilMax: 0.5
-  TracerPoolSize: 30
-  Muzzle: {fileID: 793029122569623501}
-  TracerPrefab: {fileID: 454934594798073804, guid: e4c190d7d4c8d5042aa514fdd1350cef, type: 3}

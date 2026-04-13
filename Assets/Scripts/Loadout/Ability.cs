@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum AbilityCategory
+{
+    Attack,
+    Defense,
+    Mobility
+}
+
 public abstract class Ability : MonoBehaviour
 {
     public void Run(GameObject player, List<GameObject> enemies)
@@ -23,6 +30,8 @@ public abstract class Ability : MonoBehaviour
     public int Level { get; set; } = 1;
     protected abstract float CooldownPerLevel { get; }
     public abstract string Description { get; }
+    public abstract AbilityCategory Category { get; }
+
 }
 
 public class Explosion : Ability
@@ -30,6 +39,7 @@ public class Explosion : Ability
     protected override float CD => 7f;
     protected override float CooldownPerLevel => 0.5f;
     public override string Description => "Deals damage and stuns all nearby enemies in a short radius";
+    public override AbilityCategory Category => AbilityCategory.Attack;
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
@@ -64,6 +74,8 @@ public class Knockback : Ability
     protected override float CD => 12f;
     protected override float CooldownPerLevel => 1.25f;
     public override string Description => "Knockbacks all nearby enemies in a big radius and slows them for a duration";
+    public override AbilityCategory Category => AbilityCategory.Defense;
+
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
@@ -97,6 +109,7 @@ public class Dash : Ability
     protected override float CD => 6f;
     protected override float CooldownPerLevel => 1f;
     public override string Description => "Dash forwards";
+    public override AbilityCategory Category => AbilityCategory.Mobility;
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
@@ -113,6 +126,7 @@ public class Leap : Ability
     protected override float CD => 9f;
     protected override float CooldownPerLevel => 1f;
     public override string Description => "Big jump forwards";
+    public override AbilityCategory Category => AbilityCategory.Mobility;
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
@@ -129,6 +143,7 @@ public class Jump : Ability
     protected override float CD => 7f;
     protected override float CooldownPerLevel => 1f;
     public override string Description => "Big jump";
+    public override AbilityCategory Category => AbilityCategory.Mobility;
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
@@ -145,6 +160,7 @@ public class Fortify : Ability
     protected override float CD => 30f;
     protected override float CooldownPerLevel => 3f;
     public override string Description => "Gives you defense for the duration and regenerates a percentage of your max hp over the duration";
+    public override AbilityCategory Category => AbilityCategory.Defense;
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
@@ -174,6 +190,7 @@ public class Invincible : Ability
     protected override float CD => 20f;
     protected override float CooldownPerLevel => 2.25f;
     public override string Description => "Become untargetable for a short duration";
+    public override AbilityCategory Category => AbilityCategory.Defense;
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
@@ -185,5 +202,141 @@ public class Invincible : Ability
         yield return new WaitForSeconds(duration + durationPerLevel * (Level - 1));
 
         player.GetComponent<PlayerStats>().invincible = false;
+    }
+}
+
+public class ChainLightning : Ability
+{
+    protected override float CD => 9f;
+    protected override float CooldownPerLevel => 1f;
+    public override string Description => "Strikes an enemy with lightning that chains to others.";
+    public override AbilityCategory Category => AbilityCategory.Attack;
+
+    protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
+    {
+        if (enemies.Count == 0)
+            yield break;
+
+        float baseDamage = 35f;
+        float damagePerLevel = 12f;
+        float falloff = 0.8f;
+        int maxJumps = 3 + (Level - 1);
+
+        float damage = (baseDamage + damagePerLevel * (Level - 1)) * (player.GetComponent<PlayerStats>().damageBuffs + 1);
+
+        GameObject current = enemies[0];
+
+        for (int i = 0; i < maxJumps; i++)
+        {
+            if (current == null)
+                break;
+
+            current.GetComponent<EnemyStats>().DoDamageToEnemy(damage);
+
+            GameObject next = null;
+            float bestDist = Mathf.Infinity;
+
+            foreach (var e in enemies)
+            {
+                if (e == current) continue;
+
+                float d = Vector3.Distance(current.transform.position, e.transform.position);
+                if (d < bestDist)
+                {
+                    bestDist = d;
+                    next = e;
+                }
+            }
+
+            current = next;
+            damage *= falloff;
+        }
+
+        yield return null;
+    }
+}
+
+public class Eruption : Ability
+{
+    protected override float CD => 11f;
+    protected override float CooldownPerLevel => 1f;
+    public override string Description => "After a short delay, erupts the ground dealing heavy AOE damage.";
+    public override AbilityCategory Category => AbilityCategory.Attack;
+
+    protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
+    {
+        float delay = 1.5f;
+        float baseRange = 3f;
+        float rangePerLevel = 0.5f;
+
+        float baseDamage = 50f;
+        float damagePerLevel = 20f;
+
+        yield return new WaitForSeconds(delay);
+
+        float radius = baseRange + rangePerLevel * (Level - 1);
+        float damage = (baseDamage + damagePerLevel * (Level - 1)) * (player.GetComponent<PlayerStats>().damageBuffs + 1);
+
+        foreach (var e in enemies)
+        {
+            if (Vector3.Distance(player.transform.position, e.transform.position) <= radius)
+                e.GetComponent<EnemyStats>().DoDamageToEnemy(damage);
+        }
+    }
+}
+
+public class Blink : Ability
+{
+    protected override float CD => 8f;
+    protected override float CooldownPerLevel => 1f;
+    public override string Description => "Instantly teleport a short distance forward.";
+    public override AbilityCategory Category => AbilityCategory.Mobility;
+
+    protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
+    {
+        float baseDistance = 4f;
+        float distancePerLevel = 1f;
+
+        float dist = baseDistance + distancePerLevel * (Level - 1);
+
+        player.transform.position += player.transform.forward * dist;
+
+        yield return null;
+    }
+}
+
+public class Firebolt : Ability
+{
+    protected override float CD => 5f;
+    protected override float CooldownPerLevel => 0.5f;
+    public override string Description => "Launches a firebolt projectile forward.";
+    public override AbilityCategory Category => AbilityCategory.Attack;
+
+    private GameObject fireboltPrefab;
+    private readonly float projectileSpeed = 20f;
+
+    protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
+    {
+        if (fireboltPrefab == null)
+            yield break;
+
+        float baseDamage = 40f;
+        float damagePerLevel = 20f;
+
+        float damage = (baseDamage + damagePerLevel * (Level - 1)) *
+                       (player.GetComponent<PlayerStats>().damageBuffs + 1);
+
+        GameObject proj = Instantiate(
+            fireboltPrefab,
+            player.transform.position + player.transform.forward * 1f,
+            player.transform.rotation
+        );
+
+        Rigidbody rb = proj.GetComponent<Rigidbody>();
+        rb.linearVelocity = player.transform.forward * projectileSpeed;
+
+        proj.GetComponent<FireboltProjectile>().Initialize(damage);
+
+        yield return null;
     }
 }
