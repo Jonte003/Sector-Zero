@@ -40,33 +40,33 @@ public class Assignable : GunMod
     }
 }
 
-public class BlankBarrel : GunMod
+public class BasicBarrel : GunMod
 {
-    public override string Name => "Blank barrel";
+    public override string Name => "Basic barrel";
     public override string Description => "No barrel";
     public override GunModCategory Category => GunModCategory.Barrel;
 }
-public class BlankMagazine : GunMod
+public class BasicMagazine : GunMod
 {
-    public override string Name => "Blank magazine";
+    public override string Name => "Basic magazine";
     public override string Description => "No magazine";
     public override GunModCategory Category => GunModCategory.Magazine;
 }
-public class BlankGrip : GunMod
+public class BasicGrip : GunMod
 {
-    public override string Name => "Blank grip";
+    public override string Name => "Basic grip";
     public override string Description => "No grip";
     public override GunModCategory Category => GunModCategory.Grip;
 }
-public class BlankStock : GunMod
+public class BasicStock : GunMod
 {
-    public override string Name => "Blank stock";
+    public override string Name => "Basic stock";
     public override string Description => "No stock";
     public override GunModCategory Category => GunModCategory.Stock;
 }
-public class BlankMuzzle : GunMod
+public class BasicMuzzle : GunMod
 {
-    public override string Name => "Blank muzzle";
+    public override string Name => "Basic muzzle";
     public override string Description => "No muzzle";
     public override GunModCategory Category => GunModCategory.Muzzle;
 }

@@ -22,12 +22,14 @@ public abstract class Ability : MonoBehaviour
     protected abstract float CD { get; }
     public int Level { get; set; } = 1;
     protected abstract float CooldownPerLevel { get; }
+    public abstract string Description { get; }
 }
 
-public class Explosion : Ability // Deals damage and stuns all nearby enemies in a short radius
+public class Explosion : Ability
 {
     protected override float CD => 7f;
     protected override float CooldownPerLevel => 0.5f;
+    public override string Description => "Deals damage and stuns all nearby enemies in a short radius";
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
@@ -40,13 +42,16 @@ public class Explosion : Ability // Deals damage and stuns all nearby enemies in
         float stunDuration = 0.6f;
         float stunDurationPerLevel = 0.15f;
 
+        float explosionForce = 5f;
 
         for (int i = 0;  i < enemies.Count; i++)
         {
             if (Vector3.Distance(player.transform.position, enemies[i].transform.position) <= baseRange + rangePerLevel * (Level - 1))
             {
                 enemies[i].GetComponent<EnemyStats>().DoDamageToEnemy((baseDamage + damagePerLevel * (Level - 1)) * (player.GetComponent<PlayerStats>().damageBuffs + 1));
-                // Knockup Enemy
+
+                enemies[i].GetComponent<Rigidbody>().AddForce(enemies[i].transform.up * explosionForce, ForceMode.Impulse);
+                enemies[i].GetComponent<EnemyAI>().Stun(stunDuration + (stunDurationPerLevel * (Level - 1)));
             }
         }
 
@@ -54,10 +59,11 @@ public class Explosion : Ability // Deals damage and stuns all nearby enemies in
     }
 }
 
-public class Knockback : Ability // Knockbacks all nearby enemies in a big radius and slows them for a duration
+public class Knockback : Ability
 {
     protected override float CD => 12f;
     protected override float CooldownPerLevel => 1.25f;
+    public override string Description => "Knockbacks all nearby enemies in a big radius and slows them for a duration";
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
@@ -77,7 +83,8 @@ public class Knockback : Ability // Knockbacks all nearby enemies in a big radiu
             if (Vector3.Distance(player.transform.position, enemies[i].transform.position) <= baseRange + rangePerLevel * (Level - 1))
             {
                 enemies[i].GetComponent<Rigidbody>().AddForce((enemies[i].transform.position - player.transform.position).normalized * (baseKbForce + kbForcePerLevel * (Level - 1)), ForceMode.Impulse);
-                // Slow enemy
+                
+                enemies[i].GetComponent<EnemyAI>().Slow(slowDuration, 1 - (baseSlow + slowPerLevel * (Level - 1)) / 100);
             }
         }
 
@@ -85,10 +92,11 @@ public class Knockback : Ability // Knockbacks all nearby enemies in a big radiu
     }
 }
 
-public class Dash : Ability // Dash forwards
+public class Dash : Ability
 {
     protected override float CD => 6f;
     protected override float CooldownPerLevel => 1f;
+    public override string Description => "Dash forwards";
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
@@ -100,10 +108,11 @@ public class Dash : Ability // Dash forwards
     }
 }
 
-public class Leap : Ability // Big jump forwards
+public class Leap : Ability
 {
     protected override float CD => 9f;
     protected override float CooldownPerLevel => 1f;
+    public override string Description => "Big jump forwards";
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
@@ -115,10 +124,11 @@ public class Leap : Ability // Big jump forwards
     }
 }
 
-public class Jump : Ability // Big jump
+public class Jump : Ability
 {
     protected override float CD => 7f;
     protected override float CooldownPerLevel => 1f;
+    public override string Description => "Big jump";
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
@@ -130,10 +140,11 @@ public class Jump : Ability // Big jump
     }
 }
 
-public class Fortify : Ability // Gives you defense for the duration and regenerates a percentage of your max hp over the duration
+public class Fortify : Ability
 {
     protected override float CD => 30f;
     protected override float CooldownPerLevel => 3f;
+    public override string Description => "Gives you defense for the duration and regenerates a percentage of your max hp over the duration";
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
@@ -158,10 +169,11 @@ public class Fortify : Ability // Gives you defense for the duration and regener
     }
 }
 
-public class Invincible : Ability // Become untargetable for a short duration
+public class Invincible : Ability
 {
     protected override float CD => 20f;
     protected override float CooldownPerLevel => 2.25f;
+    public override string Description => "Become untargetable for a short duration";
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {

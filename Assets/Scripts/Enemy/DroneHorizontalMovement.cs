@@ -68,6 +68,18 @@ navPointManager = GameObject.FindWithTag("NavNodes").GetComponent<NavPointManage
         }
     }
 
+    public override void Slow(float duration, float slowAmount)
+    {
+        StartCoroutine(SlowAgent(duration, slowAmount));
+    }
+
+    private IEnumerator SlowAgent(float duration, float slowAmount)
+    {
+        agent.speed = speed * slowAmount;
+        yield return new WaitForSeconds(duration);
+        agent.speed = speed;
+    }
+
     public override void Stun(float seconds)
     {
         StartCoroutine(StunAgent(seconds));

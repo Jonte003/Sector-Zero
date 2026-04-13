@@ -46,6 +46,7 @@ public abstract class EnemyAI : MonoBehaviour
 
     public virtual void CalculatePath() { }
     public virtual void Stun(float seconds) { }
+    public virtual void Slow(float duration, float slowAmount) { }
 
 
 
