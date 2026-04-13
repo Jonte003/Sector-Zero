@@ -74,10 +74,49 @@ public class GunSettings : MonoBehaviour
     public static GunSettings AssaultRifle => new
         (
             "Assault Rifle",
-            7f, 4f, 150f, 2.5f, 30, true, 0.9f, 
-            new float[] { 0.75f, 0.5f }, new float[] { 50f, 100f }, true,
+            7f, 4f, 150f, 2.5f, 35, true, 1f,
+            new float[] { 0.85f, 0.7f }, new float[] { 75f, 100f }, false,
             0, 1, 1, new(-1.5f, -1.5f), new(1.5f, 1.5f),
             new(1, 2), 0.5f, 1f,
+            30
+        );
+
+    public static GunSettings BurstRifle => new
+        (
+            "Burst Rifle",
+            10f, 1.5f, 150f, 2.5f, 30, true, 0.95f,
+            new float[] { 0.85f, 0.7f }, new float[] { 75f, 100f }, false,
+            0.1f, 3, 3, new(-1f, -1f), new(1f, 1f),
+            new(1, 2), 0.5f, 1f,
+            30
+        );
+
+    public static GunSettings Shotgun => new
+        (
+            "Shotgun",
+            7f, 1f, 50f, 2f, 8, true, 0.85f,
+            new float[] { 0.8f, 0.5f }, new float[] { 20f, 30f }, true,
+            0, 8, 1, new(-5f, -5f), new(5f, 5f),
+            new(1, 2), 0.5f, 1f,
+            30
+        );
+
+    public static GunSettings Pistol => new
+        (
+            "Pistol",
+            10f, 3.5f, 125f, 1.2f, 12, true, 1.25f,
+            new float[] { 0.8f, 0.65f, 0.5f }, new float[] { 75f, 100f, 125f }, true,
+            0, 1, 1, new(-0.75f, -0.75f), new(0.75f, 0.75f),
+            new(0.75f, 3), 0.5f, 1f,
+            30
+        );
+    public static GunSettings Smg => new
+        (
+            "Smg",
+            4f, 8f, 100f, 0.7f, 20, true, 1.15f,
+            new float[] { 0.9f, 0.75f, 0.5f }, new float[] { 50f, 75f, 100f }, true,
+            0, 1, 1, new(-1.25f, -1.25f), new(1.25f, 1.25f),
+            new(1.5f, 2f), 0.75f, 1f,
             30
         );
 }
