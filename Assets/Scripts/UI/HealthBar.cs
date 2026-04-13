@@ -30,6 +30,7 @@ public class HealthBar : MonoBehaviour
         if (playerStats.CurrentHealth <= 0)
         {
             healthText.text = "DEAD";
+            //Loss condition trigger
         }
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -123,6 +124,8 @@ public class LoadoutUI : MonoBehaviour
     private GunMod activeMagazine;
     private GunMod activeMuzzle;
 
+    private List<Ability> activeAbilities;
+
     void Start()
     {
         gunTypeButtons = new Button[] { assaultRifle, burstRifle, laserRifle, pistol, shotgun, submachineGun };
@@ -199,7 +202,7 @@ public class LoadoutUI : MonoBehaviour
     #region Buttons Barrels
     public void OnClickedBasicBarrel()
     {
-        activeBarrel = new BlankBarrel();
+        activeBarrel = new BasicBarrel();
         foreach (Button button in barrelButtons)
         {
             button.GetComponent<Image>().color = inactiveColor;
@@ -237,7 +240,7 @@ public class LoadoutUI : MonoBehaviour
     #region Buttons Grips
     public void OnClickedBasicGrip()
     {
-        activeGrip = new BlankGrip();
+        activeGrip = new BasicGrip();
         foreach (Button button in gripButtons)
         {
             button.GetComponent<Image>().color = inactiveColor;
@@ -275,7 +278,7 @@ public class LoadoutUI : MonoBehaviour
     #region Buttons Stocks
     public void OnClickedBasicStock()
     {
-        activeStock = new BlankStock();
+        activeStock = new BasicStock();
         foreach (Button button in stockButtons)
         {
             button.GetComponent<Image>().color = inactiveColor;
@@ -313,7 +316,7 @@ public class LoadoutUI : MonoBehaviour
     #region Buttons Magazines
     public void OnClickedBasicMagazine()
     {
-        activeMagazine = new BlankMagazine();
+        activeMagazine = new BasicMagazine();
         foreach (Button button in magazineButtons)
         {
             button.GetComponent<Image>().color = inactiveColor;
@@ -351,7 +354,7 @@ public class LoadoutUI : MonoBehaviour
     #region Buttons Muzzles
     public void OnClickedBasicMuzzle()
     {
-        activeMuzzle = new BlankMuzzle();
+        activeMuzzle = new BasicMuzzle();
         foreach (Button button in muzzleButtons)
         {
             button.GetComponent<Image>().color = inactiveColor;
@@ -453,7 +456,6 @@ public class LoadoutUI : MonoBehaviour
         stockMultiplierReloadSpeedText.text = activeStock.ReloadSpeed.ToString("F2");
         magazineMultiplierReloadSpeedText.text = activeMagazine.ReloadSpeed.ToString("F2");
         muzzleMultiplierReloadSpeedText.text = activeMuzzle.ReloadSpeed.ToString("F2");
-
 
         totalMultiplierWeaponDamageText.text = (totalMultiplierWeaponDamage * 100).ToString("F1") + "%";
         totalMultiplierFireRateText.text = (totalMultiplierFireRate * 100).ToString("F1") + "%";
