@@ -159,15 +159,19 @@ public class LoadoutUI : MonoBehaviour
         foreach (Ability ability in abilitiesList)
         {
             Button button = Instantiate(abilityButtonPrefab, abilityButtonGridParent);
-            Image buttonImage = button.GetComponent<Image>();
+            Image buttonImage = button.GetComponentInChildren<Image>();
             buttonImage.color = inactiveColor;
-            //button.GetComponentInChildren<TextMeshProUGUI>().text = ability.Name;
-            buttonImage.sprite = ability.Icon;
 
+            buttonImage.sprite = ability.Icon;
+            buttonImage.GetComponent<TooltipTrigger>().tooltipText = ability.Name; //Using name instead of description for now, need better formatting.
+            if (ability.NotYetImplemented)
+            {
+                buttonImage.color = Color.red;
+                buttonImage.GetComponent<TooltipTrigger>().tooltipText += "\n(Not yet implemented)";
+            }
             button.onClick.AddListener(() =>
             {
-                //button.GetComponent<TooltipTrigger>().tooltipText = ability.Description;
-                button.GetComponent<TooltipTrigger>().tooltipText = ability.Name; //Using name instead of description for now, need better formatting.
+                if (ability.NotYetImplemented) return; // Do not allow the player to select abilities that are not yet implemented.
                 if (ability.Enabled)
                 {
                     buttonImage.color = inactiveColor;

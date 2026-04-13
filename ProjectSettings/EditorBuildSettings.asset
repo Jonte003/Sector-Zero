@@ -5,9 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/Jonathan/OLD-AI.unity
+    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Title Screen.unity
+    guid: 946b92d3392b88c46916ddc3f7b95f17
   - enabled: 1
     path: Assets/Scenes/Loadout Selection.unity
     guid: 0d2651f50df1ed54d85da0c47a61a838
+  - enabled: 1
+    path: Assets/Scenes/Gameplay.unity
+    guid: ed277697f2b9e674bab18cd36f18d23b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: c6029a27072758b40a05171c5fa0c043, type: 3}
   m_UseUCBPForAssetBundles: 0

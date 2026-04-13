@@ -24,6 +24,8 @@ public abstract class Ability : MonoBehaviour
     protected abstract float CooldownPerLevel { get; }
     public abstract string Description { get; }
 
+    public abstract bool NotYetImplemented { get; }
+
     public abstract AbilityCategory Category { get; }
 
     public abstract Sprite Icon { get; }
@@ -40,8 +42,9 @@ public enum AbilityCategory
 
 public class Explosion : Ability
 {
+    public override bool NotYetImplemented => false;
     public override string Name => "Explosion";
-    public override Sprite Icon => Resources.Load<Sprite>("Default");
+    public override Sprite Icon => Resources.Load<Sprite>("Explosion");
     protected override float CD => 7f;
     protected override float CooldownPerLevel => 0.5f;
     public override string Description => "Deals damage and stuns all nearby enemies in a short radius";
@@ -78,8 +81,9 @@ public class Explosion : Ability
 
 public class Knockback : Ability
 {
+    public override bool NotYetImplemented => false;
     public override string Name => "Knockback";
-    public override Sprite Icon => Resources.Load<Sprite>("Default");
+    public override Sprite Icon => Resources.Load<Sprite>("Knockback");
     protected override float CD => 12f;
     protected override float CooldownPerLevel => 1.25f;
     public override string Description => "Knockbacks all nearby enemies in a big radius and slows them for a duration";
@@ -115,8 +119,9 @@ public class Knockback : Ability
 
 public class Dash : Ability
 {
+    public override bool NotYetImplemented => false;
     public override string Name => "Dash";
-    public override Sprite Icon => Resources.Load<Sprite>("Default");
+    public override Sprite Icon => Resources.Load<Sprite>("Dash");
     protected override float CD => 6f;
     protected override float CooldownPerLevel => 1f;
     public override string Description => "Dash forwards";
@@ -135,8 +140,9 @@ public class Dash : Ability
 
 public class Leap : Ability
 {
+    public override bool NotYetImplemented => false;
     public override string Name => "Leap";
-    public override Sprite Icon => Resources.Load<Sprite>("Default");
+    public override Sprite Icon => Resources.Load<Sprite>("Leap");
     protected override float CD => 9f;
     protected override float CooldownPerLevel => 1f;
     public override string Description => "Big jump forwards";
@@ -155,8 +161,9 @@ public class Leap : Ability
 
 public class Jump : Ability
 {
+    public override bool NotYetImplemented => false;
     public override string Name => "Jump";
-    public override Sprite Icon => Resources.Load<Sprite>("Default");
+    public override Sprite Icon => Resources.Load<Sprite>("Jump");
     protected override float CD => 7f;
     protected override float CooldownPerLevel => 1f;
     public override string Description => "Big jump";
@@ -175,8 +182,9 @@ public class Jump : Ability
 
 public class Fortify : Ability
 {
+    public override bool NotYetImplemented => false;
     public override string Name => "Fortify";
-    public override Sprite Icon => Resources.Load<Sprite>("Default");
+    public override Sprite Icon => Resources.Load<Sprite>("Fortify");
     protected override float CD => 30f;
     protected override float CooldownPerLevel => 3f;
     public override string Description => "Gives you defense for the duration and regenerates a percentage of your max hp over the duration";
@@ -208,8 +216,9 @@ public class Fortify : Ability
 
 public class Invincible : Ability
 {
+    public override bool NotYetImplemented => false;
     public override string Name => "Invincible";
-    public override Sprite Icon => Resources.Load<Sprite>("Default");
+    public override Sprite Icon => Resources.Load<Sprite>("Invincible");
     protected override float CD => 20f;
     protected override float CooldownPerLevel => 2.25f;
     public override string Description => "Become untargetable for a short duration";
@@ -232,8 +241,9 @@ public class Invincible : Ability
 
 public class ChainLightning : Ability
 {
+    public override bool NotYetImplemented => false;
     public override string Name => "Chain Lightning";
-    public override Sprite Icon => Resources.Load<Sprite>("Default");
+    public override Sprite Icon => Resources.Load<Sprite>("ChainLightning");
     protected override float CD => 9f;
     protected override float CooldownPerLevel => 1f;
     public override string Description => "Strikes an enemy with lightning that chains to others.";
@@ -285,8 +295,9 @@ public class ChainLightning : Ability
 
 public class Eruption : Ability
 {
+    public override bool NotYetImplemented => false;
     public override string Name => "Eruption";
-    public override Sprite Icon => Resources.Load<Sprite>("Default");
+    public override Sprite Icon => Resources.Load<Sprite>("Eruption");
     protected override float CD => 11f;
     protected override float CooldownPerLevel => 1f;
     public override string Description => "After a short delay, erupts the ground dealing heavy AOE damage.";
@@ -316,8 +327,9 @@ public class Eruption : Ability
 
 public class Blink : Ability
 {
+    public override bool NotYetImplemented => true;
     public override string Name => "Blink";
-    public override Sprite Icon => Resources.Load<Sprite>("Default");
+    public override Sprite Icon => Resources.Load<Sprite>("Blink");
     protected override float CD => 8f;
     protected override float CooldownPerLevel => 1f;
     public override string Description => "Instantly teleport a short distance forward.";
@@ -338,8 +350,9 @@ public class Blink : Ability
 
 public class Charge : Ability
 {
+    public override bool NotYetImplemented => false;
     public override string Name => "Charge";
-    public override Sprite Icon => Resources.Load<Sprite>("Default");
+    public override Sprite Icon => Resources.Load<Sprite>("Charge");
     protected override float CD => 10f;
     protected override float CooldownPerLevel => 1f;
     public override string Description => "Charge forward, pushing enemies aside.";
@@ -376,8 +389,9 @@ public class Charge : Ability
 
 public class VitalSurge : Ability
 {
+    public override bool NotYetImplemented => false;
     public override string Name => "Vital Surge";
-    public override Sprite Icon => Resources.Load<Sprite>("Default");
+    public override Sprite Icon => Resources.Load<Sprite>("VitalSurge");
     protected override float CD => 14f;
     protected override float CooldownPerLevel => 1f;
     public override string Description => "Rapidly regenerate health for a short duration";
@@ -403,8 +417,9 @@ public class VitalSurge : Ability
 
 public class Backstep : Ability
 {
+    public override bool NotYetImplemented => false;
     public override string Name => "Backstep";
-    public override Sprite Icon => Resources.Load<Sprite>("Default");
+    public override Sprite Icon => Resources.Load<Sprite>("Backstep");
     protected override float CD => 5f;
     protected override float CooldownPerLevel => 0.75f;
     public override string Description => "Quickly dash backwards to evade attacks";
@@ -423,8 +438,9 @@ public class Backstep : Ability
 
 public class MomentumShift : Ability
 {
+    public override bool NotYetImplemented => false;
     public override string Name => "Momentum Shift";
-    public override Sprite Icon => Resources.Load<Sprite>("Default");
+    public override Sprite Icon => Resources.Load<Sprite>("MomentumShift");
     protected override float CD => 7f;
     protected override float CooldownPerLevel => 0.75f;
     public override string Description => "Redirect your momentum toward your aim direction.";
@@ -445,8 +461,9 @@ public class MomentumShift : Ability
 
 public class GroundSlam : Ability
 {
-   public override string Name => "Ground Slam";
-    public override Sprite Icon => Resources.Load<Sprite>("Default");
+    public override bool NotYetImplemented => false;
+    public override string Name => "Ground Slam";
+    public override Sprite Icon => Resources.Load<Sprite>("GroundSlam");
     protected override float CD => 10f;
     protected override float CooldownPerLevel => 1f;
     public override string Description => "Slam straight downward and launch nearby enemies upward and away.";

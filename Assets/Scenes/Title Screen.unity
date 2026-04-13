@@ -549,7 +549,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea6e43524d46506438dca6df56fff1eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuManager
-  gameSceneName: GameScene
 --- !u!1 &892749424
 GameObject:
   m_ObjectHideFlags: 0
@@ -847,7 +846,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 702128788}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: OnPlayClicked
+        m_MethodName: OnCreditsClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1391,7 +1390,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 702128788}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: OnPlayClicked
+        m_MethodName: OnExitClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1657,7 +1656,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 702128788}
         m_TargetAssemblyTypeName: MainMenuManager, Assembly-CSharp
-        m_MethodName: OnPlayClicked
+        m_MethodName: OnSettingsClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
