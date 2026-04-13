@@ -124,7 +124,12 @@ public class LoadoutUI : MonoBehaviour
     private GunMod activeMagazine;
     private GunMod activeMuzzle;
 
-    private List<Ability> activeAbilities;
+    private List<Ability> abilitiesList;
+    private int activeAbilityCount = 0;
+
+    [SerializeField] private Button abilityButtonPrefab;
+    [SerializeField] private Transform abilityButtonGridParent;
+    [SerializeField] private TextMeshProUGUI activeAbilityCountText;
 
     void Start()
     {
@@ -141,6 +146,60 @@ public class LoadoutUI : MonoBehaviour
         OnClickedBasicStock();
         OnClickedBasicMagazine();
         OnClickedBasicMuzzle();
+
+        InitializeAbilityList();
+
+        foreach (Ability ability in abilitiesList)
+        {
+            Button button = Instantiate(abilityButtonPrefab, abilityButtonGridParent);
+            Image buttonImage = button.GetComponent<Image>();
+            buttonImage.color = inactiveColor;
+            //button.GetComponentInChildren<TextMeshProUGUI>().text = ability.Name;
+            buttonImage.sprite = ability.Icon;
+
+            button.onClick.AddListener(() =>
+            {
+                if (ability.Enabled)
+                {
+                    buttonImage.color = inactiveColor;
+                }
+                else
+                {
+                    buttonImage.color = activeColor;
+                }
+                ability.Enabled = !ability.Enabled;
+            });
+        }
+    }
+    void InitializeAbilityList()
+    {
+        abilitiesList = new List<Ability>();
+        abilitiesList.Add(new Dash());
+        abilitiesList.Add(new Explosion());
+        abilitiesList.Add(new Fortify());
+        abilitiesList.Add(new Invincible());
+        abilitiesList.Add(new Jump());
+        abilitiesList.Add(new Knockback());
+        abilitiesList.Add(new Leap());
+    }
+
+    Ability[] MakeActiveAbilityLoadout()
+    {
+        Ability[] activeAbilityLoadout = new Ability[10];
+        int index = 0;
+        foreach (Ability ability in abilitiesList)
+        {
+            if (ability.Enabled)
+            {
+                activeAbilityLoadout[index] = ability;
+                index++;
+                if (index >= 10)
+                {
+                    break;
+                }
+            }
+        }
+        return activeAbilityLoadout;
     }
 
     #region Buttons Gun Types
@@ -472,5 +531,15 @@ public class LoadoutUI : MonoBehaviour
         resultMovementSpeedText.text = (baseMovementSpeed * (1 + totalMultiplierMovementSpeed)).ToString();
         resultMagazineSizeText.text = (baseMagazineSize * (1 + totalMultiplierMagazineSize)).ToString();
         resultReloadSpeedText.text = (baseReloadSpeed * (1 + totalMultiplierReloadSpeed)).ToString();
+
+        activeAbilityCount = 0;
+        foreach (Ability ability in abilitiesList)
+        {
+            if (ability.Enabled)
+            {
+                activeAbilityCount++;
+            }
+        }
+        activeAbilityCountText.text = activeAbilityCount.ToString() + "/10 abilities";
     }
 }

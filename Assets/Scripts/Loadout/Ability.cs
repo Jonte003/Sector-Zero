@@ -23,10 +23,16 @@ public abstract class Ability : MonoBehaviour
     public int Level { get; set; } = 1;
     protected abstract float CooldownPerLevel { get; }
     public abstract string Description { get; }
+
+    public abstract Sprite Icon { get; }
+    public abstract string Name { get; }
+    public bool Enabled { get; set; } = false;
 }
 
 public class Explosion : Ability
 {
+    public override string Name => "Explosion";
+    public override Sprite Icon => Resources.Load<Sprite>("Default");
     protected override float CD => 7f;
     protected override float CooldownPerLevel => 0.5f;
     public override string Description => "Deals damage and stuns all nearby enemies in a short radius";
@@ -61,6 +67,8 @@ public class Explosion : Ability
 
 public class Knockback : Ability
 {
+    public override string Name => "Knockback";
+    public override Sprite Icon => Resources.Load<Sprite>("Default");
     protected override float CD => 12f;
     protected override float CooldownPerLevel => 1.25f;
     public override string Description => "Knockbacks all nearby enemies in a big radius and slows them for a duration";
@@ -94,6 +102,8 @@ public class Knockback : Ability
 
 public class Dash : Ability
 {
+    public override string Name => "Dash";
+    public override Sprite Icon => Resources.Load<Sprite>("Default");
     protected override float CD => 6f;
     protected override float CooldownPerLevel => 1f;
     public override string Description => "Dash forwards";
@@ -110,6 +120,8 @@ public class Dash : Ability
 
 public class Leap : Ability
 {
+    public override string Name => "Leap";
+    public override Sprite Icon => Resources.Load<Sprite>("Default");
     protected override float CD => 9f;
     protected override float CooldownPerLevel => 1f;
     public override string Description => "Big jump forwards";
@@ -126,6 +138,8 @@ public class Leap : Ability
 
 public class Jump : Ability
 {
+    public override string Name => "Jump";
+    public override Sprite Icon => Resources.Load<Sprite>("Default");
     protected override float CD => 7f;
     protected override float CooldownPerLevel => 1f;
     public override string Description => "Big jump";
@@ -142,6 +156,8 @@ public class Jump : Ability
 
 public class Fortify : Ability
 {
+    public override string Name => "Fortify";
+    public override Sprite Icon => Resources.Load<Sprite>("Default");
     protected override float CD => 30f;
     protected override float CooldownPerLevel => 3f;
     public override string Description => "Gives you defense for the duration and regenerates a percentage of your max hp over the duration";
@@ -171,6 +187,8 @@ public class Fortify : Ability
 
 public class Invincible : Ability
 {
+    public override string Name => "Invincible";
+    public override Sprite Icon => Resources.Load<Sprite>("Default");
     protected override float CD => 20f;
     protected override float CooldownPerLevel => 2.25f;
     public override string Description => "Become untargetable for a short duration";
