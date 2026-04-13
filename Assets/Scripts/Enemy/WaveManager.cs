@@ -19,6 +19,7 @@ public class WaveManager : MonoBehaviour
     [SerializeField, Tooltip("Applies a multipler to the spawntimer each new wave, 0.9 increases spawn rate by 10% each wave")] float spawnTimeMultiplier;
     [SerializeField] float currentTimerMultiplier;
 
+    Controller enemyController;
 
     [SerializeField] bool waveIsSpawning;
 
@@ -30,7 +31,7 @@ public class WaveManager : MonoBehaviour
         spawnPointsDeactiveted = new List<SpawnPoint>();
         spawnPointsActive = new List<SpawnPoint>();
         allWaves = new List<Wave>();
-
+        enemyController = GameObject.FindWithTag("EnemyController").GetComponent<Controller>();
         foreach (Transform child in transform.Find("SpawnPoints")) //Add all spawnpoints of child to list
         {
             spawnPointsDeactiveted.Add(child.gameObject.GetComponent<SpawnPoint>());
@@ -74,7 +75,7 @@ public class WaveManager : MonoBehaviour
     void Update()
     {
     timeToNextWave -= Time.deltaTime;
-    if (timeToNextWave <= 0)
+        if (timeToNextWave <= 0 || (enemyController.AllEnemies.Count == 0 && gameObjectInQueue.Count == 0)) 
         {
             startNextWave = true;
         }

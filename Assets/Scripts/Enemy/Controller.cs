@@ -41,6 +41,7 @@ public class Controller : MonoBehaviour
 
         if (firstenemy == null)
         {
+            allEnemies.Remove(firstenemy.transform);
             return; //Enemy has died
         }
 
@@ -48,11 +49,16 @@ public class Controller : MonoBehaviour
 
         enemyQueue.Enqueue(firstenemy);
 
-
+            
     }
 
     public void AddExperiece(float amount)
     {
         playerLevels.AddExperience(amount);
+    }
+
+    public List<Transform> AllEnemies
+    {
+        get { return allEnemies; }
     }
 }
