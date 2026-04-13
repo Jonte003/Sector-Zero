@@ -92,20 +92,27 @@ public class NavPointManager : MonoBehaviour
 
         foreach (GameObject node in allNodes)
         {
-            Collider[] hits = Physics.OverlapSphere(node.transform.position, 0.1f); //Check if node is inside collider
+            Collider[] hits = Physics.OverlapSphere(node.transform.position, 0.1f);
 
-            if (hits.Length <= 0 && CheckIfLineOfSight(node.transform.position - nodeCheckLineOfSightOffset, playerTransform.position, obstacles))
+            if (hits.Length <= 0)
             {
-                avaliableNodes.Add(node);
-                node.GetComponent<DrawGizmoSphere>().ChangeColor(Color.green);
-            }
-            else
-            {
-                node.GetComponent<DrawGizmoSphere>().ChangeColor(Color.red);
+                Vector3 targetPos = node.transform.position - nodeCheckLineOfSightOffset;
+                Vector3 dir = (targetPos - playerTransform.position).normalized;
+
+                Vector3 origin = playerTransform.position + dir * 0.1f;
+
+                if (CheckIfLineOfSight(origin, targetPos, obstacles))
+                {
+                    avaliableNodes.Add(node);
+                    node.GetComponent<DrawGizmoSphere>().ChangeColor(Color.green);
+                    continue;
+                }
             }
 
+            node.GetComponent<DrawGizmoSphere>().ChangeColor(Color.red);
         }
     }
+
 
     void ChangeNavCosts()
     {

@@ -123,9 +123,14 @@ navPointManager = GameObject.FindWithTag("NavNodes").GetComponent<NavPointManage
 
     private void MoveToClosestNode()
     {
+        
         Vector3 destination = navPointManager.GetClosestNode(transform.position);
+        
         destination.y = transform.position.y; // keep height to navmesh
-        agent.SetDestination(destination);
+        if (destination != Vector3.zero)
+        {
+            agent.SetDestination(destination);
+        }
     }
 
     private void MoveToRandomNode()
