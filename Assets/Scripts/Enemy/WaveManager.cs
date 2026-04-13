@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.Windows;
 
 public class WaveManager : MonoBehaviour
@@ -91,9 +92,14 @@ public class WaveManager : MonoBehaviour
             }
             else
             {
-                //Last wave reached
                 startNextWave = false;
+                if (enemyController.AllEnemies.Count == 0 && gameObjectInQueue.Count == 0)
+                {
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                    SceneManager.LoadScene("Title Screen");
 
+                }
             }
 
         }

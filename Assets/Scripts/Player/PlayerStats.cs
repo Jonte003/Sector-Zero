@@ -1,5 +1,6 @@
 using System.Net;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -69,6 +70,7 @@ public class PlayerStats : MonoBehaviour
 
         if (currentHealth <= 0) //PLAYER DEAD
         {
+            SceneManager.LoadScene("Title Screen");
 
         }
     }

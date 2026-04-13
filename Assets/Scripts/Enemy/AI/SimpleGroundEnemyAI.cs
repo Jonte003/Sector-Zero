@@ -11,7 +11,6 @@ public class SimpleEnemyAI : EnemyAI
     private GroundEnemyStats enemyStats;
     Animator animator;
 
-    [SerializeField] float agentRadius;
     [SerializeField] protected bool whitinHitDistance;
 
     Vector3 destination;
@@ -27,8 +26,7 @@ public class SimpleEnemyAI : EnemyAI
 
         agent.speed = speed;
         currentState = State.walking;
-        agent.radius = agentRadius;
-
+    
 
         enemyStats = gameObject.GetComponent<GroundEnemyStats>();
         destination = targetLocation;
@@ -86,12 +84,7 @@ public class SimpleEnemyAI : EnemyAI
             }
             else
             {
-                enemyStats.DoDamageToTarget();
 
-                //Code to turn towards target
-                Vector3 lookDirection = target.transform.position - transform.position;
-                Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
             }
         }
 
@@ -108,7 +101,18 @@ public class SimpleEnemyAI : EnemyAI
     }
 
 
+    private void Update() 
+    {
+        if (currentState == State.deelingDamage)
+        {
+            enemyStats.DoDamageToTarget();
 
+            Vector3 lookDirection = target.transform.position - transform.position;
+            Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
+        }
+
+    }
 
     private void ChangeCurrentState(State newState)
     {
