@@ -221,9 +221,19 @@ public class LoadoutUI : MonoBehaviour
         }
         return activeAbilityLoadout;
     }
+
+    int CountActiveAbilities()
+    {
+        int count = 0;
+        foreach (Ability ability in abilitiesList)
+        {
+            if (ability.Enabled) count++;
+        }
+        return count;
+    }
     public void OnClickedStartGame()
     {
-        if (MakeActiveAbilityLoadout().Length != 10) return;
+        if (CountActiveAbilities() != 10) return;
         // Ensure that the player has selected 10 abilities before starting the game.
 
         LoadoutManager.GunPrefab = activeGunPrefab;
