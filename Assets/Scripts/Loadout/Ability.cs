@@ -24,6 +24,8 @@ public abstract class Ability : MonoBehaviour
     protected abstract float CooldownPerLevel { get; }
     public abstract string Description { get; }
 
+    public abstract bool NotYetImplemented { get; }
+
     public abstract AbilityCategory Category { get; }
 
     public abstract Sprite Icon { get; }
@@ -40,6 +42,7 @@ public enum AbilityCategory
 
 public class Explosion : Ability
 {
+    public override bool NotYetImplemented => false;
     public override string Name => "Explosion";
     public override Sprite Icon => Resources.Load<Sprite>("Explosion");
     protected override float CD => 7f;
@@ -78,6 +81,7 @@ public class Explosion : Ability
 
 public class Knockback : Ability
 {
+    public override bool NotYetImplemented => false;
     public override string Name => "Knockback";
     public override Sprite Icon => Resources.Load<Sprite>("Knockback");
     protected override float CD => 12f;
@@ -115,6 +119,7 @@ public class Knockback : Ability
 
 public class Dash : Ability
 {
+    public override bool NotYetImplemented => false;
     public override string Name => "Dash";
     public override Sprite Icon => Resources.Load<Sprite>("Dash");
     protected override float CD => 6f;
@@ -135,6 +140,7 @@ public class Dash : Ability
 
 public class Leap : Ability
 {
+    public override bool NotYetImplemented => false;
     public override string Name => "Leap";
     public override Sprite Icon => Resources.Load<Sprite>("Leap");
     protected override float CD => 9f;
@@ -155,6 +161,7 @@ public class Leap : Ability
 
 public class Jump : Ability
 {
+    public override bool NotYetImplemented => false;
     public override string Name => "Jump";
     public override Sprite Icon => Resources.Load<Sprite>("Jump");
     protected override float CD => 7f;
@@ -175,6 +182,7 @@ public class Jump : Ability
 
 public class Fortify : Ability
 {
+    public override bool NotYetImplemented => false;
     public override string Name => "Fortify";
     public override Sprite Icon => Resources.Load<Sprite>("Fortify");
     protected override float CD => 30f;
@@ -208,6 +216,7 @@ public class Fortify : Ability
 
 public class Invincible : Ability
 {
+    public override bool NotYetImplemented => false;
     public override string Name => "Invincible";
     public override Sprite Icon => Resources.Load<Sprite>("Invincible");
     protected override float CD => 20f;
@@ -232,6 +241,7 @@ public class Invincible : Ability
 
 public class ChainLightning : Ability
 {
+    public override bool NotYetImplemented => false;
     public override string Name => "Chain Lightning";
     public override Sprite Icon => Resources.Load<Sprite>("ChainLightning");
     protected override float CD => 9f;
@@ -285,6 +295,7 @@ public class ChainLightning : Ability
 
 public class Eruption : Ability
 {
+    public override bool NotYetImplemented => false;
     public override string Name => "Eruption";
     public override Sprite Icon => Resources.Load<Sprite>("Eruption");
     protected override float CD => 11f;
@@ -316,6 +327,7 @@ public class Eruption : Ability
 
 public class Blink : Ability
 {
+    public override bool NotYetImplemented => true;
     public override string Name => "Blink";
     public override Sprite Icon => Resources.Load<Sprite>("Blink");
     protected override float CD => 8f;
@@ -338,6 +350,7 @@ public class Blink : Ability
 
 public class Charge : Ability
 {
+    public override bool NotYetImplemented => false;
     public override string Name => "Charge";
     public override Sprite Icon => Resources.Load<Sprite>("Charge");
     protected override float CD => 10f;
@@ -376,6 +389,7 @@ public class Charge : Ability
 
 public class VitalSurge : Ability
 {
+    public override bool NotYetImplemented => false;
     public override string Name => "Vital Surge";
     public override Sprite Icon => Resources.Load<Sprite>("VitalSurge");
     protected override float CD => 14f;
@@ -403,6 +417,7 @@ public class VitalSurge : Ability
 
 public class Backstep : Ability
 {
+    public override bool NotYetImplemented => false;
     public override string Name => "Backstep";
     public override Sprite Icon => Resources.Load<Sprite>("Backstep");
     protected override float CD => 5f;
@@ -423,6 +438,7 @@ public class Backstep : Ability
 
 public class MomentumShift : Ability
 {
+    public override bool NotYetImplemented => false;
     public override string Name => "Momentum Shift";
     public override Sprite Icon => Resources.Load<Sprite>("MomentumShift");
     protected override float CD => 7f;
@@ -445,7 +461,8 @@ public class MomentumShift : Ability
 
 public class GroundSlam : Ability
 {
-   public override string Name => "Ground Slam";
+    public override bool NotYetImplemented => false;
+    public override string Name => "Ground Slam";
     public override Sprite Icon => Resources.Load<Sprite>("GroundSlam");
     protected override float CD => 10f;
     protected override float CooldownPerLevel => 1f;
