@@ -1,13 +1,13 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LoadoutUI : MonoBehaviour
 {
     [SerializeField] private Button assaultRifle;
     [SerializeField] private Button burstRifle;
-    [SerializeField] private Button laserRifle;
     [SerializeField] private Button pistol;
     [SerializeField] private Button shotgun;
     [SerializeField] private Button submachineGun;
@@ -146,7 +146,7 @@ public class LoadoutUI : MonoBehaviour
         OnClickedBasicStock();
         OnClickedBasicMagazine();
         OnClickedBasicMuzzle();
-        Debug.Log("Initialized gun and mods");
+
         InitializeAbilityList();
 
         foreach (Ability ability in abilitiesList)
@@ -159,6 +159,8 @@ public class LoadoutUI : MonoBehaviour
 
             button.onClick.AddListener(() =>
             {
+                //button.GetComponent<TooltipTrigger>().tooltipText = ability.Description;
+                button.GetComponent<TooltipTrigger>().tooltipText = ability.Name; //Using name instead of description for now, need better formatting.
                 if (ability.Enabled)
                 {
                     buttonImage.color = inactiveColor;
@@ -208,7 +210,16 @@ public class LoadoutUI : MonoBehaviour
         }
         return activeAbilityLoadout;
     }
+    public void OnClickedStartGame()
+    {
+        if (MakeActiveAbilityLoadout().Length != 10) return;
+        // Ensure that the player has selected 10 abilities before starting the game.
 
+        LoadoutManager.AbilitiesInBag = MakeActiveAbilityLoadout();
+        LoadoutManager.Gun.settings = activeGun;
+        LoadoutManager.GunMods = new GunMod[] { activeBarrel, activeGrip, activeStock, activeMagazine, activeMuzzle };
+        SceneManager.LoadScene("Gameplay");
+    }
     #region Buttons Gun Types
     public void OnClickedAssaultRifle()
     {
