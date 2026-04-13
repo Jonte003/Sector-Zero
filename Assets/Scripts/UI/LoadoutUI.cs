@@ -152,7 +152,7 @@ public class LoadoutUI : MonoBehaviour
         foreach (Ability ability in abilitiesList)
         {
             Button button = Instantiate(abilityButtonPrefab, abilityButtonGridParent);
-            Image buttonImage = button.GetComponent<Image>();
+            Image buttonImage = button.GetComponentInChildren<Image>();
             buttonImage.color = inactiveColor;
             //button.GetComponentInChildren<TextMeshProUGUI>().text = ability.Name;
             buttonImage.sprite = ability.Icon;
