@@ -133,6 +133,18 @@ public class LevelUpUI : MonoBehaviour
         newSkillPanel.transform.Find("Choices").Find("Button New Skill 2").GetComponent<TooltipTrigger>().tooltipText = $"{abilityChoices[1].Name}";
         newSkillPanel.transform.Find("Choices").Find("Button New Skill 3").GetComponent<TooltipTrigger>().tooltipText = $"{abilityChoices[2].Name}";
 
+        Image[] buttonImages =
+        {
+            buttonNewSkill1.GetComponent<Image>(),
+            buttonNewSkill2.GetComponent<Image>(),
+            buttonNewSkill3.GetComponent<Image>()
+        };
+
+        for (int i = 0; i < 3; i++)
+        {
+            buttonImages[i].sprite = abilityChoices[i].Icon;
+        }
+
         newSkillPanel.SetActive(true);
         firstChoiceMade = true;
     }
@@ -150,6 +162,20 @@ public class LevelUpUI : MonoBehaviour
         levelUpSkillPanel.transform.Find("Choices").Find("Button Level Up Skill 1").GetComponent<TooltipTrigger>().tooltipText = playerLoadout.Ability1 != null ? $"{playerLoadout.Ability1.Name} (Level {playerLoadout.Ability1.Level}/5)" : "Empty Slot";
         levelUpSkillPanel.transform.Find("Choices").Find("Button Level Up Skill 2").GetComponent<TooltipTrigger>().tooltipText = playerLoadout.Ability2 != null ? $"{playerLoadout.Ability2.Name} (Level {playerLoadout.Ability2.Level}/5)" : "Empty Slot";
         levelUpSkillPanel.transform.Find("Choices").Find("Button Level Up Skill 3").GetComponent<TooltipTrigger>().tooltipText = playerLoadout.Ability3 != null ? $"{playerLoadout.Ability3.Name} (Level {playerLoadout.Ability3.Level}/5)" : "Empty Slot";
+
+        Image[] buttonImages =
+        {
+            buttonLevelUpSkill1.GetComponent<Image>(),
+            buttonLevelUpSkill2.GetComponent<Image>(),
+            buttonLevelUpSkill3.GetComponent<Image>()
+        };
+
+        for (int i = 0; i < 3; i++)
+        {
+            if (i == 0 && playerLoadout.Ability1 != null) buttonImages[i].sprite = playerLoadout.Ability1.Icon;
+            if (i == 1 && playerLoadout.Ability2 != null) buttonImages[i].sprite = playerLoadout.Ability2.Icon;
+            if (i == 2 && playerLoadout.Ability3 != null) buttonImages[i].sprite = playerLoadout.Ability3.Icon;
+        }
 
         levelUpSkillPanel.SetActive(true);
         firstChoiceMade = true;
