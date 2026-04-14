@@ -607,7 +607,7 @@ public class LoadoutUI : MonoBehaviour
             {
                 text.color = Color.red;
             }
-            else if (text.text == "0,00")
+            else if (text.text == "0,00" || text.text == "0.00")
             {
                 text.color = Color.white;
             }
@@ -623,7 +623,7 @@ public class LoadoutUI : MonoBehaviour
             {
                 text.color = Color.green;
             }
-            else if (text.text == "0,00")
+            else if (text.text == "0,00" || text.text == "0.00")
             {
                 text.color = Color.white;
             }
