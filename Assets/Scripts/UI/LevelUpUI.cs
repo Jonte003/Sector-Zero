@@ -33,6 +33,10 @@ public class LevelUpUI : MonoBehaviour
     [SerializeField] private GameObject buttonLevelUpSkillBorders;
     [SerializeField] private GameObject buttonLevelUpStatsBorders;
 
+    [SerializeField] private Image imageAbilityBar1;
+    [SerializeField] private Image imageAbilityBar2;
+    [SerializeField] private Image imageAbilityBar3;
+
     private bool buttonsInteractable = false;
     private bool firstChoiceMade = false;
 
@@ -226,14 +230,17 @@ public class LevelUpUI : MonoBehaviour
         if (abilitySlot == 1)
         {
             player.GetComponent<Loadout>().Ability1 = abilityChoices[0];
+            imageAbilityBar1.GetComponent<Image>().sprite = abilityChoices[0].Icon;
         }
         else if (abilitySlot == 2)
         {
             player.GetComponent<Loadout>().Ability2 = abilityChoices[0];
+            imageAbilityBar2.GetComponent<Image>().sprite = abilityChoices[0].Icon;
         }
         else if (abilitySlot == 3)
         {
             player.GetComponent<Loadout>().Ability3 = abilityChoices[0];
+            imageAbilityBar3.GetComponent<Image>().sprite = abilityChoices[0].Icon;
         }
 
         newSkillPanel.SetActive(false);
@@ -245,14 +252,17 @@ public class LevelUpUI : MonoBehaviour
         if (abilitySlot == 1)
         {
             player.GetComponent<Loadout>().Ability1 = abilityChoices[1];
+            imageAbilityBar1.GetComponent<Image>().sprite = abilityChoices[1].Icon;
         }
         else if (abilitySlot == 2)
         {
             player.GetComponent<Loadout>().Ability2 = abilityChoices[1];
+            imageAbilityBar2.GetComponent<Image>().sprite = abilityChoices[1].Icon;
         }
         else if (abilitySlot == 3)
         {
             player.GetComponent<Loadout>().Ability3 = abilityChoices[1];
+            imageAbilityBar3.GetComponent<Image>().sprite = abilityChoices[1].Icon;
         }
 
         newSkillPanel.SetActive(false);
@@ -264,14 +274,17 @@ public class LevelUpUI : MonoBehaviour
         if (abilitySlot == 1)
         {
             player.GetComponent<Loadout>().Ability1 = abilityChoices[2];
+            imageAbilityBar1.GetComponent<Image>().sprite = abilityChoices[2].Icon;
         }
         else if (abilitySlot == 2)
         {
             player.GetComponent<Loadout>().Ability2 = abilityChoices[2];
+            imageAbilityBar2.GetComponent<Image>().sprite = abilityChoices[2].Icon;
         }
         else if (abilitySlot == 3)
         {
             player.GetComponent<Loadout>().Ability3 = abilityChoices[2];
+            imageAbilityBar3.GetComponent<Image>().sprite = abilityChoices[2].Icon;
         }
 
         newSkillPanel.SetActive(false);

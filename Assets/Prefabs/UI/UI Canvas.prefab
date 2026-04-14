@@ -497,7 +497,7 @@ GameObject:
   - component: {fileID: 7194559716482819094}
   - component: {fileID: 7064466917682965456}
   m_Layer: 5
-  m_Name: Skill 2
+  m_Name: Ability 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5604,7 +5604,7 @@ GameObject:
   - component: {fileID: 1819894510967627331}
   - component: {fileID: 7595487980034963653}
   m_Layer: 5
-  m_Name: Skill 1
+  m_Name: Ability 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6617,7 +6617,7 @@ GameObject:
   - component: {fileID: 4254712793097945627}
   - component: {fileID: 420430282536289874}
   m_Layer: 5
-  m_Name: Skill 3
+  m_Name: Ability 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10169,6 +10169,9 @@ MonoBehaviour:
   buttonNewSkillBorders: {fileID: 90644283892264018}
   buttonLevelUpSkillBorders: {fileID: 4991119362003493907}
   buttonLevelUpStatsBorders: {fileID: 2393884167467633867}
+  imageAbilityBar1: {fileID: 7595487980034963653}
+  imageAbilityBar2: {fileID: 7064466917682965456}
+  imageAbilityBar3: {fileID: 420430282536289874}
   iconStatHealth: {fileID: 21300000, guid: 5d5c53206766f7f4cbc26cc3d2eb065b, type: 3}
   iconStatRegen: {fileID: 21300000, guid: 815dbdd19f40223498674a56edfec370, type: 3}
   iconStatDamage: {fileID: 21300000, guid: 6908272076e80c041803fb5a8313cf62, type: 3}
