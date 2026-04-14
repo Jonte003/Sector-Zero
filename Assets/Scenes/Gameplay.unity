@@ -8335,7 +8335,7 @@ MonoBehaviour:
     meshQuery:
       layers: 16777223
       maskAndChannels: 234881031
-    surfaceParameter: 46726
+    surfaceParameter: 46624
     meshQueryIndex: 6
     subMeshQueryIndex: 0
     geometryHashValue: -336809085561903386
@@ -12020,7 +12020,7 @@ MonoBehaviour:
     meshQuery:
       layers: 16777223
       maskAndChannels: 234881031
-    surfaceParameter: 46638
+    surfaceParameter: 47292
     meshQueryIndex: 0
     subMeshQueryIndex: 0
     geometryHashValue: -1144232242218513945
@@ -19987,7 +19987,7 @@ MonoBehaviour:
     meshQuery:
       layers: 16777223
       maskAndChannels: 234881031
-    surfaceParameter: 46294
+    surfaceParameter: 46714
     meshQueryIndex: 7
     subMeshQueryIndex: 0
     geometryHashValue: 3849853983877671601
@@ -21156,7 +21156,7 @@ MonoBehaviour:
     meshQuery:
       layers: 33554440
       maskAndChannels: 8
-    surfaceParameter: 46754
+    surfaceParameter: 46690
     meshQueryIndex: 2
     subMeshQueryIndex: 0
     geometryHashValue: -4463416831695007676
@@ -21391,7 +21391,7 @@ MonoBehaviour:
     meshQuery:
       layers: 16777223
       maskAndChannels: 234881031
-    surfaceParameter: 46890
+    surfaceParameter: 46978
     meshQueryIndex: 1
     subMeshQueryIndex: 0
     geometryHashValue: 4598819869203699275
@@ -22941,7 +22941,7 @@ MonoBehaviour:
     meshQuery:
       layers: 16777223
       maskAndChannels: 234881031
-    surfaceParameter: 46674
+    surfaceParameter: 47372
     meshQueryIndex: 8
     subMeshQueryIndex: 0
     geometryHashValue: 5346884389526837480
@@ -30507,7 +30507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Wave
   enemiesWithAmount:
   - prefab: {fileID: 5092939406025795021, guid: 38822be5870a6c647b58113142c7f413, type: 3}
-    amount: 5
+    amount: 1
   - prefab: {fileID: 4723213828231102213, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
     amount: 7
   timeToNextWave: 40
@@ -40202,7 +40202,7 @@ MonoBehaviour:
     meshQuery:
       layers: 33554440
       maskAndChannels: 8
-    surfaceParameter: 46754
+    surfaceParameter: 46690
     meshQueryIndex: 2
     subMeshQueryIndex: 0
     geometryHashValue: -4463416831695007676
