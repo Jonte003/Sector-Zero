@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
@@ -192,16 +193,26 @@ public class Gun : MonoBehaviour
 
         Vector3 camDir = (spreadRot * cam.forward).normalized;
 
-        Vector3 targetPoint;
+        Vector3 targetPoint = Vector3.zero;
 
-        if (Physics.Raycast(cam.position, camDir, out RaycastHit hit, settings.Range, Mask))
+        RaycastHit[] hits = Physics.RaycastAll(cam.position, camDir, settings.Range, Mask);
+
+        if (hits.Length > 0)
         {
-            targetPoint = hit.point;
-
-            if (hit.transform.CompareTag("Enemy"))
+            for(int i = 0; i < hits.Length; i++)
             {
-                float finalDamage = CalculateDamage(hit.distance);
-                hit.transform.GetComponent<EnemyStats>().DoDamageToEnemy(finalDamage);
+                if(!hits[i].transform.CompareTag("Enemy"))
+                    break;
+
+                targetPoint = hits[i].point;
+                float finalDamage = CalculateDamage(hits[i].distance) * (1 - settings.PierceFalloff / 100 * i);
+
+                Debug.Log("Enemy number " + i + ", " + finalDamage + " damage");
+
+                if (finalDamage <= 0)
+                    break;
+
+                hits[i].transform.GetComponent<EnemyStats>().DoDamageToEnemy(finalDamage);
             }
         }
         else
