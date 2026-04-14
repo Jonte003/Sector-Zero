@@ -25,6 +25,8 @@ public abstract class Ability
 
         Debug.Log(Name + " used");
 
+        Debug.Log(enemies.Count);
+
         runner.StartCoroutine(AbilityRoutine(player, enemies));
 
         CurrentCD = (CD - CooldownPerLevel * (Level - 1)) *
@@ -53,8 +55,8 @@ public class Explosion : Ability
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
-        float baseRange = 2f;
-        float rangePerLevel = 1f;
+        float baseRange = 5f;
+        float rangePerLevel = 2f;
 
         float baseDamage = 30f;
         float damagePerLevel = 15f;
@@ -70,8 +72,8 @@ public class Explosion : Ability
             {
                 enemies[i].GetComponent<EnemyStats>().DoDamageToEnemy((baseDamage + damagePerLevel * (Level - 1)) * (player.GetComponent<PlayerStats>().damageBuffs + 1));
 
-                enemies[i].GetComponent<Rigidbody>().AddForce(enemies[i].transform.up * explosionForce, ForceMode.Impulse);
-                enemies[i].GetComponent<EnemyAI>().Stun(stunDuration + (stunDurationPerLevel * (Level - 1)));
+                //enemies[i].GetComponent<Rigidbody>().AddForce(enemies[i].transform.up * explosionForce, ForceMode.Impulse);
+                //enemies[i].GetComponent<EnemyAI>().Stun(stunDuration + (stunDurationPerLevel * (Level - 1)));
             }
         }
 
@@ -93,8 +95,8 @@ public class Knockback : Ability
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
-        float baseRange = 4f;
-        float rangePerLevel = 1.25f;
+        float baseRange = 6f;
+        float rangePerLevel = 2f;
 
         float baseSlow = 25f;
         float slowPerLevel = 7.5f;
@@ -132,7 +134,7 @@ public class Dash : Ability
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
-        float dashForce = 10;
+        float dashForce = 50;
 
         player.GetComponent<Rigidbody>().AddForce(player.transform.forward * dashForce, ForceMode.Impulse);
 
@@ -154,7 +156,7 @@ public class Leap : Ability
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
-        float leapForce = 10;
+        float leapForce = 50;
 
         player.GetComponent<Rigidbody>().AddForce((player.transform.up + player.transform.forward).normalized * leapForce, ForceMode.Impulse);
 
@@ -176,7 +178,7 @@ public class Jump : Ability
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
-        float jumpForce = 15;
+        float jumpForce = 50;
 
         player.GetComponent<Rigidbody>().AddForce(player.transform.up * jumpForce, ForceMode.Impulse);
 
@@ -204,8 +206,8 @@ public class Fortify : Ability
         float duration = 4f;
         float durationPerLevel = 0.75f;
 
-        float MaxHpRegen = 15f;
-        float MaxHpRegenPerLevel = 2.5f;
+        float MaxHpRegen = 4f;
+        float MaxHpRegenPerLevel = 1.5f;
 
         float regenTranslated = (MaxHpRegen + MaxHpRegenPerLevel * (Level - 1)) / ((duration + durationPerLevel * (Level - 1)) * 100);
 
@@ -269,6 +271,16 @@ public class ChainLightning : Ability
         float damage = (baseDamage + damagePerLevel * (Level - 1)) * (player.GetComponent<PlayerStats>().damageBuffs + 1);
 
         GameObject current = enemies[0];
+        float dist = Vector3.Distance(player.transform.position, current.transform.position);
+
+        for (int i = 1; i <  enemies.Count; i++)
+        {
+            if (Vector3.Distance(player.transform.position, enemies[i].transform.position) < dist)
+            {
+                current = enemies[i];
+                dist = Vector3.Distance(player.transform.position, current.transform.position);
+            }
+        }
 
         for (int i = 0; i < maxJumps; i++)
         {
@@ -278,7 +290,7 @@ public class ChainLightning : Ability
             current.GetComponent<EnemyStats>().DoDamageToEnemy(damage);
 
             GameObject next = null;
-            float bestDist = Mathf.Infinity;
+            float bestDist = 20f;
 
             foreach (var e in enemies)
             {
@@ -314,8 +326,8 @@ public class Eruption : Ability
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
         float delay = 1.5f;
-        float baseRange = 3f;
-        float rangePerLevel = 0.5f;
+        float baseRange = 6f;
+        float rangePerLevel = 1f;
 
         float baseDamage = 50f;
         float damagePerLevel = 20f;
@@ -370,10 +382,10 @@ public class Charge : Ability
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
-        float baseForce = 14f;
-        float forcePerLevel = 2f;
+        float baseForce = 50f;
+        float forcePerLevel = 10f;
 
-        float kbForce = 6f;
+        float kbForce = 50f;
 
         float force = baseForce + forcePerLevel * (Level - 1);
 
@@ -386,7 +398,7 @@ public class Charge : Ability
         foreach (var e in enemies)
         {
             float dist = Vector3.Distance(player.transform.position, e.transform.position);
-            if (dist <= 2f)
+            if (dist <= 5f)
             {
                 Vector3 dir = (e.transform.position - player.transform.position).normalized;
                 e.GetComponent<Rigidbody>().AddForce(dir * kbForce, ForceMode.Impulse);
@@ -403,26 +415,26 @@ public class VitalSurge : Ability
     public override bool NotYetImplemented => false;
     public override string Name => "Vital Surge";
     public override Sprite Icon => Resources.Load<Sprite>("VitalSurge");
-    protected override float CD => 14f;
+    protected override float CD => 20f;
     protected override float CooldownPerLevel => 1f;
     public override string Description => "Rapidly regenerate health for a short duration";
     public override AbilityCategory Category => AbilityCategory.Defense;
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
-        float baseRegenPercent = 12f;
-        float regenPerLevel = 3f;
+        float baseRegenPercent = 8f;
+        float regenPerLevel = 2f;
 
-        float duration = 2.5f + 0.25f * (Level - 1);
+        float duration = 1f;
 
-        float regenPerSecond = (baseRegenPercent + regenPerLevel * (Level - 1)) / (duration * 100f);
+        float regenTranslated = (baseRegenPercent + regenPerLevel * (Level - 1)) / (duration * 100);
 
         var stats = player.GetComponent<PlayerStats>();
-        stats.regenBuffs += regenPerSecond;
+        stats.regenBuffs += regenTranslated;
 
         yield return new WaitForSeconds(duration);
 
-        stats.regenBuffs -= regenPerSecond;
+        stats.regenBuffs -= regenTranslated;
     }
 }
 
@@ -439,7 +451,7 @@ public class Backstep : Ability
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
-        float force = 12f + 2f * (Level - 1);
+        float force = 30f + 2f * (Level - 1);
 
         var rb = player.GetComponent<Rigidbody>();
         rb.AddForce(-player.transform.forward * force, ForceMode.Impulse);
@@ -497,7 +509,7 @@ public class GroundSlam : Ability
 
         yield return new WaitForSeconds(0.25f);
 
-        float radius = 3f + 0.25f * (Level - 1);
+        float radius = 5f + 0.75f * (Level - 1);
         float upwardForce = 10f + 2f * (Level - 1);
         float outwardForce = 6f;
 

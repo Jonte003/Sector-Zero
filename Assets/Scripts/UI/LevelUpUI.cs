@@ -142,7 +142,7 @@ public class LevelUpUI : MonoBehaviour
 
         Loadout playerLoadout = player.GetComponent<Loadout>();
 
-        if (playerLoadout.Ability1 == null && playerLoadout.Ability2 == null && playerLoadout.Ability3 == null)
+        if ((playerLoadout.Ability1 == null || playerLoadout.Ability1.Level == 5) && (playerLoadout.Ability2 == null || playerLoadout.Ability2.Level == 5) && (playerLoadout.Ability3 == null || playerLoadout.Ability3.Level == 5))
         {
             return;
         }
