@@ -45,33 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d313ba6bc0091d547986b71261a51506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GunName: Shotgun
-  Damage: 3
-  FireRate: 1.2
-  Range: 25
-  ReloadSpeed: 2
-  MaxAmmo: 8
-  FullAuto: 0
-  DamageFalloffPercentage:
-  - 0.8
-  - 0.6
-  - 0.4
-  - 0.1
-  DamageFalloffRange:
-  - 5
-  - 10
-  - 15
-  - 25
-  DamageFalloffLerp: 1
-  DelayBetweenBullets: 0
-  BulletCount: 8
-  AmmoPerShot: 1
-  MinSpread: {x: -7.5, y: -7.5}
-  MaxSpread: {x: 7.5, y: 7.5}
-  RecoilMagnitude: {x: 1, y: 5}
-  RecoilMin: 0.3
-  RecoilMax: 1
-  TracerPoolSize: 30
   Muzzle: {fileID: 6352816398728635208}
   TracerPrefab: {fileID: 454934594798073804, guid: e4c190d7d4c8d5042aa514fdd1350cef, type: 3}
 --- !u!1 &6489368534737185329
@@ -116,7 +89,6 @@ GameObject:
   - component: {fileID: 5527193379925883955}
   - component: {fileID: 6075938367901852417}
   - component: {fileID: 1684427273703915925}
-  - component: {fileID: 1658105487116653357}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -197,24 +169,3 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1658105487116653357
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6775291894195815870}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
