@@ -44,7 +44,7 @@ public enum AbilityCategory
 public class Explosion : Ability
 {
     public Explosion() { }
-    public override bool NotYetImplemented => false;
+    public override bool NotYetImplemented => true;
     public override string Name => "Explosion";
     public override Sprite Icon => Resources.Load<Sprite>("Explosion");
     public override float CD => 7f;
@@ -250,7 +250,7 @@ public class Invincible : Ability
 public class ChainLightning : Ability
 {
     public ChainLightning() { }
-    public override bool NotYetImplemented => false;
+    public override bool NotYetImplemented => true;
     public override string Name => "Chain Lightning";
     public override Sprite Icon => Resources.Load<Sprite>("ChainLightning");
     public override float CD => 9f;
@@ -412,7 +412,7 @@ public class Charge : Ability
 public class VitalSurge : Ability
 {
     public VitalSurge() { }
-    public override bool NotYetImplemented => false;
+    public override bool NotYetImplemented => true;
     public override string Name => "Vital Surge";
     public override Sprite Icon => Resources.Load<Sprite>("VitalSurge");
     public override float CD => 20f;

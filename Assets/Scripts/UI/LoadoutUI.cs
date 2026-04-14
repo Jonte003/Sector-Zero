@@ -164,7 +164,8 @@ public class LoadoutUI : MonoBehaviour
         gunModTextsReversed = new List<TextMeshProUGUI>()
         {
             barrelMultiplierSpreadText, gripMultiplierSpreadText, stockMultiplierSpreadText, magazineMultiplierSpreadText, muzzleMultiplierSpreadText,
-            barrelMultiplierRecoilText, gripMultiplierRecoilText, stockMultiplierRecoilText, magazineMultiplierRecoilText, muzzleMultiplierRecoilText
+            barrelMultiplierRecoilText, gripMultiplierRecoilText, stockMultiplierRecoilText, magazineMultiplierRecoilText, muzzleMultiplierRecoilText,
+            barrelMultiplierReloadSpeedText, gripMultiplierReloadSpeedText, stockMultiplierReloadSpeedText, magazineMultiplierReloadSpeedText, muzzleMultiplierReloadSpeedText,
         };
 
         OnClickedAssaultRifle();

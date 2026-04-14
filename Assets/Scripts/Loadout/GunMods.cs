@@ -111,7 +111,7 @@ public class ExtendedMagazine : GunMod
     public override GunModCategory Category => GunModCategory.Magazine;
     public override float MoveSpeed => -0.05f;
     public override float FireRate => -0.05f;
-    public override float ReloadSpeed => -0.1f;
+    public override float ReloadSpeed => 0.1f;
     public override float MagSize => 0.2f;
 }
 
@@ -124,7 +124,7 @@ public class DrumMagazine : GunMod
     public override float FireRate => -0.05f;
     public override float Spread => 0.05f;
     public override float MagSize => 0.3f;
-    public override float ReloadSpeed => -0.1f;
+    public override float ReloadSpeed => 0.1f;
 }
 
 public class FastMagazine : GunMod
@@ -133,7 +133,7 @@ public class FastMagazine : GunMod
     public override string Description => "Increases reload speed, move speed and decreases spread at the cost of magazine size and increased recoil";
     public override GunModCategory Category => GunModCategory.Magazine;
     public override float MagSize => -0.15f;
-    public override float ReloadSpeed => 0.1f;
+    public override float ReloadSpeed => -0.1f;
     public override float MoveSpeed => 0.1f;
     public override float Spread => -0.05f;
     public override float Recoil => 0.1f;
