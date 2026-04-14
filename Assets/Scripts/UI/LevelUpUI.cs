@@ -37,6 +37,10 @@ public class LevelUpUI : MonoBehaviour
     [SerializeField] private Image imageAbilityBar2;
     [SerializeField] private Image imageAbilityBar3;
 
+    [SerializeField] private Image imageAbilityBar1Overlay;
+    [SerializeField] private Image imageAbilityBar2Overlay;
+    [SerializeField] private Image imageAbilityBar3Overlay;
+
     private bool buttonsInteractable = false;
     private bool firstChoiceMade = false;
 
@@ -380,6 +384,22 @@ public class LevelUpUI : MonoBehaviour
             visible = false;
             setPanelVisible(visible);
             UnpauseTime();
+        }
+
+        Ability playerAbility1 = player.GetComponent<Loadout>().Ability1;
+        Ability playerAbility2 = player.GetComponent<Loadout>().Ability2;
+        Ability playerAbility3 = player.GetComponent<Loadout>().Ability3;
+        if (playerAbility1 != null)
+        {
+            imageAbilityBar1Overlay.fillAmount = playerAbility1.CurrentCD / playerAbility1.CD;
+        }
+        if (playerAbility2 != null)
+        {
+            imageAbilityBar2Overlay.fillAmount = playerAbility2.CurrentCD / playerAbility2.CD;
+        }
+        if (playerAbility3 != null)
+        {
+            imageAbilityBar3Overlay.fillAmount = playerAbility3.CurrentCD / playerAbility3.CD;
         }
     }
 
