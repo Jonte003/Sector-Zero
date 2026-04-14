@@ -178,7 +178,7 @@ public class Jump : Ability
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
     {
-        float jumpForce = 50;
+        float jumpForce = 15;
 
         player.GetComponent<Rigidbody>().AddForce(player.transform.up * jumpForce, ForceMode.Impulse);
 
