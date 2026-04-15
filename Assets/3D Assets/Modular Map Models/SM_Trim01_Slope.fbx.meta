@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: c78c737263679bd4ea046d18ac836a9f
+guid: 0288400221b7856429a92f2eb52ba9c0
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Wall_Clip
+    second: {fileID: 2100000, guid: 2a01f68055adf164ea8ec9467fa7ed5f, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

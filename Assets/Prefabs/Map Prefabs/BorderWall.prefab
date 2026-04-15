@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 4624827715236970624}
   - component: {fileID: 4884026347613224546}
   m_Layer: 7
-  m_Name: Wall
+  m_Name: BorderWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

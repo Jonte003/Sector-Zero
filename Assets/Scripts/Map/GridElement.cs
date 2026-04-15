@@ -43,10 +43,34 @@ public class GridElement : MonoBehaviour
 
     public void ConfigureBottomPart(float blockSpacingVertical)
     {
-        for (int i = 0; i < Coordinates.y; i++)
+        if (Coordinates.y <= 0) return;
+
+        // midpoint
+        float centerOffsetMultiplier = (Coordinates.y + 1) / 2f;
+        Vector3 spawnPosition = transform.position + (Vector3.down * centerOffsetMultiplier * blockSpacingVertical);
+
+        // Instanciate
+        GameObject filler = Instantiate(bottomPartBlockPrefab, spawnPosition, Quaternion.identity, bottomPart.transform);
+
+        // stretch Y-axis
+        Vector3 newScale = filler.transform.localScale;
+        newScale.y *= Coordinates.y;
+        filler.transform.localScale = newScale;
+
+        // Vertical tiling
+        Renderer fillerRenderer = filler.GetComponentInChildren<Renderer>();
+        if (fillerRenderer != null)
         {
-            Vector3 spawnPosition = transform.position + (Vector3.down * (i + 1) * blockSpacingVertical);
-            Instantiate(bottomPartBlockPrefab, spawnPosition, Quaternion.identity, bottomPart.transform);
+            MaterialPropertyBlock propBlock = new MaterialPropertyBlock();
+
+            fillerRenderer.GetPropertyBlock(propBlock);
+
+            // (Tiling X, Tiling Y, Offset X, Offset Y)
+            Vector4 tilingAndOffset = new Vector4(1, Coordinates.y, 0, 0);
+
+            propBlock.SetVector("_BaseMap_ST", tilingAndOffset);
+
+            fillerRenderer.SetPropertyBlock(propBlock);
         }
     }
 }
