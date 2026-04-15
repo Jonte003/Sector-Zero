@@ -9,8 +9,6 @@ public class PlayerLook : MonoBehaviour
 
     [HideInInspector] public float xRotation;
     [HideInInspector] public float yRotation;
-    private float mouseX;
-    private float mouseY;
 
     [Header("Recoil Settings")]
     [SerializeField] private float recoilSnapSpeed = 25f;
@@ -25,7 +23,7 @@ public class PlayerLook : MonoBehaviour
         Cursor.visible = false;
     }
 
-    void FixedUpdate()
+    void Update()
     {
         Vector2 delta = Pause.IsPaused ? Vector2.zero : Mouse.current.delta.ReadValue();
 
@@ -37,8 +35,8 @@ public class PlayerLook : MonoBehaviour
 
         xRotation = Mathf.Clamp(xRotation, -85f, 90f);
 
-        recoilCurrent = Vector2.Lerp(recoilCurrent, recoilTarget, recoilSnapSpeed * Time.fixedDeltaTime);
-        recoilTarget = Vector2.Lerp(recoilTarget, Vector2.zero, recoilReturnSpeed * Time.fixedDeltaTime);
+        recoilCurrent = Vector2.Lerp(recoilCurrent, recoilTarget, recoilSnapSpeed * Time.deltaTime);
+        recoilTarget = Vector2.Lerp(recoilTarget, Vector2.zero, recoilReturnSpeed * Time.deltaTime);
 
         float finalPitch = xRotation - recoilCurrent.y;
         float finalYaw = yRotation + recoilCurrent.x;
