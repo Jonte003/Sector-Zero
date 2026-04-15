@@ -1,10 +1,8 @@
 using NUnit.Framework;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
-using static UnityEditor.PlayerSettings;
 
 
 public class NavPointManager : MonoBehaviour

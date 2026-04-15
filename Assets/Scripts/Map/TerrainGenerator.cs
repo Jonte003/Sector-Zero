@@ -2,10 +2,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.AI.Navigation;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
 public class TerrainGenerator : MonoBehaviour
 {
     [Header("Prefabs & Dependencies")]
