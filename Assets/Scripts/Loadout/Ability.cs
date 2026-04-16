@@ -16,9 +16,9 @@ public abstract class Ability
     public abstract string Name { get; }
     public bool Enabled { get; set; } = false;
 
-    protected abstract IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies);
+    protected abstract IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies);
 
-    public void Run(GameObject player, List<GameObject> enemies, MonoBehaviour runner)
+    public void Run(GameObject player, List<Transform> enemies, MonoBehaviour runner)
     {
         if (CurrentCD > 0)
             return;
@@ -53,7 +53,7 @@ public class Explosion : Ability
 
     public override AbilityCategory Category => AbilityCategory.Attack;
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
     {
         float baseRange = 5f;
         float rangePerLevel = 2f;
@@ -93,7 +93,7 @@ public class Knockback : Ability
     public override AbilityCategory Category => AbilityCategory.Defense;
 
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
     {
         float baseRange = 6f;
         float rangePerLevel = 2f;
@@ -132,7 +132,7 @@ public class Dash : Ability
     public override AbilityCategory Category => AbilityCategory.Mobility;
 
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
     {
         float dashForce = 50;
 
@@ -154,7 +154,7 @@ public class Leap : Ability
     public override AbilityCategory Category => AbilityCategory.Mobility;
 
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
     {
         float leapForce = 15;
 
@@ -176,7 +176,7 @@ public class Jump : Ability
     public override AbilityCategory Category => AbilityCategory.Mobility;
 
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
     {
         float jumpForce = 15;
 
@@ -198,7 +198,7 @@ public class Fortify : Ability
     public override AbilityCategory Category => AbilityCategory.Defense;
 
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
     {
         float baseDefense = 30f;
         float defensePerLevel = 5f;
@@ -233,7 +233,7 @@ public class Invincible : Ability
     public override AbilityCategory Category => AbilityCategory.Defense;
 
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
     {
         float duration = 2.5f;
         float durationPerLevel = 0.25f;
@@ -258,7 +258,7 @@ public class ChainLightning : Ability
     public override string Description => "Strikes an enemy with lightning that chains to others.";
     public override AbilityCategory Category => AbilityCategory.Attack;
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
     {
         if (enemies.Count == 0)
             yield break;
@@ -270,7 +270,7 @@ public class ChainLightning : Ability
 
         float damage = (baseDamage + damagePerLevel * (Level - 1)) * (player.GetComponent<PlayerStats>().damageBuffs + 1);
 
-        GameObject current = enemies[0];
+        Transform current = enemies[0];
         float dist = Vector3.Distance(player.transform.position, current.transform.position);
 
         for (int i = 1; i <  enemies.Count; i++)
@@ -289,7 +289,7 @@ public class ChainLightning : Ability
 
             current.GetComponent<EnemyStats>().DoDamageToEnemy(damage);
 
-            GameObject next = null;
+            Transform next = null;
             float bestDist = 20f;
 
             foreach (var e in enemies)
@@ -323,7 +323,7 @@ public class Eruption : Ability
     public override string Description => "After a short delay, erupts the ground dealing heavy AOE damage.";
     public override AbilityCategory Category => AbilityCategory.Attack;
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
     {
         float delay = 1.5f;
         float baseRange = 6f;
@@ -356,7 +356,7 @@ public class Blink : Ability
     public override string Description => "Instantly teleport a short distance forward.";
     public override AbilityCategory Category => AbilityCategory.Mobility;
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
     {
         float baseDistance = 4f;
         float distancePerLevel = 1f;
@@ -380,7 +380,7 @@ public class Charge : Ability
     public override string Description => "Charge forward, pushing enemies aside.";
     public override AbilityCategory Category => AbilityCategory.Mobility;
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
     {
         float baseForce = 50f;
         float forcePerLevel = 10f;
@@ -420,7 +420,7 @@ public class VitalSurge : Ability
     public override string Description => "Rapidly regenerate health for a short duration";
     public override AbilityCategory Category => AbilityCategory.Defense;
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
     {
         float baseRegenPercent = 8f;
         float regenPerLevel = 2f;
@@ -449,7 +449,7 @@ public class Backstep : Ability
     public override string Description => "Quickly dash backwards to evade attacks";
     public override AbilityCategory Category => AbilityCategory.Mobility;
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
     {
         float force = 30f + 2f * (Level - 1);
 
@@ -471,7 +471,7 @@ public class MomentumShift : Ability
     public override string Description => "Redirect your momentum toward your aim direction.";
     public override AbilityCategory Category => AbilityCategory.Mobility;
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
     {
         var rb = player.GetComponent<Rigidbody>();
 
@@ -495,7 +495,7 @@ public class GroundSlam : Ability
     public override string Description => "Slam straight downward and launch nearby enemies upward and away.";
     public override AbilityCategory Category => AbilityCategory.Mobility;
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<GameObject> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
     {
         Rigidbody rb = player.GetComponent<Rigidbody>();
 
