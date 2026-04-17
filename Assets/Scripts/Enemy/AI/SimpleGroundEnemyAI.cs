@@ -14,6 +14,41 @@ public class SimpleEnemyAI : EnemyAI
     [SerializeField] protected bool whitinHitDistance;
 
     Vector3 destination;
+
+    [SerializeField] float gravityMultiplier = 1f;
+    [SerializeField] LayerMask groundMask;
+    [SerializeField] float groundCheckDistance = 0.2f;
+
+    float verticalVelocity = 0f;
+    bool grounded = false;
+
+    private bool CheckGrounded()
+    {
+        return Physics.Raycast(transform.position + Vector3.up * 0.1f, Vector3.down, groundCheckDistance, groundMask);
+    }
+
+    private void ApplyGravity()
+    {
+        grounded = CheckGrounded();
+
+        if (grounded)
+        {
+            verticalVelocity = -2f;
+        }
+        else
+        {
+            verticalVelocity -= 9.81f * gravityMultiplier * Time.deltaTime;
+        }
+
+        Vector3 pos = transform.position;
+        pos.y += verticalVelocity * Time.deltaTime;
+        transform.position = pos;
+
+        agent.updatePosition = false;
+        agent.nextPosition = new Vector3(pos.x, pos.y, pos.z);
+    }
+
+
     protected override void Start()
     {
         
