@@ -43,9 +43,6 @@ public class SimpleEnemyAI : EnemyAI
         Vector3 pos = transform.position;
         pos.y += verticalVelocity * Time.deltaTime;
         transform.position = pos;
-
-        agent.updatePosition = false;
-        agent.nextPosition = new Vector3(pos.x, pos.y, pos.z);
     }
 
 
