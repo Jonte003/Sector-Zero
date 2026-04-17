@@ -196,17 +196,18 @@ public class Gun : MonoBehaviour
         Vector3 targetPoint = Vector3.zero;
 
         RaycastHit[] hits = Physics.RaycastAll(cam.position, camDir, settings.Range, Mask);
+        hits = hits.OrderBy(hit => hit.distance).ToArray();
 
         if (hits.Length > 0)
         {
-            for(int i = 0; i < hits.Length; i++)
+            for (int i = 0; i < hits.Count(); i++)
             {
                 if (!hits[i].transform.CompareTag("Enemy"))
                 {
                     targetPoint = hits[i].point;
                     break;
-                }
-                    
+                }   
+                
                 targetPoint = hits[i].point;
                 float finalDamage = CalculateDamage(hits[i].distance) * (1 - settings.PierceFalloff / 100 * i);
 
@@ -214,7 +215,7 @@ public class Gun : MonoBehaviour
 
                 if (finalDamage <= 0)
                     break;
-
+                
                 hits[i].transform.GetComponent<EnemyStats>().DoDamageToEnemy(finalDamage);
             }
         }

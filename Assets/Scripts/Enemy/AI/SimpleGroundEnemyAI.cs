@@ -3,6 +3,7 @@ using UnityEngine.AI;
 using UnityEngine.Rendering;
 using UnityEngine.XR;
 using System.Collections;
+using System.Threading;
 public class SimpleEnemyAI : EnemyAI
 {
     NavMeshAgent agent;
@@ -15,12 +16,12 @@ public class SimpleEnemyAI : EnemyAI
 
     Vector3 destination;
 
-    [SerializeField] float gravityMultiplier = 1f;
+    [SerializeField] float gravityMultiplier = 1.5f;
     [SerializeField] LayerMask groundMask;
     [SerializeField] float groundCheckDistance = 0.2f;
 
     float verticalVelocity = 0f;
-    bool grounded = false;
+    bool isGrounded = false;
 
     private bool CheckGrounded()
     {
@@ -29,20 +30,56 @@ public class SimpleEnemyAI : EnemyAI
 
     private void ApplyGravity()
     {
-        grounded = CheckGrounded();
-
-        if (grounded)
-        {
-            verticalVelocity = -2f;
-        }
-        else
-        {
-            verticalVelocity -= 9.81f * gravityMultiplier * Time.deltaTime;
-        }
-
+        verticalVelocity -= 9.81f * gravityMultiplier * Time.deltaTime;
         Vector3 pos = transform.position;
         pos.y += verticalVelocity * Time.deltaTime;
         transform.position = pos;
+    }
+
+    public override void ApplyKnockback()
+    {
+        isGrounded = CheckGrounded();
+        if (!isGrounded)
+        {
+            return;
+        }
+
+        agent.enabled = false;
+        rigidbody.isKinematic = false;
+
+        StartCoroutine(KnockbackRecovery());
+
+    }
+
+    private IEnumerator KnockbackRecovery()
+    {
+        float timer = 1;
+
+        while (isGrounded || timer > 0)
+        {
+            timer -= Time.deltaTime;
+            ApplyGravity();
+            isGrounded = CheckGrounded();
+            yield return null;
+        }
+
+        while (!isGrounded)
+        {
+            ApplyGravity();
+            isGrounded = CheckGrounded();
+            yield return null;
+
+        }
+
+        //Code runs when object has left the ground then landed again
+        rigidbody.linearVelocity = Vector3.zero;
+        rigidbody.angularVelocity = Vector3.zero;
+
+        rigidbody.isKinematic = true;
+        agent.enabled = true;
+
+        agent.Warp(GetClosestPositionOnMesh(transform.position));
+
     }
 
 
@@ -170,6 +207,14 @@ public class SimpleEnemyAI : EnemyAI
         agent.speed = speed * slowAmount;
         yield return new WaitForSeconds(duration);
         agent.speed = speed;
+    }
+
+    private Vector3 GetClosestPositionOnMesh(Vector3 pos)
+    {
+        NavMeshHit hit;
+        NavMesh.SamplePosition(pos,out hit,10f,   NavMesh.AllAreas
+        );
+        return hit.position;
     }
 
     public override void Stun(float seconds)

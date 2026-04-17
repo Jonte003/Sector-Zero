@@ -5,9 +5,10 @@ using UnityEngine.UIElements;
 public abstract class EnemyAI : MonoBehaviour
 {
     [SerializeField] protected float reach;
+    protected Rigidbody rigidbody;
     protected GameObject target;
     protected Vector3 targetLocation;
-
+    
     [SerializeField] protected float speed;
     protected LayerMask obstacles;
     protected PlayerStats playerStats;
@@ -20,6 +21,7 @@ public abstract class EnemyAI : MonoBehaviour
         
         target = GameObject.FindWithTag("Player");
         playerStats = target.GetComponent<PlayerStats>();
+        rigidbody = GetComponent<Rigidbody>();
         obstacles = LayerMask.GetMask("obstacle");
     }
 
@@ -45,6 +47,7 @@ public abstract class EnemyAI : MonoBehaviour
     }
 
     public virtual void CalculatePath() { }
+    public virtual void ApplyKnockback() { }
     public virtual void Stun(float seconds) { }
     public virtual void Slow(float duration, float slowAmount) { }
 
