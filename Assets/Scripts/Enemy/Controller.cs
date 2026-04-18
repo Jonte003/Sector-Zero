@@ -6,10 +6,10 @@ public class Controller : MonoBehaviour
     PlayerLevels playerLevels;
     public List<Transform> allEnemies;
 
-    Queue<EnemyAI> enemyQueue;
+    Queue<EnemyAgentAI> enemyQueue;
     void Start()
     {
-        enemyQueue = new Queue<EnemyAI>();
+        enemyQueue = new Queue<EnemyAgentAI>();
         allEnemies = new List<Transform>();
         playerLevels = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerLevels>();
     }
@@ -21,7 +21,7 @@ public class Controller : MonoBehaviour
     public void AddEnemy(GameObject enemy)
     {
         allEnemies.Add(enemy.transform);
-        enemyQueue.Enqueue(enemy.transform.GetComponent<EnemyAI>());
+        enemyQueue.Enqueue(enemy.transform.GetComponent<EnemyAgentAI>());
     } 
 
     public void RemoveEnemy(GameObject gameObject)
@@ -36,7 +36,7 @@ public class Controller : MonoBehaviour
             return; //No enemys spawned
         }
 
-        EnemyAI firstenemy = enemyQueue.Dequeue();
+        EnemyAgentAI firstenemy = enemyQueue.Dequeue();
 
         if (firstenemy == null)
         {

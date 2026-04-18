@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DroneNode : EnemyAI
+public class DroneNode : EnemyAgentAI
 {
 
     private void OnDrawGizmos()

@@ -1998,13 +1998,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleEnemyAI
   reach: 4
-  speed: 5
+  walkSpeed: 4
+  runSpeed: 8
+  distanceStartRun: 0
   currentState: 0
   whitinHitDistance: 0
   gravityMultiplier: 1
   groundMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   groundCheckDistance: 0.2
 --- !u!114 &-6038927486889961266
 MonoBehaviour:

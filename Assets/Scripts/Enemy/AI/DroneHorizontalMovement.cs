@@ -4,7 +4,7 @@ using UnityEngine.AI;
 using UnityEngine.InputSystem.HID;
 using System.Collections;
 
-public class DroneHorizontalMovement : EnemyAI
+public class DroneHorizontalMovement : EnemyAgentAI
 {
     Animator animator;
     NavMeshAgent agent;
@@ -75,9 +75,9 @@ navPointManager = GameObject.FindWithTag("NavNodes").GetComponent<NavPointManage
 
     private IEnumerator SlowAgent(float duration, float slowAmount)
     {
-        agent.speed = speed * slowAmount;
+        agent.speed = walkSpeed * slowAmount;
         yield return new WaitForSeconds(duration);
-        agent.speed = speed;
+        agent.speed = walkSpeed;
     }
 
     public override void Stun(float seconds)

@@ -72,9 +72,10 @@ public class Explosion : Ability
             {
                 enemies[i].GetComponent<EnemyStats>().DoDamageToEnemy((baseDamage + damagePerLevel * (Level - 1)) * (player.GetComponent<PlayerStats>().damageBuffs + 1));
 
+                enemies[i].GetComponent<EnemyAgentAI>().ApplyKnockback();
                 enemies[i].GetComponent<Rigidbody>().AddForce(enemies[i].transform.up * explosionForce, ForceMode.Impulse);
-                enemies[i].GetComponent<EnemyAI>().ApplyKnockback();
-                enemies[i].GetComponent<EnemyAI>().Stun(stunDuration + (stunDurationPerLevel * (Level - 1)));
+
+                enemies[i].GetComponent<EnemyAgentAI>().Stun(stunDuration + (stunDurationPerLevel * (Level - 1)));
             }
         }
 
@@ -111,11 +112,11 @@ public class Knockback : Ability
         {
             if (Vector3.Distance(player.transform.position, enemies[i].transform.position) <= baseRange + rangePerLevel * (Level - 1))
             {
+                enemies[i].GetComponent<EnemyAgentAI>().ApplyKnockback();
+
                 enemies[i].GetComponent<Rigidbody>().AddForce((enemies[i].transform.position - player.transform.position).normalized * (baseKbForce + kbForcePerLevel * (Level - 1)), ForceMode.Impulse);
 
-                enemies[i].GetComponent<EnemyAI>().ApplyKnockback();
-                
-                enemies[i].GetComponent<EnemyAI>().Slow(slowDuration, 1 - (baseSlow + slowPerLevel * (Level - 1)) / 100);
+                enemies[i].GetComponent<EnemyAgentAI>().Slow(slowDuration, 1 - (baseSlow + slowPerLevel * (Level - 1)) / 100);
             }
         }
 
@@ -404,8 +405,8 @@ public class Charge : Ability
             if (dist <= 5f)
             {
                 Vector3 dir = (e.transform.position - player.transform.position).normalized;
+                e.GetComponent<EnemyAgentAI>().ApplyKnockback();
                 e.GetComponent<Rigidbody>().AddForce(dir * kbForce, ForceMode.Impulse);
-                e.GetComponent<EnemyAI>().ApplyKnockback();
             }
         }
 
@@ -526,8 +527,9 @@ public class GroundSlam : Ability
                 er.AddForce(Vector3.up * upwardForce, ForceMode.Impulse);
 
                 Vector3 dir = (e.transform.position - player.transform.position).normalized;
+
+                e.GetComponent<EnemyAgentAI>().ApplyKnockback();
                 er.AddForce(dir * outwardForce, ForceMode.Impulse);
-                e.GetComponent<EnemyAI>().ApplyKnockback();
             }
         }
     }

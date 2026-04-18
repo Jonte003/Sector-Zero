@@ -4,17 +4,14 @@ using UnityEngine.Rendering;
 using UnityEngine.XR;
 using System.Collections;
 using System.Threading;
-public class SimpleEnemyAI : EnemyAI
+public class SimpleEnemyAI : EnemyAgentAI
 {
-    NavMeshAgent agent;
     NavMeshObstacle obstacle;
     [SerializeField] private State currentState;
     private GroundEnemyStats enemyStats;
     Animator animator;
 
     [SerializeField] protected bool whitinHitDistance;
-
-    Vector3 destination;
 
     [SerializeField] float gravityMultiplier = 1.5f;
     [SerializeField] LayerMask groundMask;
@@ -44,6 +41,8 @@ public class SimpleEnemyAI : EnemyAI
             return;
         }
 
+        ChangeCurrentState(State.walking);
+        isStunned = true;
         agent.enabled = false;
         rigidbody.isKinematic = false;
 
@@ -55,7 +54,7 @@ public class SimpleEnemyAI : EnemyAI
     {
         float timer = 1;
 
-        while (isGrounded || timer > 0)
+        while (isGrounded && timer > 0)
         {
             timer -= Time.deltaTime;
             ApplyGravity();
@@ -74,14 +73,27 @@ public class SimpleEnemyAI : EnemyAI
         //Code runs when object has left the ground then landed again
         rigidbody.linearVelocity = Vector3.zero;
         rigidbody.angularVelocity = Vector3.zero;
-
         rigidbody.isKinematic = true;
-        agent.enabled = true;
 
-        agent.Warp(GetClosestPositionOnMesh(transform.position));
+        // Snap to NavMesh BEFORE enabling agent
+        Vector3 navPos = GetClosestPositionOnMesh(transform.position);
+        transform.position = navPos;
+
+        agent.enabled = true;
+        agent.Warp(navPos);
+
+        isStunned = false;
+        CalculatePath();
 
     }
 
+    protected void CheckSpeed()
+    {
+        if (!CheckIfPositionsInRange(targetLocation, transform.position, distanceStartRun))
+        {
+            ChangeCurrentState(State.running);
+        }
+    }
 
     protected override void Start()
     {
@@ -90,16 +102,10 @@ public class SimpleEnemyAI : EnemyAI
 
         animator = GetComponent<Animator>();
 
-        agent = GetComponent<NavMeshAgent>();
-        obstacle = GetComponent<NavMeshObstacle>();
-
-        agent.speed = speed;
         currentState = State.walking;
     
 
         enemyStats = gameObject.GetComponent<GroundEnemyStats>();
-        destination = targetLocation;
-
     }
 
     // Update is called once per frame
@@ -116,6 +122,7 @@ public class SimpleEnemyAI : EnemyAI
             return;
         }
 
+
         targetLocation = target.transform.position;
 
         whitinHitDistance = CheckIfPositionsInRange(transform.position, target.transform.position, reach);
@@ -124,18 +131,25 @@ public class SimpleEnemyAI : EnemyAI
         if (currentState == State.walking)
         {
             agent.SetDestination(targetLocation);
-
-
+            CheckSpeed();
 
             if (whitinHitDistance)
             {
                 ChangeCurrentState(State.deelingDamage);
                 animator.SetBool("Attacking", true);
                 agent.isStopped = true;
+            }
+        }
 
+        else if (currentState == State.running)
+        {
+            agent.SetDestination(targetLocation);
 
-
-
+            if (whitinHitDistance)
+            {
+                ChangeCurrentState(State.deelingDamage);
+                animator.SetBool("Attacking", true);
+                agent.isStopped = true;
             }
         }
 
@@ -187,13 +201,20 @@ public class SimpleEnemyAI : EnemyAI
     {
         currentState = newState;
 
-        if (currentState == State.walking)
+        if (newState == State.walking)
         {
             agent.isStopped = false;
+            agent.speed = walkSpeed;
         }
-        else
+        else if (newState == State.running)
+        {
+            agent.isStopped = false;
+            agent.speed = runSpeed;
+        }
+        else if (newState == State.deelingDamage)
         {
             agent.isStopped = true;
+            agent.speed = 0;
         }
     }
 
@@ -204,9 +225,10 @@ public class SimpleEnemyAI : EnemyAI
 
     private IEnumerator SlowAgent(float duration, float slowAmount)
     {
-        agent.speed = speed * slowAmount;
+        float currentSpeed = agent.speed;
+        agent.speed = currentSpeed * slowAmount;
         yield return new WaitForSeconds(duration);
-        agent.speed = speed;
+        agent.speed = currentSpeed;
     }
 
     private Vector3 GetClosestPositionOnMesh(Vector3 pos)
@@ -214,6 +236,11 @@ public class SimpleEnemyAI : EnemyAI
         NavMeshHit hit;
         NavMesh.SamplePosition(pos,out hit,10f,   NavMesh.AllAreas
         );
+
+        if (hit.position == Vector3.zero) //If no position is found search by Vector3.zero
+        {
+            GetClosestPositionOnMesh(hit.position);
+        }
         return hit.position;
     }
 
@@ -249,7 +276,7 @@ public class SimpleEnemyAI : EnemyAI
 
     protected enum State
     {
-         deelingDamage, walking
+         deelingDamage, walking, running
     }
 
 
