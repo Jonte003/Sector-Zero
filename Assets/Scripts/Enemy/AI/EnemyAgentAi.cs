@@ -31,7 +31,4 @@ public abstract class EnemyAgentAI : EnemyAI
     public virtual void Stun(float duration) { }
     public virtual void Slow(float duration, float slowAmount) { }
 
-
-
-
 }

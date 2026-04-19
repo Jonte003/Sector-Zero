@@ -75,7 +75,6 @@ public class SimpleEnemyAI : EnemyAgentAI
         rigidbody.angularVelocity = Vector3.zero;
         rigidbody.isKinematic = true;
 
-        // Snap to NavMesh BEFORE enabling agent
         Vector3 navPos = GetClosestPositionOnMesh(transform.position);
         transform.position = navPos;
 
@@ -188,7 +187,6 @@ public class SimpleEnemyAI : EnemyAgentAI
     {
         if (currentState == State.deelingDamage)
         {
-            enemyStats.DoDamageToTarget();
 
             Vector3 lookDirection = target.transform.position - transform.position;
             Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
@@ -242,6 +240,12 @@ public class SimpleEnemyAI : EnemyAgentAI
             GetClosestPositionOnMesh(hit.position);
         }
         return hit.position;
+    }
+
+    public override void Attack()
+    {
+        enemyStats.DoDamageToTarget();
+        Debug.Log("Attack ran");
     }
 
     public override void Stun(float seconds)

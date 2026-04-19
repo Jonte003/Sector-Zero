@@ -41,5 +41,7 @@ public class EnemyAI : MonoBehaviour
 
         return !Physics.Raycast(from, direction.normalized, distance, layerMask);
     }
+    
+    public virtual void Attack() { }
 }
 
