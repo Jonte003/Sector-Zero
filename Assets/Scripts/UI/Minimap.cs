@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Minimap : MonoBehaviour
 {
@@ -9,10 +10,16 @@ public class Minimap : MonoBehaviour
     public RectTransform PlayerDot;
     public GameObject EnemyDotPrefab;
     public Transform EnemyDotParent;
+    [SerializeField] public RectTransform PlayerVisionCircle;
 
     [Header("Level Bounds (world space)")]
     public Vector2 LevelMin;
     public Vector2 LevelMax;
+
+    [Header("Dot Colors")]
+    [SerializeField] private Color enemySeenColor;
+    [SerializeField] private Color enemyUnseenColor;
+    private float playerVisionRange;
 
     private Dictionary<Transform, RectTransform> trackedEnemies = new();
 
@@ -20,6 +27,7 @@ public class Minimap : MonoBehaviour
     {
         //Debug.Log($"MapSize: {MinimapContent.rect.width} x {MinimapContent.rect.height} | LevelMin: {LevelMin} | LevelMax: {LevelMax} | PlayerWorld: {Player.position}");
 
+        playerVisionRange = Player.GetComponent<PlayerStats>().VisionRange;
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
         #region Start tracking each enemy that is not already tracked
@@ -36,11 +44,17 @@ public class Minimap : MonoBehaviour
         #endregion
 
         PlayerDot.anchoredPosition = WorldToMinimap(Player.position);
-
+        PlayerVisionCircle.sizeDelta = Vector2.one * (playerVisionRange / (LevelMax.x - LevelMin.x) * MinimapContent.rect.width) * 2;
+        PlayerVisionCircle.anchoredPosition = PlayerDot.anchoredPosition;
         foreach (var (enemyTransform, enemyDot) in trackedEnemies)
         {
             enemyDot.anchoredPosition = WorldToMinimap(enemyTransform.position);
             enemyDot.localRotation = Quaternion.Euler(0, 0, -enemyTransform.eulerAngles.y + 90);
+
+            float distanceToPlayer = Vector3.Distance(Player.position, enemyTransform.position);
+            Image dotImage = enemyDot.GetComponent<Image>();
+            if (distanceToPlayer <= playerVisionRange) { dotImage.color = enemySeenColor; }
+            else { dotImage.color = enemyUnseenColor; }
         }
 
         PlayerDot.localRotation = Quaternion.Euler(0, 0, -Player.eulerAngles.y + 90);

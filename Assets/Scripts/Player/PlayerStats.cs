@@ -9,6 +9,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] float regenPerSecond;
     [SerializeField] float visionRange = 5f;
     [SerializeField] PlayerVision playerVision;
+    public float VisionRange => visionRange;
 
     private float HealthAfterBuffs => maxHealth + hpBuffs;
 
