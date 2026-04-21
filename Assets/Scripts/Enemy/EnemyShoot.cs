@@ -74,7 +74,7 @@ public class EnemyShoot : EnemyAI
 
 
     }
-    public void ShootWithDelay()
+    public override void Attack()
     {
         StartCoroutine(DelayedShoot(shootDelay));
     }
