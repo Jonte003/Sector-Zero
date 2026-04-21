@@ -45,7 +45,7 @@ public class Minimap : MonoBehaviour
 
         PlayerDot.anchoredPosition = WorldToMinimap(Player.position);
         PlayerVisionCircle.sizeDelta = Vector2.one * (playerVisionRange / (LevelMax.x - LevelMin.x) * MinimapContent.rect.width) * 2;
-        PlayerVisionCircle.anchoredPosition = PlayerDot.anchoredPosition;
+
         foreach (var (enemyTransform, enemyDot) in trackedEnemies)
         {
             enemyDot.anchoredPosition = WorldToMinimap(enemyTransform.position);
