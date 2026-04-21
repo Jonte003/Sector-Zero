@@ -735,6 +735,7 @@ GameObject:
   - component: {fileID: 8129413266236666834}
   - component: {fileID: 5160556237567322568}
   - component: {fileID: 1622219702265144341}
+  - component: {fileID: 3477289293402586416}
   m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
@@ -807,7 +808,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &5160556237567322568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -858,6 +859,19 @@ MonoBehaviour:
   barSeg90: {fileID: 6290534735271850140}
   barSeg95: {fileID: 6351847016245460786}
   barSeg100: {fileID: 361495379003969810}
+  canvasGroup: {fileID: 3477289293402586416}
+--- !u!225 &3477289293402586416
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4573891434168341359}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4867894925238257360
 GameObject:
   m_ObjectHideFlags: 0

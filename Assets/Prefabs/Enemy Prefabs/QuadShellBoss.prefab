@@ -1560,6 +1560,7 @@ GameObject:
   - component: {fileID: 4792501137017847807}
   - component: {fileID: 7051835864282680473}
   - component: {fileID: 7614769630316078895}
+  - component: {fileID: 2341354488186570006}
   m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
@@ -1683,6 +1684,19 @@ MonoBehaviour:
   barSeg90: {fileID: 5215562149327412410}
   barSeg95: {fileID: 3312335604609135489}
   barSeg100: {fileID: 1357900462161783408}
+  canvasGroup: {fileID: 2341354488186570006}
+--- !u!225 &2341354488186570006
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8451556684850502774}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8566667120793284933
 GameObject:
   m_ObjectHideFlags: 0
@@ -1995,9 +2009,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleEnemyAI
   reach: 6
-  speed: 6
+  walkSpeed: 0
+  runSpeed: 0
+  distanceStartRun: 0
   currentState: 0
   whitinHitDistance: 0
+  gravityMultiplier: 1.5
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+  groundCheckDistance: 0.2
 --- !u!114 &-6038927486889961266
 MonoBehaviour:
   m_ObjectHideFlags: 0

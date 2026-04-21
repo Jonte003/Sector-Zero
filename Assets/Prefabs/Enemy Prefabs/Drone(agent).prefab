@@ -808,6 +808,7 @@ GameObject:
   - component: {fileID: 490952681399484108}
   - component: {fileID: 2578377475165481638}
   - component: {fileID: 2844830959125161362}
+  - component: {fileID: 8166902216201099726}
   m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
@@ -931,6 +932,19 @@ MonoBehaviour:
   barSeg90: {fileID: 6702254932815870805}
   barSeg95: {fileID: 8484797758903633368}
   barSeg100: {fileID: 9032962349323623122}
+  canvasGroup: {fileID: 8166902216201099726}
+--- !u!225 &8166902216201099726
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4944297878546289015}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5837896961303405717
 GameObject:
   m_ObjectHideFlags: 0
@@ -1919,6 +1933,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: -4207700971262164598, guid: 529768c8ddd4cac459a540ab5f16888c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -3441108726360675361, guid: 529768c8ddd4cac459a540ab5f16888c, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -1932,7 +1950,19 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -1277030166443760588, guid: 529768c8ddd4cac459a540ab5f16888c, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1277030166443760588, guid: 529768c8ddd4cac459a540ab5f16888c, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1277030166443760588, guid: 529768c8ddd4cac459a540ab5f16888c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 21db644923898e9499f06b2977195cdd, type: 2}
+    - target: {fileID: -1277030166443760588, guid: 529768c8ddd4cac459a540ab5f16888c, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: 21db644923898e9499f06b2977195cdd, type: 2}
     - target: {fileID: -1013611186653188199, guid: 529768c8ddd4cac459a540ab5f16888c, type: 3}
@@ -1974,6 +2004,10 @@ PrefabInstance:
     - target: {fileID: 8695271993433793136, guid: 529768c8ddd4cac459a540ab5f16888c, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8695271993433793136, guid: 529768c8ddd4cac459a540ab5f16888c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

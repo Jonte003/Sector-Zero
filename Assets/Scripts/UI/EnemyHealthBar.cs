@@ -25,6 +25,7 @@ public class EnemyHealthBar : MonoBehaviour
     [SerializeField] Transform barSeg95;
     [SerializeField] Transform barSeg100;
 
+    [SerializeField] CanvasGroup canvasGroup;
     Transform[] barSegments;
 
     private EnemyStats enemyStats;
@@ -39,6 +40,15 @@ public class EnemyHealthBar : MonoBehaviour
     void LateUpdate()
     {
         transform.rotation = cam.transform.rotation; //Rotates the health bar to always face the camera
+        
+        if (enemyStats.Health == enemyStats.MaxHealth)
+        {
+            canvasGroup.alpha = 0; //Hide the health bar when at full health
+        }
+        else
+        {
+            canvasGroup.alpha = 1; //Show the health bar when not at full health
+        }
 
         if (enemyStats.MaxHealth > 0)
         { 
