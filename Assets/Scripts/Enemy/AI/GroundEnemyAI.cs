@@ -4,13 +4,13 @@ using UnityEngine.Rendering;
 using UnityEngine.XR;
 using System.Collections;
 using System.Threading;
-public class SimpleEnemyAI : EnemyAgentAI
+public class GroundEnemyAI : EnemyAgentAI
 {
     NavMeshObstacle obstacle;
     [SerializeField] private State currentState;
     private GroundEnemyStats enemyStats;
     Animator animator;
-
+    [SerializeField] float onLinkSpeed;
     [SerializeField] protected bool whitinHitDistance;
 
     [SerializeField] float gravityMultiplier = 1.5f;
@@ -41,10 +41,11 @@ public class SimpleEnemyAI : EnemyAgentAI
             return;
         }
 
-        ChangeCurrentState(State.walking);
         isStunned = true;
+        ChangeCurrentState(State.walking);
         agent.enabled = false;
         rigidbody.isKinematic = false;
+        
 
         StartCoroutine(KnockbackRecovery());
 
@@ -96,20 +97,22 @@ public class SimpleEnemyAI : EnemyAgentAI
 
     protected override void Start()
     {
-        
+
         base.Start();
 
         animator = GetComponent<Animator>();
 
         currentState = State.walking;
-    
+
 
         enemyStats = gameObject.GetComponent<GroundEnemyStats>();
     }
 
-    // Update is called once per frame
+
     public override void CalculatePath()
     {
+
+
 
         if (isStunned)
         {
@@ -135,8 +138,6 @@ public class SimpleEnemyAI : EnemyAgentAI
             if (whitinHitDistance)
             {
                 ChangeCurrentState(State.deelingDamage);
-                animator.SetBool("Attacking", true);
-                agent.isStopped = true;
             }
         }
 
@@ -147,22 +148,15 @@ public class SimpleEnemyAI : EnemyAgentAI
             if (whitinHitDistance)
             {
                 ChangeCurrentState(State.deelingDamage);
-                animator.SetBool("Attacking", true);
-                agent.isStopped = true;
             }
         }
 
         else if (currentState == State.deelingDamage)
         {
 
-            if (!whitinHitDistance) 
+            if (!whitinHitDistance)
             {
                 ChangeCurrentState(State.walking);
-                animator.SetBool("Attacking", false);
-
-                agent.isStopped = false;
-                agent.SetDestination(targetLocation);
-
             }
             else
             {
@@ -172,8 +166,6 @@ public class SimpleEnemyAI : EnemyAgentAI
 
 
 
-        
-
 
 
 
@@ -182,8 +174,35 @@ public class SimpleEnemyAI : EnemyAgentAI
 
     }
 
+    IEnumerator OnLink(OffMeshLinkData data) //Smoothen transition from wall to ground
+    {
+        Vector3 startpos = data.startPos;
+        Vector3 endpos = data.endPos;
+        float distance = Vector3.Distance(startpos, endpos);
+        float speed = distance / onLinkSpeed;
 
-    private void Update() 
+        Vector3 direction = (endpos - startpos).normalized;
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+
+
+        float time = 0;
+
+        while (time < 1)
+        {
+            time += Time.deltaTime / speed;
+            agent.transform.position = Vector3.Lerp(startpos, endpos, time);
+            agent.transform.rotation = Quaternion.Slerp(
+                agent.transform.rotation,
+                targetRotation,
+                Time.deltaTime * 5); //rotationspeed
+            yield return null;
+        }
+
+        agent.CompleteOffMeshLink();
+    }
+
+    private void Update()
     {
         if (currentState == State.deelingDamage)
         {
@@ -191,6 +210,11 @@ public class SimpleEnemyAI : EnemyAgentAI
             Vector3 lookDirection = target.transform.position - transform.position;
             Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 5f * Time.deltaTime);
+        }
+
+        if (agent.isOnOffMeshLink)
+        {
+            StartCoroutine(OnLink(agent.currentOffMeshLinkData));
         }
 
     }
@@ -203,16 +227,25 @@ public class SimpleEnemyAI : EnemyAgentAI
         {
             agent.isStopped = false;
             agent.speed = walkSpeed;
+            animator.SetBool("Attacking", false);
+            agent.SetDestination(targetLocation);
+
+
         }
         else if (newState == State.running)
         {
             agent.isStopped = false;
             agent.speed = runSpeed;
+            animator.SetBool("Attacking", false);
+            agent.SetDestination(targetLocation);
+
         }
         else if (newState == State.deelingDamage)
         {
             agent.isStopped = true;
             agent.speed = 0;
+            animator.SetBool("Attacking", true);
+
         }
     }
 
@@ -232,7 +265,7 @@ public class SimpleEnemyAI : EnemyAgentAI
     private Vector3 GetClosestPositionOnMesh(Vector3 pos)
     {
         NavMeshHit hit;
-        NavMesh.SamplePosition(pos,out hit,10f,   NavMesh.AllAreas
+        NavMesh.SamplePosition(pos, out hit, 10f, NavMesh.AllAreas
         );
 
         if (hit.position == Vector3.zero) //If no position is found search by Vector3.zero
@@ -280,7 +313,7 @@ public class SimpleEnemyAI : EnemyAgentAI
 
     protected enum State
     {
-         deelingDamage, walking, running
+        deelingDamage, walking, running
     }
 
 

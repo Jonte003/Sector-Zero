@@ -1882,6 +1882,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: -222503228409788389, guid: 8ffc96d51d0a14146b764145ff233fe8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 21db644923898e9499f06b2977195cdd, type: 2}
     - target: {fileID: -108333875111565830, guid: 8ffc96d51d0a14146b764145ff233fe8, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -1942,6 +1946,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5935146867656370705, guid: 8ffc96d51d0a14146b764145ff233fe8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 21db644923898e9499f06b2977195cdd, type: 2}
     - target: {fileID: 8198306373408087608, guid: 8ffc96d51d0a14146b764145ff233fe8, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -1995,9 +2003,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleEnemyAI
   reach: 6
-  speed: 6
+  walkSpeed: 0
+  runSpeed: 0
+  distanceStartRun: 0
   currentState: 0
+  onLinkSpeed: 0
   whitinHitDistance: 0
+  gravityMultiplier: 1.5
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+  groundCheckDistance: 0.2
 --- !u!114 &-6038927486889961266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2014,8 +2030,8 @@ MonoBehaviour:
   expDrop: 0
   healthMultiplier: 1
   baseHealth: 500
-  baseDPS: 18
-  DPSMultiplier: 1
+  baseDamage: 0
+  damageMultiplier: 0
 --- !u!195 &-4237273874222029259
 NavMeshAgent:
   m_ObjectHideFlags: 0
