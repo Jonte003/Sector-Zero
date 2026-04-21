@@ -376,7 +376,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthManager
   maxHealth: 100
   currentHealth: 0
-  regenPerSecond: 0
+  regenPerSecond: 1
+  visionRange: 5
+  playerVision: {fileID: 0}
   hpBuffs: 0
   regenBuffs: 0
   damageBuffs: 0

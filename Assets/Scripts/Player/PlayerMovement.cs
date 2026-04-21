@@ -108,24 +108,40 @@ public class PlayerMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (movementInput != Vector3.zero)
+        Vector3 vel = characterRB.linearVelocity;
+
+        if (movementInput.sqrMagnitude > 0.01f)
         {
             movementVector = movementInput.x * transform.right + movementInput.z * transform.forward;
             movementVector.y = 0;
         }
+        else
+        {
+            movementVector = Vector3.zero;
+        }
 
-        Vector3 vel = characterRB.linearVelocity;
-        Vector3 horizontalVel = new Vector3(vel.x, 0, vel.z);
-        Vector3 targetVel = movementVector * FinalSpeed;
-        Vector3 newHorizontalVel;
+        Vector3 currentHorizontal = new Vector3(vel.x, 0, vel.z);
+        Vector3 desiredHorizontal = movementVector * FinalSpeed;
+
+        Vector3 newHorizontal;
 
         if (movementVector.sqrMagnitude > 0.01f)
-            newHorizontalVel = targetVel;
+        {
+            newHorizontal = desiredHorizontal;
+        }
         else
-            newHorizontalVel = Vector3.MoveTowards(horizontalVel, Vector3.zero, deceleration * Time.fixedDeltaTime);
+        {
+            newHorizontal = Vector3.MoveTowards(
+                currentHorizontal,
+                Vector3.zero,
+                deceleration * Time.fixedDeltaTime
+            );
+        }
 
-        float newY = vel.y - RealGravity * Time.fixedDeltaTime;
+        vel.x = newHorizontal.x;
+        vel.z = newHorizontal.z;
+        vel.y += -RealGravity * Time.fixedDeltaTime;
 
-        characterRB.linearVelocity = new Vector3(newHorizontalVel.x, newY, newHorizontalVel.z);
+        characterRB.linearVelocity = vel;
     }
 }

@@ -31,7 +31,7 @@ public class Gun : MonoBehaviour
 
     public bool CanShoot => canShoot;
 
-    private float FinalDamage => settings.Damage * (1 + finalModStats.WeaponDamage);
+    private float FinalDamage => settings.Damage * (1 + finalModStats.WeaponDamage) * (1 + transform.parent.parent.GetComponent<PlayerStats>().damageBuffs);
     private float FinalFireRate => settings.FireRate * (1 + finalModStats.FireRate);
     public float FinalMoveSpeed => settings.MoveSpeed * (1 + finalModStats.MoveSpeed);
     private int FinalMagSize => (int)(settings.MaxAmmo * (1 + finalModStats.MagSize));

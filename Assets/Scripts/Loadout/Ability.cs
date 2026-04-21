@@ -38,7 +38,8 @@ public enum AbilityCategory
 {
     Attack,
     Defense,
-    Mobility
+    Mobility,
+    Vision
 }
 
 public class Explosion : Ability
@@ -64,7 +65,7 @@ public class Explosion : Ability
         float stunDuration = 0.6f;
         float stunDurationPerLevel = 0.15f;
 
-        float explosionForce = 5f;
+        float explosionForce = 50f;
 
         for (int i = 0;  i < enemies.Count; i++)
         {
@@ -73,7 +74,8 @@ public class Explosion : Ability
                 enemies[i].GetComponent<EnemyStats>().DoDamageToEnemy((baseDamage + damagePerLevel * (Level - 1)) * (player.GetComponent<PlayerStats>().damageBuffs + 1));
 
                 enemies[i].GetComponent<EnemyAgentAI>().ApplyKnockback();
-                enemies[i].GetComponent<Rigidbody>().AddForce(enemies[i].transform.up * explosionForce, ForceMode.Impulse);
+
+                enemies[i].GetComponent<Rigidbody>().AddForce(enemies[i].transform.up * explosionForce);
 
                 enemies[i].GetComponent<EnemyAgentAI>().Stun(stunDuration + (stunDurationPerLevel * (Level - 1)));
             }
@@ -105,8 +107,8 @@ public class Knockback : Ability
 
         float slowDuration = 1f;
 
-        float baseKbForce = 10f;
-        float kbForcePerLevel = 3f;
+        float baseKbForce = 100f;
+        float kbForcePerLevel = 30f;
 
         for (int i = 0; i < enemies.Count; i++)
         {
@@ -114,7 +116,7 @@ public class Knockback : Ability
             {
                 enemies[i].GetComponent<EnemyAgentAI>().ApplyKnockback();
 
-                enemies[i].GetComponent<Rigidbody>().AddForce((enemies[i].transform.position - player.transform.position).normalized * (baseKbForce + kbForcePerLevel * (Level - 1)), ForceMode.Impulse);
+                enemies[i].GetComponent<Rigidbody>().AddForce(((enemies[i].transform.position - player.transform.position).normalized + Vector3.up * 0.5f).normalized * (baseKbForce + kbForcePerLevel * (Level - 1)));
 
                 enemies[i].GetComponent<EnemyAgentAI>().Slow(slowDuration, 1 - (baseSlow + slowPerLevel * (Level - 1)) / 100);
             }
@@ -138,7 +140,7 @@ public class Dash : Ability
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
     {
-        float dashForce = 50;
+        float dashForce = 20f;
 
         player.GetComponent<Rigidbody>().AddForce(player.transform.forward * dashForce, ForceMode.Impulse);
 
@@ -213,7 +215,7 @@ public class Fortify : Ability
         float MaxHpRegen = 4f;
         float MaxHpRegenPerLevel = 1.5f;
 
-        float regenTranslated = (MaxHpRegen + MaxHpRegenPerLevel * (Level - 1)) / ((duration + durationPerLevel * (Level - 1)) * 100);
+        float regenTranslated = (MaxHpRegen + MaxHpRegenPerLevel * (Level - 1)) / (duration + durationPerLevel * (Level - 1));
 
         player.GetComponent<PlayerStats>().defenseBuffs += baseDefense + defensePerLevel * (Level - 1);
         player.GetComponent<PlayerStats>().regenBuffs += regenTranslated;
@@ -404,9 +406,9 @@ public class Charge : Ability
             float dist = Vector3.Distance(player.transform.position, e.transform.position);
             if (dist <= 5f)
             {
-                Vector3 dir = (e.transform.position - player.transform.position).normalized;
+                Vector3 dir = ((e.transform.position - player.transform.position).normalized + Vector3.up * 0.5f).normalized;
                 e.GetComponent<EnemyAgentAI>().ApplyKnockback();
-                e.GetComponent<Rigidbody>().AddForce(dir * kbForce, ForceMode.Impulse);
+                e.GetComponent<Rigidbody>().AddForce(dir * kbForce);
             }
         }
 
@@ -432,7 +434,7 @@ public class VitalSurge : Ability
 
         float duration = 1f;
 
-        float regenTranslated = (baseRegenPercent + regenPerLevel * (Level - 1)) / (duration * 100);
+        float regenTranslated = (baseRegenPercent + regenPerLevel * (Level - 1)) / duration;
 
         var stats = player.GetComponent<PlayerStats>();
         stats.regenBuffs += regenTranslated;
@@ -526,10 +528,10 @@ public class GroundSlam : Ability
 
                 er.AddForce(Vector3.up * upwardForce, ForceMode.Impulse);
 
-                Vector3 dir = (e.transform.position - player.transform.position).normalized;
+                Vector3 dir = ((e.transform.position - player.transform.position).normalized + Vector3.up * 0.5f).normalized;
 
                 e.GetComponent<EnemyAgentAI>().ApplyKnockback();
-                er.AddForce(dir * outwardForce, ForceMode.Impulse);
+                e.GetComponent<Rigidbody>().AddForce(dir * outwardForce);
             }
         }
     }
