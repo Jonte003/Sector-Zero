@@ -7,6 +7,8 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] float maxHealth = 100f;
     [SerializeField] float currentHealth;
     [SerializeField] float regenPerSecond;
+    [SerializeField] float visionRange = 5f;
+    [SerializeField] PlayerVision playerVision;
 
     private float HealthAfterBuffs => maxHealth + hpBuffs;
 
@@ -30,6 +32,7 @@ public class PlayerStats : MonoBehaviour
     void Start()
     {
         currentHealth = HealthAfterBuffs;
+        playerVision.UpdateVisionRange(visionRange);
     }
 
 
