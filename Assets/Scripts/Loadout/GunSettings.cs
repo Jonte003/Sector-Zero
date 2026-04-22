@@ -84,7 +84,7 @@ public class GunSettings
     public static GunSettings BurstRifle => new
         (
             "Burst Rifle",
-            10f, 1.5f, 150f, 2.5f, 30, true, 0.95f,
+            10f, 1.5f, 150f, 2.5f, 30, false, 0.95f,
             new float[] { 0.85f, 0.7f }, new float[] { 75f, 100f }, false, 65f,
             0.1f, 3, 3, new(-1f, -1f), new(1f, 1f),
             new(1, 2), 0.5f, 1f,
@@ -94,7 +94,7 @@ public class GunSettings
     public static GunSettings Shotgun => new
         (
             "Shotgun",
-            3.5f, 1.5f, 40f, 2f, 8, true, 0.85f,
+            3.5f, 1.5f, 40f, 2f, 8, false, 0.85f,
             new float[] { 0.8f, 0.5f }, new float[] { 20f, 30f }, true, 75f,
             0, 8, 1, new(-4f, -4.5f), new(4f, 4f),
             new(1, 2), 0.5f, 1f,
@@ -104,7 +104,7 @@ public class GunSettings
     public static GunSettings Pistol => new
         (
             "Pistol",
-            10f, 3.5f, 125f, 1.2f, 12, true, 1.25f,
+            10f, 3.5f, 125f, 1.2f, 12, false, 1.25f,
             new float[] { 0.8f, 0.65f, 0.5f }, new float[] { 75f, 100f, 125f }, true, 80f,
             0, 1, 1, new(-0.75f, -0.75f), new(0.75f, 0.75f),
             new(0.75f, 3), 0.5f, 1f,
@@ -118,6 +118,16 @@ public class GunSettings
             new float[] { 0.9f, 0.75f, 0.5f }, new float[] { 50f, 75f, 100f }, true, 85f,
             0, 1, 1, new(-1.25f, -1.25f), new(1.25f, 1.25f),
             new(1.5f, 2f), 0.75f, 1f,
+            30
+        );
+
+    public static GunSettings Revolver => new
+        (
+            "Revolver",
+            25f, 0.75f, 150f, 1.2f, 6, false, 1.2f,
+            new float[] { 0.85f, 0.7f, 0.6f, 0.45f }, new float[] { 75f, 100f, 125f, 150f }, true, 45f,
+            0, 1, 1, new(-0.1f, -0.1f), new(0.1f, 0.1f),
+            new(3f, 10f), 0.75f, 1f,
             30
         );
 }
