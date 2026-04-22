@@ -12,6 +12,7 @@ public class LoadoutUI : MonoBehaviour
     [SerializeField] private Button pistol;
     [SerializeField] private Button shotgun;
     [SerializeField] private Button submachineGun;
+    [SerializeField] private Button revolver;
     private Button[] gunTypeButtons;
 
     [SerializeField] private Button basicBarrel;
@@ -141,6 +142,7 @@ public class LoadoutUI : MonoBehaviour
     [SerializeField] private GameObject shotgunObj;
     [SerializeField] private GameObject pistolObj;
     [SerializeField] private GameObject smgObj;
+    [SerializeField] private GameObject revolverObj;
 
 
     void Start()
@@ -315,6 +317,16 @@ public class LoadoutUI : MonoBehaviour
             button.GetComponent<Image>().color = inactiveColor;
         }
         submachineGun.GetComponent<Image>().color = activeColor;
+    }
+    public void OnClickedRevolver()
+    {
+        activeGunPrefab = revolverObj;
+        activeGun = GunSettings.Revolver;
+        foreach (Button button in gunTypeButtons)
+        {
+            button.GetComponent<Image>().color = inactiveColor;
+        }
+        revolver.GetComponent<Image>().color = activeColor;
     }
     #endregion
     #region Buttons Barrels

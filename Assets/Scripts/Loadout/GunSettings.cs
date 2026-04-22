@@ -124,7 +124,7 @@ public class GunSettings
     public static GunSettings Revolver => new
         (
             "Revolver",
-            25f, 0.75f, 150f, 1.2f, 6, false, 1.2f,
+            25f, 0.75f, 150f, 1.4f, 6, false, 1.2f,
             new float[] { 0.85f, 0.7f, 0.6f, 0.45f }, new float[] { 75f, 100f, 125f, 150f }, true, 45f,
             0, 1, 1, new(-0.1f, -0.1f), new(0.1f, 0.1f),
             new(3f, 10f), 0.75f, 1f,
