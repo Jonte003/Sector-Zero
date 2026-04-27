@@ -13,9 +13,12 @@ public class WaveManager : MonoBehaviour
     List<SpawnPoint> spawnPointsDeactiveted;
 
     List<Wave> allWaves;
+    Wave currentW;
+    Wave nextWave;
 
-    [SerializeField] int currentWave;
-    [SerializeField] bool startNextWave;
+
+    int currentWave;
+    [SerializeField, InspectorName("Force start next wave")] bool startNextWave;
 
     [SerializeField, Tooltip("Applies a multipler to the spawntimer each new wave, 0.9 increases spawn rate by 10% each wave")] float spawnTimeMultiplier;
     [SerializeField] float currentTimerMultiplier;
@@ -33,6 +36,7 @@ public class WaveManager : MonoBehaviour
         spawnPointsActive = new List<SpawnPoint>();
         allWaves = new List<Wave>();
         enemyController = GameObject.FindWithTag("EnemyController").GetComponent<Controller>();
+
         foreach (Transform child in transform.Find("SpawnPoints")) //Add all spawnpoints of child to list
         {
             spawnPointsDeactiveted.Add(child.gameObject.GetComponent<SpawnPoint>());
@@ -42,14 +46,24 @@ public class WaveManager : MonoBehaviour
         {
             allWaves.Add(child.gameObject.GetComponent<Wave>());
         }
+
+        currentW = allWaves[0];
+        nextWave = allWaves[1];
     }
 
 
     public void LoadNextWave()
     {
+
+        Debug.Log($"Wave {currentWave} finished, loading next wave");
+
         currentTimerMultiplier *= spawnTimeMultiplier;
         currentWave++;
         waveIsSpawning = true;
+
+        currentW = allWaves[currentWave - 1];
+        nextWave = allWaves[currentWave];
+
         for (int i = spawnPointsDeactiveted.Count - 1; i >= 0; i--)
         {
             SpawnPoint sp = spawnPointsDeactiveted[i];
@@ -72,62 +86,61 @@ public class WaveManager : MonoBehaviour
         gameObjectInQueue = wave.GetWave();        
     }
 
-    // Update is called once per frame
     void Update()
     {
-    timeToNextWave -= Time.deltaTime;
-        if (timeToNextWave <= 0 || (enemyController.AllEnemies.Count == 0 && gameObjectInQueue.Count == 0)) 
+        timeToNextWave -= Time.deltaTime;
+
+        if (currentW.IsBossWave || nextWave.IsBossWave)
         {
-            startNextWave = true;
+            if (CheckIfAllEnemiesDead())
+                startNextWave = true;
+        }
+        else
+        {
+            if (timeToNextWave <= 0 || CheckIfAllEnemiesDead())
+                startNextWave = true;
         }
 
-
-
-    if (startNextWave)
+        if (startNextWave)
         {
-            if (currentWave < allWaves.Count)
+            startNextWave = false;
+
+            if (currentWave >= allWaves.Count) //If last wave
             {
-                startNextWave = false;
-                LoadNextWave();
-            }
-            else
-            {
-                startNextWave = false;
-                if (enemyController.AllEnemies.Count == 0 && gameObjectInQueue.Count == 0)
+                if (CheckIfAllEnemiesDead())
                 {
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                     SceneManager.LoadScene("Title Screen");
-
                 }
+                return;
             }
 
+            LoadNextWave();
         }
 
-
-
-    if (gameObjectInQueue.Count > 0)
+        if (gameObjectInQueue.Count > 0)
         {
             foreach (SpawnPoint sp in spawnPointsActive)
             {
-                if (gameObjectInQueue.Count > 0)
-                { 
-                    if (sp.ReadyToSpawn == true)
-                    {
-
-                        sp.SpawnEnemy(gameObjectInQueue[0], currentTimerMultiplier);
-                        gameObjectInQueue.RemoveAt(0);
-                    }
+                if (sp.ReadyToSpawn)
+                {
+                    sp.SpawnEnemy(gameObjectInQueue[0], currentTimerMultiplier);
+                    gameObjectInQueue.RemoveAt(0);
                 }
-
             }
         }
         else
         {
             waveIsSpawning = false;
         }
-
     }
+
+    bool CheckIfAllEnemiesDead()
+    {
+        return enemyController.AllEnemies.Count == 0 && gameObjectInQueue.Count == 0;
+    }
+
 
     public int CurrentWave
     {

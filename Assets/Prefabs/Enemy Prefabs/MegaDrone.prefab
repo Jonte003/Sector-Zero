@@ -734,7 +734,7 @@ GameObject:
   - component: {fileID: 2531020080571788139}
   - component: {fileID: 5338581664584092207}
   m_Layer: 6
-  m_Name: Drone(agent)
+  m_Name: MegaDrone
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -750,7 +750,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 25, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2153918494220464954}
@@ -793,7 +793,7 @@ MonoBehaviour:
   reach: 10
   walkSpeed: 6
   runSpeed: 10
-  distanceStartRun: 0
+  distanceStartRun: 40
   lineOfSightCheckYOffset: 0
 --- !u!1 &4944297878546289015
 GameObject:
@@ -2018,10 +2018,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 529768c8ddd4cac459a540ab5f16888c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7432536351002894531}
+      addedObject: {fileID: 674934252287428638}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 529768c8ddd4cac459a540ab5f16888c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 674934252287428638}
+      addedObject: {fileID: 7432536351002894531}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 529768c8ddd4cac459a540ab5f16888c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7406873458739298429}
@@ -2037,6 +2037,24 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 529768c8ddd4cac459a540ab5f16888c, type: 3}
   m_PrefabInstance: {fileID: 1904732406164411601}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &674934252287428638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634685555140192640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf98dab91ae81d4bb3c79b54b15880d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyShoot
+  reach: 0
+  tracerSize: 10
+  spreadFrom: {x: -3, y: -3}
+  spreadTo: {x: 3, y: 3}
+  range: 30
+  tracerPrefab: {fileID: 5047346975242728359, guid: e4c190d7d4c8d5042aa514fdd1350cef, type: 3}
 --- !u!114 &7432536351002894531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2055,24 +2073,6 @@ MonoBehaviour:
   forceUp: 0.5
   amplitude: 0
   frequency: 0
---- !u!114 &674934252287428638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1634685555140192640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cf98dab91ae81d4bb3c79b54b15880d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyShoot
-  reach: 0
-  tracerSize: 10
-  spreadFrom: {x: -5, y: -5}
-  spreadTo: {x: 5, y: 5}
-  range: 30
-  tracerPrefab: {fileID: 5047346975242728359, guid: e4c190d7d4c8d5042aa514fdd1350cef, type: 3}
 --- !u!114 &7406873458739298429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2088,8 +2088,8 @@ MonoBehaviour:
   timeToSpawn: 3
   expDrop: 3
   healthMultiplier: 1
-  baseHealth: 5
-  damagePerShoot: 1
+  baseHealth: 100
+  damagePerShoot: 4
   reloadRate: 0.3
 --- !u!95 &2789843652307874019
 Animator:

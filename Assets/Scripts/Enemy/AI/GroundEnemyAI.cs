@@ -278,7 +278,6 @@ public class GroundEnemyAI : EnemyAgentAI
     public override void Attack()
     {
         enemyStats.DoDamageToTarget();
-        Debug.Log("Attack ran");
     }
 
     public override void Stun(float seconds)
