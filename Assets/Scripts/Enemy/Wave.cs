@@ -11,6 +11,8 @@ public class Wave : MonoBehaviour
     [SerializeField,Tooltip("Enemys in wave")] List<EnemyWithAmount> enemiesWithAmount;
     [SerializeField,Tooltip("Time to force next wave to start (does not affect bosswaves or waves just before a bosswave)")] float timeToNextWave;
     [SerializeField,Tooltip("If true, wave will not load or complete unless all enemys are dead")] bool isBossWave;
+    [SerializeField,Tooltip("the rate between spawns in seconds")] float spawnRate;
+
 
 
     public List<GameObject> GetWave()
@@ -23,7 +25,7 @@ public class Wave : MonoBehaviour
             {
                 wave.Add(enemyWithAmount.Prefab);
             }
-        }
+        } 
         return wave;
     }
 
@@ -35,6 +37,11 @@ public class Wave : MonoBehaviour
     public bool IsBossWave
     {
         get { return isBossWave; }
+    }
+
+    public float SpawnRate
+    {
+        get { return spawnRate; }
     }
 }
 
