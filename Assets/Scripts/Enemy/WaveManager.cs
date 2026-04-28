@@ -1,6 +1,8 @@
+using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.Windows;
@@ -9,38 +11,38 @@ public class WaveManager : MonoBehaviour
 {
 
     List<GameObject> gameObjectInQueue;
-    List<SpawnPoint> spawnPointsActive;
-    List<SpawnPoint> spawnPointsDeactiveted;
+
 
     List<Wave> allWaves;
     Wave currentW;
     Wave nextWave;
 
+    [SerializeField, Tooltip("Start corner of spawnarea")] Transform pos1;
+    [SerializeField, Tooltip("End corner of spawnarea")] Transform pos2;
+    [SerializeField] int downwardsRayDistance;
+    [SerializeField, Tooltip("The minimum distance a enemy can spawn from player")] int enemySpawnDistance;
+
+    [Space]
 
     int currentWave;
     [SerializeField, InspectorName("Force start next wave")] bool startNextWave;
-
-    [SerializeField, Tooltip("Applies a multipler to the spawntimer each new wave, 0.9 increases spawn rate by 10% each wave")] float spawnTimeMultiplier;
-    [SerializeField] float currentTimerMultiplier;
 
     Controller enemyController;
 
     [SerializeField] bool waveIsSpawning;
 
+    private float timeToNextSpawn;
+    private float currentTimeIntervalBetweenSpawns;
     private float timeToNextWave = 0;
+
 
     void Start()
     {
         gameObjectInQueue = new List<GameObject>();
-        spawnPointsDeactiveted = new List<SpawnPoint>();
-        spawnPointsActive = new List<SpawnPoint>();
         allWaves = new List<Wave>();
         enemyController = GameObject.FindWithTag("EnemyController").GetComponent<Controller>();
 
-        foreach (Transform child in transform.Find("SpawnPoints")) //Add all spawnpoints of child to list
-        {
-            spawnPointsDeactiveted.Add(child.gameObject.GetComponent<SpawnPoint>());
-        }
+
 
         foreach (Transform child in transform.Find("Waves")) //Add all waves of child to list
         {
@@ -57,24 +59,14 @@ public class WaveManager : MonoBehaviour
 
         Debug.Log($"Wave {currentWave} finished, loading next wave");
 
-        currentTimerMultiplier *= spawnTimeMultiplier;
         currentWave++;
         waveIsSpawning = true;
 
         currentW = allWaves[currentWave - 1];
         nextWave = allWaves[currentWave];
+        currentTimeIntervalBetweenSpawns = currentW.SpawnRate;
 
-        for (int i = spawnPointsDeactiveted.Count - 1; i >= 0; i--)
-        {
-            SpawnPoint sp = spawnPointsDeactiveted[i];
-            if (sp.ActivateOnWave == currentWave)
-            {
-                sp.ActivateSpawnPoint();
-                spawnPointsDeactiveted.RemoveAt(i);
-                spawnPointsActive.Add(sp);
-            }
-        }
-
+        
         LoadEnemyQueue();
         timeToNextWave = allWaves[currentWave - 1].TimeToNextWave;
     }
@@ -119,21 +111,17 @@ public class WaveManager : MonoBehaviour
             LoadNextWave();
         }
 
-        if (gameObjectInQueue.Count > 0)
+        if (gameObjectInQueue.Count > 0 && timeToNextSpawn <= 0)
         {
-            foreach (SpawnPoint sp in spawnPointsActive)
-            {
-                if (sp.ReadyToSpawn)
-                {
-                    sp.SpawnEnemy(gameObjectInQueue[0], currentTimerMultiplier);
-                    gameObjectInQueue.RemoveAt(0);
-                }
-            }
+            timeToNextSpawn = currentTimeIntervalBetweenSpawns;
+            SpawnEnemy(gameObjectInQueue[0]);
+            
         }
         else
         {
-            waveIsSpawning = false;
+            timeToNextSpawn -= Time.deltaTime;
         }
+
     }
 
     bool CheckIfAllEnemiesDead()
@@ -147,6 +135,45 @@ public class WaveManager : MonoBehaviour
         get { return currentWave; }
     }
 
-    
+    private void SpawnEnemy(GameObject enemy)
+    {
+        int maxAttempts = 10;
+
+        for (int i = 0; i < maxAttempts; i++)
+        {
+            Vector3 randomPos = GetRandomPosition();
+
+            RaycastHit hit;
+            NavMeshHit navHit;
+
+            if (Physics.Raycast(randomPos, Vector3.down, out hit, downwardsRayDistance))
+            {
+                if (NavMesh.SamplePosition(hit.point, out navHit, 5f, NavMesh.AllAreas))
+                {
+                    if(!EnemyAI.CheckIfPositionsInRange(navHit.position, GameObject.FindWithTag("Player").transform.position, enemySpawnDistance))
+                    {
+                        GameObject e = Instantiate(enemy, navHit.position, Quaternion.identity);
+                        enemyController.AddEnemy(e);
+                        gameObjectInQueue.RemoveAt(0);
+                        return;
+                    }
+                }
+            }
+        }
+
+        Debug.LogWarning("Failed to find valid spawn position after multiple attempts.");
+    }
+
+    private Vector3 GetRandomPosition()
+    {
+        Vector3 position;
+        position.x = Random.Range(pos1.position.x, pos2.position.x);
+        position.z = Random.Range(pos1.position.z, pos2.position.z);
+        position.y = pos1.position.y;
+
+        return position;
+    }
+
+
 }
 
