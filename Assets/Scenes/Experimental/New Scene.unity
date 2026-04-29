@@ -444,11 +444,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5100694060576441498, guid: 1bcebf03ae646934f90b1cb98fcbae57, type: 3}
       propertyPath: m_Name
-      value: WeaponTube R3
+      value: WeaponTube R3 Revolver
       objectReference: {fileID: 0}
     - target: {fileID: 5100694060576441498, guid: 1bcebf03ae646934f90b1cb98fcbae57, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5585200853602197024, guid: 1bcebf03ae646934f90b1cb98fcbae57, type: 3}
       propertyPath: m_LocalPosition.x
@@ -490,10 +490,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7356519940059601295, guid: 1bcebf03ae646934f90b1cb98fcbae57, type: 3}
+      propertyPath: weaponName
+      value: Revolver
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8871942714711491830, guid: 1bcebf03ae646934f90b1cb98fcbae57, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 1bcebf03ae646934f90b1cb98fcbae57, type: 3}
 --- !u!1001 &74904905
 PrefabInstance:
@@ -3765,7 +3772,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5100694060576441498, guid: 1bcebf03ae646934f90b1cb98fcbae57, type: 3}
       propertyPath: m_Name
-      value: WeaponTube L1 Pistol
+      value: WeaponTube L1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5100694060576441498, guid: 1bcebf03ae646934f90b1cb98fcbae57, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5259627027130123053, guid: 1bcebf03ae646934f90b1cb98fcbae57, type: 3}
       propertyPath: m_Mesh
@@ -3813,7 +3824,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7356519940059601295, guid: 1bcebf03ae646934f90b1cb98fcbae57, type: 3}
       propertyPath: weaponName
-      value: Pistol
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7356519940059601295, guid: 1bcebf03ae646934f90b1cb98fcbae57, type: 3}
       propertyPath: displayText
@@ -3989,11 +4000,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5100694060576441498, guid: 1bcebf03ae646934f90b1cb98fcbae57, type: 3}
       propertyPath: m_Name
-      value: WeaponTube R4
+      value: WeaponTube R4 Pistol
       objectReference: {fileID: 0}
     - target: {fileID: 5100694060576441498, guid: 1bcebf03ae646934f90b1cb98fcbae57, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5585200853602197024, guid: 1bcebf03ae646934f90b1cb98fcbae57, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4035,10 +4046,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7356519940059601295, guid: 1bcebf03ae646934f90b1cb98fcbae57, type: 3}
+      propertyPath: weaponName
+      value: Pistol
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8871942714711491830, guid: 1bcebf03ae646934f90b1cb98fcbae57, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 1bcebf03ae646934f90b1cb98fcbae57, type: 3}
 --- !u!4 &683492799 stripped
 Transform:
@@ -6160,7 +6178,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5100694060576441498, guid: 1bcebf03ae646934f90b1cb98fcbae57, type: 3}
       propertyPath: m_Name
-      value: WeaponTube L2 Revolver
+      value: WeaponTube L2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5100694060576441498, guid: 1bcebf03ae646934f90b1cb98fcbae57, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5585200853602197024, guid: 1bcebf03ae646934f90b1cb98fcbae57, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6204,7 +6226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7356519940059601295, guid: 1bcebf03ae646934f90b1cb98fcbae57, type: 3}
       propertyPath: weaponName
-      value: Revolver
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
