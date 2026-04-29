@@ -73,151 +73,151 @@ public class GunSettings
 
     public static GunSettings AssaultRifle = new
         (
-            "Assault Rifle",             //gunName
-            7f,                          //damage
-            4f,                          //fireRate
-            150f,                        //range
-            2.5f,                        //reloadSpeed
-            35,                          //maxAmmo
-            true,                        //fullAuto
-            1f,                          //moveSpeed
-            new float[] { 0.85f, 0.7f }, //damageFalloffPercentage
-            new float[] { 75f, 100f },   //damageFalloffRange
-            false,                       //damageFalloffLerp
-            60f,                         //pierceFalloff
-            0,                           //delayBetweenBullets
-            1,                           //bulletCount
-            1,                           //ammoPerShot
-            new(-1.5f, -1.5f),           //minSpread
-            new(1.5f, 1.5f),             //maxSpread
-            new(1, 2),                   //recoilMagnitude
-            0.5f,                        //recoilMin
-            1f,                          //recoilMax
-            30                           //tracerPoolSize
+            "Assault Rifle",                    //gunName
+            7f,                                 //damage
+            4f,                                 //fireRate
+            150f,                               //range
+            2.5f,                               //reloadSpeed
+            35,                                 //maxAmmo
+            true,                               //fullAuto
+            1f,                                 //moveSpeed
+            new float[] { 0.85f, 0.7f, 0.7f },  //damageFalloffPercentage
+            new float[] { 75f, 100f, 150f },    //damageFalloffRange
+            false,                              //damageFalloffLerp
+            60f,                                //pierceFalloff
+            0,                                  //delayBetweenBullets
+            1,                                  //bulletCount
+            1,                                  //ammoPerShot
+            new(-1.5f, -1.5f),                  //minSpread
+            new(1.5f, 1.5f),                    //maxSpread
+            new(1, 2),                          //recoilMagnitude
+            0.5f,                               //recoilMin
+            1f,                                 //recoilMax
+            30                                  //tracerPoolSize
         );
 
     public static GunSettings BurstRifle => new
         (
-            "Burst Rifle",               //gunName
-            10f,                         //damage
-            1.5f,                        //fireRate
-            150f,                        //range
-            2.5f,                        //reloadSpeed
-            30,                          //maxAmmo
-            false,                       //fullAuto
-            0.95f,                       //moveSpeed
-            new float[] { 0.85f, 0.7f }, //damageFalloffPercentage
-            new float[] { 75f, 100f },   //damageFalloffRange
-            false,                       //damageFalloffLerp
-            65f,                         //pierceFalloff
-            0.1f,                        //delayBetweenBullets
-            3,                           //bulletCount
-            3,                           //ammoPerShot
-            new(-1f, -1f),               //minSpread
-            new(1f, 1f),                 //maxSpread
-            new(1, 2),                   //recoilMagnitude
-            0.5f,                        //recoilMin
-            1f,                          //recoilMax
-            30                           //tracerPoolSize
+            "Burst Rifle",                      //gunName
+            6f,                                 //damage
+            1.5f,                               //fireRate
+            150f,                               //range
+            2.5f,                               //reloadSpeed
+            30,                                 //maxAmmo
+            false,                              //fullAuto
+            0.95f,                              //moveSpeed
+            new float[] { 0.85f, 0.7f, 0.7f },  //damageFalloffPercentage
+            new float[] { 75f, 100f, 150f },    //damageFalloffRange
+            false,                              //damageFalloffLerp
+            65f,                                //pierceFalloff
+            0.1f,                               //delayBetweenBullets
+            3,                                  //bulletCount
+            3,                                  //ammoPerShot
+            new(-1f, -1f),                      //minSpread
+            new(1f, 1f),                        //maxSpread
+            new(1, 2),                          //recoilMagnitude
+            0.5f,                               //recoilMin
+            1f,                                 //recoilMax
+            30                                  //tracerPoolSize
         );
 
     public static GunSettings Shotgun => new
         (
-            "Shotgun",                         //gunName
-            3.5f,                              //damage
-            1.5f,                              //fireRate
-            40f,                               //range
-            2f,                                //reloadSpeed
-            8,                                 //maxAmmo
-            false,                             //fullAuto
-            0.85f,                             //moveSpeed
-            new float[] { 0.8f, 0.5f },        //damageFalloffPercentage
-            new float[] { 20f, 30f },          //damageFalloffRange
-            true,                              //damageFalloffLerp
-            75f,                               //pierceFalloff
-            0,                                 //delayBetweenBullets
-            8,                                 //bulletCount
-            1,                                 //ammoPerShot
-            new(-4f, -4.5f),                   //minSpread
-            new(4f, 4f),                       //maxSpread
-            new(1, 2),                         //recoilMagnitude
-            0.5f,                              //recoilMin
-            1f,                                //recoilMax
-            30                                 //tracerPoolSize
+            "Shotgun",                          //gunName
+            3.5f,                               //damage
+            1f,                                 //fireRate
+            40f,                                //range
+            2f,                                 //reloadSpeed
+            8,                                  //maxAmmo
+            false,                              //fullAuto
+            0.85f,                              //moveSpeed
+            new float[] { 0.8f, 0.5f, 0.5f },   //damageFalloffPercentage
+            new float[] { 20f, 30f, 40f },      //damageFalloffRange
+            true,                               //damageFalloffLerp
+            75f,                                //pierceFalloff
+            0,                                  //delayBetweenBullets
+            8,                                  //bulletCount
+            1,                                  //ammoPerShot
+            new(-4f, -4.5f),                    //minSpread
+            new(4f, 4f),                        //maxSpread
+            new(1, 2),                          //recoilMagnitude
+            0.5f,                               //recoilMin
+            1f,                                 //recoilMax
+            30                                  //tracerPoolSize
         );
 
     public static GunSettings Pistol => new
         (
-            "Pistol",                                    //gunName
-            10f,                                         //damage
-            3.5f,                                        //fireRate
-            125f,                                        //range
-            1.2f,                                        //reloadSpeed
-            12,                                          //maxAmmo
-            false,                                       //fullAuto
-            1.25f,                                       //moveSpeed
-            new float[] { 0.8f, 0.65f, 0.5f },           //damageFalloffPercentage
-            new float[] { 75f, 100f, 125f },             //damageFalloffRange
-            true,                                        //damageFalloffLerp
-            80f,                                         //pierceFalloff
-            0,                                           //delayBetweenBullets
-            1,                                           //bulletCount
-            1,                                           //ammoPerShot
-            new(-0.75f, -0.75f),                         //minSpread
-            new(0.75f, 0.75f),                           //maxSpread
-            new(0.75f, 3),                               //recoilMagnitude
-            0.5f,                                        //recoilMin
-            1f,                                          //recoilMax
-            30                                           //tracerPoolSize
+            "Pistol",                           //gunName
+            10f,                                //damage
+            3.5f,                               //fireRate
+            125f,                               //range
+            1.2f,                               //reloadSpeed
+            12,                                 //maxAmmo
+            false,                              //fullAuto
+            1.25f,                              //moveSpeed
+            new float[] { 0.8f, 0.65f, 0.5f },  //damageFalloffPercentage
+            new float[] { 75f, 100f, 125f },    //damageFalloffRange
+            true,                               //damageFalloffLerp
+            80f,                                //pierceFalloff
+            0,                                  //delayBetweenBullets
+            1,                                  //bulletCount
+            1,                                  //ammoPerShot
+            new(-0.75f, -0.75f),                //minSpread
+            new(0.75f, 0.75f),                  //maxSpread
+            new(0.75f, 3),                      //recoilMagnitude
+            0.5f,                               //recoilMin
+            1f,                                 //recoilMax
+            30                                  //tracerPoolSize
         );
 
     public static GunSettings Smg => new
         (
-            "Smg",                                       //gunName
-            4f,                                          //damage
-            8f,                                          //fireRate
-            100f,                                        //range
-            0.7f,                                        //reloadSpeed
-            20,                                          //maxAmmo
-            true,                                        //fullAuto
-            1.15f,                                       //moveSpeed
-            new float[] { 0.9f, 0.75f, 0.5f },           //damageFalloffPercentage
-            new float[] { 50f, 75f, 100f },              //damageFalloffRange
-            true,                                        //damageFalloffLerp
-            85f,                                         //pierceFalloff
-            0,                                           //delayBetweenBullets
-            1,                                           //bulletCount
-            1,                                           //ammoPerShot
-            new(-1.25f, -1.25f),                         //minSpread
-            new(1.25f, 1.25f),                           //maxSpread
-            new(1.5f, 2f),                               //recoilMagnitude
-            0.75f,                                       //recoilMin
-            1f,                                          //recoilMax
-            30                                           //tracerPoolSize
+            "Smg",                              //gunName
+            4f,                                 //damage
+            8f,                                 //fireRate
+            100f,                               //range
+            0.7f,                               //reloadSpeed
+            20,                                 //maxAmmo
+            true,                               //fullAuto
+            1.15f,                              //moveSpeed
+            new float[] { 0.9f, 0.75f, 0.5f },  //damageFalloffPercentage
+            new float[] { 50f, 75f, 100f },     //damageFalloffRange
+            true,                               //damageFalloffLerp
+            85f,                                //pierceFalloff
+            0,                                  //delayBetweenBullets
+            1,                                  //bulletCount
+            1,                                  //ammoPerShot
+            new(-1.25f, -1.25f),                //minSpread
+            new(1.25f, 1.25f),                  //maxSpread
+            new(1.5f, 2f),                      //recoilMagnitude
+            0.75f,                              //recoilMin
+            1f,                                 //recoilMax
+            30                                  //tracerPoolSize
         );
 
     public static GunSettings Revolver => new
         (
-            "Revolver",                                       //gunName
-            25f,                                              //damage
-            0.75f,                                            //fireRate
-            150f,                                             //range
-            1.4f,                                             //reloadSpeed
-            6,                                                //maxAmmo
-            false,                                            //fullAuto
-            1.2f,                                             //moveSpeed
-            new float[] { 0.85f, 0.7f, 0.6f, 0.45f },         //damageFalloffPercentage
-            new float[] { 75f, 100f, 125f, 150f },            //damageFalloffRange
-            true,                                             //damageFalloffLerp
-            45f,                                              //pierceFalloff
-            0,                                                //delayBetweenBullets
-            1,                                                //bulletCount
-            1,                                                //ammoPerShot
-            new(-0.1f, -0.1f),                                //minSpread
-            new(0.1f, 0.1f),                                  //maxSpread
-            new(3f, 10f),                                     //recoilMagnitude
-            0.75f,                                            //recoilMin
-            1f,                                               //recoilMax
-            30                                                //tracerPoolSize
+            "Revolver",                                 //gunName
+            25f,                                        //damage
+            0.75f,                                      //fireRate
+            150f,                                       //range
+            1.4f,                                       //reloadSpeed
+            6,                                          //maxAmmo
+            false,                                      //fullAuto
+            1.2f,                                       //moveSpeed
+            new float[] { 0.85f, 0.7f, 0.6f, 0.45f },   //damageFalloffPercentage
+            new float[] { 75f, 100f, 125f, 150f },      //damageFalloffRange
+            true,                                       //damageFalloffLerp
+            45f,                                        //pierceFalloff
+            0,                                          //delayBetweenBullets
+            1,                                          //bulletCount
+            1,                                          //ammoPerShot
+            new(-0.1f, -0.1f),                          //minSpread
+            new(0.1f, 0.1f),                            //maxSpread
+            new(3f, 10f),                               //recoilMagnitude
+            0.75f,                                      //recoilMin
+            1f,                                         //recoilMax
+            30                                          //tracerPoolSize
         );
 }
