@@ -37,13 +37,13 @@ public class PlayerMovement : MonoBehaviour
 
     private PlayerStats playerStats;
 
-    private bool CheckGrounded()
+    private bool CheckGrounded(float radius)
     {
         CapsuleCollider col = GetComponent<CapsuleCollider>();
 
         Vector3 bottom = transform.position + col.center - new Vector3(0, col.height / 2f, 0);
 
-        return Physics.CheckSphere(bottom, groundCheckRadius, groundMask);
+        return Physics.CheckSphere(bottom, radius, groundMask);
     }
 
     void Start()
@@ -100,9 +100,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        grounded = CheckGrounded();
+        grounded = CheckGrounded(groundCheckRadius);
 
-        animator.SetBool("inAir", !grounded);
+        animator.SetBool("InAir", !CheckGrounded(1.2f));
         animator.SetFloat("VelocityX", Mathf.Clamp(movementInput.x, -1, 1),0.05f, Time.deltaTime);
         animator.SetFloat("VelocityZ", Mathf.Clamp(movementInput.z, -1, 1),0.05f, Time.deltaTime);
 
