@@ -152,7 +152,7 @@ public class WaveManager : MonoBehaviour
                 {
                     if(!EnemyAI.CheckIfPositionsInRange(navHit.position, GameObject.FindWithTag("Player").transform.position, enemySpawnDistance))
                     {
-                        GameObject e = Instantiate(enemy, navHit.position, Quaternion.identity);
+                        GameObject e = Instantiate(enemy, navHit.position, Quaternion.identity, enemyController.transform);
                         enemyController.AddEnemy(e);
                         gameObjectInQueue.RemoveAt(0);
                         return;
