@@ -2308,6 +2308,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7164163240031298379, guid: 5fc8a76b2de8fab4bb85e9162524a5bd, type: 3}
+      propertyPath: statName
+      value: Fire Rate
+      objectReference: {fileID: 0}
+    - target: {fileID: 7164163240031298379, guid: 5fc8a76b2de8fab4bb85e9162524a5bd, type: 3}
+      propertyPath: displayWeapon
+      value: 
+      objectReference: {fileID: 7356519940059601295}
     - target: {fileID: 7955053616688327225, guid: 5fc8a76b2de8fab4bb85e9162524a5bd, type: 3}
       propertyPath: m_Name
       value: Segmented Bar
