@@ -88,9 +88,9 @@ public class GunSettings
             0,                                  //delayBetweenBullets
             1,                                  //bulletCount
             1,                                  //ammoPerShot
-            new(-1.5f, -1.5f),                  //minSpread
-            new(1.5f, 1.5f),                    //maxSpread
-            new(1, 2),                          //recoilMagnitude
+            new(-2f, -2f),                      //minSpread
+            new(2f, 2f),                        //maxSpread
+            new(1.5f, 3.5f),                    //recoilMagnitude
             0.5f,                               //recoilMin
             1f,                                 //recoilMax
             30                                  //tracerPoolSize
@@ -140,7 +140,7 @@ public class GunSettings
             1,                                  //ammoPerShot
             new(-4f, -4.5f),                    //minSpread
             new(4f, 4f),                        //maxSpread
-            new(1, 2),                          //recoilMagnitude
+            new(3, 8),                          //recoilMagnitude
             0.5f,                               //recoilMin
             1f,                                 //recoilMax
             30                                  //tracerPoolSize
@@ -150,23 +150,23 @@ public class GunSettings
         (
             "Pistol",                           //gunName
             10f,                                //damage
-            3.5f,                               //fireRate
+            4f,                                 //fireRate
             125f,                               //range
             1.2f,                               //reloadSpeed
             12,                                 //maxAmmo
             false,                              //fullAuto
             1.25f,                              //moveSpeed
-            new float[] { 0.8f, 0.65f, 0.5f },  //damageFalloffPercentage
+            new float[] { 0.85f, 0.7f, 0.55f }, //damageFalloffPercentage
             new float[] { 75f, 100f, 125f },    //damageFalloffRange
             true,                               //damageFalloffLerp
             80f,                                //pierceFalloff
             0,                                  //delayBetweenBullets
             1,                                  //bulletCount
             1,                                  //ammoPerShot
-            new(-0.75f, -0.75f),                //minSpread
-            new(0.75f, 0.75f),                  //maxSpread
-            new(0.75f, 3),                      //recoilMagnitude
-            0.5f,                               //recoilMin
+            new(-1.5f, -1.5f),                  //minSpread
+            new(1.5f, 1.5f),                    //maxSpread
+            new(1f, 4f),                        //recoilMagnitude
+            0.4f,                               //recoilMin
             1f,                                 //recoilMax
             30                                  //tracerPoolSize
         );
@@ -174,7 +174,7 @@ public class GunSettings
     public static GunSettings Smg => new
         (
             "Smg",                              //gunName
-            4f,                                 //damage
+            6f,                                 //damage
             8f,                                 //fireRate
             100f,                               //range
             0.7f,                               //reloadSpeed
@@ -184,13 +184,13 @@ public class GunSettings
             new float[] { 0.9f, 0.75f, 0.5f },  //damageFalloffPercentage
             new float[] { 50f, 75f, 100f },     //damageFalloffRange
             true,                               //damageFalloffLerp
-            85f,                                //pierceFalloff
+            80f,                                 //pierceFalloff
             0,                                  //delayBetweenBullets
             1,                                  //bulletCount
             1,                                  //ammoPerShot
-            new(-1.25f, -1.25f),                //minSpread
-            new(1.25f, 1.25f),                  //maxSpread
-            new(1.5f, 2f),                      //recoilMagnitude
+            new(-2.5f, -2.5f),                  //minSpread
+            new(2.5f, 2.5f),                    //maxSpread
+            new(2f, 3.5f),                      //recoilMagnitude
             0.75f,                              //recoilMin
             1f,                                 //recoilMax
             30                                  //tracerPoolSize

@@ -41,8 +41,8 @@ public class GunStats
     public int CalculateAccuracy()
     {
         return (int)math.clamp(math.round
-            (GetSpread(0.6f) + 
-            GetRecoil(0.4f)
+            (GetSpread(0.7f) + 
+            GetRecoil(0.3f)
             ), 1, 10);
     }
 
@@ -72,7 +72,7 @@ public class GunStats
     {
         float max = 3;
 
-        return math.round(1 / Gun.PierceFalloff) / max * relevance * 10;
+        return 100 / Gun.PierceFalloff / max * relevance * 10;
     }
 
     private float GetFireRate(float relevance)
@@ -98,30 +98,30 @@ public class GunStats
 
     private float GetSpread(float relevance)
     {
-        float max = 1;
+        float max = 10;
 
-        return (max - (Gun.MaxSpread.x + Gun.MaxSpread.y)) / (max * 2) * relevance * 10;
+        return (1 - (Gun.MaxSpread.x + Gun.MaxSpread.y) / max) * relevance * 10;
     }
 
     private float GetRecoil(float relevance)
     {
-        float max = 1;
+        float max = 10;
 
-        return (max - (Gun.RecoilMagnitude.x + Gun.RecoilMagnitude.x) / 2 * ((Gun.RecoilMax + Gun.RecoilMin) / 2)) / max * relevance * 10;
+        return math.saturate(1 - ((Gun.RecoilMagnitude.x + Gun.RecoilMagnitude.y) / 2) * ((Gun.RecoilMax + Gun.RecoilMin) / 2) / max) * relevance * 10;
     }
 
     private float GetRange(float relevance)
     {
         float max = 200f;
 
-        float totalRange = 0;
+        float latestRange = 0;
 
         float totalDamage = 0;
 
         for (int i = 0; i < Gun.DamageFalloffRange.Length; i++)
         {
-            totalDamage += Gun.DamageFalloffPercentage[i] * (Gun.DamageFalloffRange[i] - totalRange);
-            totalRange += Gun.DamageFalloffRange[i];
+            totalDamage += Gun.DamageFalloffPercentage[i] * (Gun.DamageFalloffRange[i] - latestRange);
+            latestRange = Gun.DamageFalloffRange[i];
         }
 
         float averageDmgMult = totalDamage / Gun.Range;
@@ -131,8 +131,8 @@ public class GunStats
 
     private float GetMoveSpeed(float relevance)
     {
-        float max = 2f;
+        float max = 1.6f;
 
-        return Gun.MoveSpeed / max * relevance * 10;
+        return (1 - Gun.MoveSpeed / max) * relevance * 10;
     }
 }

@@ -236,15 +236,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e3f9e81696803ea4fb30d1fa2a392c8d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -8.913218
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3f9e81696803ea4fb30d1fa2a392c8d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.777
+      value: 0.90003496
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3f9e81696803ea4fb30d1fa2a392c8d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.264
+      value: 3.012618
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3f9e81696803ea4fb30d1fa2a392c8d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -276,7 +276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e3f9e81696803ea4fb30d1fa2a392c8d, type: 3}
       propertyPath: m_Name
-      value: PlayerRobot
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e3f9e81696803ea4fb30d1fa2a392c8d, type: 3}
       propertyPath: m_TagString
@@ -377,14 +377,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   grounded: 0
   runningMod: 1.25
-  jumpForce: 500
+  jumpForce: 300
   movementVector: {x: 0, y: 0, z: 0}
-  movementSpeed: 10
+  movementSpeed: 5
   deceleration: 30
   gravity: 1.5
   distanceToRecalculateEnemies: 0
   enemyController: {fileID: 0}
-  animator: {fileID: 0}
   groundMask:
     serializedVersion: 2
     m_Bits: 8
