@@ -4,10 +4,9 @@ public class Barrier : MonoBehaviour
 {
     [SerializeField] Color colorClosed;
     [SerializeField] Color colorOpen;
-    bool isClosed = false;
+    bool isClosed = true;
     Renderer barrierRenderer;
     Collider barrierCollider;
-    int blockCounter = 0;
     void Start()
     {
         barrierRenderer = GetComponent<Renderer>();
@@ -17,11 +16,14 @@ public class Barrier : MonoBehaviour
 
     void Update()
     {
-        blockCounter++;
-        if (blockCounter > 100)
+        if (LoadoutManager.Settings == null) return;
+        if (LoadoutManager.Settings.GunName != "None")
         {
-            blockCounter = 0;
-            isClosed = !isClosed;
+            isClosed = false;
+        }
+        else
+        {
+            isClosed = true;
         }
         UpdateState();
     }
