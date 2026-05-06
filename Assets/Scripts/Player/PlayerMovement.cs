@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Tooltip("The distance the player has to move to recalculate the paths of all enemies")] float distanceToRecalculateEnemies;
     [SerializeField] Controller enemyController;
     Vector3 lastCalculatedPosition;
+    Animator animator;
     private float RealGravity => 9.81f * gravity;
 
     private float gunMoveSpeedMod = 1;
@@ -36,19 +37,20 @@ public class PlayerMovement : MonoBehaviour
 
     private PlayerStats playerStats;
 
-    private bool CheckGrounded()
+    private bool CheckGrounded(float radius)
     {
         CapsuleCollider col = GetComponent<CapsuleCollider>();
 
         Vector3 bottom = transform.position + col.center - new Vector3(0, col.height / 2f, 0);
 
-        return Physics.CheckSphere(bottom, groundCheckRadius, groundMask);
+        return Physics.CheckSphere(bottom, radius, groundMask);
     }
 
     void Start()
     {
         playerStats = GetComponent<PlayerStats>();
         characterRB = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
         input = new();
         input.Enable();
 
@@ -92,12 +94,18 @@ public class PlayerMovement : MonoBehaviour
         if (grounded)
         {
             characterRB.AddForce(new Vector3(0, jumpForce * (1 + playerStats.jumpHeightBuffs / 100), 0));
+            animator.SetTrigger("Jump");
         }
     }
 
     private void Update()
     {
-        grounded = CheckGrounded();
+        grounded = CheckGrounded(groundCheckRadius);
+
+        animator.SetBool("InAir", !CheckGrounded(1.2f));
+        animator.SetFloat("VelocityX", Mathf.Clamp(movementInput.x, -1, 1),0.05f, Time.deltaTime);
+        animator.SetFloat("VelocityZ", Mathf.Clamp(movementInput.z, -1, 1),0.05f, Time.deltaTime);
+
     }
 
 
@@ -143,5 +151,7 @@ public class PlayerMovement : MonoBehaviour
         vel.y += -RealGravity * Time.fixedDeltaTime;
 
         characterRB.linearVelocity = vel;
+
+        
     }
 }

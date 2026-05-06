@@ -126,9 +126,9 @@ navPointManager = GameObject.FindWithTag("NavNodes").GetComponent<NavPointManage
         
         Vector3 destination = navPointManager.GetClosestNode(transform.position);
         
-        destination.y = transform.position.y; // keep height to navmesh
-        if (destination != Vector3.zero)
+        if (destination != Vector3.zero) //If no node is reachable dont change destination
         {
+            destination.y = transform.position.y; // keep height to navmesh
             agent.SetDestination(destination);
         }
     }

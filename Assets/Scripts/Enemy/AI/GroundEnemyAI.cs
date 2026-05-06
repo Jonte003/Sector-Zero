@@ -4,6 +4,7 @@ using UnityEngine.Rendering;
 using UnityEngine.XR;
 using System.Collections;
 using System.Threading;
+using UnityEditor.ShaderGraph.Internal;
 public class GroundEnemyAI : EnemyAgentAI
 {
     NavMeshObstacle obstacle;
@@ -54,6 +55,7 @@ public class GroundEnemyAI : EnemyAgentAI
     private IEnumerator KnockbackRecovery()
     {
         float timer = 1;
+        float timer2 = 4;
 
         while (isGrounded && timer > 0)
         {
@@ -63,12 +65,12 @@ public class GroundEnemyAI : EnemyAgentAI
             yield return null;
         }
 
-        while (!isGrounded)
+        while (!isGrounded && timer2 > 0)
         {
+            timer2 -= Time.deltaTime;
             ApplyGravity();
             isGrounded = CheckGrounded();
             yield return null;
-
         }
 
         //Code runs when object has left the ground then landed again
@@ -163,15 +165,6 @@ public class GroundEnemyAI : EnemyAgentAI
 
             }
         }
-
-
-
-
-
-
-
-
-
     }
 
     IEnumerator OnLink(OffMeshLinkData data) //Smoothen transition from wall to ground
@@ -278,7 +271,6 @@ public class GroundEnemyAI : EnemyAgentAI
     public override void Attack()
     {
         enemyStats.DoDamageToTarget();
-        Debug.Log("Attack ran");
     }
 
     public override void Stun(float seconds)

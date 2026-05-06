@@ -2034,7 +2034,7 @@ MonoBehaviour:
   reach: 4
   walkSpeed: 4
   runSpeed: 8
-  distanceStartRun: 0
+  distanceStartRun: 40
   currentState: 0
   onLinkSpeed: 3
   whitinHitDistance: 0
@@ -2082,7 +2082,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 1
 --- !u!136 &2150350839419332956
 CapsuleCollider:
   m_ObjectHideFlags: 0

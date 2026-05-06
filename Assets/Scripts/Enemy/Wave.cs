@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Windows;
@@ -7,8 +8,12 @@ using UnityEngine.Windows;
 
 public class Wave : MonoBehaviour
 {
-    [SerializeField] List<EnemyWithAmount> enemiesWithAmount;
-    [SerializeField] float timeToNextWave;
+    [SerializeField,Tooltip("Enemys in wave")] List<EnemyWithAmount> enemiesWithAmount;
+    [SerializeField,Tooltip("Time to force next wave to start (does not affect bosswaves or waves just before a bosswave)")] float timeToNextWave;
+    [SerializeField,Tooltip("If true, wave will not load or complete unless all enemys are dead")] bool isBossWave;
+    [SerializeField,Tooltip("the rate between spawns in seconds")] float spawnRate;
+
+
 
     public List<GameObject> GetWave()
     {
@@ -20,7 +25,7 @@ public class Wave : MonoBehaviour
             {
                 wave.Add(enemyWithAmount.Prefab);
             }
-        }
+        } 
         return wave;
     }
 
@@ -28,7 +33,18 @@ public class Wave : MonoBehaviour
     {
         get { return timeToNextWave; }
     }
+
+    public bool IsBossWave
+    {
+        get { return isBossWave; }
+    }
+
+    public float SpawnRate
+    {
+        get { return spawnRate; }
+    }
 }
+
 
 [System.Serializable]
 public class EnemyWithAmount
@@ -45,4 +61,5 @@ public class EnemyWithAmount
     {
         get { return amount; }
     }
+
 }

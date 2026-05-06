@@ -1560,7 +1560,7 @@ GameObject:
   - component: {fileID: 4792501137017847807}
   - component: {fileID: 7051835864282680473}
   - component: {fileID: 7614769630316078895}
-  - component: {fileID: 2341354488186570006}
+  - component: {fileID: 3141257204372633589}
   m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
@@ -1684,8 +1684,8 @@ MonoBehaviour:
   barSeg90: {fileID: 5215562149327412410}
   barSeg95: {fileID: 3312335604609135489}
   barSeg100: {fileID: 1357900462161783408}
-  canvasGroup: {fileID: 2341354488186570006}
---- !u!225 &2341354488186570006
+  canvasGroup: {fileID: 3141257204372633589}
+--- !u!225 &3141257204372633589
 CanvasGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1786,15 +1786,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8ffc96d51d0a14146b764145ff233fe8, type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8ffc96d51d0a14146b764145ff233fe8, type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8ffc96d51d0a14146b764145ff233fe8, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8ffc96d51d0a14146b764145ff233fe8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1864,6 +1864,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: -4745170854963877417, guid: 8ffc96d51d0a14146b764145ff233fe8, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: -4359285075581954094, guid: 8ffc96d51d0a14146b764145ff233fe8, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -1895,6 +1899,10 @@ PrefabInstance:
     - target: {fileID: -546535673210974230, guid: 8ffc96d51d0a14146b764145ff233fe8, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -546535673210974230, guid: 8ffc96d51d0a14146b764145ff233fe8, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: -222503228409788389, guid: 8ffc96d51d0a14146b764145ff233fe8, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -1943,6 +1951,10 @@ PrefabInstance:
     - target: {fileID: 2668605608433959078, guid: 8ffc96d51d0a14146b764145ff233fe8, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2668605608433959078, guid: 8ffc96d51d0a14146b764145ff233fe8, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 3075118662999287467, guid: 8ffc96d51d0a14146b764145ff233fe8, type: 3}
       propertyPath: m_Layer
@@ -1998,6 +2010,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8ffc96d51d0a14146b764145ff233fe8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 355970492377704877}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8ffc96d51d0a14146b764145ff233fe8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -4931275603683725269}
   m_SourcePrefab: {fileID: 100100000, guid: 8ffc96d51d0a14146b764145ff233fe8, type: 3}
 --- !u!1 &5092939406025795021 stripped
 GameObject:
@@ -2016,17 +2031,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9152341605a6448a3f77858e0e3116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SimpleEnemyAI
-  reach: 6
-  walkSpeed: 0
-  runSpeed: 0
-  distanceStartRun: 0
+  reach: 8
+  walkSpeed: 6
+  runSpeed: 12
+  distanceStartRun: 40
   currentState: 0
-  onLinkSpeed: 0
+  onLinkSpeed: 3
   whitinHitDistance: 0
-  gravityMultiplier: 1.5
+  gravityMultiplier: 1
   groundMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   groundCheckDistance: 0.2
 --- !u!114 &-6038927486889961266
 MonoBehaviour:
@@ -2041,11 +2056,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GroundEnemyStats
   timeToSpawn: 1
-  expDrop: 0
+  expDrop: 3
   healthMultiplier: 1
   baseHealth: 500
-  baseDamage: 0
-  damageMultiplier: 0
+  baseDamage: 10
+  damageMultiplier: 1
 --- !u!195 &-4237273874222029259
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2055,8 +2070,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 5092939406025795021}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 3
-  m_Speed: 6
+  m_Radius: 1
+  m_Speed: 4
   m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -2067,7 +2082,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!136 &2150350839419332956
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2113,6 +2128,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!54 &-4931275603683725269
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5092939406025795021}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &5613193550825127799 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8ffc96d51d0a14146b764145ff233fe8, type: 3}
