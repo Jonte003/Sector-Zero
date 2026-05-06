@@ -50,8 +50,26 @@ public enum PossibleLevelUpStats
     MovementSpeed
 }
 
+public enum StatRarity
+{
+    Common,
+    Uncommon,
+    Rare,
+    Epic,
+    Legendary
+}
+
 public class Stat
 {
+    private static readonly StatRarity[] Rarities =
+    {
+        StatRarity.Common,
+        StatRarity.Uncommon,
+        StatRarity.Rare,
+        StatRarity.Epic,
+        StatRarity.Legendary
+    };
+
     public PossibleLevelUpStats StatType { get; }
     public float Value { get; }
 
@@ -72,7 +90,27 @@ public class Stat
     {
         StatType = statType;
 
-        float multiplier = (5 + Random.Range(0, 5)) * 0.1f;
+        float key = Random.value;
+
+        StatRarity rarity = key switch
+        {
+            < 0.5f => StatRarity.Common,
+            < 0.75f => StatRarity.Uncommon,
+            < 0.9f => StatRarity.Rare,
+            < 0.975f => StatRarity.Epic,
+            _ => StatRarity.Legendary
+        };
+
+        float multiplier = rarity switch
+        {
+            StatRarity.Common => 1,
+            StatRarity.Uncommon => 1.3f,
+            StatRarity.Rare => 1.75f,
+            StatRarity.Epic => 2.25f,
+            StatRarity.Legendary => 3f,
+            _ => 0f
+        };
+
         Value = multiplier * BaseValue;
     }
 }
