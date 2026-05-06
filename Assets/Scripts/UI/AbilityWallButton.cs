@@ -1,0 +1,42 @@
+using UnityEngine;
+
+public class AbilityWallButton : MonoBehaviour, IInteractable
+{
+    [SerializeField] private string abilityName;
+    private Renderer iconRenderer;
+
+    [SerializeField] Color colorActive;
+    [SerializeField] Color colorInactive;
+    [SerializeField] Color colorUnimplemented;
+
+    public Ability Ability { get; private set; }
+    [SerializeField] private LobbyAbilityManager manager;
+
+    private void Start()
+    {
+        iconRenderer = GetComponent<Renderer>();
+        if (AbilityRegistry.All.TryGetValue(abilityName, out Ability ability))
+        {
+            Ability = ability;
+            iconRenderer.material.mainTexture = ability.Icon != null ? ability.Icon.texture : null;
+            iconRenderer.material.color = ability.NotYetImplemented ? colorUnimplemented : colorInactive;
+        }
+    }
+
+    public void OnLookAt()
+    {
+        Debug.Log($"Looking at {abilityName} button");
+    }
+
+    public void OnLookAway()
+    {
+    }
+
+    public void OnInteract()
+    {
+        Debug.Log($"Interacted with {abilityName} button");
+        if (Ability == null || Ability.NotYetImplemented) return;
+        manager.ToggleAbility(Ability);
+        iconRenderer.material.color = Ability.Enabled ? colorActive : colorInactive;
+    }
+}

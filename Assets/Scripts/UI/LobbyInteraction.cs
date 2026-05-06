@@ -3,7 +3,7 @@ using UnityEngine;
 public class LobbyInteraction : MonoBehaviour
 {
     [SerializeField] private Transform playerCamera;
-    [SerializeField] private float interactRange = 3f;
+    [SerializeField] private float interactRange = 10f;
     [SerializeField] private LayerMask interactLayer;
 
     private IInteractable focusedInteractable;
@@ -12,6 +12,8 @@ public class LobbyInteraction : MonoBehaviour
     {
         if (Physics.Raycast(playerCamera.position, playerCamera.forward, out RaycastHit hit, interactRange, interactLayer))
         {
+            Debug.Log("Hit: " + hit.collider.gameObject.name);
+
             var interactable = hit.collider.GetComponentInParent<IInteractable>();
 
             if (interactable != focusedInteractable)

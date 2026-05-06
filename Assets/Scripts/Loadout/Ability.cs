@@ -2,6 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+#region Ability Registry
+public static class AbilityRegistry
+{
+    public static readonly Dictionary<string, Ability> All = new()
+    {
+        { "Backstep",         new Backstep() },
+        { "Blink",            new Blink() },
+        { "Chain Lightning",  new ChainLightning() },
+        { "Charge",           new Charge() },
+        { "Dash",             new Dash() },
+        { "Eruption",         new Eruption() },
+        { "Explosion",        new Explosion() },
+        { "Fortify",          new Fortify() },
+        { "Ground Slam",      new GroundSlam() },
+        { "Invincible",       new Invincible() },
+        { "Jump",             new Jump() },
+        { "Knockback",        new Knockback() },
+        { "Leap",             new Leap() },
+        { "Momentum Shift",   new MomentumShift() },
+        { "Vital Surge",      new VitalSurge() },
+    };
+
+    public static Sprite GetIcon(string abilityName)
+    {
+        if (All.TryGetValue(abilityName, out Ability ability))
+            return ability.Icon;
+
+        Debug.LogWarning($"Ability '{abilityName}' not found in registry.");
+        return null;
+    }
+
+    public static Material GetMaterial(string abilityName)
+    {
+        Sprite icon = GetIcon(abilityName);
+        if (icon == null)
+            return null;
+        Material mat = new Material(Shader.Find("Transparent/Diffuse"));
+        mat.mainTexture = icon.texture;
+        return mat;
+    }
+}
+#endregion
 public abstract class Ability
 {
     public float CurrentCD { get; set; }
