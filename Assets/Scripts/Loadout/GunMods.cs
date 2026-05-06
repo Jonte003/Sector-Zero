@@ -74,182 +74,182 @@ public class BasicMuzzle : GunMod
 public class LongBarrel : GunMod
 {
     public override string Name => "Long Barrel";
-
-    //public override string Description => "Increases damage and decreases spread at the cost of move speed and fire rate";
-    public override string Description => "+Damage, +Accuracy, +Weight, -Fire Rate";
+    public override string Description => "+Accuracy, +Weight, -Fire Rate";
     public override GunModCategory Category => GunModCategory.Barrel;
-    public override float WeaponDamage => 0.1f;
-    public override float Spread => -0.1f;
-    public override float MoveSpeed => -0.1f;
-    public override float FireRate => -0.1f;
+
+    public override float Spread => -0.15f;
+    public override float Recoil => -0.05f;
+    public override float MoveSpeed => -0.10f;
+    public override float FireRate => -0.10f;
 }
 
 public class ShortBarrel : GunMod
 {
     public override string Name => "Short Barrel";
-    //public override string Description => "Increases fire rate and move speed at the cost of damage and decreased spread";
     public override string Description => "+Fire Rate, -Weight, -Damage, -Accuracy";
     public override GunModCategory Category => GunModCategory.Barrel;
-    public override float WeaponDamage => -0.1f;
-    public override float Spread => 0.1f;
-    public override float MoveSpeed => 0.1f;
-    public override float FireRate => 0.1f;
+
+    public override float WeaponDamage => -0.05f;
+    public override float Spread => 0.15f;
+    public override float Recoil => 0.05f;
+    public override float MoveSpeed => 0.10f;
+    public override float FireRate => 0.10f;
 }
 
 public class PortedBarrel : GunMod
 {
     public override string Name => "Ported Barrel";
-    //public override string Description => "Increases fire rate and decreases recoil at the cost of damage and increased spread";
-    public override string Description => "+Fire Rate, -Damage, +/- Accuracy";
+    public override string Description => "+Accuracy, +Fire Rate, +Weight, +Damage";
     public override GunModCategory Category => GunModCategory.Barrel;
-    public override float WeaponDamage => -0.1f;
-    public override float Spread => 0.1f;
-    public override float Recoil => -0.1f;
-    public override float FireRate => 0.1f;
+
+    public override float Recoil => -0.15f;
+    public override float MoveSpeed => -0.15f;
+    public override float FireRate => 0.05f;
+    public override float WeaponDamage => -0.05f;
 }
 
 public class ExtendedMagazine : GunMod
 {
     public override string Name => "Extended Magazine";
-    //public override string Description => "Increases magazine size at the cost of move speed, fire rate and reload speed";
     public override string Description => "+Magazine Size, +Weight, -Fire Rate, -Reload Speed";
     public override GunModCategory Category => GunModCategory.Magazine;
+
     public override float MoveSpeed => -0.05f;
     public override float FireRate => -0.05f;
-    public override float ReloadSpeed => 0.1f;
-    public override float MagSize => 0.2f;
+    public override float ReloadSpeed => 0.10f;
+    public override float MagSize => 0.20f;
 }
 
 public class DrumMagazine : GunMod
 {
     public override string Name => "Drum Magazine";
-    //public override string Description => "Largely increases magazine size at the cost of move speed, fire rate, increased spread and reload speed";
-    public override string Description => "+Magazine Size, +Weight, -Fire Rate, -Reload Speed, -Accuracy";
+    public override string Description => "++Magazine Size, +Weight, -Fire Rate, -Reload Speed, -Accuracy";
     public override GunModCategory Category => GunModCategory.Magazine;
-    public override float MoveSpeed => -0.1f;
+
+    public override float MoveSpeed => -0.10f;
     public override float FireRate => -0.05f;
+    public override float ReloadSpeed => 0.15f;
     public override float Spread => 0.05f;
-    public override float MagSize => 0.3f;
-    public override float ReloadSpeed => 0.1f;
+    public override float Recoil => 0.05f;
+    public override float MagSize => 0.40f;
 }
 
 public class FastMagazine : GunMod
 {
     public override string Name => "Fast Magazine";
-    //public override string Description => "Increases reload speed, move speed and decreases spread at the cost of magazine size and increased recoil";
-    public override string Description => "+Reload Speed, -Weight, -Magazine Size, +/- Accuracy";
+    public override string Description => "+Reload Speed, -Magazine Size, -Weight, -Accuracy";
     public override GunModCategory Category => GunModCategory.Magazine;
-    public override float MagSize => -0.15f;
-    public override float ReloadSpeed => -0.1f;
-    public override float MoveSpeed => 0.1f;
-    public override float Spread => -0.05f;
-    public override float Recoil => 0.1f;
+
+    public override float MagSize => -0.20f;
+    public override float ReloadSpeed => -0.15f;
+    public override float MoveSpeed => 0.10f;
+    public override float Recoil => 0.05f;
 }
 
 public class VerticalGrip : GunMod
 {
     public override string Name => "Vertical Grip";
-    //public override string Description => "Decreases recoil and spread at the cost of move speed and fire rate";
     public override string Description => "+Accuracy, +Weight, -Fire Rate";
     public override GunModCategory Category => GunModCategory.Grip;
-    public override float Recoil => -0.1f;
-    public override float Spread => -0.1f;
-    public override float MoveSpeed => -0.1f;
-    public override float FireRate => -0.1f;
+
+    public override float Recoil => -0.15f;
+    public override float Spread => -0.10f;
+    public override float MoveSpeed => -0.10f;
+    public override float FireRate => -0.15f;
 }
 
 public class AngledGrip : GunMod
 {
     public override string Name => "Angled Grip";
-    //public override string Description => "Decreases recoil and increases fire rate at the cost of move speed and increased spread";
-    public override string Description => "+Fire Rate, +Weight, +/- Accuracy";
+    public override string Description => "+Fire Rate, +Weight, -Damage, +/- Accuracy";
     public override GunModCategory Category => GunModCategory.Grip;
-    public override float Recoil => -0.1f;
-    public override float MoveSpeed => -0.1f;
-    public override float FireRate => 0.1f;
-    public override float Spread => 0.1f;
+
+    public override float Recoil => -0.10f;
+    public override float Spread => 0.05f;
+    public override float MoveSpeed => -0.05f;
+    public override float FireRate => 0.10f;
+    public override float WeaponDamage => -0.10f;
 }
 
 public class ErgonomicGrip : GunMod
 {
     public override string Name => "Ergonomic Grip";
-    //public override string Description => "Increases movespeed and decreases spread at the cost of increased recoil and decreased damage";
-    public override string Description => "-Weight, -Damage, +/- Accuracy";
+    public override string Description => "+Move Speed, +Fire Rate, -Weight, -Damage, -Accuracy";
     public override GunModCategory Category => GunModCategory.Grip;
-    public override float Recoil => 0.1f;
-    public override float MoveSpeed => 0.1f;
-    public override float WeaponDamage => -0.1f;
-    public override float Spread => -0.1f;
+
+    public override float MoveSpeed => 0.10f;
+    public override float Recoil => 0.10f;
+    public override float WeaponDamage => -0.05f;
+    public override float FireRate => 0.05f;
 }
 
 public class HeavyStock : GunMod
 {
     public override string Name => "Heavy Stock";
-    //public override string Description => "Decreases recoil and spread at the cost of move speed and fire rate";
     public override string Description => "+Accuracy, +Weight, -Fire Rate";
     public override GunModCategory Category => GunModCategory.Stock;
-    public override float Recoil => -0.1f;
-    public override float Spread => -0.1f;
-    public override float MoveSpeed => -0.1f;
-    public override float FireRate => -0.1f;
+
+    public override float Recoil => -0.15f;
+    public override float Spread => -0.10f;
+    public override float MoveSpeed => -0.10f;
+    public override float FireRate => -0.15f;
 }
 
 public class LightStock : GunMod
 {
     public override string Name => "Light Stock";
-    //public override string Description => "Increases move speed and fire rate at the cost of increased recoil and spread";
-    public override string Description => "+Fire Rate, -Weight, -Accuracy";
+    public override string Description => "+Move Speed, +Fire Rate, -Weight, -Accuracy";
     public override GunModCategory Category => GunModCategory.Stock;
-    public override float Recoil => 0.1f;
-    public override float Spread => 0.1f;
-    public override float MoveSpeed => 0.1f;
-    public override float FireRate => 0.1f;
+
+    public override float Recoil => 0.15f;
+    public override float Spread => 0.10f;
+    public override float MoveSpeed => 0.10f;
+    public override float FireRate => 0.15f;
 }
 
 public class BalancedStock : GunMod
 {
     public override string Name => "Balanced Stock";
-    //public override string Description => "Slightly decreases recoil and slightly increases move speed at the cost of slightly decreased damage and slightly increased spread";
-    public override string Description => "-Weight, -Damage, +/- Accuracy";
+    public override string Description => "+Accuracy, +Move Speed, -Fire Rate, -Damage";
     public override GunModCategory Category => GunModCategory.Stock;
+
     public override float Recoil => -0.05f;
+    public override float Spread => -0.05f;
     public override float MoveSpeed => 0.05f;
     public override float WeaponDamage => -0.05f;
-    public override float Spread => 0.05f;
+    public override float FireRate => -0.10f;
 }
 
 public class Suppressor : GunMod
 {
     public override string Name => "Suppressor";
-    //public override string Description => "Decreases recoil and spread at the cost of damage and move speed";
     public override string Description => "+Accuracy, -Damage, +Weight";
     public override GunModCategory Category => GunModCategory.Muzzle;
-    public override float WeaponDamage => -0.1f;
-    public override float MoveSpeed => -0.1f;
-    public override float Recoil => -0.1f;
-    public override float Spread => -0.1f;
+
+    public override float WeaponDamage => -0.10f;
+    public override float MoveSpeed => -0.10f;
+    public override float Recoil => -0.10f;
+    public override float Spread => -0.10f;
 }
 
 public class MuzzleBreak : GunMod
 {
     public override string Name => "Muzzle Break";
-    //public override string Description => "Heavily decreases recoil and slightly decreases spread at the cost of move speed and fire rate";
     public override string Description => "+Accuracy, +Weight, -Fire Rate";
     public override GunModCategory Category => GunModCategory.Muzzle;
-    public override float Spread => -0.05f;
-    public override float MoveSpeed => -0.1f;
-    public override float Recoil => -0.15f;
-    public override float FireRate => -0.1f;
+
+    public override float Recoil => -0.20f;
+    public override float MoveSpeed => -0.05f;
+    public override float FireRate => -0.15f;
 }
 
 public class Compensator : GunMod
 {
     public override string Name => "Compensator";
-    //public override string Description => "Decreases recoil and increases fire rate at the cost of move speed and increased spread";
-    public override string Description => "+Weight, +Fire Rate, +/- Accuracy";
+    public override string Description => "+Accuracy, +Fire Rate, +Weight";
     public override GunModCategory Category => GunModCategory.Muzzle;
-    public override float Recoil => -0.1f;
-    public override float MoveSpeed => -0.1f;
-    public override float FireRate => 0.1f;
-    public override float Spread => 0.1f;
+
+    public override float Recoil => -0.10f;
+    public override float MoveSpeed => -0.15f;
+    public override float FireRate => 0.10f;
 }
