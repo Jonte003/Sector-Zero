@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,7 +23,10 @@ public class Minimap : MonoBehaviour
     private float playerVisionRange;
 
     private Dictionary<Transform, RectTransform> trackedEnemies = new();
-
+    private void Start()
+    {
+        Player = GameObject.FindWithTag("Player").transform;
+    }
     void LateUpdate()
     {
         //Debug.Log($"MapSize: {MinimapContent.rect.width} x {MinimapContent.rect.height} | LevelMin: {LevelMin} | LevelMax: {LevelMax} | PlayerWorld: {Player.position}");

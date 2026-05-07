@@ -109,6 +109,7 @@ public class Explosion : Ability
 
         float explosionForce = 50f;
 
+
         for (int i = 0;  i < enemies.Count; i++)
         {
             if (Vector3.Distance(player.transform.position, enemies[i].transform.position) <= baseRange + rangePerLevel * (Level - 1))
@@ -151,6 +152,8 @@ public class Knockback : Ability
 
         float baseKbForce = 100f;
         float kbForcePerLevel = 30f;
+
+        player.GetComponent<ParticleManager>().PlayRippleEffect(player.transform.position, Level);
 
         for (int i = 0; i < enemies.Count; i++)
         {
