@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections;
 public class ParticleManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -9,6 +9,8 @@ public class ParticleManager : MonoBehaviour
     [SerializeField] bool playRipple;
     [SerializeField] bool playSpeedLines;
 
+    ParticleSystem speedLinesEffect;
+
     [SerializeField] LayerMask layerMask;
     Transform playerTransform;
     Transform cameraTransform;
@@ -16,6 +18,7 @@ public class ParticleManager : MonoBehaviour
     {
         playerTransform = GameObject.FindWithTag("Player").transform;
         cameraTransform = GameObject.FindWithTag("MainCamera").transform;
+        speedLinesEffect = speedEffect.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -50,9 +53,17 @@ public class ParticleManager : MonoBehaviour
         }
 
     }
-
-    public void PlaySpeedLines(int abilityLevel)
+    public void PlaySpeedLines(float duration)
     {
+        StartCoroutine(PlaySpeedLinesRoutine(duration));
 
     }
+
+    private IEnumerator PlaySpeedLinesRoutine(float duration)
+    {
+        speedLinesEffect.Play();
+        yield return new WaitForSeconds(duration); 
+        speedLinesEffect.Stop();
+    }
+
 }
