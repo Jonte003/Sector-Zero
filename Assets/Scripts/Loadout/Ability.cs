@@ -182,9 +182,10 @@ public class Dash : Ability
     public override string Description => "Dash forwards";
     public override AbilityCategory Category => AbilityCategory.Mobility;
 
-
     protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
     {
+        player.GetComponent<ParticleManager>().PlaySpeedLines(1f);
+
         float dashForce = 20f;
 
         player.GetComponent<Rigidbody>().AddForce(player.transform.forward * dashForce, ForceMode.Impulse);
@@ -454,6 +455,8 @@ public class Charge : Ability
 
         foreach (var e in enemies)
         {
+            player.GetComponent<ParticleManager>().PlaySpeedLines(force * 0.01f);
+
             float dist = Vector3.Distance(player.transform.position, e.transform.position);
             if (dist <= 5f)
             {

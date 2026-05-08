@@ -17,13 +17,13 @@ public class WaveManager : MonoBehaviour
     Wave currentW;
     Wave nextWave;
 
+    [SerializeField] GameObject dronePlane;
     [SerializeField, Tooltip("Start corner of spawnarea")] Transform pos1;
     [SerializeField, Tooltip("End corner of spawnarea")] Transform pos2;
     [SerializeField] int downwardsRayDistance;
     [SerializeField, Tooltip("The minimum distance a enemy can spawn from player")] int enemySpawnDistance;
 
     [Space]
-
     int currentWave;
     [SerializeField, InspectorName("Force start next wave")] bool startNextWave;
 
@@ -152,7 +152,12 @@ public class WaveManager : MonoBehaviour
                 {
                     if(!EnemyAI.CheckIfPositionsInRange(navHit.position, GameObject.FindWithTag("Player").transform.position, enemySpawnDistance))
                     {
-                        GameObject e = Instantiate(enemy, navHit.position, Quaternion.identity, enemyController.transform);
+                        Vector3 hitPosition = navHit.position;
+                        if(enemy.GetComponent<DroneHorizontalMovement>()) //Check if drone and if so spawn at droneplane height
+                        {
+                            hitPosition.y = dronePlane.transform.position.y;
+                        }
+                        GameObject e = Instantiate(enemy, hitPosition, Quaternion.identity, enemyController.transform);
                         enemyController.AddEnemy(e);
                         gameObjectInQueue.RemoveAt(0);
                         return;
