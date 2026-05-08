@@ -106,6 +106,10 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("VelocityX", Mathf.Clamp(movementInput.x, -1, 1),0.05f, Time.deltaTime);
         animator.SetFloat("VelocityZ", Mathf.Clamp(movementInput.z, -1, 1),0.05f, Time.deltaTime);
 
+        if(transform.position.y < -10) //Teleport to 0,0 if player glitches out of map
+        {
+            transform.position = new Vector3(0, 10, 0);
+        }
     }
 
 

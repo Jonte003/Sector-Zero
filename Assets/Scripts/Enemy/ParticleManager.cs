@@ -6,10 +6,16 @@ public class ParticleManager : MonoBehaviour
 
     [SerializeField] GameObject rippleEffect;
     [SerializeField] GameObject speedEffect;
+    [SerializeField] GameObject jumpEffect;
+
     [SerializeField] bool playRipple;
     [SerializeField] bool playSpeedLines;
+    [SerializeField] bool playJumpLines;
+
 
     ParticleSystem speedLinesEffect;
+    ParticleSystem jumpLinesEffect;
+
 
     [SerializeField] LayerMask layerMask;
     Transform playerTransform;
@@ -19,6 +25,8 @@ public class ParticleManager : MonoBehaviour
         playerTransform = GameObject.FindWithTag("Player").transform;
         cameraTransform = GameObject.FindWithTag("MainCamera").transform;
         speedLinesEffect = speedEffect.GetComponent<ParticleSystem>();
+        jumpLinesEffect = jumpEffect.GetComponent<ParticleSystem>();
+
     }
 
     // Update is called once per frame
@@ -35,6 +43,12 @@ public class ParticleManager : MonoBehaviour
         {
             PlaySpeedLines(1);
             playSpeedLines = false;
+        }
+
+        if (playJumpLines)
+        {
+            PlayJumpLines(1);
+            playJumpLines = false;
         }
     }
 
@@ -66,4 +80,16 @@ public class ParticleManager : MonoBehaviour
         speedLinesEffect.Stop();
     }
 
+    public void PlayJumpLines(float duration)
+    {
+        StartCoroutine(PlayJumpLinesRoutine(duration));
+
+    }
+
+    private IEnumerator PlayJumpLinesRoutine(float duration)
+    {
+        jumpLinesEffect.Play();
+        yield return new WaitForSeconds(duration);
+        jumpLinesEffect.Stop();
+    }
 }
