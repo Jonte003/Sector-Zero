@@ -13,8 +13,8 @@ NavMeshProjectSettings:
     cost: 2
   - name: 
     cost: 1
-  - name: 
-    cost: 1
+  - name: Wall
+    cost: 1.5
   - name: Height1
     cost: 1
   - name: Height2
@@ -75,8 +75,8 @@ NavMeshProjectSettings:
     agentTypeID: 0
     agentRadius: 0.5
     agentHeight: 1
-    agentSlope: 50
-    agentClimb: 0.75
+    agentSlope: 60
+    agentClimb: 0.3
     ledgeDropHeight: 20
     maxJumpAcrossDistance: 0
     minRegionArea: 2

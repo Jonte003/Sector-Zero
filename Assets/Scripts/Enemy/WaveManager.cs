@@ -36,12 +36,12 @@ public class WaveManager : MonoBehaviour
     private float currentTimeIntervalBetweenSpawns;
     private float timeToNextWave = 0;
     List<EnemyStats> bossesSpawned;
-
+    int walkableMask = 1;
     public float timeToBoss = 600f;
-
 
     void Start()
     {
+
         gameObjectInQueue = new List<GameObject>();
         allWaves = new List<Wave>();
         enemyController = GameObject.FindWithTag("EnemyController").GetComponent<Controller>();
@@ -54,7 +54,6 @@ public class WaveManager : MonoBehaviour
             timeToBoss -= wave.TimeToNextWave;
             allWaves.Add(wave);
         }
-
         currentW = allWaves[0];
         nextWave = allWaves[1];
     }
@@ -67,7 +66,6 @@ public class WaveManager : MonoBehaviour
 
 
         currentWave++;
-        waveIsSpawning = true;
 
         timeToBoss = allWaves[currentWave - 1].timeToBoss;
         currentW = allWaves[currentWave - 1];
@@ -117,9 +115,8 @@ public class WaveManager : MonoBehaviour
         {
             startNextWave = false;
 
-            if (currentWave >= allWaves.Count) //If last wave
+            if (currentWave >= allWaves.Count - 1) //If last wave
             {
-
                 return;
             }
 
@@ -163,7 +160,8 @@ public class WaveManager : MonoBehaviour
 
             if (Physics.Raycast(randomPos, Vector3.down, out hit, downwardsRayDistance))
             {
-                if (NavMesh.SamplePosition(hit.point, out navHit, 5f, NavMesh.AllAreas))
+
+                if (NavMesh.SamplePosition(hit.point, out navHit, 5f, walkableMask))
                 {
                     if(!EnemyAI.CheckIfPositionsInRange(navHit.position, GameObject.FindWithTag("Player").transform.position, enemySpawnDistance))
                     {
