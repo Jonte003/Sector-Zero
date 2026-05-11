@@ -474,7 +474,7 @@ public class Charge : Ability
 public class VitalSurge : Ability
 {
     public VitalSurge() { }
-    public override bool NotYetImplemented => true;
+    public override bool NotYetImplemented => false;
     public override string Name => "Vital Surge";
     public override Sprite Icon => Resources.Load<Sprite>("VitalSurge");
     public override float CD => 40f;
@@ -487,7 +487,7 @@ public class VitalSurge : Ability
         float baseRegenPercent = 8f;
         float regenPerLevel = 2f;
 
-        float duration = 1f;
+        float duration = 1.5f;
 
         float regenTranslated = (baseRegenPercent + regenPerLevel * (Level - 1)) / duration;
 
