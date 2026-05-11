@@ -3,9 +3,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
+    [SerializeField] TitleScreenManager titleScreenManager;
     public void OnPlayClicked()
     {
-        SceneManager.LoadScene("Loadout Selection");
+        //SceneManager.LoadScene("Loadout Selection");
+        titleScreenManager.OnClickPlay();
     }
 
     public void OnSettingsClicked()

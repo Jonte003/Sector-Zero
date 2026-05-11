@@ -19,7 +19,11 @@ public class PlayerLook : MonoBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        xRotation = cameraObject.localEulerAngles.x;
+        yRotation = transform.eulerAngles.y;
+
+        if (xRotation > 180f) xRotation -= 360f;
+        Cursor.lockState = Pause.IsPaused ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = false;
     }
 

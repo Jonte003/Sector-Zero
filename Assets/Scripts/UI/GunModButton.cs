@@ -44,9 +44,12 @@ public class GunModButton : MonoBehaviour
     public void SelectMod(string name)
     {
         GunMod newMod = modFromName(name);
-        Debug.LogError($"No mod found for name: '{name}'", this);
 
-        if (newMod == null) return;
+        if (newMod == null)
+        {
+            Debug.LogError($"No mod found for name: '{name}'", this);
+            return;
+        }
 
         for (int i = 0; i < LoadoutManager.GunMods.Length; i++)
         {

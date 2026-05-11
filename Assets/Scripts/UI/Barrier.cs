@@ -7,6 +7,8 @@ public class Barrier : MonoBehaviour
     bool isClosed = true;
     Renderer barrierRenderer;
     Collider barrierCollider;
+    [SerializeField] int doorID;
+    [SerializeField] LobbyAbilityManager lobbyAbilityManager;
     void Start()
     {
         barrierRenderer = GetComponent<Renderer>();
@@ -16,16 +18,36 @@ public class Barrier : MonoBehaviour
 
     void Update()
     {
-        if (LoadoutManager.Settings == null) return;
-        if (LoadoutManager.Settings.GunName != "None")
+        #region Door 1
+        if (doorID == 1)
         {
-            isClosed = false;
+            if (LoadoutManager.Settings == null) return;
+            if (LoadoutManager.Settings.GunName != "None")
+            {
+                isClosed = false;
+            }
+            else
+            {
+                isClosed = true;
+            }
+            UpdateState();
         }
-        else
+        #endregion
+        #region Door 2
+        if (doorID == 2)
         {
-            isClosed = true;
+            if (LoadoutManager.Settings == null || lobbyAbilityManager == null) return;
+            if (LoadoutManager.Settings.GunName != "None" && lobbyAbilityManager.CorrectAbilityCount())
+            {
+                isClosed = false;
+            }
+            else
+            {
+                isClosed = true;
+            }
+            UpdateState();
         }
-        UpdateState();
+        #endregion
     }
 
     void UpdateState()
