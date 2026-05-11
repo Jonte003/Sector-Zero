@@ -2035,6 +2035,7 @@ MonoBehaviour:
   walkSpeed: 6
   runSpeed: 12
   distanceStartRun: 40
+  isBoss: 1
   currentState: 0
   onLinkSpeed: 3
   whitinHitDistance: 0

@@ -13,7 +13,7 @@ public class Wave : MonoBehaviour
     [SerializeField,Tooltip("If true, wave will not load or complete unless all enemys are dead")] bool isBossWave;
     [SerializeField,Tooltip("the rate between spawns in seconds")] float spawnRate;
 
-
+    public float timeToBoss { get; set; }
 
     public List<GameObject> GetWave()
     {

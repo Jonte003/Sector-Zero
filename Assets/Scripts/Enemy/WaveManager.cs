@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
@@ -12,11 +13,11 @@ public class WaveManager : MonoBehaviour
 
     List<GameObject> gameObjectInQueue;
 
-
+    List<int> timeToBossWavePerWave;
     List<Wave> allWaves;
     Wave currentW;
     Wave nextWave;
-
+    [SerializeField] GameTimer gameTimer;
     [SerializeField] GameObject dronePlane;
     [SerializeField, Tooltip("Start corner of spawnarea")] Transform pos1;
     [SerializeField, Tooltip("End corner of spawnarea")] Transform pos2;
@@ -34,6 +35,9 @@ public class WaveManager : MonoBehaviour
     private float timeToNextSpawn;
     private float currentTimeIntervalBetweenSpawns;
     private float timeToNextWave = 0;
+    List<EnemyStats> bossesSpawned;
+
+    public float timeToBoss = 600f;
 
 
     void Start()
@@ -42,11 +46,13 @@ public class WaveManager : MonoBehaviour
         allWaves = new List<Wave>();
         enemyController = GameObject.FindWithTag("EnemyController").GetComponent<Controller>();
 
-
-
+        float timeToBoss = 600f;
         foreach (Transform child in transform.Find("Waves")) //Add all waves of child to list
         {
-            allWaves.Add(child.gameObject.GetComponent<Wave>());
+            Wave wave = child.gameObject.GetComponent<Wave>();
+            wave.timeToBoss = timeToBoss;
+            timeToBoss -= wave.TimeToNextWave;
+            allWaves.Add(wave);
         }
 
         currentW = allWaves[0];
@@ -59,9 +65,11 @@ public class WaveManager : MonoBehaviour
 
         Debug.Log($"Wave {currentWave} finished, loading next wave");
 
+
         currentWave++;
         waveIsSpawning = true;
 
+        timeToBoss = allWaves[currentWave - 1].timeToBoss;
         currentW = allWaves[currentWave - 1];
         nextWave = allWaves[currentWave];
         currentTimeIntervalBetweenSpawns = currentW.SpawnRate;
@@ -80,7 +88,19 @@ public class WaveManager : MonoBehaviour
 
     void Update()
     {
-        timeToNextWave -= Time.deltaTime;
+        if (timeToBoss > 0)
+        {
+            timeToNextWave -= Time.deltaTime;
+            timeToBoss -= Time.deltaTime;
+            gameTimer.timeRemaining = timeToBoss;
+        }
+        else
+        {
+            timeToBoss = 0;
+            gameTimer.timeRemaining = timeToBoss;
+
+        }
+
 
         if (currentW.IsBossWave || nextWave.IsBossWave)
         {
@@ -99,12 +119,7 @@ public class WaveManager : MonoBehaviour
 
             if (currentWave >= allWaves.Count) //If last wave
             {
-                if (CheckIfAllEnemiesDead())
-                {
-                    Cursor.lockState = CursorLockMode.None;
-                    Cursor.visible = true;
-                    SceneManager.LoadScene("Title Screen");
-                }
+
                 return;
             }
 
@@ -158,7 +173,7 @@ public class WaveManager : MonoBehaviour
                             hitPosition.y = dronePlane.transform.position.y;
                         }
                         GameObject e = Instantiate(enemy, hitPosition, Quaternion.identity, enemyController.transform);
-                        enemyController.AddEnemy(e);
+                        enemyController.AddEnemy(e, e.GetComponent<EnemyAgentAI>().IsBoss);
                         gameObjectInQueue.RemoveAt(0);
                         return;
                     }
@@ -178,6 +193,8 @@ public class WaveManager : MonoBehaviour
 
         return position;
     }
+
+
 
 
 }

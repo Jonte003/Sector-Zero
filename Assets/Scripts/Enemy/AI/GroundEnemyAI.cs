@@ -21,6 +21,7 @@ public class GroundEnemyAI : EnemyAgentAI
     float verticalVelocity = 0f;
     bool isGrounded = false;
 
+
     private bool CheckGrounded()
     {
         return Physics.Raycast(transform.position + Vector3.up * 0.1f, Vector3.down, groundCheckDistance, groundMask);

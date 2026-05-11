@@ -5573,7 +5573,7 @@ GameObject:
   - component: {fileID: 156751684}
   - component: {fileID: 156751685}
   m_Layer: 0
-  m_Name: Wave (9)
+  m_Name: 9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5611,7 +5611,7 @@ MonoBehaviour:
     amount: 35
   - prefab: {fileID: 4723213828231102213, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
     amount: 7
-  timeToNextWave: 30
+  timeToNextWave: 60
   isBossWave: 0
   spawnRate: 1
 --- !u!1 &161452728
@@ -5738,7 +5738,7 @@ GameObject:
   - component: {fileID: 165810476}
   - component: {fileID: 165810477}
   m_Layer: 0
-  m_Name: Wave (11)
+  m_Name: 11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5776,7 +5776,7 @@ MonoBehaviour:
     amount: 35
   - prefab: {fileID: 4723213828231102213, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
     amount: 7
-  timeToNextWave: 30
+  timeToNextWave: 60
   isBossWave: 0
   spawnRate: 1
 --- !u!4 &166898771 stripped
@@ -7732,7 +7732,7 @@ MonoBehaviour:
     meshQuery:
       layers: 33554440
       maskAndChannels: 8
-    surfaceParameter: 47008
+    surfaceParameter: 47010
     meshQueryIndex: 2
     subMeshQueryIndex: 0
     geometryHashValue: -6822344372892942501
@@ -9124,6 +9124,7 @@ MonoBehaviour:
   rippleEffect: {fileID: 6959333942872428080, guid: f9c4c958e24fedb4589727958e52870d, type: 3}
   speedEffect: {fileID: 3558549297318529644}
   jumpEffect: {fileID: 7292531816758400423}
+  trailEffect: {fileID: 0}
   playRipple: 0
   playSpeedLines: 0
   playJumpLines: 0
@@ -10334,7 +10335,7 @@ GameObject:
   - component: {fileID: 283610352}
   - component: {fileID: 283610353}
   m_Layer: 0
-  m_Name: Wave (2)
+  m_Name: 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10372,7 +10373,7 @@ MonoBehaviour:
     amount: 10
   - prefab: {fileID: 4723213828231102213, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
     amount: 2
-  timeToNextWave: 20
+  timeToNextWave: 40
   isBossWave: 0
   spawnRate: 1
 --- !u!1 &286683039
@@ -13342,58 +13343,6 @@ MonoBehaviour:
     - EdgeIndices: 14000000150000001600000017000000
       TexGenIndex: 5
     Generation: 3
---- !u!1 &382578711
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 382578712}
-  - component: {fileID: 382578713}
-  m_Layer: 0
-  m_Name: Wave (14)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &382578712
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 382578711}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2044600666}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &382578713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 382578711}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40f89b65a60e4e240897ae3c85b385fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Wave
-  enemiesWithAmount:
-  - prefab: {fileID: 5092939406025795021, guid: aa94b2e717b660e44b32bcba6b66b259, type: 3}
-    amount: 35
-  - prefab: {fileID: 4723213828231102213, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
-    amount: 7
-  timeToNextWave: 40
-  isBossWave: 0
-  spawnRate: 1
 --- !u!1 &390516348
 GameObject:
   m_ObjectHideFlags: 16
@@ -13506,7 +13455,7 @@ MonoBehaviour:
     meshQuery:
       layers: 16777223
       maskAndChannels: 234881031
-    surfaceParameter: 46862
+    surfaceParameter: 46864
     meshQueryIndex: 0
     subMeshQueryIndex: 0
     geometryHashValue: -6235978737522690030
@@ -16782,6 +16731,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 490072766}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &496115330 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 310474064874359172, guid: 6b5d767d953a7144d8034ed59b25f645, type: 3}
+  m_PrefabInstance: {fileID: 1313999562}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f23d5a9df00ebc547bfd380dcf0dfa45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameTimer
 --- !u!1 &502274108
 GameObject:
   m_ObjectHideFlags: 0
@@ -18122,7 +18082,7 @@ GameObject:
   - component: {fileID: 563825766}
   - component: {fileID: 563825767}
   m_Layer: 0
-  m_Name: Wave (13)
+  m_Name: BOSSWAVE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18156,11 +18116,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Wave
   enemiesWithAmount:
-  - prefab: {fileID: 5092939406025795021, guid: aa94b2e717b660e44b32bcba6b66b259, type: 3}
-    amount: 35
-  - prefab: {fileID: 4723213828231102213, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
-    amount: 7
-  timeToNextWave: 40
+  - prefab: {fileID: 5092939406025795021, guid: 631d0cd88a2dff142b5620577858fedc, type: 3}
+    amount: 2
+  timeToNextWave: 60
   isBossWave: 0
   spawnRate: 1
 --- !u!1 &564476593
@@ -19633,7 +19591,7 @@ GameObject:
   - component: {fileID: 597661609}
   - component: {fileID: 597661610}
   m_Layer: 0
-  m_Name: Wave (4)
+  m_Name: 5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19671,9 +19629,9 @@ MonoBehaviour:
     amount: 20
   - prefab: {fileID: 4723213828231102213, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
     amount: 4
-  timeToNextWave: 30
+  timeToNextWave: 50
   isBossWave: 0
-  spawnRate: 0
+  spawnRate: 1
 --- !u!1 &598722606
 GameObject:
   m_ObjectHideFlags: 0
@@ -21649,7 +21607,7 @@ GameObject:
   - component: {fileID: 641174440}
   - component: {fileID: 641174441}
   m_Layer: 0
-  m_Name: Wave (1)
+  m_Name: 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21685,7 +21643,7 @@ MonoBehaviour:
   enemiesWithAmount:
   - prefab: {fileID: 5092939406025795021, guid: aa94b2e717b660e44b32bcba6b66b259, type: 3}
     amount: 10
-  timeToNextWave: 20
+  timeToNextWave: 30
   isBossWave: 0
   spawnRate: 1
 --- !u!1 &641354075
@@ -27760,7 +27718,7 @@ MonoBehaviour:
     meshQuery:
       layers: 16777223
       maskAndChannels: 234881031
-    surfaceParameter: 46976
+    surfaceParameter: 46978
     meshQueryIndex: 7
     subMeshQueryIndex: 0
     geometryHashValue: 3262062604658221720
@@ -29107,7 +29065,7 @@ MonoBehaviour:
     meshQuery:
       layers: 33554440
       maskAndChannels: 8
-    surfaceParameter: 47008
+    surfaceParameter: 47010
     meshQueryIndex: 2
     subMeshQueryIndex: 0
     geometryHashValue: -6822344372892942501
@@ -29342,7 +29300,7 @@ MonoBehaviour:
     meshQuery:
       layers: 16777223
       maskAndChannels: 234881031
-    surfaceParameter: 47194
+    surfaceParameter: 47196
     meshQueryIndex: 1
     subMeshQueryIndex: 0
     geometryHashValue: -657538898350890967
@@ -30369,6 +30327,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1471008345780858805, guid: 9c52684a14888234ba60b9a1070e4c4b, type: 3}
+      propertyPath: maxHealth
+      value: 10000
+      objectReference: {fileID: 0}
     - target: {fileID: 4985178276108996387, guid: 9c52684a14888234ba60b9a1070e4c4b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -31091,7 +31053,7 @@ MonoBehaviour:
     meshQuery:
       layers: 16777223
       maskAndChannels: 234881031
-    surfaceParameter: 46912
+    surfaceParameter: 46914
     meshQueryIndex: 8
     subMeshQueryIndex: 0
     geometryHashValue: 5346884389526837480
@@ -32081,58 +32043,6 @@ MonoBehaviour:
     - EdgeIndices: 14000000150000001600000017000000
       TexGenIndex: 5
     Generation: 2
---- !u!1 &801741475
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 801741476}
-  - component: {fileID: 801741477}
-  m_Layer: 0
-  m_Name: Wave (7)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &801741476
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 801741475}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2044600666}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &801741477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 801741475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40f89b65a60e4e240897ae3c85b385fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Wave
-  enemiesWithAmount:
-  - prefab: {fileID: 5092939406025795021, guid: aa94b2e717b660e44b32bcba6b66b259, type: 3}
-    amount: 35
-  - prefab: {fileID: 4723213828231102213, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
-    amount: 7
-  timeToNextWave: 30
-  isBossWave: 0
-  spawnRate: 1
 --- !u!1 &817924451
 GameObject:
   m_ObjectHideFlags: 0
@@ -32982,6 +32892,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3442267134505843199, guid: 409e6b3ee010c034c9b5ca02700c4224, type: 3}
+      propertyPath: m_Name
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3486910093777509545, guid: 409e6b3ee010c034c9b5ca02700c4224, type: 3}
       propertyPath: m_LocalPosition.x
       value: 33.01276
@@ -33035,6 +32949,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1182552885}
     - target: {fileID: 7201904805307858057, guid: 409e6b3ee010c034c9b5ca02700c4224, type: 3}
+      propertyPath: gameTimer
+      value: 
+      objectReference: {fileID: 496115330}
+    - target: {fileID: 7201904805307858057, guid: 409e6b3ee010c034c9b5ca02700c4224, type: 3}
       propertyPath: dronePlane
       value: 
       objectReference: {fileID: 1376298115}
@@ -33064,7 +32982,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8099443303943510179, guid: 409e6b3ee010c034c9b5ca02700c4224, type: 3}
       propertyPath: timeToNextWave
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8099443303943510179, guid: 409e6b3ee010c034c9b5ca02700c4224, type: 3}
       propertyPath: enemiesWithAmount.Array.size
@@ -33079,9 +32997,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5092939406025795021, guid: aa94b2e717b660e44b32bcba6b66b259, type: 3}
     - target: {fileID: 8099443303943510179, guid: 409e6b3ee010c034c9b5ca02700c4224, type: 3}
+      propertyPath: enemiesWithAmount.Array.data[1].amount
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8099443303943510179, guid: 409e6b3ee010c034c9b5ca02700c4224, type: 3}
       propertyPath: enemiesWithAmount.Array.data[1].prefab
       value: 
-      objectReference: {fileID: 4723213828231102213, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
+      objectReference: {fileID: 5092939406025795021, guid: 631d0cd88a2dff142b5620577858fedc, type: 3}
     - target: {fileID: 8794640455939053580, guid: 409e6b3ee010c034c9b5ca02700c4224, type: 3}
       propertyPath: m_Name
       value: WaveManager
@@ -33126,9 +33048,6 @@ PrefabInstance:
       addedObject: {fileID: 2137388632}
     - targetCorrespondingSourceObject: {fileID: 185519747723985940, guid: 409e6b3ee010c034c9b5ca02700c4224, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 801741476}
-    - targetCorrespondingSourceObject: {fileID: 185519747723985940, guid: 409e6b3ee010c034c9b5ca02700c4224, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 909884935}
     - targetCorrespondingSourceObject: {fileID: 185519747723985940, guid: 409e6b3ee010c034c9b5ca02700c4224, type: 3}
       insertIndex: -1
@@ -33145,12 +33064,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 185519747723985940, guid: 409e6b3ee010c034c9b5ca02700c4224, type: 3}
       insertIndex: -1
       addedObject: {fileID: 563825766}
-    - targetCorrespondingSourceObject: {fileID: 185519747723985940, guid: 409e6b3ee010c034c9b5ca02700c4224, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 382578712}
-    - targetCorrespondingSourceObject: {fileID: 185519747723985940, guid: 409e6b3ee010c034c9b5ca02700c4224, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1029500204}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 409e6b3ee010c034c9b5ca02700c4224, type: 3}
 --- !u!1 &856879833
@@ -35366,7 +35279,7 @@ GameObject:
   - component: {fileID: 909884935}
   - component: {fileID: 909884936}
   m_Layer: 0
-  m_Name: Wave (8)
+  m_Name: 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35401,9 +35314,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Wave
   enemiesWithAmount:
   - prefab: {fileID: 4723213828231102213, guid: 22ca210644c364e4ab6f018ef4d89d4c, type: 3}
-    amount: 3
-  timeToNextWave: 30
-  isBossWave: 1
+    amount: 2
+  timeToNextWave: 60
+  isBossWave: 0
   spawnRate: 1
 --- !u!43 &911683965
 Mesh:
@@ -40323,58 +40236,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 721288efc42845143843f9bf6d0bf029, type: 3}
   m_PrefabInstance: {fileID: 1025386378}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1029500203
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1029500204}
-  - component: {fileID: 1029500205}
-  m_Layer: 0
-  m_Name: Wave (15)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1029500204
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1029500203}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2044600666}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1029500205
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1029500203}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40f89b65a60e4e240897ae3c85b385fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Wave
-  enemiesWithAmount:
-  - prefab: {fileID: 5092939406025795021, guid: 631d0cd88a2dff142b5620577858fedc, type: 3}
-    amount: 1
-  - prefab: {fileID: 4723213828231102213, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
-    amount: 7
-  timeToNextWave: 40
-  isBossWave: 1
-  spawnRate: 1
 --- !u!1 &1032478880
 GameObject:
   m_ObjectHideFlags: 0
@@ -42276,7 +42137,7 @@ GameObject:
   - component: {fileID: 1080040955}
   - component: {fileID: 1080040956}
   m_Layer: 0
-  m_Name: Wave (3)
+  m_Name: 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42314,7 +42175,7 @@ MonoBehaviour:
     amount: 15
   - prefab: {fileID: 4723213828231102213, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
     amount: 3
-  timeToNextWave: 30
+  timeToNextWave: 40
   isBossWave: 0
   spawnRate: 1
 --- !u!1001 &1081056803
@@ -46511,7 +46372,7 @@ GameObject:
   - component: {fileID: 1220533048}
   - component: {fileID: 1220533049}
   m_Layer: 0
-  m_Name: Wave (5)
+  m_Name: 6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46549,7 +46410,7 @@ MonoBehaviour:
     amount: 25
   - prefab: {fileID: 4723213828231102213, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
     amount: 5
-  timeToNextWave: 30
+  timeToNextWave: 50
   isBossWave: 0
   spawnRate: 1
 --- !u!1 &1231558515
@@ -52280,7 +52141,7 @@ GameObject:
   - component: {fileID: 1401785285}
   - component: {fileID: 1401785286}
   m_Layer: 0
-  m_Name: Wave (12)
+  m_Name: 12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52318,7 +52179,7 @@ MonoBehaviour:
     amount: 35
   - prefab: {fileID: 4723213828231102213, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
     amount: 7
-  timeToNextWave: 30
+  timeToNextWave: 60
   isBossWave: 0
   spawnRate: 1
 --- !u!1 &1404757184
@@ -66464,7 +66325,7 @@ GameObject:
   - component: {fileID: 1918125321}
   - component: {fileID: 1918125322}
   m_Layer: 0
-  m_Name: Wave (10)
+  m_Name: 10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66502,7 +66363,7 @@ MonoBehaviour:
     amount: 36
   - prefab: {fileID: 4723213828231102213, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
     amount: 7
-  timeToNextWave: 30
+  timeToNextWave: 60
   isBossWave: 0
   spawnRate: 1
 --- !u!1 &1919657127
@@ -70303,7 +70164,7 @@ GameObject:
   - component: {fileID: 2137388632}
   - component: {fileID: 2137388633}
   m_Layer: 0
-  m_Name: Wave (6)
+  m_Name: 7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70341,7 +70202,7 @@ MonoBehaviour:
     amount: 30
   - prefab: {fileID: 4723213828231102213, guid: f43d7b81da1dd0346a0ebea57a49de62, type: 3}
     amount: 6
-  timeToNextWave: 30
+  timeToNextWave: 60
   isBossWave: 0
   spawnRate: 1
 --- !u!4 &1710841806152769415 stripped
@@ -70373,7 +70234,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1710841805070311699, guid: 8bb085a9f29ec5c4b8c8e5f3602b3269, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.15
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 1710841805070311699, guid: 8bb085a9f29ec5c4b8c8e5f3602b3269, type: 3}
       propertyPath: m_LocalPosition.z
@@ -70381,11 +70242,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1710841805070311699, guid: 8bb085a9f29ec5c4b8c8e5f3602b3269, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1710841805070311699, guid: 8bb085a9f29ec5c4b8c8e5f3602b3269, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1710841805070311699, guid: 8bb085a9f29ec5c4b8c8e5f3602b3269, type: 3}
       propertyPath: m_LocalRotation.y
@@ -70397,7 +70258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1710841805070311699, guid: 8bb085a9f29ec5c4b8c8e5f3602b3269, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 1710841805070311699, guid: 8bb085a9f29ec5c4b8c8e5f3602b3269, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -70410,6 +70271,34 @@ PrefabInstance:
     - target: {fileID: 7292531815692856115, guid: 8bb085a9f29ec5c4b8c8e5f3602b3269, type: 3}
       propertyPath: m_Name
       value: JumpEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913281371790615297, guid: 8bb085a9f29ec5c4b8c8e5f3602b3269, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913281371790615297, guid: 8bb085a9f29ec5c4b8c8e5f3602b3269, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].inSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913281371790615297, guid: 8bb085a9f29ec5c4b8c8e5f3602b3269, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913281371790615297, guid: 8bb085a9f29ec5c4b8c8e5f3602b3269, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].outSlope
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913281371790615297, guid: 8bb085a9f29ec5c4b8c8e5f3602b3269, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913281371790615297, guid: 8bb085a9f29ec5c4b8c8e5f3602b3269, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[0].tangentMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913281371790615297, guid: 8bb085a9f29ec5c4b8c8e5f3602b3269, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].tangentMode
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -70429,6 +70318,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1858758388}
     m_Modifications:
+    - target: {fileID: 1710841805070311699, guid: 985d9c605a2893e4f9ee557424cdfa7c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710841805070311699, guid: 985d9c605a2893e4f9ee557424cdfa7c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1710841805070311699, guid: 985d9c605a2893e4f9ee557424cdfa7c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.02
+      objectReference: {fileID: 0}
     - target: {fileID: 1710841805070311699, guid: 985d9c605a2893e4f9ee557424cdfa7c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -70472,6 +70373,22 @@ PrefabInstance:
     - target: {fileID: 7292531815692856115, guid: 985d9c605a2893e4f9ee557424cdfa7c, type: 3}
       propertyPath: m_Name
       value: SpeedEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913281371790615297, guid: 985d9c605a2893e4f9ee557424cdfa7c, type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913281371790615297, guid: 985d9c605a2893e4f9ee557424cdfa7c, type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913281371790615297, guid: 985d9c605a2893e4f9ee557424cdfa7c, type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913281371790615297, guid: 985d9c605a2893e4f9ee557424cdfa7c, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 7913281371790615297, guid: 985d9c605a2893e4f9ee557424cdfa7c, type: 3}
       propertyPath: InitialModule.startLifetime.scalar

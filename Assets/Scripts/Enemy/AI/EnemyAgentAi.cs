@@ -14,6 +14,13 @@ public abstract class EnemyAgentAI : EnemyAI
 
     protected bool isStunned;
     float stunTimer;
+    [SerializeField] private bool isBoss;
+
+    public bool IsBoss
+    {
+        get { return isBoss; }
+    }
+
 
     protected override void Start()
     {

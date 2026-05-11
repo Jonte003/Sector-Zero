@@ -10,7 +10,7 @@ public class EnemyStats : MonoBehaviour
     [SerializeField, Tooltip("Multiplier for increasing/decrease health per wave, if 1.1 health will increase by 10% evry wave. If spawned on wave 5, the health will be:  Base Health * 1.1^5")] float healthMultiplier;
     [SerializeField] float baseHealth;
 
-
+    private bool isBoss;
     private float maxHealth;
     private float health;
 
@@ -46,6 +46,7 @@ public class EnemyStats : MonoBehaviour
             else
             {
                 GameObject.FindWithTag("EnemyController").GetComponent<Controller>().RemoveEnemy(gameObject);
+
             }
 
             Animator animator = GetComponent<Animator>();

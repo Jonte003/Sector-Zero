@@ -7,12 +7,13 @@ public class ParticleManager : MonoBehaviour
     [SerializeField] GameObject rippleEffect;
     [SerializeField] GameObject speedEffect;
     [SerializeField] GameObject jumpEffect;
+    [SerializeField] GameObject trailEffect;
 
     [SerializeField] bool playRipple;
     [SerializeField] bool playSpeedLines;
     [SerializeField] bool playJumpLines;
 
-
+    ParticleSystem trailEffectSystem;
     ParticleSystem speedLinesEffect;
     ParticleSystem jumpLinesEffect;
 
@@ -50,6 +51,8 @@ public class ParticleManager : MonoBehaviour
             PlayJumpLines(1);
             playJumpLines = false;
         }
+
+    
     }
 
     public void PlayRippleEffect(Vector3 player, int abilityLevel)
