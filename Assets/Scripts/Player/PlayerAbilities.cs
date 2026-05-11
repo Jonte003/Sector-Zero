@@ -7,7 +7,9 @@ public class PlayerAbilities : MonoBehaviour
     private Loadout loadout;
     private Controller enemyController;
 
-    private List<Transform> AllEnemies => enemyController.AllEnemies; 
+    private List<Transform> AllEnemies => enemyController.AllEnemies;
+
+    public List<GameObject> abilityPrefabs;
 
     void Start()
     {
@@ -18,8 +20,8 @@ public class PlayerAbilities : MonoBehaviour
         playerInput = new();
         playerInput.Enable();
 
-        playerInput.PlayerActions.Ability1.performed += ctx => loadout.Ability1.Run(gameObject, AllEnemies, this);
-        playerInput.PlayerActions.Ability2.performed += ctx => loadout.Ability2.Run(gameObject, AllEnemies, this);
-        playerInput.PlayerActions.Ability3.performed += ctx => loadout.Ability3.Run(gameObject, AllEnemies, this);
+        playerInput.PlayerActions.Ability1.performed += ctx => loadout.Ability1.Run(gameObject, AllEnemies, this, abilityPrefabs);
+        playerInput.PlayerActions.Ability2.performed += ctx => loadout.Ability2.Run(gameObject, AllEnemies, this, abilityPrefabs);
+        playerInput.PlayerActions.Ability3.performed += ctx => loadout.Ability3.Run(gameObject, AllEnemies, this, abilityPrefabs);
     }
 }

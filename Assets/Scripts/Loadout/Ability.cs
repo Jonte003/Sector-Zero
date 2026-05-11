@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 #region Ability Registry
@@ -58,9 +59,9 @@ public abstract class Ability
     public abstract string Name { get; }
     public bool Enabled { get; set; } = false;
 
-    protected abstract IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies);
+    protected abstract IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs);
 
-    public void Run(GameObject player, List<Transform> enemies, MonoBehaviour runner)
+    public void Run(GameObject player, List<Transform> enemies, MonoBehaviour runner, List<GameObject> abilityPrefabs)
     {
         if (CurrentCD > 0)
             return;
@@ -69,7 +70,7 @@ public abstract class Ability
 
         Debug.Log(enemies.Count);
 
-        runner.StartCoroutine(AbilityRoutine(player, enemies));
+        runner.StartCoroutine(AbilityRoutine(player, enemies, abilityPrefabs));
 
         CurrentCD = (CD - CooldownPerLevel * (Level - 1)) *
                     (100 / (100 + player.GetComponent<PlayerStats>().abilityHasteBuffs));
@@ -96,7 +97,7 @@ public class Explosion : Ability
 
     public override AbilityCategory Category => AbilityCategory.Attack;
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
     {
         float baseRange = 5f;
         float rangePerLevel = 2f;
@@ -140,7 +141,7 @@ public class Knockback : Ability
     public override AbilityCategory Category => AbilityCategory.Defense;
 
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
     {
         float baseRange = 6f;
         float rangePerLevel = 2f;
@@ -182,7 +183,7 @@ public class Dash : Ability
     public override string Description => "Dash forwards";
     public override AbilityCategory Category => AbilityCategory.Mobility;
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
     {
         player.GetComponent<ParticleManager>().PlaySpeedLines(1f);
 
@@ -206,7 +207,7 @@ public class Leap : Ability
     public override AbilityCategory Category => AbilityCategory.Mobility;
 
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
     {
         float leapForce = 15;
 
@@ -228,7 +229,7 @@ public class Jump : Ability
     public override AbilityCategory Category => AbilityCategory.Mobility;
 
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
     {
         float jumpForce = 15;
 
@@ -250,7 +251,7 @@ public class Fortify : Ability
     public override AbilityCategory Category => AbilityCategory.Defense;
 
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
     {
         float baseDefense = 30f;
         float defensePerLevel = 5f;
@@ -284,7 +285,7 @@ public class Invincible : Ability
     public override string Description => "Become untargetable for a short duration";
     public override AbilityCategory Category => AbilityCategory.Defense;
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
     {
         float duration = 2.5f;
         float durationPerLevel = 0.25f;
@@ -309,7 +310,7 @@ public class ChainLightning : Ability
     public override string Description => "Strikes an enemy with lightning that chains to others.";
     public override AbilityCategory Category => AbilityCategory.Attack;
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
     {
         if (enemies.Count == 0)
             yield break;
@@ -374,7 +375,7 @@ public class Eruption : Ability
     public override string Description => "After a short delay, erupts the ground dealing heavy AOE damage.";
     public override AbilityCategory Category => AbilityCategory.Attack;
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
     {
         float delay = 1.5f;
         float baseRange = 6f;
@@ -407,7 +408,7 @@ public class Blink : Ability
     public override string Description => "Instantly teleport a short distance forward.";
     public override AbilityCategory Category => AbilityCategory.Mobility;
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
     {
         float baseDistance = 4f;
         float distancePerLevel = 1f;
@@ -438,7 +439,7 @@ public class Charge : Ability
     public override string Description => "Charge forward, pushing enemies aside.";
     public override AbilityCategory Category => AbilityCategory.Mobility;
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
     {
         float baseForce = 50f;
         float forcePerLevel = 10f;
@@ -481,7 +482,7 @@ public class VitalSurge : Ability
     public override string Description => "Rapidly regenerate health for a short duration";
     public override AbilityCategory Category => AbilityCategory.Defense;
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
     {
         float baseRegenPercent = 8f;
         float regenPerLevel = 2f;
@@ -509,7 +510,7 @@ public class Backstep : Ability
     public override string Description => "Quickly dash backwards to evade attacks";
     public override AbilityCategory Category => AbilityCategory.Mobility;
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
     {
         float force = 15f + 3f * (Level - 1);
 
@@ -531,7 +532,7 @@ public class MomentumShift : Ability
     public override string Description => "Redirect your momentum toward your aim direction.";
     public override AbilityCategory Category => AbilityCategory.Mobility;
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
     {
         var rb = player.GetComponent<Rigidbody>();
 
@@ -555,7 +556,7 @@ public class GroundSlam : Ability
     public override string Description => "Slam straight downward and launch nearby enemies upward and away.";
     public override AbilityCategory Category => AbilityCategory.Mobility;
 
-    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies)
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
     {
         Rigidbody rb = player.GetComponent<Rigidbody>();
 
@@ -587,5 +588,32 @@ public class GroundSlam : Ability
                 e.GetComponent<Rigidbody>().AddForce(dir * outwardForce);
             }
         }
+    }
+}
+
+public class Grenade : Ability
+{
+    public Grenade() { }
+    public override bool NotYetImplemented => false;
+    public override string Name => "Ground Slam";
+    public override Sprite Icon => Resources.Load<Sprite>("Grenade");
+    public override float CD => 20f;
+    protected override float CooldownPerLevel => 3.5f;
+    public override string Description => "Throw a grenade that damages enemies";
+    public override AbilityCategory Category => AbilityCategory.Mobility;
+
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
+    {
+        float radius = 5 + 1 * (Level - 1);
+
+        float damage = 10 + 2 * (Level - 1);
+
+        float throwForce = 50;
+
+        Vector3 dir = player.transform.Find("Camera").transform.forward;
+
+        GrenadeScript.Spawn(abilityPrefabs.Where(o => o.name == "Grenade").ToArray()[0], radius, damage, throwForce, dir);
+
+        yield return null;
     }
 }

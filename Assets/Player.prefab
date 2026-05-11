@@ -479,6 +479,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ace8cba29701924189a0a29b02d8541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAbilities
+  abilityPrefabs:
+  - {fileID: 7871922328745323264, guid: 7a492e7054d19d542904760f69214905, type: 3}
 --- !u!114 &3065197714189263127
 MonoBehaviour:
   m_ObjectHideFlags: 0

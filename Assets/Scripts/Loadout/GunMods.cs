@@ -93,13 +93,13 @@ public class ShortBarrel : GunMod
     public override float Spread => 0.15f;
     public override float Recoil => 0.05f;
     public override float MoveSpeed => 0.10f;
-    public override float FireRate => 0.10f;
+    public override float FireRate => 0.15f;
 }
 
 public class PortedBarrel : GunMod
 {
     public override string Name => "Ported Barrel";
-    public override string Description => "+Accuracy, +Fire Rate, +Weight, +Damage";
+    public override string Description => "+Accuracy, +Fire Rate, +Weight, -Damage";
     public override GunModCategory Category => GunModCategory.Barrel;
 
     public override float Recoil => -0.15f;
@@ -174,7 +174,7 @@ public class AngledGrip : GunMod
 public class ErgonomicGrip : GunMod
 {
     public override string Name => "Ergonomic Grip";
-    public override string Description => "+Move Speed, +Fire Rate, -Weight, -Damage, -Accuracy";
+    public override string Description => "+Fire Rate, -Weight, -Damage, -Accuracy";
     public override GunModCategory Category => GunModCategory.Grip;
 
     public override float MoveSpeed => 0.10f;

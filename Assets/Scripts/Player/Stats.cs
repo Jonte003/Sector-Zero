@@ -79,10 +79,10 @@ public class Stat
             PossibleLevelUpStats.Hp => 10f,
             PossibleLevelUpStats.Regen => 1f,
             PossibleLevelUpStats.Damage => 10f,
-            PossibleLevelUpStats.AbilityHaste => 10f,
+            PossibleLevelUpStats.AbilityHaste => 15f,
             PossibleLevelUpStats.Defense => 10f,
-            PossibleLevelUpStats.JumpHeight => 15f,
-            PossibleLevelUpStats.MovementSpeed => 10f,
+            PossibleLevelUpStats.JumpHeight => 20f,
+            PossibleLevelUpStats.MovementSpeed => 15f,
             _ => 0f
         };
 
