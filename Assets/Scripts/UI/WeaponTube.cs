@@ -3,6 +3,7 @@ using UnityEngine;
 public class WeaponTube : MonoBehaviour, IInteractable
 {
     [SerializeField] private DisplayWeapon displayWeapon;
+    [SerializeField] private GameObject gunPrefab;
     private GunSettings gunSettings;
 
     void Start()
@@ -15,6 +16,7 @@ public class WeaponTube : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
+        LoadoutManager.GunPrefab = gunPrefab;
         LoadoutManager.Settings = gunSettings;
     }
 

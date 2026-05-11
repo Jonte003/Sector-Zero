@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.02}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5585200853602197024}
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1069299764102596512, guid: 529768c8ddd4cac459a540ab5f16888c, type: 3}
+  - {fileID: 2100000, guid: 11b49e9f5a5b9844d9ec34fb74b683de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -105,7 +105,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601920991033070963}
-  m_Mesh: {fileID: 110237193335929000, guid: 529768c8ddd4cac459a540ab5f16888c, type: 3}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &3462805351363544926
 GameObject:
   m_ObjectHideFlags: 0
@@ -2603,6 +2603,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11bc684d929e562408f68799cd32f527, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  displayWeapon: {fileID: 0}
+  gunPrefab: {fileID: 0}
 --- !u!4 &5585200853602197024 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dc7eecf9e64f9b64c8e6b84d29dac6e8, type: 3}

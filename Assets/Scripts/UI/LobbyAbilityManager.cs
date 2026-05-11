@@ -40,11 +40,15 @@ public class LobbyAbilityManager : MonoBehaviour
         SyncLoadoutManager();
     }
 
+    public bool CorrectAbilityCount()
+    {
+        return enabledAbilities.Count == requiredAbilityCount;
+    }
     void UpdateUI()
     {
         int count = enabledAbilities.Count;
         abilityCountText.text = $"{count}/{requiredAbilityCount} Abilities";
-        abilityCountText.color = count == requiredAbilityCount ? Color.green : Color.white;
+        if (CorrectAbilityCount()) { abilityCountText.color = Color.green; } else { abilityCountText.color = Color.white; }
 
         var sorted = enabledAbilities.OrderBy(a => a.Name).Select(a => a.Name).ToList();
 
