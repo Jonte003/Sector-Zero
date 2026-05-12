@@ -17204,7 +17204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LobbyInteraction
   playerCamera: {fileID: 1492154167}
-  interactRange: 3
+  interactRange: 30
   interactLayer:
     serializedVersion: 2
     m_Bits: 256
