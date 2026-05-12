@@ -26,10 +26,12 @@ public class AbilityWallButton : MonoBehaviour, IInteractable
     public void OnLookAt()
     {
         Debug.Log($"Looking at {abilityName} button");
+        TooltipManager.Instance.ShowTooltip(abilityName, Ability.Description);
     }
 
     public void OnLookAway()
     {
+        TooltipManager.Instance.ClearTooltip();
     }
 
     public void OnInteract()
