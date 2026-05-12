@@ -12,7 +12,7 @@ public class LobbyInteraction : MonoBehaviour
     {
         if (Physics.Raycast(playerCamera.position, playerCamera.forward, out RaycastHit hit, interactRange, interactLayer))
         {
-            Debug.Log("Hit: " + hit.collider.gameObject.name);
+            //Debug.Log("Hit: " + hit.collider.gameObject.name);
 
             var interactable = hit.collider.GetComponentInParent<IInteractable>();
 

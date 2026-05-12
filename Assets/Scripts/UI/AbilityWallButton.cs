@@ -17,7 +17,7 @@ public class AbilityWallButton : MonoBehaviour, IInteractable
         iconRenderer = GetComponent<Renderer>();
         if (AbilityRegistry.All.TryGetValue(abilityName, out Ability ability))
         {
-            Debug.Log($"Found ability for {abilityName} button: {ability.Name}");
+            //Debug.Log($"Found ability for {abilityName} button: {ability.Name}");
             Ability = ability;
             iconRenderer.material.mainTexture = ability.Icon != null ? ability.Icon.texture : null;
             iconRenderer.material.color = ability.NotYetImplemented ? colorUnimplemented : colorInactive;
@@ -26,7 +26,7 @@ public class AbilityWallButton : MonoBehaviour, IInteractable
 
     public void OnLookAt()
     {
-        Debug.Log($"Looking at {abilityName} button");
+        //Debug.Log($"Looking at {abilityName} button");
         TooltipManager.Instance.ShowTooltip(abilityName, Ability.Description);
     }
 
@@ -37,7 +37,7 @@ public class AbilityWallButton : MonoBehaviour, IInteractable
 
     public void OnInteract()
     {
-        Debug.Log($"Interacted with {abilityName} button");
+        //Debug.Log($"Interacted with {abilityName} button");
         if (Ability == null || Ability.NotYetImplemented) return;
         manager.ToggleAbility(Ability);
         iconRenderer.material.color = Ability.Enabled ? colorActive : colorInactive;
