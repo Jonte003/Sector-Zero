@@ -32,7 +32,7 @@ public class HealthBar : MonoBehaviour
             healthText.text = "DEAD";
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            SceneManager.LoadScene("Title Screen");
+            SceneManager.LoadScene("Lobby");
             //TODO: Add post-game screen with stats and option to return to title screen, play again or change loadout
         }
     }
