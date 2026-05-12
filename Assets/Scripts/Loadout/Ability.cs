@@ -26,6 +26,9 @@ public static class AbilityRegistry
         { "Leap",             new Leap() },
         { "Momentum Shift",   new MomentumShift() },
         { "Vital Surge",      new VitalSurge() },
+        { "Grenade",          new Grenade() },
+        { "Lamp",             new Lamp() },
+        { "Farsight",         new Farsight() },
     };
 
     public static Sprite GetIcon(string abilityName)
@@ -328,6 +331,8 @@ public class ChainLightning : Ability
         Transform current = enemies[0];
         float dist = Vector3.Distance(player.transform.position, current.transform.position);
 
+        GameObject lightning = ChainLightningScript.Spawn(abilityPrefabs.Where(o => o.name == "ChainLightning").ToArray()[0]);
+
         for (int i = 1; i <  enemies.Count; i++)
         {
             if (Vector3.Distance(player.transform.position, enemies[i].transform.position) < dist)
@@ -343,6 +348,8 @@ public class ChainLightning : Ability
                 break;
 
             current.GetComponent<EnemyStats>().DoDamageToEnemy(damage);
+
+            lightning.transform.position = current.transform.position;
 
             Transform next = null;
             float bestDist = 20f;
@@ -387,7 +394,7 @@ public class Eruption : Ability
         float baseDamage = 50f;
         float damagePerLevel = 20f;
 
-        Physics.Raycast(player.transform.position, player.transform.Find("Camera").transform.forward, out RaycastHit ray, 50, 72);
+        Physics.Raycast(player.transform.position, player.transform.Find("Camera").forward, out RaycastHit ray, 50, 72);
         Vector3 position = ray.point;
 
         yield return new WaitForSeconds(delay);
@@ -543,7 +550,7 @@ public class MomentumShift : Ability
         var rb = player.GetComponent<Rigidbody>();
 
         float speed = rb.linearVelocity.magnitude;
-        Vector3 newDir = player.transform.forward;
+        Vector3 newDir = player.transform.Find("Camera").forward;
 
         rb.linearVelocity = newDir * speed;
 
@@ -616,7 +623,7 @@ public class Grenade : Ability
 
         float throwForce = 50;
 
-        Vector3 dir = player.transform.Find("Camera").transform.forward;
+        Vector3 dir = player.transform.Find("Camera").forward;
 
         GrenadeScript.Spawn(abilityPrefabs.Where(o => o.name == "Grenade").ToArray()[0], radius, damage, throwForce, dir);
 
@@ -641,7 +648,7 @@ public class Lamp : Ability
 
         float throwForce = 50;
 
-        Vector3 dir = player.transform.Find("Camera").transform.forward;
+        Vector3 dir = player.transform.Find("Camera").forward;
 
         LampScript.Spawn(abilityPrefabs.Where(o => o.name == "Lamp").ToArray()[0], radius, throwForce, dir);
 
