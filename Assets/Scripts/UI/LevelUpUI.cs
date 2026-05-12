@@ -53,6 +53,7 @@ public class LevelUpUI : MonoBehaviour
     [SerializeField] private Sprite iconStatDefense;
     [SerializeField] private Sprite iconStatJumpHeight;
     [SerializeField] private Sprite iconStatMovementSpeed;
+    [SerializeField] private Sprite iconStatVisionRange;
 
     [SerializeField] private AudioClip sfxLevelUp;
     private AudioSource audioSource;
@@ -229,6 +230,7 @@ public class LevelUpUI : MonoBehaviour
             PossibleLevelUpStats.Defense => iconStatDefense,
             PossibleLevelUpStats.JumpHeight => iconStatJumpHeight,
             PossibleLevelUpStats.MovementSpeed => iconStatMovementSpeed,
+            PossibleLevelUpStats.VisionRange => iconStatVisionRange,
             _ => null
         };
     }
