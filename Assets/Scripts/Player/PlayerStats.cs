@@ -9,8 +9,8 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] float regenPerSecond;
     [SerializeField] float visionRange = 5f;
     [SerializeField] PlayerVision playerVision;
-    public float VisionRange => visionRange;
-
+    public float VisionRange => VisionRangeAfterBuffs;
+    private float VisionRangeAfterBuffs => visionRange * (1 + visionRangeBuffs / 100);
     private float HealthAfterBuffs => maxHealth + hpBuffs;
 
     private float RegenAfterBuffs => regenPerSecond + regenBuffs;
@@ -25,6 +25,7 @@ public class PlayerStats : MonoBehaviour
     public float defenseBuffs = 0;
     public float jumpHeightBuffs = 0;
     public float movementSpeedBuffs = 0;
+    public float visionRangeBuffs = 0;
 
     // Ability Related
     [HideInInspector] public bool invincible = false;
@@ -110,5 +111,22 @@ public class PlayerStats : MonoBehaviour
         {
             movementSpeedBuffs += stat.Value;
         }
+        else if (stat.StatType == PossibleLevelUpStats.VisionRange)
+        {
+            visionRangeBuffs += stat.Value;
+            playerVision.UpdateVisionRange(VisionRangeAfterBuffs);
+        }
+    }
+
+    public void IncreaseVision(float range)
+    {
+        visionRangeBuffs += range;
+        playerVision.UpdateVisionRange(VisionRangeAfterBuffs);
+    }
+
+    public void DecreaseVision(float range)
+    {
+        visionRangeBuffs -= range;
+        playerVision.UpdateVisionRange(VisionRangeAfterBuffs);
     }
 }

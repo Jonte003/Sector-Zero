@@ -162,7 +162,7 @@ public class Knockback : Ability
             {
                 enemies[i].GetComponent<EnemyAgentAI>().ApplyKnockback();
 
-                enemies[i].GetComponent<Rigidbody>().AddForce(((enemies[i].transform.position - player.transform.position).normalized + Vector3.up * 0.5f).normalized * (baseKbForce + kbForcePerLevel * (Level - 1)));
+                enemies[i].GetComponent<Rigidbody>().AddForce(((enemies[i].transform.position - player.transform.position).normalized + Vector3.up).normalized * (baseKbForce + kbForcePerLevel * (Level - 1)));
 
                 enemies[i].GetComponent<EnemyAgentAI>().Slow(slowDuration, 1 - (baseSlow + slowPerLevel * (Level - 1)) / 100);
             }
@@ -384,6 +384,9 @@ public class Eruption : Ability
         float baseDamage = 50f;
         float damagePerLevel = 20f;
 
+        Physics.Raycast(player.transform.position, player.transform.Find("Camera").transform.forward, out RaycastHit ray, 50, 72);
+        Vector3 position = ray.point;
+
         yield return new WaitForSeconds(delay);
 
         float radius = baseRange + rangePerLevel * (Level - 1);
@@ -391,7 +394,7 @@ public class Eruption : Ability
 
         foreach (var e in enemies)
         {
-            if (Vector3.Distance(player.transform.position, e.transform.position) <= radius)
+            if (Vector3.Distance(position, e.transform.position) <= radius)
                 e.GetComponent<EnemyStats>().DoDamageToEnemy(damage);
         }
     }
@@ -410,8 +413,8 @@ public class Blink : Ability
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
     {
-        float baseDistance = 4f;
-        float distancePerLevel = 1f;
+        float baseDistance = 8f;
+        float distancePerLevel = 2f;
 
         float dist = baseDistance + distancePerLevel * (Level - 1);
         
@@ -431,7 +434,7 @@ public class Blink : Ability
 public class Charge : Ability
 {
     public Charge() { }
-    public override bool NotYetImplemented => false;
+    public override bool NotYetImplemented => true;
     public override string Name => "Charge";
     public override Sprite Icon => Resources.Load<Sprite>("Charge");
     public override float CD => 20f;
@@ -600,7 +603,7 @@ public class Grenade : Ability
     public override float CD => 20f;
     protected override float CooldownPerLevel => 3.5f;
     public override string Description => "Throw a grenade that damages enemies";
-    public override AbilityCategory Category => AbilityCategory.Mobility;
+    public override AbilityCategory Category => AbilityCategory.Attack;
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
     {
@@ -627,7 +630,7 @@ public class Lamp : Ability
     public override float CD => 20f;
     protected override float CooldownPerLevel => 3.5f;
     public override string Description => "Throw a lamp to light up the surroundings";
-    public override AbilityCategory Category => AbilityCategory.Mobility;
+    public override AbilityCategory Category => AbilityCategory.Vision;
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
     {
@@ -640,5 +643,30 @@ public class Lamp : Ability
         LampScript.Spawn(abilityPrefabs.Where(o => o.name == "Lamp").ToArray()[0], radius, throwForce, dir);
 
         yield return null;
+    }
+}
+
+public class Farsight : Ability
+{
+    public Farsight() { }
+    public override bool NotYetImplemented => false;
+    public override string Name => "Farsight";
+    public override Sprite Icon => Resources.Load<Sprite>("Farsight");
+    public override float CD => 30f;
+    protected override float CooldownPerLevel => 5f;
+    public override string Description => "Increase your vision range";
+    public override AbilityCategory Category => AbilityCategory.Vision;
+
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
+    {
+        float multiplier = 1.5f + 0.125f * (Level - 1);
+
+        float duration = 3 + 1 * (Level - 1);
+
+        player.GetComponent<PlayerVision>().UpdateVisionRange(player.GetComponent<PlayerStats>().VisionRange * multiplier);
+
+        yield return new WaitForSeconds(duration);
+
+        player.GetComponent<PlayerVision>().UpdateVisionRange(player.GetComponent<PlayerStats>().VisionRange / multiplier);
     }
 }

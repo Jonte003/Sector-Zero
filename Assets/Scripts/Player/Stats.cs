@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +11,8 @@ public static class Stats
         PossibleLevelUpStats.AbilityHaste,
         PossibleLevelUpStats.Defense,
         PossibleLevelUpStats.JumpHeight,
-        PossibleLevelUpStats.MovementSpeed
+        PossibleLevelUpStats.MovementSpeed,
+        PossibleLevelUpStats.VisionRange
     };
 
     public static Stat[] GetRandomStats(int amount)
@@ -47,7 +47,8 @@ public enum PossibleLevelUpStats
     AbilityHaste,
     Defense,
     JumpHeight,
-    MovementSpeed
+    MovementSpeed,
+    VisionRange
 }
 
 public enum StatRarity
@@ -61,15 +62,6 @@ public enum StatRarity
 
 public class Stat
 {
-    private static readonly StatRarity[] Rarities =
-    {
-        StatRarity.Common,
-        StatRarity.Uncommon,
-        StatRarity.Rare,
-        StatRarity.Epic,
-        StatRarity.Legendary
-    };
-
     public PossibleLevelUpStats StatType { get; }
     public float Value { get; }
 
@@ -83,6 +75,7 @@ public class Stat
             PossibleLevelUpStats.Defense => 10f,
             PossibleLevelUpStats.JumpHeight => 20f,
             PossibleLevelUpStats.MovementSpeed => 15f,
+            PossibleLevelUpStats.VisionRange => 20f,
             _ => 0f
         };
 
