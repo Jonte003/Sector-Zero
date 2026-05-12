@@ -13,6 +13,8 @@ public class LevelUpUI : MonoBehaviour
     private GameObject statsPanel;
     private Crosshair crosshair;
 
+    [SerializeField] RarityColors rarityColors;
+
     [SerializeField] private Button buttonNewSkill;
     [SerializeField] private Button buttonLevelUpSkill;
     [SerializeField] private Button buttonLevelUpStats;
@@ -208,6 +210,8 @@ public class LevelUpUI : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             buttonImages[i].sprite = GetStatIcon(statChoices[i]);
+            //buttonImages[i].color = Color.red;
+            buttonImages[i].color = rarityColors.GetColor(statChoices[i].Rarity);
         }
 
         statsPanel.SetActive(true);

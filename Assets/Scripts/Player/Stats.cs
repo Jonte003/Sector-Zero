@@ -64,6 +64,7 @@ public class Stat
 {
     public PossibleLevelUpStats StatType { get; }
     public float Value { get; }
+    public StatRarity Rarity { get; }
 
     private float BaseValue =>
         StatType switch
@@ -93,6 +94,8 @@ public class Stat
             < 0.975f => StatRarity.Epic,
             _ => StatRarity.Legendary
         };
+
+        Rarity = rarity;
 
         float multiplier = rarity switch
         {
