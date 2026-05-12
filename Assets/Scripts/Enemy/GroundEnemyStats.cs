@@ -6,6 +6,7 @@ public class GroundEnemyStats : EnemyStats
     [Space]
     [SerializeField] float baseDamage;
     [SerializeField, Tooltip("Multiplier for Damage")] float damageMultiplier;
+    GroundEnemyAI movmentAI;
     float damage;
 
 
@@ -15,10 +16,16 @@ public class GroundEnemyStats : EnemyStats
         base.Start();
 
         float waveNumber = GameObject.FindWithTag("WaveManager").GetComponent<WaveManager>().CurrentWave;
-
+        movmentAI = GetComponent<GroundEnemyAI>();
         damage = baseDamage * Mathf.Pow(damageMultiplier, waveNumber); //Calculates Damage depending on wave number
         target = GameObject.FindWithTag("Player");
         playerStats = target.GetComponent<PlayerStats>();
+    }
+
+    public override void DoDamageToEnemy(float amount)
+    {
+        base.DoDamageToEnemy(amount);
+        movmentAI.OnDamageTaken(); 
     }
 
 

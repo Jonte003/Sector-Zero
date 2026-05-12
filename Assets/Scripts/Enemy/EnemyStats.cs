@@ -27,7 +27,7 @@ public class EnemyStats : MonoBehaviour
         playerStats = target.GetComponent<PlayerStats>();
     }
 
-    public void DoDamageToEnemy(float amount)
+    public virtual void DoDamageToEnemy(float amount)
     {
 
         health -= amount;

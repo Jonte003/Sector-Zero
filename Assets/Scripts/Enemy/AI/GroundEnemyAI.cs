@@ -243,6 +243,14 @@ public class GroundEnemyAI : EnemyAgentAI
         }
     }
 
+    public void OnDamageTaken() //Set speed to walking upon damage taken
+    {
+        if (currentState == State.running)
+        {
+            ChangeCurrentState(State.walking);
+        }
+    }
+
     public override void Slow(float duration, float slowAmount)
     {
         StartCoroutine(SlowAgent(duration, slowAmount));
