@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Gun : MonoBehaviour
 {
@@ -63,6 +64,7 @@ public class Gun : MonoBehaviour
 
     private void Update()
     {
+        if (SceneManager.GetActiveScene().name != "Gameplay") return;
         if (timeSinceLastShot < (1 / FinalFireRate))
             timeSinceLastShot += Time.deltaTime;
 
@@ -77,6 +79,8 @@ public class Gun : MonoBehaviour
     }
     private void Start()
     {
+        if (SceneManager.GetActiveScene().name != "Gameplay") return;
+
         settings.Muzzle = Muzzle;
 
         finalModStats = AddMods();
@@ -125,6 +129,7 @@ public class Gun : MonoBehaviour
     #region Shooting
     public void TryShoot()
     {
+        if (SceneManager.GetActiveScene().name != "Gameplay") return;
         if (canShoot)
         {
             Shoot();

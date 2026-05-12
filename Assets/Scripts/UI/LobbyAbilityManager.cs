@@ -9,7 +9,7 @@ public class LobbyAbilityManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI abilityCountText;
     [SerializeField] TextMeshProUGUI abilityListTextLeft;
     [SerializeField] TextMeshProUGUI abilityListTextRight;
-    [SerializeField] int requiredAbilityCount = 10;
+    [SerializeField] int requiredAbilityCount = 8;
 
     private List<AbilityWallButton> allButtons = new();
     private HashSet<Ability> enabledAbilities = new();

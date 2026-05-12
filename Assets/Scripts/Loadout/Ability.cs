@@ -26,9 +26,6 @@ public static class AbilityRegistry
         { "Leap",             new Leap() },
         { "Momentum Shift",   new MomentumShift() },
         { "Vital Surge",      new VitalSurge() },
-        { "Grenade",          new Grenade() },
-        { "Lamp",             new Lamp() },
-        { "Farsight",         new Farsight() },
     };
 
     public static Sprite GetIcon(string abilityName)

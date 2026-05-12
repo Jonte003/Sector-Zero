@@ -7,6 +7,7 @@ public class DisplayWeapon : MonoBehaviour
     [SerializeField] string weaponName;
     [SerializeField] TextMeshPro displayText;
     public GunSettings ThisGun;
+    [SerializeField] GameObject gunPrefab;
     void Awake()
     {
         if (weaponName == "Assault Rifle") { ThisGun = GunSettings.AssaultRifle; }
@@ -23,7 +24,8 @@ public class DisplayWeapon : MonoBehaviour
 
     void Update()
     {
-        transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
+        //transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
+        gunPrefab.transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
     }
 
     public void SetGun(GunSettings gun)

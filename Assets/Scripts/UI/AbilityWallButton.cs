@@ -17,6 +17,7 @@ public class AbilityWallButton : MonoBehaviour, IInteractable
         iconRenderer = GetComponent<Renderer>();
         if (AbilityRegistry.All.TryGetValue(abilityName, out Ability ability))
         {
+            Debug.Log($"Found ability for {abilityName} button: {ability.Name}");
             Ability = ability;
             iconRenderer.material.mainTexture = ability.Icon != null ? ability.Icon.texture : null;
             iconRenderer.material.color = ability.NotYetImplemented ? colorUnimplemented : colorInactive;
