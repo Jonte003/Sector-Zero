@@ -8,6 +8,8 @@ public class ParticleManager : MonoBehaviour
     [SerializeField] GameObject speedEffect;
     [SerializeField] GameObject jumpEffect;
     [SerializeField] GameObject healthEffect;
+    [SerializeField] GameObject eruptionEffect;
+    [SerializeField] GameObject growingSphere;
 
     [SerializeField] GameObject ExplosionEffect;
 
@@ -18,6 +20,7 @@ public class ParticleManager : MonoBehaviour
     [SerializeField] bool playJumpLines;
     [SerializeField] bool playHeathEffect;
     [SerializeField] bool playExplosion;
+    [SerializeField] bool playEruption;
 
 
     ParticleSystem trailEffectSystem;
@@ -70,6 +73,11 @@ public class ParticleManager : MonoBehaviour
             PlayExplosionEffect(new Vector3(0,7,0), 1);
             playExplosion = false;
         }
+        if (playEruption)
+        {
+            PlayEruptionEffect(1, transform.position, 1.5f);
+            playEruption = false;
+        }
 
 
     }
@@ -115,9 +123,10 @@ public class ParticleManager : MonoBehaviour
         jumpLinesEffect.Stop();
     }
 
-    private void PlayHealthEffect(float duration)
+    public void PlayHealthEffect(float duration)
     {
         StartCoroutine(PlayHealthEffectRoutine(duration));
+        Debug.Log("HeathEffectPlayer");
     }
 
 
@@ -128,7 +137,7 @@ public class ParticleManager : MonoBehaviour
         healthEffectSystem.Stop();
     }
 
-    private void PlayExplosionEffect(Vector3 position, float scale)
+    public void PlayExplosionEffect(Vector3 position, float scale)
     {
         StartCoroutine(PlayExplosionEffectRoutine(position, scale));
     }
@@ -139,5 +148,11 @@ public class ParticleManager : MonoBehaviour
         e.transform.localScale = new Vector3(scale, scale, scale);
         yield return new WaitForSeconds(4);
         Destroy(e);
+    }
+
+    public void PlayEruptionEffect(float explosionScale, Vector3 position, float timer)
+    {
+        GameObject e = Instantiate(eruptionEffect, position, Quaternion.identity);
+        e.GetComponent<EruptionAbility>().StartCountdown(gameObject, timer, explosionScale, growingSphere);
     }
 }

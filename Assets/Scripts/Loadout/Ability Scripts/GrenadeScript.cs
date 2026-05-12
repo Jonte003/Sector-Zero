@@ -36,6 +36,8 @@ public class GrenadeScript : MonoBehaviour
             }
         }
 
+        GameObject.FindWithTag("Player").GetComponent<ParticleManager>().PlayExplosionEffect(transform.position, 1);
+
         Destroy(this);
     }
 

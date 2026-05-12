@@ -113,6 +113,7 @@ public class Explosion : Ability
 
         float explosionForce = 50f;
 
+        player.GetComponent<ParticleManager>().PlayExplosionEffect(player.transform.position, Level * 0.3f + 0.7f);
 
         for (int i = 0;  i < enemies.Count; i++)
         {
@@ -188,7 +189,7 @@ public class Dash : Ability
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
     {
-        player.GetComponent<ParticleManager>().PlaySpeedLines(1f);
+        player.GetComponent<ParticleManager>().PlaySpeedLines(0.6f);
 
         float dashForce = 20f;
 
@@ -393,6 +394,8 @@ public class Eruption : Ability
 
         Physics.Raycast(player.transform.position, player.transform.Find("Camera").forward, out RaycastHit ray, 50, 72);
         Vector3 position = ray.point;
+        player.GetComponent<ParticleManager>().PlayEruptionEffect(Level * 0.3f + 0.7f, player.transform.position, delay);
+
 
         yield return new WaitForSeconds(delay);
 
@@ -504,6 +507,7 @@ public class VitalSurge : Ability
         var stats = player.GetComponent<PlayerStats>();
         stats.regenBuffs += regenTranslated;
 
+        player.GetComponent<ParticleManager>().PlayHealthEffect(duration * 0.5f);
         yield return new WaitForSeconds(duration);
 
         stats.regenBuffs -= regenTranslated;
