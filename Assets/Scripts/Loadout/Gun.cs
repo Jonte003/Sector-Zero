@@ -294,5 +294,6 @@ public class Gun : MonoBehaviour
     {
         return FinalMagSize;
     }
+    public float FireCooldownPercent => Mathf.Clamp01(timeSinceLastShot * FinalFireRate);
     #endregion
 }
