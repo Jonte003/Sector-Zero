@@ -88,7 +88,7 @@ public enum AbilityCategory
 public class Explosion : Ability
 {
     public Explosion() { }
-    public override bool NotYetImplemented => true;
+    public override bool NotYetImplemented => false;
     public override string Name => "Explosion";
     public override Sprite Icon => Resources.Load<Sprite>("Explosion");
     public override float CD => 14f;
@@ -302,7 +302,7 @@ public class Invincible : Ability
 public class ChainLightning : Ability
 {
     public ChainLightning() { }
-    public override bool NotYetImplemented => true;
+    public override bool NotYetImplemented => false;
     public override string Name => "Chain Lightning";
     public override Sprite Icon => Resources.Load<Sprite>("ChainLightning");
     public override float CD => 18f;
@@ -595,7 +595,7 @@ public class Grenade : Ability
 {
     public Grenade() { }
     public override bool NotYetImplemented => false;
-    public override string Name => "Ground Slam";
+    public override string Name => "Grenade";
     public override Sprite Icon => Resources.Load<Sprite>("Grenade");
     public override float CD => 20f;
     protected override float CooldownPerLevel => 3.5f;
@@ -604,15 +604,40 @@ public class Grenade : Ability
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
     {
-        float radius = 5 + 1 * (Level - 1);
+        float radius = 5 + 1.25f * (Level - 1);
 
-        float damage = 10 + 2 * (Level - 1);
+        float damage = 10 + 2.5f * (Level - 1);
 
         float throwForce = 50;
 
         Vector3 dir = player.transform.Find("Camera").transform.forward;
 
         GrenadeScript.Spawn(abilityPrefabs.Where(o => o.name == "Grenade").ToArray()[0], radius, damage, throwForce, dir);
+
+        yield return null;
+    }
+}
+
+public class Lamp : Ability
+{
+    public Lamp() { }
+    public override bool NotYetImplemented => false;
+    public override string Name => "Lamp";
+    public override Sprite Icon => Resources.Load<Sprite>("Lamp");
+    public override float CD => 20f;
+    protected override float CooldownPerLevel => 3.5f;
+    public override string Description => "Throw a lamp to light up the surroundings";
+    public override AbilityCategory Category => AbilityCategory.Mobility;
+
+    protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
+    {
+        float radius = 5 + 1.25f * (Level - 1);
+
+        float throwForce = 50;
+
+        Vector3 dir = player.transform.Find("Camera").transform.forward;
+
+        LampScript.Spawn(abilityPrefabs.Where(o => o.name == "Lamp").ToArray()[0], radius, throwForce, dir);
 
         yield return null;
     }

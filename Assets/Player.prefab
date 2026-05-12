@@ -236,31 +236,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e3f9e81696803ea4fb30d1fa2a392c8d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.913218
+      value: -12.89
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3f9e81696803ea4fb30d1fa2a392c8d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.90003496
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3f9e81696803ea4fb30d1fa2a392c8d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.012618
+      value: 2.41
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3f9e81696803ea4fb30d1fa2a392c8d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.76054215
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3f9e81696803ea4fb30d1fa2a392c8d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3f9e81696803ea4fb30d1fa2a392c8d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.64928865
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3f9e81696803ea4fb30d1fa2a392c8d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3f9e81696803ea4fb30d1fa2a392c8d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -268,7 +268,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3f9e81696803ea4fb30d1fa2a392c8d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 80.976
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e3f9e81696803ea4fb30d1fa2a392c8d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -481,6 +481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAbilities
   abilityPrefabs:
   - {fileID: 7871922328745323264, guid: 7a492e7054d19d542904760f69214905, type: 3}
+  - {fileID: 7871922328745323264, guid: e46ec8e464be3ac46968434c353d6997, type: 3}
 --- !u!114 &3065197714189263127
 MonoBehaviour:
   m_ObjectHideFlags: 0
