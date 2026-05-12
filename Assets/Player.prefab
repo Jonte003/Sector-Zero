@@ -430,6 +430,7 @@ MonoBehaviour:
   defenseBuffs: 0
   jumpHeightBuffs: 0
   movementSpeedBuffs: 0
+  visionRangeBuffs: 0
   invincible: 0
 --- !u!114 &3094715062140631416
 MonoBehaviour:
@@ -482,6 +483,7 @@ MonoBehaviour:
   abilityPrefabs:
   - {fileID: 7871922328745323264, guid: 7a492e7054d19d542904760f69214905, type: 3}
   - {fileID: 7871922328745323264, guid: e46ec8e464be3ac46968434c353d6997, type: 3}
+  - {fileID: 6095727873041832734, guid: 50271764503e22848809416d0a6511fa, type: 3}
 --- !u!114 &3065197714189263127
 MonoBehaviour:
   m_ObjectHideFlags: 0
