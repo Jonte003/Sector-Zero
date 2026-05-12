@@ -15,21 +15,23 @@ public class PlayerShoot : MonoBehaviour
         playerInput = new();
         playerInput.PlayerActions.Enable();
 
-
-        playerInput.PlayerActions.Reload.performed += ctx => Reload();
-
-        playerInput.PlayerActions.Shoot.performed += ctx =>
+        if (SceneManager.GetActiveScene().name == "Gameplay")
         {
-            if (gun.settings.FullAuto)
-                isShooting = true;
-            else
-                Shoot();
-        };
+            playerInput.PlayerActions.Reload.performed += ctx => Reload();
 
-        playerInput.PlayerActions.Shoot.canceled += ctx =>
-        {
-            isShooting = false;
-        };
+            playerInput.PlayerActions.Shoot.performed += ctx =>
+            {
+                if (gun.settings.FullAuto)
+                    isShooting = true;
+                else
+                    Shoot();
+            };
+
+            playerInput.PlayerActions.Shoot.canceled += ctx =>
+            {
+                isShooting = false;
+            };
+        }
     }
 
     public void SetGun()

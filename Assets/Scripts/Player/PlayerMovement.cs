@@ -68,13 +68,6 @@ public class PlayerMovement : MonoBehaviour
         lastCalculatedPosition = Vector3.zero;
     }
 
-    private void OnDisable()
-    {
-        input.Disable();
-
-
-    }
-
     public void CalcMoveSpeed()
     {
         gunMoveSpeedMod = GetComponent<Loadout>().Gun.FinalMoveSpeed;

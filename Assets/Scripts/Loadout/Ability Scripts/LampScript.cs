@@ -24,12 +24,15 @@ public class LampScript : MonoBehaviour
         }
     }
 
-    public static void Spawn(GameObject lamp, float radius, float throwForce, Vector3 direction)
+    public static void Spawn(GameObject lamp, float radius, float throwForce, Vector3 direction, Vector3 position, Collider playerCollider)
     {
-        GameObject ob = Instantiate(lamp);
+        GameObject ob = Instantiate(lamp, position, Quaternion.identity);
 
         ob.GetComponent<LampScript>().radius = radius;
 
-        ob.GetComponent<Rigidbody>().AddForce(direction * throwForce);
+        Collider grenadeCol = ob.GetComponent<Collider>();
+        Physics.IgnoreCollision(grenadeCol, playerCollider);
+
+        ob.GetComponent<Rigidbody>().AddForce(direction * throwForce/*, ForceMode.Impulse*/);
     }
 }

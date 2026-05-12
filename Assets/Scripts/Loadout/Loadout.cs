@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Loadout : MonoBehaviour
 {
@@ -61,19 +62,23 @@ public class Loadout : MonoBehaviour
     {
         Transform parent = transform.Find("Camera");
 
-        GameObject gun = Instantiate(LoadoutManager.GunPrefab, parent);
-        gun.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+        if (SceneManager.GetActiveScene().name == "Gameplay")
+        {
 
-        Gun = gun.GetComponent<Gun>();
-        GunMods = LoadoutManager.GunMods;
+            GameObject gun = Instantiate(LoadoutManager.GunPrefab, parent);
+            gun.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
 
-        gun.GetComponent<Gun>().gunMods = GunMods;
-        gun.GetComponent<Gun>().settings = LoadoutManager.Settings;
+            Gun = gun.GetComponent<Gun>();
+            GunMods = LoadoutManager.GunMods;
 
-        var abilityManager = transform.Find("AbilityManager").GetComponent<AbilityManager>();
-        abilityManager.InitializeAbilities(LoadoutManager.AbilityTypesInBag);
+            gun.GetComponent<Gun>().gunMods = GunMods;
+            gun.GetComponent<Gun>().settings = LoadoutManager.Settings;
 
-        GetComponent<PlayerShoot>().SetGun();
+            var abilityManager = transform.Find("AbilityManager").GetComponent<AbilityManager>();
+            abilityManager.InitializeAbilities(LoadoutManager.AbilityTypesInBag);
+
+            GetComponent<PlayerShoot>().SetGun();
+        }
     }
 
     private void Update()

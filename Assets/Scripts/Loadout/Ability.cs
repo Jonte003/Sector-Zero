@@ -135,7 +135,7 @@ public class Explosion : Ability
 public class Knockback : Ability
 {
     public Knockback() { }
-    public override bool NotYetImplemented => false;
+    public override bool NotYetImplemented => true;
     public override string Name => "Knockback";
     public override Sprite Icon => Resources.Load<Sprite>("Knockback");
     public override float CD => 24f;
@@ -212,9 +212,9 @@ public class Leap : Ability
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
     {
-        float leapForce = 15;
+        float leapForce = 25;
 
-        player.GetComponent<Rigidbody>().AddForce((player.transform.up + player.transform.forward).normalized * leapForce, ForceMode.Impulse);
+        player.GetComponent<Rigidbody>().AddForce((player.transform.up * 0.5f + player.transform.forward).normalized * leapForce, ForceMode.Impulse);
 
         yield return null;
     }
@@ -234,7 +234,7 @@ public class Jump : Ability
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
     {
-        float jumpForce = 15;
+        float jumpForce = 17.5f;
 
         player.GetComponent<Rigidbody>().AddForce(player.transform.up * jumpForce, ForceMode.Impulse);
 
@@ -522,7 +522,7 @@ public class Backstep : Ability
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
     {
-        float force = 15f + 3f * (Level - 1);
+        float force = 25f + 4f * (Level - 1);
 
         var rb = player.GetComponent<Rigidbody>();
         rb.AddForce(-player.transform.forward * force, ForceMode.Impulse);
@@ -558,7 +558,7 @@ public class MomentumShift : Ability
 public class GroundSlam : Ability
 {
     public GroundSlam() { }
-    public override bool NotYetImplemented => false;
+    public override bool NotYetImplemented => true;
     public override string Name => "Ground Slam";
     public override Sprite Icon => Resources.Load<Sprite>("GroundSlam");
     public override float CD => 20f;
@@ -604,7 +604,7 @@ public class GroundSlam : Ability
 public class Grenade : Ability
 {
     public Grenade() { }
-    public override bool NotYetImplemented => false;
+    public override bool NotYetImplemented => true;
     public override string Name => "Grenade";
     public override Sprite Icon => Resources.Load<Sprite>("Grenade");
     public override float CD => 20f;
@@ -618,11 +618,11 @@ public class Grenade : Ability
 
         float damage = 10 + 2.5f * (Level - 1);
 
-        float throwForce = 50;
+        float throwForce = 500;
 
         Vector3 dir = player.transform.Find("Camera").forward;
 
-        GrenadeScript.Spawn(abilityPrefabs.Where(o => o.name == "Grenade").ToArray()[0], radius, damage, throwForce, dir);
+        GrenadeScript.Spawn(abilityPrefabs.Where(o => o.name == "Grenade").ToArray()[0], radius, damage, throwForce, dir, player.transform.position, player.GetComponent<Collider>());
 
         yield return null;
     }
@@ -631,7 +631,7 @@ public class Grenade : Ability
 public class Lamp : Ability
 {
     public Lamp() { }
-    public override bool NotYetImplemented => false;
+    public override bool NotYetImplemented => true;
     public override string Name => "Lamp";
     public override Sprite Icon => Resources.Load<Sprite>("Lamp");
     public override float CD => 20f;
@@ -643,11 +643,11 @@ public class Lamp : Ability
     {
         float radius = 5 + 1.25f * (Level - 1);
 
-        float throwForce = 50;
+        float throwForce = 500;
 
         Vector3 dir = player.transform.Find("Camera").forward;
 
-        LampScript.Spawn(abilityPrefabs.Where(o => o.name == "Lamp").ToArray()[0], radius, throwForce, dir);
+        LampScript.Spawn(abilityPrefabs.Where(o => o.name == "Lamp").ToArray()[0], radius, throwForce, dir, player.transform.position, player.GetComponent<Collider>());
 
         yield return null;
     }

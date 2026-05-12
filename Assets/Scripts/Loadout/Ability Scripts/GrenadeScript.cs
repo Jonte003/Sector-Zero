@@ -39,13 +39,16 @@ public class GrenadeScript : MonoBehaviour
         Destroy(this);
     }
 
-    public static void Spawn(GameObject grenade, float radius, float damage, float throwForce, Vector3 direction)
+    public static void Spawn(GameObject grenade, float radius, float damage, float throwForce, Vector3 direction, Vector3 position, Collider playerCollider)
     {
-        GameObject ob = Instantiate(grenade);
+        GameObject ob = Instantiate(grenade, position, Quaternion.identity);
 
         ob.GetComponent<GrenadeScript>().radius = radius;
         ob.GetComponent<GrenadeScript>().damage = damage;
 
-        ob.GetComponent<Rigidbody>().AddForce(direction * throwForce);
+        Collider grenadeCol = ob.GetComponent<Collider>();
+        Physics.IgnoreCollision(grenadeCol, playerCollider);
+
+        ob.GetComponent<Rigidbody>().AddForce(direction * throwForce/*, ForceMode.Impulse*/);
     }
 }

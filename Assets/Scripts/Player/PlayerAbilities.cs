@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerAbilities : MonoBehaviour
 {
@@ -15,7 +16,10 @@ public class PlayerAbilities : MonoBehaviour
     {
         loadout = GetComponent<Loadout>();
 
-        enemyController = GameObject.FindGameObjectWithTag("EnemyController").GetComponent<Controller>();
+        if (SceneManager.GetActiveScene().name == "Gameplay")
+        {
+            enemyController = GameObject.FindGameObjectWithTag("EnemyController").GetComponent<Controller>();
+        }
 
         playerInput = new();
         playerInput.Enable();

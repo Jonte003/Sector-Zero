@@ -100,7 +100,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7871922328745323264}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 2917077b7dd563c448cff3cfec671462, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -140,7 +140,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &2561810530562735742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,4 +157,3 @@ MonoBehaviour:
   radius: 5
   damage: 10
   enemies: []
-  grenade: {fileID: 7871922328745323264}
