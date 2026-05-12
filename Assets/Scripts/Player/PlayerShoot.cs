@@ -51,7 +51,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void Shoot()
     {
-        Debug.Log("Shoot, Ammo: "  + gun.CurrentAmmo());
+        //Debug.Log("Shoot, Ammo: "  + gun.CurrentAmmo());
         gun.TryShoot();
     }
 
