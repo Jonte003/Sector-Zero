@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerShoot : MonoBehaviour
 {
@@ -51,7 +52,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void Shoot()
     {
-        //Debug.Log("Shoot, Ammo: "  + gun.CurrentAmmo());
+        if (SceneManager.GetActiveScene().name != "Gameplay") return;
         gun.TryShoot();
     }
 

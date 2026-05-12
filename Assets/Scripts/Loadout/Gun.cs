@@ -104,7 +104,7 @@ public class Gun : MonoBehaviour
 
     public void TryReload()
     {
-        if (!isReloading && currentAmmo < FinalMagSize)
+        if (!isReloading && currentAmmo < FinalMagSize && timeSinceLastShot >= (1 / (FinalFireRate * 2)))
         {
             StartCoroutine(ReloadRoutine());
         }
@@ -129,7 +129,6 @@ public class Gun : MonoBehaviour
     #region Shooting
     public void TryShoot()
     {
-        if (SceneManager.GetActiveScene().name != "Gameplay") return;
         if (canShoot)
         {
             Shoot();
