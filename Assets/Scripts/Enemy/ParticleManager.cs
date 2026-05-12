@@ -9,12 +9,16 @@ public class ParticleManager : MonoBehaviour
     [SerializeField] GameObject jumpEffect;
     [SerializeField] GameObject healthEffect;
 
+    [SerializeField] GameObject ExplosionEffect;
+
     [SerializeField] GameObject trailEffect;
 
     [SerializeField] bool playRipple;
     [SerializeField] bool playSpeedLines;
     [SerializeField] bool playJumpLines;
     [SerializeField] bool playHeathEffect;
+    [SerializeField] bool playExplosion;
+
 
     ParticleSystem trailEffectSystem;
     ParticleSystem speedLinesEffect;
@@ -61,8 +65,13 @@ public class ParticleManager : MonoBehaviour
             PlayHealthEffect(5);
             playHeathEffect = false;
         }
+        if (playExplosion)
+        {
+            PlayExplosionEffect(new Vector3(0,7,0), 1);
+            playExplosion = false;
+        }
 
-    
+
     }
 
     public void PlayRippleEffect(Vector3 player, int abilityLevel)
@@ -111,10 +120,24 @@ public class ParticleManager : MonoBehaviour
         StartCoroutine(PlayHealthEffectRoutine(duration));
     }
 
+
     private IEnumerator PlayHealthEffectRoutine(float duration)
     {
         healthEffectSystem.Play();
         yield return new WaitForSeconds(duration);
         healthEffectSystem.Stop();
+    }
+
+    private void PlayExplosionEffect(Vector3 position, float scale)
+    {
+        StartCoroutine(PlayExplosionEffectRoutine(position, scale));
+    }
+
+    private IEnumerator PlayExplosionEffectRoutine(Vector3 position, float scale)
+    {
+        GameObject e = Instantiate(ExplosionEffect, position, Quaternion.identity);
+        e.transform.localScale = new Vector3(scale, scale, scale);
+        yield return new WaitForSeconds(4);
+        Destroy(e);
     }
 }
