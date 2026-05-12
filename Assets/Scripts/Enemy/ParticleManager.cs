@@ -7,15 +7,19 @@ public class ParticleManager : MonoBehaviour
     [SerializeField] GameObject rippleEffect;
     [SerializeField] GameObject speedEffect;
     [SerializeField] GameObject jumpEffect;
+    [SerializeField] GameObject healthEffect;
+
     [SerializeField] GameObject trailEffect;
 
     [SerializeField] bool playRipple;
     [SerializeField] bool playSpeedLines;
     [SerializeField] bool playJumpLines;
+    [SerializeField] bool playHeathEffect;
 
     ParticleSystem trailEffectSystem;
     ParticleSystem speedLinesEffect;
     ParticleSystem jumpLinesEffect;
+    ParticleSystem healthEffectSystem;
 
 
     [SerializeField] LayerMask layerMask;
@@ -27,6 +31,7 @@ public class ParticleManager : MonoBehaviour
         cameraTransform = GameObject.FindWithTag("MainCamera").transform;
         speedLinesEffect = speedEffect.GetComponent<ParticleSystem>();
         jumpLinesEffect = jumpEffect.GetComponent<ParticleSystem>();
+        healthEffectSystem = healthEffect.GetComponent<ParticleSystem>();
 
     }
 
@@ -50,6 +55,11 @@ public class ParticleManager : MonoBehaviour
         {
             PlayJumpLines(1);
             playJumpLines = false;
+        }
+        if (playHeathEffect)
+        {
+            PlayHealthEffect(5);
+            playHeathEffect = false;
         }
 
     
@@ -94,5 +104,17 @@ public class ParticleManager : MonoBehaviour
         jumpLinesEffect.Play();
         yield return new WaitForSeconds(duration);
         jumpLinesEffect.Stop();
+    }
+
+    private void PlayHealthEffect(float duration)
+    {
+        StartCoroutine(PlayHealthEffectRoutine(duration));
+    }
+
+    private IEnumerator PlayHealthEffectRoutine(float duration)
+    {
+        healthEffectSystem.Play();
+        yield return new WaitForSeconds(duration);
+        healthEffectSystem.Stop();
     }
 }
