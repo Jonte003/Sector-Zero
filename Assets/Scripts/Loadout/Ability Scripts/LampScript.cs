@@ -24,11 +24,11 @@ public class LampScript : MonoBehaviour
         }
     }
 
-    public static void Spawn(GameObject grenade, float radius, float throwForce, Vector3 direction)
+    public static void Spawn(GameObject lamp, float radius, float throwForce, Vector3 direction)
     {
-        GameObject ob = Instantiate(grenade);
+        GameObject ob = Instantiate(lamp);
 
-        ob.GetComponent<GrenadeScript>().radius = radius;
+        ob.GetComponent<LampScript>().radius = radius;
 
         ob.GetComponent<Rigidbody>().AddForce(direction * throwForce);
     }
