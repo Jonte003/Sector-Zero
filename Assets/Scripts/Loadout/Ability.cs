@@ -520,10 +520,10 @@ public class VitalSurge : Ability
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
     {
-        float baseRegenPercent = 8f;
-        float regenPerLevel = 2f;
+        float baseRegenPercent = 10f;
+        float regenPerLevel = 5f;
 
-        float duration = 1.5f;
+        float duration = 2f - 0.125f * (Level - 1);
 
         float regenTranslated = (baseRegenPercent + regenPerLevel * (Level - 1)) / duration;
 
