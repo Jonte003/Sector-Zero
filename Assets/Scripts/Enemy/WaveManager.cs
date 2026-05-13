@@ -94,9 +94,9 @@ public class WaveManager : MonoBehaviour
         }
         else
         {
+            timeToNextWave = 0;
             timeToBoss = 0;
             gameTimer.timeRemaining = timeToBoss;
-
         }
 
 
