@@ -420,7 +420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthManager
   maxHealth: 1e+9
   currentHealth: 0
-  regenPerSecond: 1
+  regenPerSecond: 0.5
   visionRange: 20
   playerVision: {fileID: 3065197714189263127}
   hpBuffs: 0
