@@ -4,10 +4,11 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField] protected float reach;
+    private EnemyType enemyType;
     protected Rigidbody rigidbody;
     protected GameObject target;
     protected Vector3 targetLocation;
-
+    
     protected LayerMask obstacles;
     protected PlayerStats playerStats;
 
@@ -19,6 +20,15 @@ public class EnemyAI : MonoBehaviour
         playerStats = target.GetComponent<PlayerStats>();
         rigidbody = GetComponent<Rigidbody>();
         obstacles = LayerMask.GetMask("obstacle");
+
+        if (CompareTag("Drone"))
+        {
+            enemyType = EnemyType.Drone;
+        }
+        else if (CompareTag("GroundEnemy"))
+        {
+            enemyType = EnemyType.GroundEnemy;
+        }
     }
 
     public static bool CheckIfTargetInSight(Transform transform, Transform target, float detectionDistance, float maxAngle, Vector3 forward)
@@ -43,5 +53,11 @@ public class EnemyAI : MonoBehaviour
     }
     
     public virtual void Attack() { }
+}
+
+public enum EnemyType
+{
+    Drone,
+    GroundEnemy
 }
 

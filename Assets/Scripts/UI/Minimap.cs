@@ -20,24 +20,28 @@ public class Minimap : MonoBehaviour
     [Header("Dot Colors")]
     [SerializeField] private Color enemySeenColor;
     [SerializeField] private Color enemyUnseenColor;
+
+    List<Transform> enemies;
+
     private float playerVisionRange;
 
     private Dictionary<Transform, RectTransform> trackedEnemies = new();
     private void Start()
     {
         Player = GameObject.FindWithTag("Player").transform;
+        enemies = GameObject.FindWithTag("EnemyController").GetComponent<Controller>().AllEnemies;
     }
     void LateUpdate()
     {
         //Debug.Log($"MapSize: {MinimapContent.rect.width} x {MinimapContent.rect.height} | LevelMin: {LevelMin} | LevelMax: {LevelMax} | PlayerWorld: {Player.position}");
 
         playerVisionRange = Player.GetComponent<PlayerStats>().VisionRange;
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        //GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
         #region Start tracking each enemy that is not already tracked
-        foreach (GameObject enemy in enemies)
+        foreach (Transform enemy in enemies)
         {
-            TrackEnemy(enemy.transform);
+            TrackEnemy(enemy);
         }
         #endregion
         #region Stop tracking enemies that no longer exist

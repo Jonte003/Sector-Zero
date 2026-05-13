@@ -206,7 +206,7 @@ public class Gun : MonoBehaviour
         {
             for (int i = 0; i < hits.Count(); i++)
             {
-                if (!hits[i].transform.CompareTag("Enemy"))
+                if (!hits[i].transform.CompareTag("Drone") && !hits[i].transform.CompareTag("GroundEnemy"))
                 {
                     targetPoint = hits[i].point;
                     break;
