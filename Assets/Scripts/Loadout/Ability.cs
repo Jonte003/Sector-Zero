@@ -393,8 +393,9 @@ public class Eruption : Ability
         float damagePerLevel = 20f;
 
         Physics.Raycast(player.transform.position, player.transform.Find("Camera").forward, out RaycastHit ray, 50, 72);
+
         Vector3 position = ray.point;
-        player.GetComponent<ParticleManager>().PlayEruptionEffect(Level * 0.3f + 0.7f, player.transform.position, delay);
+        player.GetComponent<ParticleManager>().PlayEruptionEffect(Level * 0.3f + 0.7f, position, delay);
 
 
         yield return new WaitForSeconds(delay);
