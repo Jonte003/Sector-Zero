@@ -42,6 +42,6 @@ public class PlayerLevels : MonoBehaviour
 
     private float ExperienceForLevelUp(int level)
     {
-        return Mathf.Round(10 * Mathf.Pow(level - 1, 1.2f));
+        return Mathf.Round(10 * Mathf.Pow(level - 1, 1.1f));
     }
 }
