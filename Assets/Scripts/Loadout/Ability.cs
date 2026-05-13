@@ -355,7 +355,7 @@ public class ChainLightning : Ability
 
             current.GetComponent<EnemyStats>().DoDamageToEnemy(damage);
 
-            Vector3 startPos = lightning.transform.position;
+            Vector3 startPos = lightning.transform.position + Vector3.up * 0.75f;
             Vector3 endPos = current.position;
 
             float t = 0f;
