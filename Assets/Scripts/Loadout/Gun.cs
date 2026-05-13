@@ -215,7 +215,7 @@ public class Gun : MonoBehaviour
                 targetPoint = hits[i].point;
                 float finalDamage = CalculateDamage(hits[i].distance) * (1 - settings.PierceFalloff / 100 * i);
 
-                Debug.Log("Enemy number " + i + ", " + finalDamage + " damage");
+                //Debug.Log("Enemy number " + i + ", " + finalDamage + " damage");
 
                 if (finalDamage <= 0)
                     break;
