@@ -331,6 +331,8 @@ public class ChainLightning : Ability
 
         GameObject lightning = ChainLightningScript.Spawn(abilityPrefabs.Where(o => o.name == "ChainLightning").ToArray()[0]);
 
+        lightning.transform.position = player.transform.position;
+
         for (int i = 1; i <  enemies.Count; i++)
         {
             if (Vector3.Distance(player.transform.position, enemies[i].transform.position) < dist)
@@ -347,7 +349,17 @@ public class ChainLightning : Ability
 
             current.GetComponent<EnemyStats>().DoDamageToEnemy(damage);
 
-            lightning.transform.position = current.transform.position;
+            Vector3 startPos = lightning.transform.position;
+            Vector3 endPos = current.position + Vector3.up * 0.5f;
+            float travelTime = 0.05f;
+            float t = 0f;
+
+            while (t < 1f)
+            {
+                t += Time.deltaTime / travelTime;
+                lightning.transform.position = Vector3.Lerp(startPos, endPos, t);
+                yield return null;
+            }
 
             Transform next = null;
             float bestDist = 20f;
@@ -356,7 +368,7 @@ public class ChainLightning : Ability
             {
                 if (e == current) continue;
 
-                float d = Vector3.Distance(current.transform.position, e.transform.position);
+                float d = Vector3.Distance(current.position, e.position);
                 if (d < bestDist)
                 {
                     bestDist = d;
@@ -367,6 +379,7 @@ public class ChainLightning : Ability
             current = next;
             damage *= falloff;
         }
+
 
         yield return null;
     }
