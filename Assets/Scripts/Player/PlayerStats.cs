@@ -75,7 +75,7 @@ public class PlayerStats : MonoBehaviour
 
         if (currentHealth <= 0) //PLAYER DEAD
         {
-            SceneManager.LoadScene("Title Screen");
+            //SceneManager.LoadScene("Title Screen");
 
         }
     }
