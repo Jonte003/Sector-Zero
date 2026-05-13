@@ -70,7 +70,7 @@ public class Stat
         StatType switch
         {
             PossibleLevelUpStats.Hp => 10f,
-            PossibleLevelUpStats.Regen => 1f,
+            PossibleLevelUpStats.Regen => 0.5f,
             PossibleLevelUpStats.Damage => 10f,
             PossibleLevelUpStats.AbilityHaste => 15f,
             PossibleLevelUpStats.Defense => 10f,
