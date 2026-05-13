@@ -258,14 +258,14 @@ public class Fortify : Ability
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
     {
-        float baseDefense = 30f;
-        float defensePerLevel = 5f;
+        float baseDefense = 50f;
+        float defensePerLevel = 7.5f;
 
         float duration = 4f;
         float durationPerLevel = 0.75f;
 
-        float MaxHpRegen = 4f;
-        float MaxHpRegenPerLevel = 1.5f;
+        float MaxHpRegen = 8f;
+        float MaxHpRegenPerLevel = 2.5f;
 
         float regenTranslated = (MaxHpRegen + MaxHpRegenPerLevel * (Level - 1)) / (duration + durationPerLevel * (Level - 1));
 
