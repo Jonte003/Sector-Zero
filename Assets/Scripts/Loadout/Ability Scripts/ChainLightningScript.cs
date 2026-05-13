@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
 public class ChainLightningScript : MonoBehaviour
@@ -26,5 +24,10 @@ public class ChainLightningScript : MonoBehaviour
     public static GameObject Spawn(GameObject lightning)
     {
         return Instantiate(lightning);
+    }
+
+    public void DestroyLightning()
+    {
+        Destroy(this);
     }
 }

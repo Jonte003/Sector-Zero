@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.Mathematics;
 using UnityEngine;
 
 #region Ability Registry
@@ -316,31 +317,36 @@ public class ChainLightning : Ability
 
     protected override IEnumerator AbilityRoutine(GameObject player, List<Transform> enemies, List<GameObject> abilityPrefabs)
     {
-        if (enemies.Count == 0)
-            yield break;
+        float baseDamage = 20f;
+        float damagePerLevel = 5f;
+        float falloff = 0.7f;
+        int maxJumps = 3 + (int)math.floor((Level - 1f) * 0.5f);
 
-        float baseDamage = 35f;
-        float damagePerLevel = 12f;
-        float falloff = 0.8f;
-        int maxJumps = 3 + (Level - 1);
+        float bounceDuration = 0.5f - (Level - 1) * 0.05f;
 
         float damage = (baseDamage + damagePerLevel * (Level - 1)) * (player.GetComponent<PlayerStats>().damageBuffs + 1);
 
+        if (enemies.Count == 0)
+            yield break;
+
         Transform current = enemies[0];
-        float dist = Vector3.Distance(player.transform.position, current.transform.position);
+        float dist = Vector3.Distance(player.transform.position, current.position);
 
-        GameObject lightning = ChainLightningScript.Spawn(abilityPrefabs.Where(o => o.name == "ChainLightning").ToArray()[0]);
-
-        lightning.transform.position = player.transform.position;
-
-        for (int i = 1; i <  enemies.Count; i++)
+        for (int i = 1; i < enemies.Count; i++)
         {
-            if (Vector3.Distance(player.transform.position, enemies[i].transform.position) < dist)
+            float d = Vector3.Distance(player.transform.position, enemies[i].position);
+            if (d < dist)
             {
                 current = enemies[i];
-                dist = Vector3.Distance(player.transform.position, current.transform.position);
+                dist = d;
             }
         }
+
+        GameObject lightning = ChainLightningScript.Spawn(
+            abilityPrefabs.First(o => o.name == "ChainLightning")
+        );
+
+        lightning.GetComponent<TrailRenderer>().Clear();
 
         for (int i = 0; i < maxJumps; i++)
         {
@@ -350,13 +356,12 @@ public class ChainLightning : Ability
             current.GetComponent<EnemyStats>().DoDamageToEnemy(damage);
 
             Vector3 startPos = lightning.transform.position;
-            Vector3 endPos = current.position + Vector3.up * 0.5f;
-            float travelTime = 0.05f;
-            float t = 0f;
+            Vector3 endPos = current.position;
 
+            float t = 0f;
             while (t < 1f)
             {
-                t += Time.deltaTime / travelTime;
+                t += Time.deltaTime / bounceDuration;
                 lightning.transform.position = Vector3.Lerp(startPos, endPos, t);
                 yield return null;
             }
@@ -380,8 +385,7 @@ public class ChainLightning : Ability
             damage *= falloff;
         }
 
-
-        yield return null;
+        lightning.GetComponent<ChainLightningScript>().DestroyLightning();
     }
 }
 

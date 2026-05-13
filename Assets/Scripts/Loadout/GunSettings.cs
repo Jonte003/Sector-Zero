@@ -127,10 +127,10 @@ public class GunSettings
             3.5f,                               //damage
             1f,                                 //fireRate
             40f,                                //range
-            2f,                                 //reloadSpeed
+            1.4f,                               //reloadSpeed
             8,                                  //maxAmmo
             false,                              //fullAuto
-            0.85f,                              //moveSpeed
+            0.8f,                               //moveSpeed
             new float[] { 0.8f, 0.5f, 0.5f },   //damageFalloffPercentage
             new float[] { 20f, 30f, 40f },      //damageFalloffRange
             true,                               //damageFalloffLerp
@@ -141,7 +141,7 @@ public class GunSettings
             new(-4f, -4.5f),                    //minSpread
             new(4f, 4f),                        //maxSpread
             new(3, 8),                          //recoilMagnitude
-            0.5f,                               //recoilMin
+            0.75f,                              //recoilMin
             1f,                                 //recoilMax
             30                                  //tracerPoolSize
         );
