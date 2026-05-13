@@ -323,29 +323,34 @@ public class ChainLightning : Ability
         int maxJumps = 3 + (int)math.floor((Level - 1f) * 0.5f);
 
         float bounceDuration = 0.5f - (Level - 1) * 0.05f;
+        float range = 15f + (Level - 1) * 2.5f;
 
         float damage = (baseDamage + damagePerLevel * (Level - 1)) * (player.GetComponent<PlayerStats>().damageBuffs + 1);
 
         if (enemies.Count == 0)
             yield break;
 
-        Transform current = enemies[0];
-        float dist = Vector3.Distance(player.transform.position, current.position);
+        Transform current = null;
+        float dist = Mathf.Infinity;
 
-        for (int i = 1; i < enemies.Count; i++)
+        for (int i = 0; i < enemies.Count; i++)
         {
             float d = Vector3.Distance(player.transform.position, enemies[i].position);
-            if (d < dist)
+            if (d < dist && d <= range)
             {
                 current = enemies[i];
                 dist = d;
             }
         }
 
+        if (current == null)
+            yield break;
+
         GameObject lightning = ChainLightningScript.Spawn(
             abilityPrefabs.First(o => o.name == "ChainLightning")
         );
 
+        lightning.transform.position = player.transform.position;
         lightning.GetComponent<TrailRenderer>().Clear();
 
         for (int i = 0; i < maxJumps; i++)
@@ -367,7 +372,7 @@ public class ChainLightning : Ability
             }
 
             Transform next = null;
-            float bestDist = 20f;
+            float bestDist = range;
 
             foreach (var e in enemies)
             {
