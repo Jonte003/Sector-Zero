@@ -10,13 +10,11 @@ using UnityEngine.Windows;
 
 public class WaveManager : MonoBehaviour
 {
-
     List<GameObject> gameObjectInQueue;
-
-    List<int> timeToBossWavePerWave;
     List<Wave> allWaves;
+
     Wave currentW;
-    Wave nextWave;
+
     [SerializeField] GameTimer gameTimer;
     [SerializeField] GameObject dronePlane;
     [SerializeField, Tooltip("Start corner of spawnarea")] Transform pos1;
@@ -25,8 +23,8 @@ public class WaveManager : MonoBehaviour
     [SerializeField, Tooltip("The minimum distance a enemy can spawn from player")] int enemySpawnDistance;
 
     [Space]
-    int currentWave;
     [SerializeField, InspectorName("Force start next wave")] bool startNextWave;
+    int currentWave = 1; // Wave numbers start at 1
 
     Controller enemyController;
 
@@ -35,13 +33,11 @@ public class WaveManager : MonoBehaviour
     private float timeToNextSpawn;
     private float currentTimeIntervalBetweenSpawns;
     private float timeToNextWave = 0;
-    List<EnemyStats> bossesSpawned;
     int walkableMask = 1;
     public float timeToBoss = 600f;
 
     void Start()
     {
-
         gameObjectInQueue = new List<GameObject>();
         allWaves = new List<Wave>();
         enemyController = GameObject.FindWithTag("EnemyController").GetComponent<Controller>();
@@ -54,38 +50,39 @@ public class WaveManager : MonoBehaviour
             timeToBoss -= wave.TimeToNextWave;
             allWaves.Add(wave);
         }
+
         currentW = allWaves[0];
-        nextWave = allWaves[1];
+
+        LoadEnemyQueue();
+        currentTimeIntervalBetweenSpawns = currentW.SpawnRate;
+        timeToNextWave = currentW.TimeToNextWave;
     }
 
-
-    public void LoadNextWave()
+    void LoadNextWave()
     {
-
         Debug.Log($"Wave {currentWave} finished, loading next wave");
-
 
         currentWave++;
 
-        timeToBoss = allWaves[currentWave - 1].timeToBoss;
+        if (currentWave > allWaves.Count)
+            return;
+
         currentW = allWaves[currentWave - 1];
-        nextWave = allWaves[currentWave];
+
         currentTimeIntervalBetweenSpawns = currentW.SpawnRate;
-
-        
         LoadEnemyQueue();
-        timeToNextWave = allWaves[currentWave - 1].TimeToNextWave;
+        timeToNextWave = currentW.TimeToNextWave;
+        timeToBoss = currentW.timeToBoss;
     }
-
 
     void LoadEnemyQueue()
     {
-        Wave wave = allWaves[currentWave - 1];
-        gameObjectInQueue = wave.GetWave();        
+        gameObjectInQueue = currentW.GetWave();
     }
 
     void Update()
     {
+        // Timer logic
         if (timeToBoss > 0)
         {
             timeToNextWave -= Time.deltaTime;
@@ -96,33 +93,20 @@ public class WaveManager : MonoBehaviour
         {
             timeToNextWave = 0;
             timeToBoss = 0;
-            gameTimer.timeRemaining = timeToBoss;
+            gameTimer.timeRemaining = 0;
         }
 
 
-        if (currentW.IsBossWave || nextWave.IsBossWave)
+        //Load next wave
+        if (timeToNextWave <= 0 || CheckIfAllEnemiesDead())
         {
-            if (CheckIfAllEnemiesDead())
-                startNextWave = true;
-        }
-        else
-        {
-            if (timeToNextWave <= 0 || CheckIfAllEnemiesDead())
-                startNextWave = true;
-        }
-
-        if (startNextWave)
-        {
-            startNextWave = false;
-
-            if (currentWave >= allWaves.Count - 1) //If last wave
+            if (currentWave < allWaves.Count)
             {
-                return;
+                LoadNextWave();
             }
-
-            LoadNextWave();
         }
 
+        // Enemy spawning
         if (gameObjectInQueue.Count > 0 && timeToNextSpawn <= 0)
         {
             timeToNextSpawn = currentTimeIntervalBetweenSpawns;
@@ -133,7 +117,6 @@ public class WaveManager : MonoBehaviour
         {
             timeToNextSpawn -= Time.deltaTime;
         }
-
     }
 
     bool CheckIfAllEnemiesDead()
@@ -141,11 +124,7 @@ public class WaveManager : MonoBehaviour
         return enemyController.AllEnemies.Count == 0 && gameObjectInQueue.Count == 0;
     }
 
-
-    public int CurrentWave
-    {
-        get { return currentWave; }
-    }
+    public int CurrentWave => currentWave;
 
     private void SpawnEnemy(GameObject enemy)
     {
@@ -191,9 +170,4 @@ public class WaveManager : MonoBehaviour
 
         return position;
     }
-
-
-
-
 }
-

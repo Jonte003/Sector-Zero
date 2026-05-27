@@ -21,7 +21,7 @@ public class Minimap : MonoBehaviour
     [SerializeField] private Color enemySeenColor;
     [SerializeField] private Color enemyUnseenColor;
 
-    List<Transform> enemies;
+    public List<Transform> enemies;
 
     private float playerVisionRange;
 
@@ -29,10 +29,17 @@ public class Minimap : MonoBehaviour
     private void Start()
     {
         Player = GameObject.FindWithTag("Player").transform;
-        enemies = GameObject.FindWithTag("EnemyController").GetComponent<Controller>().AllEnemies;
     }
+
+
     void LateUpdate()
     {
+        if (enemies == null || enemies.Count == 0)
+        {
+            enemies = GameObject.FindWithTag("EnemyController").GetComponent<Controller>().AllEnemies;
+        }
+        
+
         //Debug.Log($"MapSize: {MinimapContent.rect.width} x {MinimapContent.rect.height} | LevelMin: {LevelMin} | LevelMax: {LevelMax} | PlayerWorld: {Player.position}");
 
         playerVisionRange = Player.GetComponent<PlayerStats>().VisionRange;
@@ -66,6 +73,8 @@ public class Minimap : MonoBehaviour
         }
 
         PlayerDot.localRotation = Quaternion.Euler(0, 0, -Player.eulerAngles.y + 90);
+
+
     }
 
     Vector2 WorldToMinimap(Vector3 worldPos)

@@ -112,6 +112,6 @@ public class Controller : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        SceneManager.LoadScene("Title Screen");
+        SceneManager.LoadScene("Lobby");
     }
 }
