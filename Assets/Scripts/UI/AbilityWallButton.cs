@@ -8,12 +8,13 @@ public class AbilityWallButton : MonoBehaviour, IInteractable
     [SerializeField] Color colorActive;
     [SerializeField] Color colorInactive;
     [SerializeField] Color colorUnimplemented;
-
+    bool firstInteraction;
     public Ability Ability { get; private set; }
     [SerializeField] private LobbyAbilityManager manager;
 
     private void Start()
     {
+        firstInteraction = true;
         iconRenderer = GetComponent<Renderer>();
         if (AbilityRegistry.All.TryGetValue(abilityName, out Ability ability))
         {
@@ -39,7 +40,8 @@ public class AbilityWallButton : MonoBehaviour, IInteractable
     {
         //Debug.Log($"Interacted with {abilityName} button");
         if (Ability == null || Ability.NotYetImplemented) return;
-        manager.ToggleAbility(Ability);
+        manager.ToggleAbility(Ability, firstInteraction);
         iconRenderer.material.color = Ability.Enabled ? colorActive : colorInactive;
+        firstInteraction = false;
     }
 }
