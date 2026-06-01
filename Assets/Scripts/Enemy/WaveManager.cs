@@ -109,7 +109,6 @@ public class WaveManager : MonoBehaviour
         // Enemy spawning
         if (gameObjectInQueue.Count > 0 && timeToNextSpawn <= 0)
         {
-            timeToNextSpawn = currentTimeIntervalBetweenSpawns;
             SpawnEnemy(gameObjectInQueue[0]);
             
         }
@@ -152,13 +151,15 @@ public class WaveManager : MonoBehaviour
                         GameObject e = Instantiate(enemy, hitPosition, Quaternion.identity, enemyController.transform);
                         enemyController.AddEnemy(e, e.GetComponent<EnemyAgentAI>().IsBoss);
                         gameObjectInQueue.RemoveAt(0);
+                        timeToNextSpawn = currentTimeIntervalBetweenSpawns;
+
                         return;
                     }
                 }
             }
         }
 
-        Debug.LogWarning("Failed to find valid spawn position after multiple attempts.");
+        Debug.LogWarning("Failed to find valid spawn position after multiple attempts, system retrys next frame");
     }
 
     private Vector3 GetRandomPosition()
