@@ -20169,7 +20169,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game Title
+  m_text: 'Sector Zero
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 895402e366889554982a01f636a5addd, type: 2}
   m_sharedMaterial: {fileID: 973322856686780091, guid: 895402e366889554982a01f636a5addd, type: 2}

@@ -429,7 +429,7 @@ public class LevelUpUI : MonoBehaviour
         FadeImages(fadeTargets, 0f);
 
         float elapsed = 0f;
-        float duration = sfxLevelUp.length;
+        float duration = sfxLevelUp.length - 2;
 
         while (elapsed < duration)
         {

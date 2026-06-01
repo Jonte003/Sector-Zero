@@ -23,18 +23,28 @@ public class LobbyAbilityManager : MonoBehaviour
         }
         UpdateUI();
     }
-    public void ToggleAbility(Ability ability)
+    public void ToggleAbility(Ability ability, bool firstInteraction)
     {
-        ability.Enabled = !ability.Enabled;
-        
-        if (ability.Enabled)
+
+        if (firstInteraction)
         {
-            enabledAbilities.Add(ability);
+            ability.Enabled = true;
+            enabledAbilities.Add(ability);;
         }
         else
         {
-            enabledAbilities.Remove(ability);
+            ability.Enabled = !ability.Enabled;
+
+            if (ability.Enabled)
+            {
+                enabledAbilities.Add(ability);
+            }
+            else
+            {
+                enabledAbilities.Remove(ability);
+            }
         }
+
 
         UpdateUI();
         SyncLoadoutManager();
