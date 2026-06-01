@@ -73,15 +73,6 @@ public class PlayerMovement : MonoBehaviour
         gunMoveSpeedMod = GetComponent<Loadout>().Gun.FinalMoveSpeed;
     }
 
-    private void OnMovement(InputValue value)
-    {
-        movementInput = new Vector3(value.Get<Vector2>().x, 0, value.Get<Vector2>().y);
-    }
-    private void OnMovementStop(InputValue input)
-    {
-        movementVector = Vector3.zero;
-    }
-
     private void Jump()
     {
         if (grounded)
@@ -93,6 +84,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        Vector2 move = input.PlayerMovement.Movement.ReadValue<Vector2>();
+        movementInput = new Vector3(move.x, 0, move.y);
+
         grounded = CheckGrounded(groundCheckRadius);
 
         animator.SetBool("InAir", !CheckGrounded(1.2f));
@@ -103,6 +97,20 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position = new Vector3(0, 10, 0);
         }
+
+
+        if (movementInput.sqrMagnitude > 0.01f)
+        {
+            movementVector = movementInput.x * transform.right + movementInput.z * transform.forward;
+            movementVector.y = 0;
+        }
+        else
+        {
+            movementVector = Vector3.zero;
+        }
+
+
+
     }
 
 
@@ -115,20 +123,12 @@ public class PlayerMovement : MonoBehaviour
     {
         Vector3 vel = characterRB.linearVelocity;
 
-        if (movementInput.sqrMagnitude > 0.01f)
-        {
-            movementVector = movementInput.x * transform.right + movementInput.z * transform.forward;
-            movementVector.y = 0;
-        }
-        else
-        {
-            movementVector = Vector3.zero;
-        }
 
         Vector3 currentHorizontal = new Vector3(vel.x, 0, vel.z);
         Vector3 desiredHorizontal = movementVector * FinalSpeed;
 
         Vector3 newHorizontal;
+
 
         if (movementVector.sqrMagnitude > 0.01f)
         {
@@ -148,7 +148,5 @@ public class PlayerMovement : MonoBehaviour
         vel.y += -RealGravity * Time.fixedDeltaTime;
 
         characterRB.linearVelocity = vel;
-
-        
     }
 }

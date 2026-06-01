@@ -3150,6 +3150,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AbilityWallNode Ground Slam
       objectReference: {fileID: 0}
+    - target: {fileID: 8129003271319307022, guid: b7794566087546146a38f3ee109f22b5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8929303220150096866, guid: b7794566087546146a38f3ee109f22b5, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.015
@@ -5559,6 +5563,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AbilityWallNode Dash
       objectReference: {fileID: 0}
+    - target: {fileID: 8129003271319307022, guid: b7794566087546146a38f3ee109f22b5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8929303220150096866, guid: b7794566087546146a38f3ee109f22b5, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.015
@@ -7587,6 +7595,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AbilityWallNode Charge
       objectReference: {fileID: 0}
+    - target: {fileID: 8129003271319307022, guid: b7794566087546146a38f3ee109f22b5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8929303220150096866, guid: b7794566087546146a38f3ee109f22b5, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.015
@@ -8374,6 +8386,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1471008345780858805, guid: 9c52684a14888234ba60b9a1070e4c4b, type: 3}
+      propertyPath: maxHealth
+      value: 9999999
+      objectReference: {fileID: 0}
     - target: {fileID: 4985178276108996387, guid: 9c52684a14888234ba60b9a1070e4c4b, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.25
@@ -13145,6 +13161,10 @@ PrefabInstance:
     - target: {fileID: 8129003271319307022, guid: b7794566087546146a38f3ee109f22b5, type: 3}
       propertyPath: m_Name
       value: AbilityWallNode Grenade
+      objectReference: {fileID: 0}
+    - target: {fileID: 8129003271319307022, guid: b7794566087546146a38f3ee109f22b5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8929303220150096866, guid: b7794566087546146a38f3ee109f22b5, type: 3}
       propertyPath: m_LocalScale.x
@@ -20526,6 +20546,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AbilityWallNode Lamp
       objectReference: {fileID: 0}
+    - target: {fileID: 8129003271319307022, guid: b7794566087546146a38f3ee109f22b5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8929303220150096866, guid: b7794566087546146a38f3ee109f22b5, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.015
@@ -25335,6 +25359,10 @@ PrefabInstance:
     - target: {fileID: 8129003271319307022, guid: b7794566087546146a38f3ee109f22b5, type: 3}
       propertyPath: m_Name
       value: AbilityWallNode Knockback
+      objectReference: {fileID: 0}
+    - target: {fileID: 8129003271319307022, guid: b7794566087546146a38f3ee109f22b5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8929303220150096866, guid: b7794566087546146a38f3ee109f22b5, type: 3}
       propertyPath: m_LocalScale.x
