@@ -17,7 +17,7 @@ public class PlayerLook : MonoBehaviour
     private Vector2 recoilCurrent;
     private Vector2 recoilTarget;
 
-    void Start()
+    void Awake()
     {
         xRotation = cameraObject.localEulerAngles.x;
         yRotation = transform.eulerAngles.y;
